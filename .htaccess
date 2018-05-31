@@ -2,4 +2,4 @@ RewriteEngine On
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_URI} !^.*\.(jpg|css|js|gif|png)$ [NC]
-RewriteRule ^(.*)$ /APP/index.php
+RewriteRule ^(.*)$ /AppCrowdFunding/index.php
