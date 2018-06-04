@@ -30,23 +30,30 @@ require_once 'include.php';
          $this->smarty->assign('badlogin',$this->notval['badlogin']);
          $this->smarty->display('login.tpl');
      }
-
+     function navbar(){
+         if(CUtente::isLogged()) $this->smarty->assign('userlogged',$_SESSION['username']);
+     }
      function showFormRegistration(){
+         $this->navbar();
          $this->smarty->display('registration.tpl');
      }
 
      function showHomePage(){
          if(!CUtente::isLogged()) $this->smarty->display('Homepage.tpl');
          else{
-         $this->smarty->assign('user',$_SESSION['username']);
+         $this->navbar();
          $this->smarty->assign('permits',$_SESSION['permits']);
          $this->smarty->display('HomePage.tpl');
          }
      }
 
-     function showProfile(){
-         $this->smarty->display('profile.tpl');
-     }
+     function showProfile(EUtente $user,EMediaUser $pic){
+        $this->navbar();
+        $pic64=base64_encode($pic->getData());
+        $this->smarty->assign('pic64',$pic64);
+        $this->smarty->registerObject('user',$user);
+        $this->smarty->display('profile.tpl');
+    }
 
      function valFormLogin() :bool {
          if(isset($_POST['username']) && isset($_POST['password']))

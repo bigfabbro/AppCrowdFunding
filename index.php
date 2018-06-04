@@ -6,13 +6,13 @@
   array_shift($paths);
   array_shift($paths);
   $resource=array_shift($paths);
-  if($resource == "login"){
-    if($method=="GET") CUtente::login();
-    else if($method=="POST") CUtente::EnterIn();
-    else {
-      header('HTTP/1.1 405 Method Not Allowed');
-      header('Allow: GET, POST');
-    }
+  if($resource == "login" && !CUtente::isLogged()){
+       if($method=="GET") CUtente::login();
+       else if($method=="POST") CUtente::EnterIn();
+       else {
+          header('HTTP/1.1 405 Method Not Allowed');
+          header('Allow: GET, POST');
+        }
   }
   else if($resource == "registration"){
     if($method=="GET") CUtente::registration();
@@ -33,7 +33,7 @@
   else if($resource == "profile"){
     if($method=="GET"){
       if(CUtente::isLogged()) CUtente::profile();
-      else CUtente::login();
+      else header ('Location: /AppCrowdFunding/login');
     }
     else {
       header('HTTP/1.1 405 Method Not Allowed');
@@ -41,9 +41,5 @@
     }
   }
   else{
-    if($method=="GET") CUtente::HomePage();
-    else{
-      header('HTTP/1.1 405 Method Not Allowed');
-      header('Allow: GET, POST');
+    CUtente::HomePage();
     }
-  }

@@ -1,4 +1,4 @@
-{assign var='user' value=$user|default:'nouser'}
+{assign var='userlogged' value=$userlogged|default:'nouser'}
 
 <!DOCTYPE html>
 <html>
@@ -22,13 +22,13 @@
       </button>
       <div class="collapse navbar-collapse text-center justify-content-end" id="navbar2SupportedContent">
         <ul class="navbar-nav">
+        {if $userlogged!='nouser'}
           <li class="nav-item text-light">
-            <a class="nav-link" href="#">
-              <i class="fa d-inline fa-lg fa-envelope-o"></i> Contacts</a>
+            <a class="nav-link" href="profile">
+              <i class="fa d-inline fa-lg fa-user-circle-o"></i> My Profile</a>
           </li>
         </ul>
-        {if $user!='nouser'}
-        <span class="navbar-text text-light">&nbsp; Benvenuto, {$user}</span>
+        <span class="navbar-text text-light">&nbsp; Benvenuto, {$userlogged}</span>
         <a class="btn navbar-btn ml-2 text-primary btn-light" href="logout">&nbsp; Logout &nbsp;</a>
         {else}
         <a href="login" class="btn navbar-btn ml-2 text-primary btn-light">

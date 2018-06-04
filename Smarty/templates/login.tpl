@@ -26,7 +26,7 @@
               <div class="card text-white p-5 bg-light">
                 <div class="card-body">
                   <h1 class="mb-4 bg-light text-primary">Login</h1>
-                  <form action="#" method="POST">
+                  <form action="login" method="POST">
                     <div class="form-group bg-light">
                       <label class="text-primary">Username</label>
                       <input type="text" class="form-control" placeholder="Enter username" name="username"> </div>

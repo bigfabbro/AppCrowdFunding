@@ -6,11 +6,11 @@ require_once 'include.php';
 
   static function EnterIn(){
         $view=new VUtente();
-        if($view->ValFormLogin()){
+         if($view->ValFormLogin()){
            $db=FDatabase::getInstance();
            $id=$db->exist('Utente',array('username','password'),array($_POST['username'],$_POST['password']));
            if($id){
-               session_start();
+            if (session_status() == PHP_SESSION_NONE) session_start();
                $user=$db->load('Utente',$id);
                $db->closeDbConnection();
                $_SESSION['id']= $user->getId();
@@ -45,8 +45,11 @@ require_once 'include.php';
     }
 
     static function profile(){
+        $db=FDatabase::getInstance();
+        $user=$db->load('Utente',$_SESSION['id']);
+        $pic=$db->load('MediaUser',$_SESSION['id']);
         $view=new VUtente();
-        $view->showProfile();
+        $view->showProfile($user,$pic);
     }
 
     static function logout(){

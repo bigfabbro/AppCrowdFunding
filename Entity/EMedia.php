@@ -32,8 +32,8 @@ class EMedia {
         return $this->data;
     }
 
-    public function setData(){
-         $this->data;
+    public function setData($data){
+         $this->data=$data;
     }
 
     public function __toString(){
