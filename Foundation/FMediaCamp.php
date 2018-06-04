@@ -2,12 +2,12 @@
 
 require_once 'include.php';
 
-class FMedia
+class FMediaCamp
 {
 
-    private static $tables="medias";
+    private static $tables="mediacamp";
     private static $values="(:id,:filename,:data,:idcamp)";
-    private static $UpPath="Upload/"; 
+     
     
     public function __construct(){}
 
@@ -18,9 +18,8 @@ class FMedia
      */
     
     
-    public static function bind($stmt,EMedia $md){
-        $path=static::$UpPath.$md->getFname();
-        echo $path;
+    public static function bind($stmt,EMediaCamp $md){
+        $path=FDatabase::getUpPath().$md->getFname();
         $file=fopen($path,'rb') or die ("Attenzione! Impossibile da aprire!");
         $stmt->bindValue(':id',NULL, PDO::PARAM_STR); //l'id � posto a NULL poich� viene dato automaticamente dal DBMS (AUTOINCREMENT_ID)
         $stmt->bindValue(':filename',$md->getFname(), PDO::PARAM_STR);
@@ -46,7 +45,7 @@ class FMedia
             $stmt->execute();
             $medias=$stmt->fetchAll(PDO::FETCH_ASSOC);
             for($i=0; $i<count($medias); $i++){
-                $media[]=new EMedia($medias[$i]['filename'], $medias[$i]['idcamp']);
+                $media[]=new EMediaCamp($medias[$i]['filename'], $medias[$i]['idcamp']);
                 $media[$i]->setId($medias[$i]['id']);
                 $media[$i]->setData($medias[$i]['data']);
             }
@@ -55,51 +54,6 @@ class FMedia
         catch(PDOException $e){
             echo "Attenzione errore: ".$e->getMessage();
             die;
-        }
-    }
-
-    public static function update(PDO &$db, $id, $field, $newvalue):bool {
-        if($field=="data"){
-            $path=static::$UpPath.$newvalue; //nel caso in cui si voglia modificare un'immagine $newvalue è il nome del file
-            $file=fopen($path,'rb') or die ("Attenzione! Impossibile da aprire!");
-            $sql="UPDATE ".static::getTables()." SET data=:data WHERE id=".$id.";";
-        }
-        else{
-           $sql="UPDATE ".static::getTables()." SET ".$field."="."'".$newvalue."'"." WHERE id=".$id.";";
-        }
-        try {
-            $db->beginTransaction();
-            $stmt=$db->prepare($sql);
-            if($field=="data"){
-               $stmt->bindValue(':data', fread($file,filesize($path)), PDO::PARAM_LOB);
-            }
-            $stmt->execute();
-            $db->commit();
-            return true;
-        }
-        catch(PDOException $e){
-            echo "Attenzione errore: ".$e->getMessage();
-            $db->rollBack();
-            die;
-            return false;
-        }
-        
-    }
-
-    public static function delete(PDO &$db, $id):bool{
-        $sql="DELETE FROM ".static::getTables()." WHERE id=".$id.";";
-        try{
-            $db->beginTransaction();
-            $stmt=$db->prepare($sql);
-            $stmt->execute();
-            $db->commit();
-            return true;
-        }
-        catch(PDOException $e){
-            echo "Attenzione errore: ".$e->getMessage();
-            $db->rollBack();
-            die;
-            return false;
         }
     }
 

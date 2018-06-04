@@ -33,7 +33,8 @@ $theme-colors: (
   danger: #dc3545
 );
 
-$body-bg: white;
+
+
 $body-color: #333;
 
 
@@ -58,6 +59,10 @@ $lead-font-size:   1.30rem;
 
 $spacer: 1.5rem;
 
+$border-radius: 1rem;
+$border-radius-lg: $border-radius * 1.2;
+$border-radius-sm: $border-radius * .8;
+$body-bg: white;
 @import 'bootstrap-4.0.0';
 
  
@@ -123,6 +128,28 @@ html,body {
   }
 }
 
+.box-input1{
+  border-radius: 20px 0px 0px 0px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.box-input2{
+  border-radius: 0px 0px 0px 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.box-input3{
+  border-radius: 0px 20px 0px 0px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.box-input4{
+  border-radius: 0px 0px 20px 0px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+
 .filter-gradient {
   overflow: hidden;
   position: relative;
@@ -150,4 +177,5 @@ html,body {
     content: ' ';
     background: linear-gradient($body-bg, transparentize($body-bg, 0.2),transparentize($body-bg, 0.9),transparentize($body-bg, 1));
 	}
+
 }

@@ -9,6 +9,7 @@ class FDatabase
 {
     private static $instance=null;
     private $db;
+    private static $UpPath="Upload/";
 
     private function __construct() // viene dichiarato private cos� che l'unico accesso al costruttore 
     {                              //� dato dal metodo getInstance()
@@ -38,8 +39,14 @@ class FDatabase
             case(get_class($eobj)=="EReward"):
                $fobj="FReward";
                break;
-            case(get_class($eobj)=="EMedia"):
-               $fobj="FMedia";
+            case(get_class($eobj)=="EMediaCamp"):
+               $fobj="FMediaCamp";
+               break;
+            case(get_class($eobj)=="EMediaRew"):
+               $fobj="FMediaRew";
+               break;
+            case(get_class($eobj)=="EMediaUser"):
+               $fobj="FMediaUser";
                break;
             case(get_class($eobj)=="EDonazione"):
                $fobj="FDonazione";
@@ -48,7 +55,7 @@ class FDatabase
                $fobj="FCartaCredito";
                break;
             case(get_class($eobj)=="EUtente");
-               $fobj="FUtenteRegistrato";
+               $fobj="FUtente";
                break;
         }
         return $fobj;
@@ -57,6 +64,7 @@ class FDatabase
     public function store($eobj){
         $fobj=$this->recClass($eobj); //viene riconosciuta la classe dell'oggetto i cui dati devono essere inseriti nel Db
         $sql="INSERT INTO ".$fobj::getTables()." VALUES".$fobj::getValues(); //si genera il codice sql attraverso gli attributi statici della determinata classe Foundation
+        echo $sql;
         $this->runQuery($sql,$fobj,$eobj); 
     }
     
@@ -80,24 +88,65 @@ class FDatabase
         return $eobj;
     }
     
-    public function delete($class,$id):bool{
+
+    public function delete($class, $field,$id):bool{
         $fobj="F".$class;
-        if($fobj::delete($this->db,$id)) return true;
-        else return false;
+        $sql="DELETE FROM ".$fobj::getTables()." WHERE ".$field."=".$id.";";
+        try{
+            $this->db->beginTransaction();
+            $stmt=$this->db->prepare($sql);
+            $stmt->execute();
+            $this->db->commit();
+            return true;
+        }
+        catch(PDOException $e){
+            echo "Attenzione errore: ".$e->getMessage();
+            $this->db->rollBack();
+            die;
+            return false;
+        }
     }
     
-    
-    public function update($class, $id, $field, $newvalue) //field e'� il nome del campo del valore da modificare
-    {
-       $fobj="F".$class;
-       if($fobj::update($this->db, $id, $field, $newvalue)) return true;
-       else return false;
+    public function update($class, $id, $field, $newvalue):bool {
+        $fobj="F".$class;
+        if($field=="data"){
+            $path=FDatabase::$UpPath.$newvalue; //nel caso in cui si voglia modificare un'immagine $newvalue è il nome del file
+            $file=fopen($path,'rb') or die ("Attenzione! Impossibile da aprire!");
+            $sql="UPDATE ".$fobj::getTables()." SET data=:data WHERE id=".$id.";";
+        }
+        else{
+            $sql="UPDATE ".$fobj::getTables()." SET ".$field."="."'".$newvalue."'"." WHERE id=".$id.";";
+            try {
+               $this->db->beginTransaction();
+               $stmt=$this->db->prepare($sql);
+               if($field=="data"){
+                $stmt->bindValue(':data', fread($file,filesize($path)), PDO::PARAM_LOB);
+               }
+               $stmt->execute();
+               $this->db->commit();
+               return true;
+            }
+            catch(PDOException $e){
+            echo "Attenzione errore: ".$e->getMessage();
+            $this->db->rollBack();
+            die;
+            return false;
+            }
+        }
     }
 
     public function exist($class,$field,$val){
         $fobj="F".$class;
         $id=$fobj::exist($this->db,$field,$val);
         return $id;
+    }
+
+    public static function getUpPath(){
+        return static::$UpPath;
+    }
+
+    public function closeDbConnection(){
+        unset($this->db);
     }
     
     

@@ -1,15 +1,15 @@
 <?php
 
+require_once 'include.php';
+
 class EMedia {
     private $id;
     private $filename;
     private $data; //dati
-    private $idcamp;
 
-    public function __construct($fname,$idcamp){
+    public function __construct($fname){
         $this->filename=$fname;
         $this->data=NULL;
-        $this->idcamp=$idcamp;
     }
 
     public function getId(){
@@ -36,16 +36,8 @@ class EMedia {
          $this->data;
     }
 
-    public function getIdCamp(){
-        return $this->idcamp;
-    }
-
-    public function setIdCamp($idcamp){
-        $this->idcamp=$idcamp;
-    }
-
     public function __toString(){
-        $st="Id: ".$this->getId()." filename: ".$this->getFname()." Data: ".$this->getData()." IdCamp: ".$this->getIdCamp();
+        $st="Id: ".$this->getId()." filename: ".$this->getFname()." Data: ".$this->getData();
         return $st;
     }
 

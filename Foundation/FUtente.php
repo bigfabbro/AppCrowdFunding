@@ -6,7 +6,7 @@ require_once 'include.php';
 class FUtente
 {
     private static $tables="utenti";
-    private static $values="(:id,:username,:password,:name,:surname,:email,:telnumber,:address,:profpic,:bio,:tipo,:permits)";
+    private static $values="(:id,:username,:password,:name,:surname,:datan,:email,:telnumber,:address,:profpic,:bio,:type)";
     
     public function __construct(){}
 
@@ -22,13 +22,13 @@ class FUtente
         $stmt->bindValue(':password', $user->getPass(), PDO::PARAM_STR); //ricorda di "collegare" la giusta variabile al bind
         $stmt->bindValue(':name', $user->getName(), PDO::PARAM_STR);
         $stmt->bindValue(':surname', $user->getSurname(), PDO::PARAM_STR);
+        $stmt->bindValue(':datan', $user->getDatan(), PDO::PARAM_STR);
         $stmt->bindValue(':email', $user->getEmail(), PDO::PARAM_STR);
         $stmt->bindValue(':telnumber', $user->getTel(), PDO::PARAM_STR);
         $stmt->bindValue(':address', $user->getAddress(), PDO::PARAM_STR);
-        $stmt->bindValue(':profpic', $user->getPic(), PDO::PARAM_STR);
+        $stmt->bindValue(':profpic', $user->getPic(), PDO::PARAM_INT);
         $stmt->bindValue('bio', $user->getBio(), PDO::PARAM_STR);
         $stmt->bindValue(':tipo', $user->getTipo(), PDO::PARAM_STR);
-        $stmt->bindValue(':permits', $user->getPermits(), PDO::PARAM_STR);
     }
 
     /**
@@ -46,7 +46,7 @@ class FUtente
            $stmt=$db->prepare($sql);
            $stmt->execute();
            $row=$stmt->fetch(PDO::FETCH_ASSOC);
-           $user=new EUtente($row['username'],$row['password'], $row['name'], $row['surname'], $row['email'],$row['telnumber'], $row['address'], $row['profpic'],$row['bio'],$row['tipo'],$row['permits']);
+           $user=new EUtente($row['username'],$row['password'], $row['name'], $row['surname'],$row['datan'], $row['email'],$row['telnumber'], $row['address'], $row['profpic'],$row['bio'],$row['type']);
            $user->setId($row['id']);
            return $user;
         }

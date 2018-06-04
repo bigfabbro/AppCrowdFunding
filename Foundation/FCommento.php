@@ -17,11 +17,11 @@ class FCommento
      */
     
     public static function bind($stmt,ECommento $comm){
-        $stmt->bindValue(':id',NULL, PDO::PARAM_STR); //l'id � posto a NULL poich� viene dato automaticamente dal DBMS (AUTOINCREMENT_ID)
-        $stmt->bindValue(':user', $camp->getUser(), PDO::PARAM_STR);
+        $stmt->bindValue(':id',NULL, PDO::PARAM_INT); //l'id � posto a NULL poich� viene dato automaticamente dal DBMS (AUTOINCREMENT_ID)
+        $stmt->bindValue(':user', $camp->getUser(), PDO::PARAM_INT);
         $stmt->bindValue(':text', $camp->getText(), PDO::PARAM_STR);
         $stmt->bindValue(':date', $camp->getDate(), PDO::PARAM_STR);
-        $stmt->bindValue(':idcamp', $camp->getIdCamp(), PDO::PARAM_STR);
+        $stmt->bindValue(':idcamp', $camp->getIdCamp(), PDO::PARAM_INT);
     }
 
     /**
@@ -50,25 +50,7 @@ class FCommento
             echo "Attenzione errore: ".$e->getMessage();
             die;
         }
-    }
-
-    public static function update(PDO &$db, $id, $field, $newvalue):bool {
-        $sql="UPDATE ".static::getTables()." SET ".$field."="."'".$newvalue."'"." WHERE id=".$id.";";
-        try {
-            $db->beginTransaction();
-            $stmt=$db->prepare($sql);
-            $stmt->execute();
-            $db->commit();
-            return true;
-        }
-        catch(PDOException $e){
-            echo "Attenzione errore: ".$e->getMessage();
-            $db->rollBack();
-            die;
-            return false;
-        }
-        
-    }
+    }   
 
     public static function getTables(){
         return static::$tables;

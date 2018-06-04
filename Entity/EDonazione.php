@@ -8,10 +8,10 @@ class EDonazione
     private $amount; //quantità di denaro che si desidera donare
     private $date; //data relativa alla donazione
     private $reward; 
-    private $username; //username dell'utente che effettua la donazione
+    private $idutente; //username dell'utente che effettua la donazione
     private $idcamp; //id della campagna per la quale si vuole effettuare la donazione
     private $donationoccurred; //variabile booleana posta a true nel caso in cui la donazione è andata a buon fine
-    private $creditcard; //carta di credito con cui si effettua la donazione
+    private $idcc; //carta di credito con cui si effettua la donazione
 
 
     public function __construct($amount,$date,$reward=null,$user,$idcamp,$creditcard)
@@ -19,10 +19,10 @@ class EDonazione
         $this->amount=$amount;
         $this->date=$date;
         $this->reward=$reward;
-        $this->username=$user;
+        $this->idutente=$user;
         $this->idcamp=$idcamp;
         $this->donationoccurred=false;
-        $this->creditcard=$creditcard;
+        $this->idcc=$creditcard;
     }
    
     public function getId()
@@ -45,9 +45,9 @@ class EDonazione
         return $this->reward;
     }
 
-    public function getUsername()
+    public function getIdUtente()
     {
-        return $this->user;
+        return $this->idutente;
     }
 
     public function getIdCamp()
@@ -57,7 +57,11 @@ class EDonazione
 
     public function getCreditCard()
     {
-        return $this->$creditcard;
+        return $this->idcc;
+    }
+
+    public function getOcc(){
+        return $this->donationoccurred;
     }
 
     public function setId($id)
@@ -80,9 +84,9 @@ class EDonazione
         $this->reward = $reward;
     }
 
-    public function setUsername($user)
+    public function setIdUtente($user)
     {
-        $this->iduser = $user;
+        $this->idutente = $user;
     }
 
     public function setIdCamp($idcamp)
@@ -92,7 +96,7 @@ class EDonazione
 
 
     public function setCreditCard($creditcard){
-        $this->creditcard= $creditcard;
+        $this->idcc= $creditcard;
 
     }
     

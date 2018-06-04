@@ -6,7 +6,7 @@ require_once 'include.php';
 class FDonazione
 {
     private static $tables="donazioni";
-    private static $values="(:id,:amount,:date,:reward,:username, :idcamp, :donationoccurred, :creditcard)";
+    private static $values="(:id,:amount,:date,:reward,:idutente, :idcamp, :donationoccurred, :idcc)";
 
     public function __construct()
     {}
@@ -18,13 +18,14 @@ class FDonazione
      */
 
         public static function bind($stmt, EDonazione $don){
-            $stmt->bindValue(':id',NULL, PDO::PARAM_STR);
+            $stmt->bindValue(':id',NULL, PDO::PARAM_INT);
             $stmt->bindValue(':amount', $don->getAmount(), PDO::PARAM_STR);
             $stmt->bindValue(':date', $don->getDate(), PDO::PARAM_STR);
             $stmt->bindValue(':reward', $don->getReward(), PDO::PARAM_STR);
-            $stmt->bindValue(':username', $don->getIdUser(), PDO::PARAM_STR);
-            $stmt->bindValue(':idcamp', $don->getIdCamp(), PDO::PARAM_STR);
-            $stmt->bindValue(':creditcard', $don->getCreditCard(), PDO::PARAM_STR);
+            $stmt->bindValue(':idutente', $don->getIdUtente(), PDO::PARAM_INT);
+            $stmt->bindValue(':idcamp', $don->getIdCamp(), PDO::PARAM_INT);
+            $stmt->bindValue(':donationoccurred',$don->getOcc(), PDO::PARAM_BOOL);
+            $stmt->bindValue(':idcc', $don->getCreditCard(), PDO::PARAM_INT);
         }
 
     public static function load(PDO &$db,$id){
@@ -35,7 +36,7 @@ class FDonazione
             $stmt->execute();
             $dons=$stmt->fetchAll(PDO::FETCH_ASSOC);
             for($i=0; $i<count($dons); $i++){
-                $don[]=new EDonazione($dons[$i]['amount'], $dons[$i]['date'], $dons[$i]['reward'], $dons[$i]['username'], $dons[$i]['idcamp']);
+                $don[]=new EDonazione($dons[$i]['amount'], $dons[$i]['date'], $dons[$i]['reward'], $dons[$i]['idutente'], $dons[$i]['idcamp'],$dons[$i]['idcc']);
                 $don[$i]->setId($dons[$i]['id']);
             }
             return $don;
@@ -47,42 +48,6 @@ class FDonazione
     }
 
 
-
-        public static function delete(PDO &$db, $id):bool{
-            $sql="DELETE FROM ".static::getTables()." WHERE id=".$id.";";
-            try{
-                $db->beginTransaction();
-                $stmt=$db->prepare($sql);
-                $stmt->execute();
-                $db->commit();
-                return true;
-            }
-            catch(PDOException $e){
-                echo "Attenzione errore: ".$e->getMessage();
-                $db->rollBack();
-                die;
-                return false;
-            }
-        }
-
-     
-            public static function update(PDO &$db, $id, $field, $newvalue):bool {
-                $sql="UPDATE ".static::getTables()." SET ".$field."="."'".$newvalue."'"." WHERE id=".$id.";";
-                try {
-                    $db->beginTransaction();
-                    $stmt=$db->prepare($sql);
-                    $stmt->execute();
-                    $db->commit();
-                    return true;
-                }
-                catch(PDOException $e){
-                    echo "Attenzione errore: ".$e->getMessage();
-                    $db->rollBack();
-                    die;
-                    return false;
-                }
-                
-            }
 
         public static function getTables(){
             return static::$tables;

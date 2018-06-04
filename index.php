@@ -30,6 +30,16 @@
       header('Allow: GET, POST');
     }
   }
+  else if($resource == "profile"){
+    if($method=="GET"){
+      if(CUtente::isLogged()) CUtente::profile();
+      else CUtente::login();
+    }
+    else {
+      header('HTTP/1.1 405 Method Not Allowed');
+      header('Allow: GET, POST');
+    }
+  }
   else{
     if($method=="GET") CUtente::HomePage();
     else{

@@ -1,6 +1,8 @@
 <?php
 
 require_once 'include.php';
-$img=new EMedia("campagnaprova.jpg",20);
 $db=FDatabase::getinstance();
-$db->store($img);
+$t=$db->exist('MediaUser','id',2);
+if($t) echo "si";
+else echo "no";
+

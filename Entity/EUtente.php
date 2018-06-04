@@ -9,26 +9,26 @@ class EUtente
     private $password;
     private $name;
     private $surname;
+    private $datan;
     private $email;
     private $telnumber;
     private $address;
     private $profpic;
     private $bio;
-    private $tipo; //privato,pubblico, azienda
-    private $permits; //guest,registered or administrator
+    private $tipo; //guest,registered, amministrator
     
-    public function __construct($un,$pass=null,$name=null,$surname=null,$em=null,$tel=null, $add=null,$pic=null,$b=null,$tipo=null,$permits=null){
+    public function __construct($un,$pass=null,$name=null,$surname=null,$dt=null,$em=null,$tel=null, $add=null,$pic=null,$b=null,$tipo=null){
         $this->username=$un;
         $this->password=$pass;
         $this->name=$name;
         $this->surname=$surname;
+        $this->datan=$dt;
         $this->email=$em;
         $this->telnumber=$tel;
         $this->address=$add;
         $this->profpic=$pic;
         $this->bio=$b;
         $this->tipo=$tipo;
-        $this->permits=$permits;
     }
 
     public function getId(){
@@ -48,6 +48,10 @@ class EUtente
     
     public function getPass(){
         return $this->password;
+    }
+
+    public function getDatan(){
+        return $this->datan;
     }
     
     public function getEmail(){
@@ -74,10 +78,6 @@ class EUtente
         return $this->tipo;
     }
 
-    public function getPermits(){
-        return $this->permits;
-    }
-
     public function setId($id){
         $this->id=$id;
     }
@@ -88,6 +88,10 @@ class EUtente
     
     public function setPass($pass){
         $this->password=$pass;
+    }
+
+    public function setDatan($dt){
+        $this->datan=$dt;
     }
     
     public function setEmail($em){
@@ -140,7 +144,7 @@ class EUtente
     
     
     public function CreaCampagna($na, $de, $cat, $cou, $startd,$endd, $bc, $gl){
-        $cr=new ECampagna($this->getUserName(),$na, $de, $cat, $cou, $startd,$endd, $bc, $gl);
+        $cr=new ECampagna(1,$na, $de, $cat, $cou, $startd,$endd, $bc, $gl);
         echo $cr;
         $db=FDatabase::getInstance();
         $db->store($cr);

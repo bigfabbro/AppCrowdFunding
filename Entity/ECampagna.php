@@ -31,8 +31,8 @@ class ECampagna
         $this->enddate=$endd;
         $this->bankcount=$bc;
         $this->goal=$gl;
-        $this->funds=0; //il totale fondi raccolti inizialmente � posto a zero
-        $this->visibility=false; //la visibilit�� � posta a true soltanto quando la campagna viene effettivamente pubblicata
+        $this->funds=0; //il totale fondi raccolti inizialmente e' posto a zero
+        $this->visibility=false; //la visibilita' e' posta a true soltanto quando la campagna viene effettivamente pubblicata
         $this->comments=array();
          }
          
@@ -163,7 +163,7 @@ class ECampagna
 
     
     public function __toString(){
-        $st="Founder: ".$this->getFounder()." ID: ".$this->getId()." Name: ".$this->getName()." Description: ".$this->getDescription()." Goal: ".$this->getGoal()." End Date: ".$this->enddate."\n";
+        $st="Founder: ".$this->getFounder()." ID: ".$this->getId()." Name: ".$this->getName()." Description: ".$this->getDescription()." Goal: ".$this->getGoal()." Bank account: ".$this->bankcount." Start Date: ".$this->startdate." End Date: ".$this->enddate."\n";
         foreach($this->getRew() as $rew){
             $st=$st.$rew."\n";
         }

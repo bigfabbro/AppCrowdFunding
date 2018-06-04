@@ -12,9 +12,10 @@ require_once 'include.php';
            if($id){
                session_start();
                $user=$db->load('Utente',$id);
+               $db->closeDbConnection();
                $_SESSION['id']= $user->getId();
                $_SESSION['username']=$user->getUserName();
-               $_SESSION['permits']=$user->getPermits();
+               $_SESSION['permits']=$user->getTipo();
                $view->showHomePage();
            }
            else{
@@ -41,6 +42,11 @@ require_once 'include.php';
     static function Registration(){
         $view=new VUtente();
         $view->showFormRegistration();
+    }
+
+    static function profile(){
+        $view=new VUtente();
+        $view->showProfile();
     }
 
     static function logout(){

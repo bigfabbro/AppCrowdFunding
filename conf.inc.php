@@ -1,6 +1,6 @@
 <?php
 $host="localhost";
-$database="appcrowdfunding";
+$database="appcrowdfunding2";
 $username="root";
 $password="";
 ?>

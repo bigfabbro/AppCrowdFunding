@@ -44,6 +44,10 @@ require_once 'include.php';
          }
      }
 
+     function showProfile(){
+         $this->smarty->display('profile.tpl');
+     }
+
      function valFormLogin() :bool {
          if(isset($_POST['username']) && isset($_POST['password']))
          {
