@@ -6,4 +6,6 @@ echo count($camp);
 for($i=0; $i<count($camp);$i++){
     echo $camp[$i];
 }
-echo $db->load('Campagna',29);
+if(count($db->load('MediaCamp',30))) echo "yes";
+else echo "no";
+

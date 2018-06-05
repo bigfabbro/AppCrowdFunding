@@ -2,7 +2,7 @@
 
 require_once 'include.php';
 $db=FDatabase::getinstance();
-$t=$db->exist('MediaUser','id',2);
-if($t) echo "si";
-else echo "no";
+$img=new EMediaCamp('campagnaprova.jpg',29);
+$t=$db->store($img);
+
 

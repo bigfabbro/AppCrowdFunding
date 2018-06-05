@@ -46,11 +46,19 @@ require_once 'include.php';
 
     static function profile(){
         $db=FDatabase::getInstance();
+        $photos=array();
         $user=$db->load('Utente',$_SESSION['id']);
-        $pic=$db->load('MediaUser',$_SESSION['id']);
+        $pic1=$db->load('MediaUser',$_SESSION['id']);
         $camps=$db->loadCampByFounder($_SESSION['id']);
+        foreach($camps as $camp){
+            $pics=$db->load('MediaCamp',$camp->getId());
+            if(count($pics)){
+            $photos[$camp->getId()]=base64_encode($pics[0]->getData());
+            }
+            else $photos[$camp->getId()]=null;
+        }
         $view=new VUtente();
-        $view->showProfile($user,$pic,$camps);
+        $view->showProfile($user,$pic1,$camps,$photos);
     }
 
     static function logout(){

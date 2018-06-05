@@ -47,9 +47,10 @@ require_once 'include.php';
          }
      }
 
-     function showProfile(EUtente $user,EMediaUser $pic,$camps){
+     function showProfile(EUtente $user,EMediaUser $pic,$camps,$photos){
         $this->navbar();
         $pic64=base64_encode($pic->getData());
+        $this->smarty->assign('photos',$photos);
         $this->smarty->assign('pic64',$pic64);
         $this->smarty->assign('camps',$camps);
         $this->smarty->assign('numcamps',count($camps));

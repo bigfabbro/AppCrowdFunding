@@ -12,18 +12,22 @@
 </head>
 
 <body>
-  <div class="py-5">
+  <div class="row">
     <div class="container bg-light">
       <div class="row">
         <div class="col-md-3">
+          {if $photo!=null}
+          <img class="img-fluid d-block" src="data:image/jpeg;base64,{$photo}">
+          {else}
           <img class="img-fluid d-block" src="https://pingendo.com/assets/photos/wireframe/photo-1.jpg">
+          {/if}
         </div>
         <div class="col-md-9">
           <div class="row">
             <div class="col-md-6">
               <p class="lead text-center">{$name}</p>
               <div class="progress">
-                <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 50%">50%</div>
+                <div class="progress-bar progress-bar-striped" role="progressbar" style="width: {(100*$funds)/$goal}%">{(100*$funds)/$goal}%</div>
               </div>
             </div>
             <div class="col-md-6">
@@ -56,5 +60,4 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
-
 </html>

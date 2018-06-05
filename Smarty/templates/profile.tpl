@@ -44,7 +44,8 @@
             </div>
             <div class="tab-pane fade" id="tabtwo" role="tabpanel">
               {foreach $camps as $camp}
-              {include file='campprofile.tpl' name=$camp->getName() description=$camp->getDescription() goal=$camp->getGoal() funds=$camp->getFunds()}
+              {include file='campprofile.tpl' name=$camp->getName() description=$camp->getDescription() goal=$camp->getGoal() funds=$camp->getFunds() photo=$photos[$camp->getId()]}
+              <hr>
               {/foreach}
             </div>
             <div class="tab-pane fade" id="tabthree" role="tabpanel">
