@@ -144,7 +144,7 @@ class EUtente
     
     
     public function CreaCampagna($na, $de, $cat, $cou, $startd,$endd, $bc, $gl){
-        $cr=new ECampagna(1,$na, $de, $cat, $cou, $startd,$endd, $bc, $gl);
+        $cr=new ECampagna(15,$na, $de, $cat, $cou, $startd,$endd, $bc, $gl);
         echo $cr;
         $db=FDatabase::getInstance();
         $db->store($cr);

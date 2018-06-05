@@ -47,10 +47,12 @@ require_once 'include.php';
          }
      }
 
-     function showProfile(EUtente $user,EMediaUser $pic){
+     function showProfile(EUtente $user,EMediaUser $pic,$camps){
         $this->navbar();
         $pic64=base64_encode($pic->getData());
         $this->smarty->assign('pic64',$pic64);
+        $this->smarty->assign('camps',$camps);
+        $this->smarty->assign('numcamps',count($camps));
         $this->smarty->registerObject('user',$user);
         $this->smarty->display('profile.tpl');
     }

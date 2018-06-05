@@ -11,7 +11,7 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-md bg-primary navbar-dark">
+  <nav class="navbar navbar-expand-md navbar-dark bg-primary">
     <div class="container">
       <a class="navbar-brand" href="homepage">
         <i class="fa d-inline fa-lg fa-cloud"></i>

@@ -88,6 +88,25 @@ class FDatabase
         return $eobj;
     }
     
+    public function loadCampByFounder($id){
+            $sql="SELECT * FROM ".FCampagna::getTables()." WHERE founder=".$id.";";
+            $camps=array();
+            try{
+                $stmt=$this->db->prepare($sql);
+                $stmt->execute();
+                $rows=$stmt->fetchAll(PDO::FETCH_ASSOC);
+                for($i=0; $i<count($rows); $i++){
+                    $camps[]=new ECampagna($rows[$i]['founder'],$rows[$i]['name'], $rows[$i]['description'], $rows[$i]['category'],$rows[$i]['country'],$rows[$i]['startdate'], $rows[$i]['enddate'],$rows[$i]['bankcount'],$rows[$i]['goal']);
+                    $camps[$i]->setId($rows[$i]['id']);
+                    $camps[$i]->setFunds($rows[$i]['funds']);
+                }
+                return $camps;
+            }
+            catch(PDOException $e){
+                echo "Attenzione errore: ".$e->getMessage();
+                die;
+            }
+        }
 
     public function delete($class, $field,$id):bool{
         $fobj="F".$class;

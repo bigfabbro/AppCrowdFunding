@@ -48,8 +48,9 @@ require_once 'include.php';
         $db=FDatabase::getInstance();
         $user=$db->load('Utente',$_SESSION['id']);
         $pic=$db->load('MediaUser',$_SESSION['id']);
+        $camps=$db->loadCampByFounder($_SESSION['id']);
         $view=new VUtente();
-        $view->showProfile($user,$pic);
+        $view->showProfile($user,$pic,$camps);
     }
 
     static function logout(){

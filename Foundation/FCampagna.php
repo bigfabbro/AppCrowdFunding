@@ -52,7 +52,7 @@ class FCampagna
            $camp->setFunds($row['funds']); //aggiorna l'informazione coerentemente con il db infatti il costruttore setterebbe  founds a zero e visibility a false
            $camp->setRew(FReward::load($db, $camp->getId()));
            $camp->setComm(FCommento::load($db, $camp->getId()));
-           $camp->setMedia(FMedia::load($db,$camp->getId()));
+           $camp->setMedia(FMediaCamp::load($db,$camp->getId()));
            if($row['visibility']) $camp->setVis(); 
            return $camp;
         }
