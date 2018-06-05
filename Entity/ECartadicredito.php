@@ -7,14 +7,14 @@
     private $ownersurname;
     private $expirationdate;
     private $ccnumber;
-    private $ccv;
+    private $cvv;
 
-    public function __constructor($owname,$owsurname,$exdate,$ccn,$ccv){
+    public function __constructor($owname,$owsurname,$exdate,$ccn,$cvv){
          $this->ownername=$owname;
          $this->ownersurname=$owsurname;
          $this->expirationdate=$exdate;
          $this->ccnumber=$ccn;
-         $this->ccv=$ccv;
+         $this->cvv=$cvv;
     }
 
     public function getOwnname(){
@@ -33,8 +33,8 @@
         return $this->ccnumber;
     }
 
-    public function getCCV(){
-        return $this->ccv;
+    public function getCvv(){
+        return $this->cvv;
     }
 
     public function getId(){
@@ -57,7 +57,7 @@
         $this->ccnumber=$ccn;
     }
 
-    public function setCCV($ccv){
+    public function setCvv($cvv){
         $this->ccv=$ccv;
     }
 
