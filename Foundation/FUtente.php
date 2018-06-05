@@ -58,10 +58,10 @@ class FUtente
 
     /**
      * 
-     * Questo metodo rimuove dal database una useragna con un certo id
+     * Questo metodo rimuove dal database un user con un certo id
      * 
      * @param PDO &$db
-     * @param int $id numero identificativo della useragna da eliminare 
+     * @param int $id numero identificativo della user da eliminare 
      * @return bool restituisce true se la delete e' andataa buon fine, false viceversa
      */
     
@@ -84,11 +84,11 @@ class FUtente
 
     /**
      * 
-     * Questo metodo effettua la modifica del valore di uno specifico usero di una useragna nel database
+     * Questo metodo effettua la modifica del valore di uno specifico valore di un user nel database
      * 
      * @param PDO &$db 
-     * @param int $id numero identificativo della useragna da modificare
-     * @param string $field usero da modificare
+     * @param int $id numero identificativo dello user da modificare
+     * @param string $field campo da modificare
      * @param mixed $newvalue nuovo valore da attribuire 
      * @return bool restituisce true se la modifica e' andata a buon fine, false viceversa
      */
