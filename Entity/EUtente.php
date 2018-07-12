@@ -12,12 +12,10 @@ class EUtente
     private $datan;
     private $email;
     private $telnumber;
-    private $address;
     private $profpic;
     private $bio;
-    private $tipo; //guest,registered, amministrator
     
-    public function __construct($un,$pass=null,$name=null,$surname=null,$dt=null,$em=null,$tel=null, $add=null,$pic=null,$b=null,$tipo=null){
+    public function __construct($un,$pass,$name,$surname,$dt,$em,$tel,$pic,$b){
         $this->username=$un;
         $this->password=$pass;
         $this->name=$name;
@@ -25,10 +23,8 @@ class EUtente
         $this->datan=$dt;
         $this->email=$em;
         $this->telnumber=$tel;
-        $this->address=$add;
         $this->profpic=$pic;
         $this->bio=$b;
-        $this->tipo=$tipo;
     }
 
     public function getId(){
@@ -72,10 +68,6 @@ class EUtente
     
     public function getBio(){
         return $this->bio;
-    }
-    
-    public function getTipo(){
-        return $this->tipo;
     }
 
     public function setId($id){
@@ -121,10 +113,11 @@ class EUtente
     public function setBio($b){
         $this->bio=$b;
     }
-    
-    public function setTipo($tipo){
-        $this->tipo=$tipo;
+
+    public function CreaUtente($un,$pw,$nm,$sn,$date,$email,$tel,$bio,$city,$street,$number,$zipcode,$country){
+        
     }
+    
     
     public function CreaReward($name,$pled,$desc,$media,$idcamp){
         $rew=new EReward($name, $pled, $desc, $media, $idcamp);

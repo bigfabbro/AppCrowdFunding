@@ -15,7 +15,6 @@ require_once 'include.php';
                $db->closeDbConnection();
                $_SESSION['id']= $user->getId();
                $_SESSION['username']=$user->getUserName();
-               $_SESSION['permits']=$user->getTipo();
                $view->showHomePage();
            }
            else{
@@ -75,5 +74,20 @@ require_once 'include.php';
        }
       if(isset($_SESSION['username'])) return true;
       else return false;
+    }
+
+    static function SignIn(){
+        $view=new VUtente();
+        if($view->ValFormRegistration()){
+            $db=FDatabase::getInstance();
+            $unameval=$db->exist('Utente','username',$_POST['username']);
+            $emailval=$db->exist('Utente','email',$_POST['email']);
+            $numberval=$db->exist('Utente','telephon',$_POST['telephon']);
+            if($unameval || $emailval || $numberval){
+                $view->showFormRegistration();
+            }
+            else{
+                
+            }
     }
   }

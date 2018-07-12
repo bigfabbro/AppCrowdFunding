@@ -57,6 +57,9 @@ class FDatabase
             case(get_class($eobj)=="EUtente");
                $fobj="FUtente";
                break;
+            case(get_class($eobj)=="EIndirizzo");
+               $fobj="FIndirizzo";
+               break;
         }
         return $fobj;
     }

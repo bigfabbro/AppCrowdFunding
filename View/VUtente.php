@@ -42,7 +42,6 @@ require_once 'include.php';
          if(!CUtente::isLogged()) $this->smarty->display('Homepage.tpl');
          else{
          $this->navbar();
-         $this->smarty->assign('permits',$_SESSION['permits']);
          $this->smarty->display('HomePage.tpl');
          }
      }

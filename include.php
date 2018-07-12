@@ -21,4 +21,5 @@
    require_once 'View/VUtente.php';
    require_once 'Controller/CUtente.php';
    require_once 'ConfSmarty.php';
+   require_once 'Controller/FrontController.php';
 ?>

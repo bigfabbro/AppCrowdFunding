@@ -6157,13 +6157,14 @@ html, body {
 
 .box-input1 {
   border-radius: 20px 20px 20px 20px;
-  box-shadow: 5px 10px 10px 10px rgba(0, 0, 0, 0.4); 
-  background-color: rgba(255,69,0,0.85);
-}
+  box-shadow: 5px 10px 10px 10px rgba(0, 0, 0, 0.4);
+  background-color: rgba(255, 69, 0, 0.85); }
 
-.box-campaign{
-  border-radius: 20px 20px 20px 20px;
-}
+.box-campaign {
+  border-radius: 20px 20px 20px 20px; }
+
+.submit-button {
+  align-items: right; }
 
 .filter-gradient {
   overflow: hidden;

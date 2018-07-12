@@ -3,41 +3,24 @@
 require_once 'include.php';
 
 
-class FUtente
+class FIndirizzo
 {
-    private static $tables="utenti";
-    private static $values="(:id,:username,:password,:name,:surname,:datan,:email,:telnumber,:address,:profpic,:bio,:type)";
+    private static $tables="indirizzi";
+    private static $values="(:id,:city,:street,:number,:zipcode,:country,:iduser)";
     
     public function __construct(){}
 
-    /**
-     * Questo metodo lega gli attributi dell'user da inserire con i parametri della INSERT
-     * @param PDOStatement $stmt 
-     * @param EUtente $user user i cui dati devono essere inseriti nel DB
-     */
     
-    public static function bind($stmt,EUtente $user){
+    public static function bind($stmt,EIndirizzo $address){
         $stmt->bindValue(':id',NULL, PDO::PARAM_INT); //l'id � posto a NULL poich� viene dato automaticamente dal DBMS (AUTOINCREMENT_ID)
-        $stmt->bindValue(':username', $user->getUserName(), PDO::PARAM_STR); 
-        $stmt->bindValue(':password', $user->getPass(), PDO::PARAM_STR); //ricorda di "collegare" la giusta variabile al bind
-        $stmt->bindValue(':name', $user->getName(), PDO::PARAM_STR);
-        $stmt->bindValue(':surname', $user->getSurname(), PDO::PARAM_STR);
-        $stmt->bindValue(':datan', $user->getDatan(), PDO::PARAM_STR);
-        $stmt->bindValue(':email', $user->getEmail(), PDO::PARAM_STR);
-        $stmt->bindValue(':telnumber', $user->getTel(), PDO::PARAM_STR);
-        $stmt->bindValue(':address', $user->getAddress(), PDO::PARAM_STR);
-        $stmt->bindValue(':profpic', $user->getPic(), PDO::PARAM_INT);
-        $stmt->bindValue('bio', $user->getBio(), PDO::PARAM_STR);
+        $stmt->bindValue(':city', $address->getCity(), PDO::PARAM_STR); 
+        $stmt->bindValue(':street', $address->getStreet(), PDO::PARAM_STR); 
+        $stmt->bindValue(':number', $address->getNum(), PDO::PARAM_STR);
+        $stmt->bindValue(':zipcode', $address->getZipcode(), PDO::PARAM_STR);
+        $stmt->bindValue(':country', $address->getCountry(), PDO::PARAM_STR);
+        $stmt->bindValue(':iduser', $address->getIduser(), PDO::PARAM_INT);
     }
 
-    /**
-     * 
-     * Questo metodo seleziona lo user con un certo id
-     * @param PDO &$db 
-     * @param int $id numero identificativo dello user da selezionare
-     * @return EUtente $user restituisce un oggetto EUtente creato con i dati restituiti dal DBMS 
-     * 
-     */
     
     public static function load(PDO &$db,$id){
         $sql="SELECT * FROM ".static::$tables." WHERE id=".$id.";";
@@ -45,9 +28,9 @@ class FUtente
            $stmt=$db->prepare($sql);
            $stmt->execute();
            $row=$stmt->fetch(PDO::FETCH_ASSOC);
-           $user=new EUtente($row['username'],$row['password'], $row['name'], $row['surname'],$row['datan'], $row['email'],$row['telnumber'], $row['address'], $row['profpic'],$row['bio']);
-           $user->setId($row['id']);
-           return $user;
+           $address=new EIndirizzo($row['city'],$row['street'], $row['number'], $row['zipcode'],$row['country'],$row['iduser']);
+           $address->setId($row['id']);
+           return $address;
         }
         catch(PDOException $e){
             echo "Attenzione errore: ".$e->getMessage();
