@@ -84,10 +84,28 @@ require_once 'include.php';
             $emailval=$db->exist('Utente','email',$_POST['email']);
             $numberval=$db->exist('Utente','telephon',$_POST['telephon']);
             if($unameval || $emailval || $numberval){
+                echo 'errore';
                 $view->showFormRegistration();
             }
             else{
-                
+                $user=new EUtente($_POST['username'],$_POST['password1'],$_POST['name'],$_POST['surname'],$_POST['date'],$_POST['email'],$_POST['telephon'],$_POST['description']);
+                $db=Fdatabase::getInstance();
+                $db->store($user);
+                $iduser= $db->exist('Utente','username',$user->getUserName());
+                $address=new EIndirizzo($_POST['city'],$_POST['street'],$_POST['number'],$_POST['zipcode'],$_POST['country'],$iduser);
+                if(isset($_FILES['upicture'])){
+                   $up=new Upload();
+                   $up->start($_FILES['upicture']);
+                   $picture=new EMediaUser($_FILES['upicture']['name'],$iduser);
+                   $user->CreaUtente($address,$picture);
+                }
+                else $user->CreaUtente($address);
             }
+            if (session_status() == PHP_SESSION_NONE) session_start();
+            $_SESSION['id']= $user->getId();
+            $_SESSION['username']=$user->getUserName();
+            $view->showHomePage();
+        }
+        else $view->showFormRegistration();
     }
   }

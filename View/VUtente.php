@@ -57,7 +57,7 @@ require_once 'include.php';
         $this->smarty->display('profile.tpl');
     }
 
-     function valFormLogin() :bool {
+    function valFormLogin() :bool {
          if(isset($_POST['username']) && isset($_POST['password']))
          {
             if(!preg_match("/^([a-zA-Z0-9]{3,15})$/",$_POST['username'])){
@@ -77,6 +77,72 @@ require_once 'include.php';
            return false;
         }
         else {return true;}
+    }
+
+    function valFormRegistration() :bool {
+        if(isset($_POST['name']) && isset($_POST['surname']) && isset($_POST['date']) && isset($_POST['city']) && isset($_POST['street']) && isset($_POST['zipcode']) && isset($_POST['country']) && isset($_POST['email']) && isset($_POST['username']) && isset($_POST['password1']) && isset($_POST['password2']))
+        {
+           $replace=array(" ","'");
+           if(!preg_match("/^([a-zA-Z]{3,30})$/",str_replace($replace,'',$_POST['name']))){
+               $this->notval['name']=true;
+           }
+           if(!preg_match("/^([a-zA-Z]{3,30})$/",str_replace($replace,'',$_POST['surname']))){
+            $this->notval['surname']=true;
+           }
+           $date=explode('-',$_POST['date']);
+           if(!checkdate($date[1],$date[2],$date[0])){
+            $this->notval['date']=true;
+           }
+           if(!preg_match("/^([a-zA-Z]{3,30})$/",str_replace($replace,'',$_POST['city']))){
+            $this->notval['city']=true;
+           }
+           if(!preg_match("/^([a-zA-Z]{3,30})$/",str_replace($replace,'',$_POST['street']))){
+            $this->notval['street']=true;
+           }
+           if(!preg_match("/^([0-9]{0,3})$/",$_POST['number'])){
+            $this->notval['number']=true;
+           }
+           if(!preg_match("/^([0-9]{5})$/",$_POST['zipcode'])){
+            $this->notval['zipcode']=true;
+           }
+           if(!preg_match("/^([a-zA-Z]{3,30})$/",str_replace($replace,'',$_POST['country']))){
+            $this->notval['country']=true;
+           }
+           if(!preg_match("/^[A-z0-9\.\+_-]+@[A-z0-9\._-]+\.[A-z]{2,6}$/",$_POST['email'])){
+            $this->notval['email']=true;
+           }
+           if(!preg_match("/^([a-zA-Z0-9_]{3,30})$/",$_POST['username'])){
+            $this->notval['username']=true;
+           }
+           if(!preg_match("/^([a-zA-Z0-9_]{8,30})$/",$_POST['password1'])){
+            $this->notval['password']=true;
+           }
+           if(!preg_match("/^([a-zA-Z0-9_]{8,30})$/",$_POST['password2'])){
+            $this->notval['password']=true;
+           }
+           if(!($_POST['password1']==$_POST['password2'])){
+            $this->notval['password']=true;
+           }
+           if(isset($_FILES['upicture'])){
+              if($_FILES['upicture']['type']|='image/png' || $_FILES['upicture']['type']|='image/jpeg'){
+                $this->notval['profpic']==true;
+              }
+            }
+            foreach($this->notval as $errore => $valore){
+                if ($valore==true) echo $errore."=1";
+                else echo $errore."=0";
+            }
+        }
+        else
+        {
+            if(!isset($_POST['username'])) $this->notval['username']=true;
+            if(!isset($_POST['password'])) $this->notval['password']=true;
+        }
+       if($this->notval['username']==true || $this->notval['password']==true) 
+       {
+          return false;
+       }
+       else {return true;}
     }
 
     public function setBadLogin(){

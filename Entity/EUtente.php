@@ -12,10 +12,9 @@ class EUtente
     private $datan;
     private $email;
     private $telnumber;
-    private $profpic;
     private $bio;
     
-    public function __construct($un,$pass,$name,$surname,$dt,$em,$tel,$pic,$b){
+    public function __construct($un,$pass,$name,$surname,$dt,$em,$tel,$b){
         $this->username=$un;
         $this->password=$pass;
         $this->name=$name;
@@ -23,7 +22,6 @@ class EUtente
         $this->datan=$dt;
         $this->email=$em;
         $this->telnumber=$tel;
-        $this->profpic=$pic;
         $this->bio=$b;
     }
 
@@ -54,18 +52,11 @@ class EUtente
         return $this->email;
     }
 
-    public function getAddress(){
-        return $this->address;
-    }
     
     public function getTel(){
         return $this->telnumber;
     }
-    
-    public function getPic(){
-        return $this->profpic;
-    }
-    
+        
     public function getBio(){
         return $this->bio;
     }
@@ -101,21 +92,15 @@ class EUtente
     public function setSurname($surname){
         $this->surname=$surname;
     }
-    
-    public function setAddress($add){
-        $this->address=$add;
-    }
-    
-    public function setPic($pic){
-        $this->profpic=$pic;
-    }
-    
+        
     public function setBio($b){
         $this->bio=$b;
     }
 
-    public function CreaUtente($un,$pw,$nm,$sn,$date,$email,$tel,$bio,$city,$street,$number,$zipcode,$country){
-        
+    public function CreaUtente(EIndirizzo $address, EMediaUser $picture=null){
+        $db=FDatabase::getInstance();
+        $db->store($address);
+        if($picture) $db->store($picture);
     }
     
     

@@ -18,6 +18,7 @@
         </div>
       </div>
     </div>
+    <form action="registration" method="POST">
     <div class="container">
       <div class="row">
         <div class="col-md-6">
@@ -27,7 +28,7 @@
               <form action="https://formspree.io/YOUREMAILHERE">
                 <div class="form-group">
                   <label>Name</label>
-                  <input type="email" class="form-control" placeholder="Your name, please" required="required" name="name"> </div>
+                  <input class="form-control" placeholder="Your name, please" required="required" name="name"> </div>
                 <div class="form-group">
                   <label>Surname</label>
                   <input class="form-control" required="required" placeholder="You surname, please" required="required" name="surname"> </div>
@@ -37,7 +38,7 @@
                 <div class="form-group">
                   <label>Address</label>
                   <input type="text" class="form-control" placeholder="City" required="required" name="city">
-                  <input type="text" class="form-control" placeholder="Street" required="required" name="stree">
+                  <input type="text" class="form-control" placeholder="Street" required="required" name="street">
                   <input type="number" class="form-control" placeholder="Number" required="required" name="number">
                   <input type="text" class="form-control" placeholder="Zipcode" required="required" name="zipcode">
                   <input type="text" class="form-control" required="required" placeholder="Country" name="country"> </div>
@@ -70,8 +71,9 @@
                 </div>
                 <div class="form-group">
                   <label>Picture&nbsp;</label>
-                  <input type="file" class="form-control-file"> </div>
+                  <input type="file" class="form-control-file" name="upicture"> </div>
                 <button type="submit" class="btn btn-primary btn-lg submit-button">Submit</button>
+                </form>
             </div>
           </div>
         </div>

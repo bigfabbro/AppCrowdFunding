@@ -67,7 +67,6 @@ class FDatabase
     public function store($eobj){
         $fobj=$this->recClass($eobj); //viene riconosciuta la classe dell'oggetto i cui dati devono essere inseriti nel Db
         $sql="INSERT INTO ".$fobj::getTables()." VALUES".$fobj::getValues(); //si genera il codice sql attraverso gli attributi statici della determinata classe Foundation
-        echo $sql;
         $this->runQuery($sql,$fobj,$eobj); 
     }
     
