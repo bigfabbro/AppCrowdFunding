@@ -77,15 +77,28 @@ require_once 'include.php';
     }
 
     static function SignIn(){
+        $val=true;
         $view=new VUtente();
-        if($view->ValFormRegistration()){
+        $notval=$view->ValFormRegistration();
+        foreach($notval as $errore => $valore){
+            if ($valore==true) {$val=false; break;}
+        }
+        if($val){
             $db=FDatabase::getInstance();
             $unameval=$db->exist('Utente','username',$_POST['username']);
             $emailval=$db->exist('Utente','email',$_POST['email']);
             $numberval=$db->exist('Utente','telephon',$_POST['telephon']);
             if($unameval || $emailval || $numberval){
-                echo 'errore';
-                $view->showFormRegistration();
+              if($unameval){
+                $notval['username']=true;
+              }
+              if($emailval){
+                $notval['email']=true;
+              }
+              if($numberval){
+                $notval['numver']=true;
+              }
+              $view->showFormRegistration($notval,$_POST);
             }
             else{
                 $user=new EUtente($_POST['username'],$_POST['password1'],$_POST['name'],$_POST['surname'],$_POST['date'],$_POST['email'],$_POST['telephon'],$_POST['description']);
@@ -95,17 +108,20 @@ require_once 'include.php';
                 $address=new EIndirizzo($_POST['city'],$_POST['street'],$_POST['number'],$_POST['zipcode'],$_POST['country'],$iduser);
                 if(isset($_FILES['upicture'])){
                    $up=new Upload();
-                   $up->start($_FILES['upicture']);
-                   $picture=new EMediaUser($_FILES['upicture']['name'],$iduser);
-                   $user->CreaUtente($address,$picture);
+                   if($up->start($_FILES['upicture'])){
+                      $picture=new EMediaUser($_FILES['upicture']['name'],$iduser);
+                    }
                 }
-                else $user->CreaUtente($address);
+                else {
+                    $picture=new EMediaUser("profile.jpg",$iduser);
+                }
+                $user->CreaUtente($address,$picture);
+                if (session_status() == PHP_SESSION_NONE) session_start();
+                $_SESSION['id']= $user->getId();
+                $_SESSION['username']=$user->getUserName();
+                $view->showHomePage();
             }
-            if (session_status() == PHP_SESSION_NONE) session_start();
-            $_SESSION['id']= $user->getId();
-            $_SESSION['username']=$user->getUserName();
-            $view->showHomePage();
         }
-        else $view->showFormRegistration();
+        else $view->showFormRegistration($notval,$_POST);
     }
   }

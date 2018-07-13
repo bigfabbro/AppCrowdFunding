@@ -6155,6 +6155,9 @@ html, body {
     content: ' ';
     background: rgba(255, 69, 0, 0.75); }
 
+.errors{
+  border:1px solid red;
+}
 .box-input1 {
   border-radius: 20px 20px 20px 20px;
   box-shadow: 5px 10px 10px 10px rgba(0, 0, 0, 0.4);

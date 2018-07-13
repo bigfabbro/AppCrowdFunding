@@ -17,12 +17,15 @@ require_once 'include.php';
             'name'=> false,
             'surname'=> false,
             'email'=> false,
+            'date'=>false,
             'telnumber'=> false,
-            'address'=> false,
             'profpic'=> false,
-            'bio'=> false,
-            'tipo'=> false,
-            'badlogin'=>false
+            'badlogin'=>false,
+            'city'=>false,
+            'street'=>false,
+            'number'=>false,
+            'country'=>false,
+            'zipcode'=>false
         );
      }
 
@@ -33,8 +36,12 @@ require_once 'include.php';
      function navbar(){
          if(CUtente::isLogged()) $this->smarty->assign('userlogged',$_SESSION['username']);
      }
-     function showFormRegistration(){
+     function showFormRegistration($errors=null,$valori=null){
          $this->navbar();
+         if(isset($errors)){
+             $this->smarty->assign('errors',$errors);
+             $this->smarty->assign('values',$valori);
+         }
          $this->smarty->display('registration.tpl');
      }
 
@@ -79,7 +86,7 @@ require_once 'include.php';
         else {return true;}
     }
 
-    function valFormRegistration() :bool {
+    function valFormRegistration(){
         if(isset($_POST['name']) && isset($_POST['surname']) && isset($_POST['date']) && isset($_POST['city']) && isset($_POST['street']) && isset($_POST['zipcode']) && isset($_POST['country']) && isset($_POST['email']) && isset($_POST['username']) && isset($_POST['password1']) && isset($_POST['password2']))
         {
            $replace=array(" ","'");
@@ -108,6 +115,11 @@ require_once 'include.php';
            if(!preg_match("/^([a-zA-Z]{3,30})$/",str_replace($replace,'',$_POST['country']))){
             $this->notval['country']=true;
            }
+           if(isset($_POST['telephon'])){
+            if(!preg_match("/^([0-9]{9,10})$/",$_POST['telephon'])){
+             $this->notval['telnumber']=true;
+            }
+           }
            if(!preg_match("/^[A-z0-9\.\+_-]+@[A-z0-9\._-]+\.[A-z]{2,6}$/",$_POST['email'])){
             $this->notval['email']=true;
            }
@@ -124,25 +136,26 @@ require_once 'include.php';
             $this->notval['password']=true;
            }
            if(isset($_FILES['upicture'])){
-              if($_FILES['upicture']['type']|='image/png' || $_FILES['upicture']['type']|='image/jpeg'){
+              if($_FILES['upicture']['type']!='image/png' || $_FILES['upicture']['type']!='image/jpeg'){
                 $this->notval['profpic']==true;
               }
             }
-            foreach($this->notval as $errore => $valore){
-                if ($valore==true) echo $errore."=1";
-                else echo $errore."=0";
-            }
+            else $this->notaval['profpic']==true;
         }
         else
         {
+            if(!isset($_POST['name'])) $this->notval['name']=true;
+            if(!isset($_POST['surname'])) $this->notval['surname']=true;
+            if(!isset($_POST['date'])) $this->notval['date']=true;
+            if(!isset($_POST['city'])) $this->notval['city']=true;
+            if(!isset($_POST['street'])) $this->notval['street']=true;
+            if(!isset($_POST['zipcode'])) $this->notval['zipcode']=true;
+            if(!isset($_POST['country'])) $this->notval['country']=true;
+            if(!isset($_POST['email'])) $this->notval['email']=true;
             if(!isset($_POST['username'])) $this->notval['username']=true;
-            if(!isset($_POST['password'])) $this->notval['password']=true;
+            if(!isset($_POST['password1'])|| !isset($_POST['password2'])) $this->notval['password']=true;
         }
-       if($this->notval['username']==true || $this->notval['password']==true) 
-       {
-          return false;
-       }
-       else {return true;}
+          return $this->notval;
     }
 
     public function setBadLogin(){
