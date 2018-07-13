@@ -81,7 +81,7 @@ require_once 'include.php';
         $view=new VUtente();
         $notval=$view->ValFormRegistration();
         foreach($notval as $errore => $valore){
-            if ($valore==true) {$val=false; break;}
+            if ($valore==true&&$errore!="profpic"&&$errore!="telnumber") {$val=false; break;}
         }
         if($val){
             $db=FDatabase::getInstance();
@@ -106,20 +106,20 @@ require_once 'include.php';
                 $db->store($user);
                 $iduser= $db->exist('Utente','username',$user->getUserName());
                 $address=new EIndirizzo($_POST['city'],$_POST['street'],$_POST['number'],$_POST['zipcode'],$_POST['country'],$iduser);
-                if(isset($_FILES['upicture'])){
+                if(!$notval['profpic']){
                    $up=new Upload();
                    if($up->start($_FILES['upicture'])){
                       $picture=new EMediaUser($_FILES['upicture']['name'],$iduser);
+                      $user->CreaUtente($address,$picture);
                     }
                 }
                 else {
-                    $picture=new EMediaUser("profile.jpg",$iduser);
+                    $picture=new EMediaUser('profile.jpg',$iduser);
+                    $user->CreaUtente($address,$picture);
                 }
-                $user->CreaUtente($address,$picture);
-                if (session_status() == PHP_SESSION_NONE) session_start();
-                $_SESSION['id']= $user->getId();
-                $_SESSION['username']=$user->getUserName();
-                $view->showHomePage();
+                $mail=new mailcheck();
+                $mail->sendActivEmail2($user->getEmail(),$user->getUserName());
+                $view->showWelcome();
             }
         }
         else $view->showFormRegistration($notval,$_POST);

@@ -23,6 +23,7 @@
    require_once 'ConfSmarty.php';
    require_once 'Controller/FrontController.php';
    require_once 'Utility/upload.php';
+   require_once 'Utility/mailcheck.php';
    require_once 'Entity/EIndirizzo.php';
    require_once 'Foundation/FIndirizzo.php';
 ?>

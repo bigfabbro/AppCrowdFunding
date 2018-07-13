@@ -45,6 +45,10 @@ require_once 'include.php';
          $this->smarty->display('registration.tpl');
      }
 
+     function showWelcome(){
+         $this->smarty->display('welcome.tpl');
+     }
+
      function showHomePage(){
          if(!CUtente::isLogged()) $this->smarty->display('Homepage.tpl');
          else{
@@ -137,10 +141,10 @@ require_once 'include.php';
            }
            if(isset($_FILES['upicture'])){
               if($_FILES['upicture']['type']!='image/png' || $_FILES['upicture']['type']!='image/jpeg'){
-                $this->notval['profpic']==true;
+                $this->notval['profpic']=true;
               }
             }
-            else $this->notaval['profpic']==true;
+            else $this->notaval['profpic']=true;
         }
         else
         {

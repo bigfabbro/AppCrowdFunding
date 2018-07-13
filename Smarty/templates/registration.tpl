@@ -31,9 +31,9 @@
                   {if isset($errors) && $errors.name eq "true"}
                   <input class="form-control border border-danger" placeholder="Your name, please" required="required" name="name"></div>
                   {else if isset($errors) }
-                      <input class="form-control errors" value="{$values.name}" required="required" name="name"></div>
+                      <input class="form-control" value="{$values.name}" required="required" name="name"></div>
                   {else}
-                      <input class="form-control errors" placeholder="Your name, please" required="required" name="name"></div>
+                      <input class="form-control" placeholder="Your name, please" required="required" name="name"></div>
                   {/if}
                 <div class="form-group">
                   <label>Surname</label>

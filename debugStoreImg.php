@@ -2,7 +2,7 @@
 
 require_once 'include.php';
 $db=FDatabase::getinstance();
-$img=new EMediaCamp('campagnaprova.jpg',29);
+$img=new EMediaUser("faber.jpg",51);
 $t=$db->store($img);
 
 
