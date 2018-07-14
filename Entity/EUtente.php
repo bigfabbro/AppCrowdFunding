@@ -9,20 +9,24 @@ class EUtente
     private $password;
     private $name;
     private $surname;
+    private $sex;
     private $datan;
     private $email;
     private $telnumber;
     private $bio;
+    private $activate;
     
-    public function __construct($un,$pass,$name,$surname,$dt,$em,$tel,$b){
+    public function __construct($un,$pass,$name,$surname,$se,$dt,$em,$tel,$b){
         $this->username=$un;
         $this->password=$pass;
         $this->name=$name;
         $this->surname=$surname;
+        $this->sex=$se;
         $this->datan=$dt;
         $this->email=$em;
         $this->telnumber=$tel;
         $this->bio=$b;
+        $this->activate=false;
     }
 
     public function getId(){
@@ -34,6 +38,10 @@ class EUtente
     
     public function getSurname(){
         return $this->surname;
+    }
+
+    public function getSex(){
+        return $this->sex;
     }
    
     public function getUserName(){
@@ -60,6 +68,10 @@ class EUtente
     public function getBio(){
         return $this->bio;
     }
+          
+    public function getActivate(){
+        return $this->activate;
+    }
 
     public function setId($id){
         $this->id=$id;
@@ -75,6 +87,10 @@ class EUtente
 
     public function setDatan($dt){
         $this->datan=$dt;
+    }
+
+    public function setSex($se){
+        $this->sex=$se;
     }
     
     public function setEmail($em){
@@ -95,6 +111,10 @@ class EUtente
         
     public function setBio($b){
         $this->bio=$b;
+    }
+
+    public function setActivate($act){
+        $this->activate=$act;
     }
 
     public function CreaUtente(EIndirizzo $address, EMediaUser $picture=null){

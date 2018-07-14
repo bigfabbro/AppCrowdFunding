@@ -44,6 +44,19 @@
                   {else}
                   <input class="form-control" required="required" placeholder="You surname, please" required="required" name="surname"> </div>
                   {/if}
+                  <div class="form-group">
+                  <label>Sesso</label>
+                  <br>
+                  <label>M</label><input class="form-control" name="sex" type="radio" value="M" required="required" checked="checked">
+                  <label>F</label><input class="form-control" name="sex" type="radio" value="F"> 
+                  </div>
+                <div class="form-group">
+                  <label>Sesso</label>
+                  <select >
+                      <option value="M">M</option>
+                      <option value="F">F</option>
+                  </select>
+                </div>
                 <div class="form-group">
                   <label>Date of Birth</label>
                   {if isset($errors) && $errors.date eq "true"}

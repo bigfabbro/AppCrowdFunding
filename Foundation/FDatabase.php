@@ -60,6 +60,9 @@ class FDatabase
             case(get_class($eobj)=="EIndirizzo");
                $fobj="FIndirizzo";
                break;
+            case(get_class($eobj)=="EMailCheck");
+               $fobj="FMailCheck";
+               break;
         }
         return $fobj;
     }

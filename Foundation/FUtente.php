@@ -6,7 +6,7 @@ require_once 'include.php';
 class FUtente
 {
     private static $tables="utenti";
-    private static $values="(:id,:username,:password,:name,:surname,:datan,:email,:telnumber,:bio)";
+    private static $values="(:id,:username,:password,:name,:surname,:sex,:datan,:email,:telnumber,:bio,:activate)";
     
     public function __construct(){}
 
@@ -22,10 +22,12 @@ class FUtente
         $stmt->bindValue(':password', $user->getPass(), PDO::PARAM_STR); //ricorda di "collegare" la giusta variabile al bind
         $stmt->bindValue(':name', $user->getName(), PDO::PARAM_STR);
         $stmt->bindValue(':surname', $user->getSurname(), PDO::PARAM_STR);
+        $stmt->bindValue(':sex', $user->getSex(), PDO::PARAM_STR);
         $stmt->bindValue(':datan', $user->getDatan(), PDO::PARAM_STR);
         $stmt->bindValue(':email', $user->getEmail(), PDO::PARAM_STR);
         $stmt->bindValue(':telnumber', $user->getTel(), PDO::PARAM_STR);
-        $stmt->bindValue('bio', $user->getBio(), PDO::PARAM_STR);
+        $stmt->bindValue(':bio', $user->getBio(), PDO::PARAM_STR);
+        $stmt->bindValue(':activate', $user->getActivate(), PDO::PARAM_STR);
     }
 
     /**
@@ -43,8 +45,9 @@ class FUtente
            $stmt=$db->prepare($sql);
            $stmt->execute();
            $row=$stmt->fetch(PDO::FETCH_ASSOC);
-           $user=new EUtente($row['username'],$row['password'], $row['name'], $row['surname'],$row['datan'], $row['email'],$row['telnumber'],$row['bio']);
+           $user=new EUtente($row['username'],$row['password'], $row['name'], $row['surname'],$row['surname'],$row['datan'], $row['email'],$row['telnumber'],$row['bio']);
            $user->setId($row['id']);
+           $user->setActivate($row['activate']);
            return $user;
         }
         catch(PDOException $e){

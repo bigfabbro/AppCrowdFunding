@@ -270,12 +270,7 @@ a[x-apple-data-detectors=true] {
     </tbody>
 </table>
                   
-                  
-                    <div align="center" class="img-container center  autowidth  fullwidth " style="padding-right: 0px;  padding-left: 0px;">
-<!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr style="line-height:0px;line-height:0px;"><td style="padding-right: 0px; padding-left: 0px;" align="center"><![endif]-->
-  <img class="center  autowidth  fullwidth" align="center" border="0" src=\”cid:logo\” alt="Society Of Funding!" title="Society Of Funding!" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: 0;height: auto;float: none;width: 100%;max-width: 600px" width="600">
-<!--[if mso]></td></tr></table><![endif]-->
-</div>
+      
 
                   
               <!--[if (!mso)&(!IE)]><!--></div><!--<![endif]-->
@@ -374,7 +369,7 @@ a[x-apple-data-detectors=true] {
                     <div class="">
 	<!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 30px; padding-left: 30px; padding-top: 30px; padding-bottom: 30px;"><![endif]-->
 	<div style="color:#555555;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;line-height:180%; padding-right: 30px; padding-left: 30px; padding-top: 30px; padding-bottom: 30px;">	
-		<div style="font-size:12px;line-height:22px;color:#555555;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;text-align:left;"><p style="margin: 0;font-size: 12px;line-height: 22px"><span style="font-size: 14px; line-height: 25px;">Se non hai richiesto la registrazione al nostro portale, puoi semplicemente eliminare questa email.</span></p><p style="margin: 0;font-size: 12px;line-height: 22px"><span style="font-size: 14px; line-height: 25px;">Saluti dallo staff di </span></p><p style="margin: 0;font-size: 12px;line-height: 22px"><em><strong><span style="font-size: 14px; line-height: 25px;">Soicety of Funding!</span></strong></em></p></div>	
+		<div style="font-size:12px;line-height:22px;color:#555555;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;text-align:left;"><p style="margin: 0;font-size: 12px;line-height: 22px"><span style="font-size: 14px; line-height: 25px;">Se non hai richiesto la registrazione al nostro portale, puoi semplicemente eliminare questa email.</span></p><p style="margin: 0;font-size: 12px;line-height: 22px"><span style="font-size: 14px; line-height: 25px;">Saluti dallo staff di </span></p><p style="margin: 0;font-size: 12px;line-height: 22px"><em><strong><span style="font-size: 14px; line-height: 25px;">Society of Funding!</span></strong></em></p></div>	
 	</div>
 	<!--[if mso]></td></tr></table><![endif]-->
 </div>
@@ -492,7 +487,7 @@ a[x-apple-data-detectors=true] {
                     <div class="">
 	<!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 10px;"><![endif]-->
 	<div style="color:#FFFFFF;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;line-height:120%; padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 10px;">	
-		<div style="font-size:12px;line-height:14px;color:#FFFFFF;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;text-align:left;"><p style="margin: 0;font-size: 14px;line-height: 17px;text-align: center"><span style="font-size: 14px; line-height: 16px;"><strong>societyofunding@gmail.com</strong></span><br></p></div>	
+		<div style="font-size:12px;line-height:14px;color:#FFFFFF;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;text-align:left;"><p style="margin: 0;font-size: 14px;line-height: 17px;text-align: center"><span style="font-size: 12px; line-height: 16px;"><strong>societyofunding@gmail.com</strong></span><br></p></div>	
 	</div>
 	<!--[if mso]></td></tr></table><![endif]-->
 </div>
@@ -553,27 +548,18 @@ a[x-apple-data-detectors=true] {
   <!--[if (mso)|(IE)]><table width="131" cellpadding="0" cellspacing="0" border="0"><tr><td style="border-collapse:collapse; padding-right: 0px; padding-left: 0px; padding-bottom: 0px;"  align="center"><table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse; mso-table-lspace: 0pt;mso-table-rspace: 0pt; width:131px;"><tr><td width="32" style="width:32px; padding-right: 5px;" valign="top"><![endif]-->
     <table align="left" border="0" cellspacing="0" cellpadding="0" width="32" height="32" style="border-collapse: collapse;table-layout: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vertical-align: top;Margin-right: 5px">
       <tbody><tr style="vertical-align: top"><td align="left" valign="middle" style="word-break: break-word;border-collapse: collapse !important;vertical-align: top">
-        <a href="https://www.facebook.com/" title="Facebook" target="_blank">
-          <img src="Smarty/img/fb.png" alt="Facebook" title="Facebook" width="32" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;max-width: 32px !important">
-        </a>
       <div style="line-height:5px;font-size:1px">&#160;</div>
       </td></tr>
     </tbody></table>
       <!--[if (mso)|(IE)]></td><td width="32" style="width:32px; padding-right: 5px;" valign="top"><![endif]-->
     <table align="left" border="0" cellspacing="0" cellpadding="0" width="32" height="32" style="border-collapse: collapse;table-layout: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vertical-align: top;Margin-right: 5px">
       <tbody><tr style="vertical-align: top"><td align="left" valign="middle" style="word-break: break-word;border-collapse: collapse !important;vertical-align: top">
-        <a href="https://twitter.com/" title="Twitter" target="_blank">
-          <img src="Smarty/img/tw.png" alt="Twitter" title="Twitter" width="32" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;max-width: 32px !important">
-        </a>
       <div style="line-height:5px;font-size:1px">&#160;</div>
       </td></tr>
     </tbody></table>
       <!--[if (mso)|(IE)]></td><td width="32" style="width:32px; padding-right: 0;" valign="top"><![endif]-->
     <table align="left" border="0" cellspacing="0" cellpadding="0" width="32" height="32" style="border-collapse: collapse;table-layout: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vertical-align: top;Margin-right: 0">
       <tbody><tr style="vertical-align: top"><td align="left" valign="middle" style="word-break: break-word;border-collapse: collapse !important;vertical-align: top">
-        <a href="https://plus.google.com/" title="Google+" target="_blank">
-          <img src="Smarty/img/go.png" alt="Google+" title="Google+" width="32" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;max-width: 32px !important">
-        </a>
       <div style="line-height:5px;font-size:1px">&#160;</div>
       </td></tr>
     </tbody></table>

@@ -57,6 +57,10 @@ require_once 'include.php';
          }
      }
 
+     function showActivation(){
+         $this->smarty->display('activation.tpl');
+     }
+
      function showProfile(EUtente $user,EMediaUser $pic,$camps,$photos){
         $this->navbar();
         $pic64=base64_encode($pic->getData());

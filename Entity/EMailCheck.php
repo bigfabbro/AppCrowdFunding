@@ -1,6 +1,6 @@
 <?php
 require_once 'include.php';
-class mailcheck {
+class EMailCheck {
 
     static $systemMail='societyofunding@gmail.com';
     static $path='localhost/activation';
@@ -35,7 +35,7 @@ class mailcheck {
       $this->setPin($this->generate5PIN());
       $this->smarty->assign('user',$user);
       $this->smarty->assign('path',static::$path);
-      $this->smarty->assign('pin',$this->$pin);
+      $this->smarty->assign('pin',$this->getPin());
       $message=$this->smarty->fetch('mail.tpl');
       $header = "From: ".static::$systemMail.">\n";
       $header .= "CC: ".$email.">\n";

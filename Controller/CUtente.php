@@ -15,8 +15,10 @@ require_once 'include.php';
                $db->closeDbConnection();
                $_SESSION['id']= $user->getId();
                $_SESSION['username']=$user->getUserName();
-               $view->showHomePage();
-           }
+               if($user->getActivate()) $view->showHomePage();
+               else $view->showActivation();
+            }
+               
            else{
             $view->setBadLogin();
             $view->showFormLogin();
@@ -101,7 +103,7 @@ require_once 'include.php';
               $view->showFormRegistration($notval,$_POST);
             }
             else{
-                $user=new EUtente($_POST['username'],$_POST['password1'],$_POST['name'],$_POST['surname'],$_POST['date'],$_POST['email'],$_POST['telephon'],$_POST['description']);
+                $user=new EUtente($_POST['username'],$_POST['password1'],$_POST['name'],$_POST['surname'],$_POST['sex'],$_POST['date'],$_POST['email'],$_POST['telephon'],$_POST['description']);
                 $db=Fdatabase::getInstance();
                 $db->store($user);
                 $iduser= $db->exist('Utente','username',$user->getUserName());
@@ -117,9 +119,9 @@ require_once 'include.php';
                     $picture=new EMediaUser('profile.jpg',$iduser);
                     $user->CreaUtente($address,$picture);
                 }
-                $mail=new mailcheck();
-                $mail->sendActivEmail2($user->getEmail(),$user->getUserName());
                 $view->showWelcome();
+                $mail=new EMailCheck();
+                $mail->sendActivEmail($user->getEmail(),$user->getUserName(),$user->getId());
             }
         }
         else $view->showFormRegistration($notval,$_POST);
