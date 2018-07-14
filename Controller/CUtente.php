@@ -30,6 +30,21 @@ require_once 'include.php';
         }
     }
 
+    static function activation(){
+        $view=new VUtente();
+        $view->showActivation();
+    }
+
+    static function activate(){
+        if (session_status() == PHP_SESSION_NONE) session_start();
+        $view= new VUtente();
+        $iduser=$_SESSION['id'];
+        $pinsert=$_POST['activate'];
+        $mc=new EMailCheck($iduser,$pinsert);
+        if($mc->VerifyCode()) $view->showHomePage();
+        else $view->showActivation();
+    }
+
     static function Login(){
         $view=new VUtente();
         $view->showFormLogin();
@@ -119,9 +134,13 @@ require_once 'include.php';
                     $picture=new EMediaUser('profile.jpg',$iduser);
                     $user->CreaUtente($address,$picture);
                 }
-                $view->showWelcome();
                 $mail=new EMailCheck();
-                $mail->sendActivEmail($user->getEmail(),$user->getUserName(),$user->getId());
+                if($mail->sendActivEmail($user->getEmail(),$user->getUserName())){;
+                $mail->setIdUser($iduser);
+                $db->store($mail);
+                }
+
+                $view->showWelcome();
             }
         }
         else $view->showFormRegistration($notval,$_POST);

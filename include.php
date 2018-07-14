@@ -27,4 +27,5 @@
    require_once 'Entity/EIndirizzo.php';
    require_once 'Foundation/FIndirizzo.php';
    require_once 'Foundation/FMailCheck.php';
+   require_once 'Entity/EMailCheck.php';
 ?>

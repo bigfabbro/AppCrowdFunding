@@ -10,9 +10,9 @@ class FMailCheck
     
     public function __construct(){}
     
-    public static function bind($stmt,ECommento $comm){
-        $stmt->bindValue(':iduser', $camp->getUser(), PDO::PARAM_INT);
-        $stmt->bindValue(':pin', $camp->getText(), PDO::PARAM_STR);
+    public static function bind($stmt,EMailCheck $mc){
+        $stmt->bindValue(':iduser', $mc->getIdUser(), PDO::PARAM_INT);
+        $stmt->bindValue(':pin', $mc->getPin(), PDO::PARAM_STR);
     }
 
   
@@ -23,8 +23,7 @@ class FMailCheck
            $stmt->execute();
            $row=$stmt->fetch(PDO::FETCH_ASSOC);
            $mc=new EMailCheck($row['iduser'],$row['pin']);
-           $mc->setId($row['id']);
-           return $address;
+           return $mc;
         }
         catch(PDOException $e){
             echo "Attenzione errore: ".$e->getMessage();

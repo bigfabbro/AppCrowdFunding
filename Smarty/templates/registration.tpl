@@ -47,16 +47,9 @@
                   <div class="form-group">
                   <label>Sesso</label>
                   <br>
-                  <label>M</label><input class="form-control" name="sex" type="radio" value="M" required="required" checked="checked">
-                  <label>F</label><input class="form-control" name="sex" type="radio" value="F"> 
+                  <center><label>M</label></center><input class="form-control" name="sex" type="radio" value="M" required="required" checked="checked">
+                  <center><label>F</label></center><input class="form-control" name="sex" type="radio" value="F"> 
                   </div>
-                <div class="form-group">
-                  <label>Sesso</label>
-                  <select >
-                      <option value="M">M</option>
-                      <option value="F">F</option>
-                  </select>
-                </div>
                 <div class="form-group">
                   <label>Date of Birth</label>
                   {if isset($errors) && $errors.date eq "true"}

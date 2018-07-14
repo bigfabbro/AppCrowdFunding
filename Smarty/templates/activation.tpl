@@ -20,7 +20,7 @@
         <div class="col-md-12">
           <form action="activation" method="POST">
             <div class="form-group" align="center">
-              <input type="text" class="form-control w-25" placeholder="Inserisci il codice di attivazione" required="required"> </div>
+              <input type="text" class="form-control w-25" placeholder="Inserisci il codice di attivazione" required="required" name="activate"> </div>
             <button type="submit" class="btn btn-primary">Submit</button>
           </form>
         </div>

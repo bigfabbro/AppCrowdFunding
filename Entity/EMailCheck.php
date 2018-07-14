@@ -1,4 +1,5 @@
 <?php
+ini_set('max_execution_time', 300);
 require_once 'include.php';
 class EMailCheck {
 
@@ -28,28 +29,33 @@ class EMailCheck {
         return $this->pin;
     }
 
-    public function sendActivEmail($email,$user,$iduser){
+    public function sendActivEmail($email,$user):bool{
       $smarty=ConfSmarty::configuration();
       $mailobject="Mail di attivazione account Society of Funding";
-      $this->setIdUser($iduser);
       $this->setPin($this->generate5PIN());
-      $this->smarty->assign('user',$user);
-      $this->smarty->assign('path',static::$path);
-      $this->smarty->assign('pin',$this->getPin());
-      $message=$this->smarty->fetch('mail.tpl');
+      $smarty->assign('user',$user);
+      $smarty->assign('path',static::$path);
+      $smarty->assign('pin',$this->getPin());
+      $message=$smarty->fetch('mail.tpl');
       $header = "From: ".static::$systemMail.">\n";
       $header .= "CC: ".$email.">\n";
       $header .= "X-Mailer: Il nostro Php\n";
       $header .= "MIME-Version: 1.0\n";
       $header .= "Content-Type: text/html; charset=\"iso-8859-1\"\n";
       $header .= "Content-Transfer-Encoding: 7bit\n\n";
-      $db=FDatabase::getInstance();
-      $db->store($this);
-      mail($email, $mailobject, $message, $header);
+      if(mail($email, $mailobject, $message, $header)) return true;
+      else return false;
     }
 
-    public function VerifyCode(){
-        
+    public function VerifyCode():bool{
+        $db=FDatabase::getInstance();
+        $mc=$db->load("MailCheck",$this->getIdUser());
+        if($this->getPin()==$mc->getPin()) {
+            $db->update("Utente",$this->getIdUser(),"activate",true);
+            $db->delete("MailCheck","iduser",$this->getIdUser());
+            return true;
+        }
+        else return false;
     }
 
     public function generate5PIN(){
