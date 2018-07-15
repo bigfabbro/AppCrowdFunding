@@ -123,15 +123,13 @@ require_once 'include.php';
                 $db->store($user);
                 $iduser= $db->exist('Utente','username',$user->getUserName());
                 $address=new EIndirizzo($_POST['city'],$_POST['street'],$_POST['number'],$_POST['zipcode'],$_POST['country'],$iduser);
+                $up=new Upload();
                 if(!$notval['profpic']){
-                   $up=new Upload();
-                   if($up->start($_FILES['upicture'])){
-                      $picture=new EMediaUser($_FILES['upicture']['name'],$iduser);
-                      $user->CreaUtente($address,$picture);
-                    }
+                    $picture=$up->myphoto($_FILES['upicture'],$iduser);
+                    $user->CreaUtente($address,$picture);
                 }
                 else {
-                    $picture=new EMediaUser('profile.jpg',$iduser);
+                    $picture=$up->standard($iduser);
                     $user->CreaUtente($address,$picture);
                 }
                 $mail=new EMailCheck();

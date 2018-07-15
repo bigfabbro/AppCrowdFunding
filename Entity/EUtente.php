@@ -117,10 +117,10 @@ class EUtente
         $this->activate=$act;
     }
 
-    public function CreaUtente(EIndirizzo $address, EMediaUser $picture=null){
+    public function CreaUtente(EIndirizzo $address, EMediaUser $picture){
         $db=FDatabase::getInstance();
         $db->store($address);
-        if($picture) $db->store($picture);
+        $db->store($picture);
     }
     
     

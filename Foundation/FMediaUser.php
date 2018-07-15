@@ -25,7 +25,8 @@ class FMediaUser
         $stmt->bindValue(':filename',$md->getFname(), PDO::PARAM_STR);
         $stmt->bindValue(':data', fread($file,filesize($path)), PDO::PARAM_LOB);
         $stmt->bindValue(':iduser', $md->getIdUser(), PDO::PARAM_STR);
-        fclose($file);
+        unset($file);
+        unlink($path);
     }
 
     /**

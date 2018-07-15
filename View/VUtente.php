@@ -144,7 +144,7 @@ require_once 'include.php';
             $this->notval['password']=true;
            }
            if(isset($_FILES['upicture'])){
-              if($_FILES['upicture']['type']!='image/png' || $_FILES['upicture']['type']!='image/jpeg'){
+              if(!($_FILES['upicture']['type']=='image/png' || $_FILES['upicture']['type']=='image/jpeg')){
                 $this->notval['profpic']=true;
               }
             }
