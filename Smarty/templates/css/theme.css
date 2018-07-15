@@ -487,6 +487,14 @@ pre {
   margin-right: auto;
   margin-left: auto; }
 
+.navfloat{
+  z-index:2;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
 .wait{
   z-index: 2;
   position: fixed;
@@ -2695,7 +2703,11 @@ tbody.collapse.show {
   display: block; }
 
 .navbar {
-  position: relative;
+  position: fixed;
+  top:0px;
+  left:0px;
+  width:100%;
+  z-index:999;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
