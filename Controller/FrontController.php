@@ -28,7 +28,7 @@
            header('Allow: GET');
          }
        }
-       else if($resource == "activation"){
+       else if($resource == "activation" && CUtente::NotActivated()){
         if($method=="GET") CUtente::activation();
         else if($method=="POST") CUtente::activate();
         else {

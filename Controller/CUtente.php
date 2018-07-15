@@ -15,6 +15,7 @@ require_once 'include.php';
                $db->closeDbConnection();
                $_SESSION['id']= $user->getId();
                $_SESSION['username']=$user->getUserName();
+               $_SESSION['activate']=$user->getActivate();
                if($user->getActivate()) $view->showHomePage();
                else $view->showActivation();
             }
@@ -83,6 +84,14 @@ require_once 'include.php';
         session_destroy();
         $view=new VUtente();
         $view->showHomePage();
+    }
+
+    static function NotActivated(){
+        if(session_status()== PHP_SESSION_NONE){
+            session_start();
+        }
+        if(isset($_SESSION['activated'])&&(!$_SESSION['activated'])) return true;
+        else return false;
     }
 
     static function isLogged(){

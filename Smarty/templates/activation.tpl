@@ -9,6 +9,7 @@
 </head>
 
 <body>
+{include file='navbar.tpl'}
   <div class="py-5 text-center h-100 w-100" style="background-image: url('Smarty/img/wallpaperRazzo.jpg');background-size:cover;" >
     <div class="container py-5">
       <div class="row">
