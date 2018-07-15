@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="css/theme.css"> </head>
 
 <body>
-  <div class="py-5" style="background-image: url(&quot;http://kb4images.com/images/funky-images/35893063-funky-images.jpg&quot;); background-size:fit;">
+  <div class="py-5 w-100 h-100" style="background-image: url(&quot;http://kb4images.com/images/funky-images/35893063-funky-images.jpg&quot;); background-size:fit;">
     <div class="container">
       <div class="row">
         <div class="align-self-center col-md-6 text-white">
@@ -44,7 +44,7 @@
       </div>
     </div>
   </div>
-  <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+  <nav class="navbar navbar-expand-md bg-dark navbar-dark" style="position:relative">
     <div class="container">
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar3SupportedContent">
         <span class="navbar-toggler-icon"></span>
