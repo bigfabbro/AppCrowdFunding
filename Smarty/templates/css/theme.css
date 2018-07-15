@@ -487,6 +487,14 @@ pre {
   margin-right: auto;
   margin-left: auto; }
 
+.wait{
+  z-index: 2;
+  position: fixed;
+  top: 50%;
+  right: 0;
+  bottom: 50%;
+  left: 0;
+}
 .row {
   display: flex;
   flex-wrap: wrap;
@@ -3640,9 +3648,6 @@ button.close {
   border: 0;
   -webkit-appearance: none; }
 
-.modal-open {
-  overflow: hidden; }
-
 .modal {
   position: fixed;
   top: 0;
@@ -6155,12 +6160,7 @@ html, body {
     content: ' ';
     background: rgba(255, 69, 0, 0.75); }
 
-.wait {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  z-index: 2;
-  display: none; }
+
 
 .box-input1 {
   border-radius: 20px 20px 20px 20px;
