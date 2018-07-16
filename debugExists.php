@@ -1,5 +1,5 @@
 <?php
   require_once 'include.php';
   $db=FDatabase::getInstance();
-  $ex=$db->exist('Utente',array('username','password'),array('bigfabbro93','root'));
+  $ex=$db->exist('Utente','username','bigfabbro93');
   echo $ex;

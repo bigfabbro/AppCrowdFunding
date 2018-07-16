@@ -11,7 +11,7 @@ class FrontController{
         if(class_exists($controller)){
             $function=$paths[3];
             if(method_exists($controller,$function)){
-                if(isset($paths[3])) $controller::$function($paths[3]);
+                if(isset($paths[4])) $controller::$function($paths[4]);
                 else $controller::$function();
             }
         }

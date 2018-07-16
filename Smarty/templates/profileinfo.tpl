@@ -30,6 +30,12 @@
               <p class="card-text">Birth date: {$datan}
                 <br>Sex: {$sex}</p>
             </div>
+            {if $myProf eq "true"}
+            <div class="card-body">
+              <h5 class="card-title">Account management:</h5>
+              <a class="btn btn-danger" href="/AppCrowdFunding/Utente/removeUser" >Delete Account</a>
+            </div>
+            {/if}
           </div>
         </div>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

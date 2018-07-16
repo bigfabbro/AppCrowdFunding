@@ -90,27 +90,46 @@ require_once 'include.php';
         }
     }
 
-    static function profile(){
+    static function profile($username=null){
         $db=FDatabase::getInstance();
-        $photos=array();
-        if(CUtente::isLogged()){
-        $user=$db->load('Utente',$_SESSION['id']);
-        $pic1=$db->load('MediaUser',$_SESSION['id']);
-        $camps=$db->loadCampByFounder($_SESSION['id']);
-        $address=$db->load('Indirizzo',$_SESSION['id']);
-        foreach($camps as $camp){
-            $pics=$db->load('MediaCamp',$camp->getId());
-            if(count($pics)){
-            $photos[$camp->getId()]=base64_encode($pics[0]->getData());
+        $id=null;
+        $myProf=false;
+        if(isset($username)){
+            $id=$db->exist('Utente','username',$username);
+        }
+        else {
+           if(CUtente::isLogged()) $id=$_SESSION['id'];
+        }
+        if(isset($id)){
+            $photos=array();
+            $user=$db->load('Utente',$id);
+            $pic1=$db->load('MediaUser',$id);
+            $camps=$db->loadCampByFounder($id);
+            $address=$db->load('Indirizzo',$id);
+            foreach($camps as $camp){
+                $pics=$db->load('MediaCamp',$camp->getId());
+                if(count($pics)){
+                    $photos[$camp->getId()]=base64_encode($pics[0]->getData());
+                }
+                else $photos[$camp->getId()]=null;
             }
-            else $photos[$camp->getId()]=null;
+            if($_SESSION['id']==$id) $myProf=true;
+            $view=new VUtente();
+            $view->showProfile($user,$pic1,$camps,$photos,$address,$myProf);
         }
-        $view=new VUtente();
-        $view->showProfile($user,$pic1,$camps,$photos,$address);
+        else header('Location: /AppCrowdFunding/HomePage');
+    }
+
+    static function removeUser():bool{
+        if(CUtente::isLogged()){
+            $db=FDatabase::getInstance();
+            if($db->delete('Utente','id',$_SESSION['id'])){
+                 CUtente::logout();
+                 header('Location: /AppCrowdFunding/HomePage');
+            }
+            else header('Location: /AppCrowdFunding/Utente/profile');
         }
-        else{
-            header('Location: /AppCrowdFunding/Utente/login');
-        }
+        else header('Location: /AppCrowdFunding/Utente/login');
     }
 
     static function logout(){

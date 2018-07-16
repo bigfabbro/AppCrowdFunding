@@ -162,7 +162,10 @@ class FDatabase
     public function exist($class,$field,$val){
         $fobj="F".$class;
         $id=$fobj::exist($this->db,$field,$val);
-        return $id;
+        if($id){ 
+            return $id;
+        }
+        else return null;
     }
 
     public static function getUpPath(){

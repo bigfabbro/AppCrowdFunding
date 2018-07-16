@@ -53,9 +53,10 @@ require_once 'include.php';
          $this->smarty->display('activation.tpl');
      }
 
-     function showProfile(EUtente $user,EMediaUser $pic,$camps,$photos,EIndirizzo $address){
+     function showProfile(EUtente $user,EMediaUser $pic,$camps,$photos,EIndirizzo $address,$myProf){
         $this->navbar();
         $pic64=base64_encode($pic->getData());
+        $this->smarty->assign('myProf',$myProf);
         $this->smarty->assign('photos',$photos);
         $this->smarty->assign('pic64',$pic64);
         $this->smarty->assign('camps',$camps);
