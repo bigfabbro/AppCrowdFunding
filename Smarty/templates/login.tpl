@@ -8,8 +8,8 @@
   <link rel="stylesheet" href="Smarty/templates/css/theme.css" type="text/css">
   <link rel="stylesheet" href="/AppCrowdFunding/Smarty/templates/css/theme.css"> </head>
 
-<body>
-  <div class="py-5 w-100 h-100" style="background-image: url(&quot;http://kb4images.com/images/funky-images/35893063-funky-images.jpg&quot;); background-size:fit;">
+<body style="background-image: url('/AppCrowdFunding/Smarty/img/login.jpg'); background-size:cover;">
+  <div class="py-5 w-100 h-100">
     <div class="container">
       <div class="row">
         <div class="align-self-center col-md-6 text-white">

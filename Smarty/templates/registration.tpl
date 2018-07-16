@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="/AppCrowdFunding/Smarty/templates/css/theme.css" type="text/css"> 
 </head>
 
-<body>
+<body style="background-image: url('/AppCrowdFunding/Smarty/img/wallpaperRazzo.jpg');background-size:cover;">
 {include file='navbar.tpl'}
       <div class="row wait" id="modalwait" style="visibility:hidden">
         <div class="col-md-3"> </div>
@@ -20,7 +20,7 @@
           </div>
         </div>
       </div>
-  <div class="py-5" style="background-image: url('/AppCrowdFunding/Smarty/img/wallpaperRazzo.jpg'); background-position: center center;">
+  <div class="py-5">
     <div class="container">
       <div class="row">
         <div class="col-md-12">

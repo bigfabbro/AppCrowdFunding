@@ -7,8 +7,9 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
   <link rel="stylesheet" href="/AppCrowdFunding/Smarty/templates/css/theme.css"> </head>
 
-<body> {include file='navbar.tpl'}
-  <div class="py-5 text-center bg-light" style="background-image: url(&quot;Smarty/img/wallpaperRazzo2.jpg&quot;); background-size: cover;">
+<body style="background-image: url('/AppCrowdFunding/Smarty/img/wallpaperRazzo.jpg'); background-size:cover;">
+{include file='navbar.tpl'}
+  <div class="py-5 text-center ">
     <div class="container">
       <div class="row">
         <div class="p-4" style="transition: all 0.25s;">
@@ -16,13 +17,13 @@
             <div class="card-block my-3">
               <img class="d-block rounded-circle img-fluid" src="data:image/jpeg;base64,{$pic64}" width=200 height=200>
               <hr>
-              <p class="text-left">Username: {user->getUsername}</p>
+              <p class="text-left">Username: {$user->getUsername()}</p>
               <hr>
-              <p class="text-left">Email: {user->getEmail}</p>
+              <p class="text-left">Email: {$user->getEmail()}</p>
               <hr>
-              <p class="text-left">Name: {user->getName}</p>
+              <p class="text-left">Name: {$user->getName()}</p>
               <hr>
-              <p class="text-left">Surname: {user->getSurname}</p>
+              <p class="text-left">Surname: {$user->getSurname()}</p>
             </div>
           </div>
         </div>
@@ -40,7 +41,7 @@
           </ul>
           <div class="tab-content mt-2">
             <div class="tab-pane fade show active" id="tabone" role="tabpanel">
-              <p class="">BIO</p>
+              {include file='profileinfo.tpl'  description=$user->getBio() city=$address->getCity() street=$address->getStreet() number=$address->getNum() zipcode=$address->getZipcode() country=$address->getCountry() sex=$user->getSex() datan=$user->getDatan() telnum=$user->getTel() }
             </div>
             <div class="tab-pane fade" id="tabtwo" role="tabpanel">
               {foreach $camps as $camp}

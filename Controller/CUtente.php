@@ -97,6 +97,7 @@ require_once 'include.php';
         $user=$db->load('Utente',$_SESSION['id']);
         $pic1=$db->load('MediaUser',$_SESSION['id']);
         $camps=$db->loadCampByFounder($_SESSION['id']);
+        $address=$db->load('Indirizzo',$_SESSION['id']);
         foreach($camps as $camp){
             $pics=$db->load('MediaCamp',$camp->getId());
             if(count($pics)){
@@ -105,7 +106,7 @@ require_once 'include.php';
             else $photos[$camp->getId()]=null;
         }
         $view=new VUtente();
-        $view->showProfile($user,$pic1,$camps,$photos);
+        $view->showProfile($user,$pic1,$camps,$photos,$address);
         }
         else{
             header('Location: /AppCrowdFunding/Utente/login');

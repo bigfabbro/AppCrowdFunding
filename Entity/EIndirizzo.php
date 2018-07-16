@@ -18,6 +18,9 @@ class EIndirizzo{
         $this->iduser=$idu;
     }
 
+    public function setId($id){
+        $this->id=$id;
+    }
     public function setCity($ci){
         $this->city=$ci;
     }
@@ -67,5 +70,10 @@ class EIndirizzo{
     }
     public function getId(){
         return $this->id;
+    }
+
+    public function __toString(){
+        $st="ID: ".$this->getId()." City: ".$this->getCity()." street: ".$this->getStreet()." number: ".$this->getNum();
+        return $st;
     }
 }

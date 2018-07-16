@@ -45,7 +45,7 @@ class FUtente
            $stmt=$db->prepare($sql);
            $stmt->execute();
            $row=$stmt->fetch(PDO::FETCH_ASSOC);
-           $user=new EUtente($row['username'],$row['password'], $row['name'], $row['surname'],$row['surname'],$row['datan'], $row['email'],$row['telnumber'],$row['bio']);
+           $user=new EUtente($row['username'],$row['password'], $row['name'], $row['surname'],$row['sex'],$row['datan'], $row['email'],$row['telnumber'],$row['bio']);
            $user->setId($row['id']);
            $user->setActivate($row['activate']);
            return $user;

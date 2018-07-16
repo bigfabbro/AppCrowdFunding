@@ -23,7 +23,7 @@ class FIndirizzo
 
     
     public static function load(PDO &$db,$id){
-        $sql="SELECT * FROM ".static::$tables." WHERE id=".$id.";";
+        $sql="SELECT * FROM ".static::$tables." WHERE iduser=".$id.";";
         try{
            $stmt=$db->prepare($sql);
            $stmt->execute();

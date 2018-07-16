@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-07-16 11:05:42
+/* Smarty version 3.1.32, created on 2018-07-16 15:41:54
   from 'C:\xampp\htdocs\AppCrowdFunding\Smarty\templates\HomePage.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b4c5fe6df78c2_60013726',
+  'unifunc' => 'content_5b4ca0a2c93445_07038970',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '0f1476ee2058f95887a7e0f9112918b9770c6a1c' => 
     array (
       0 => 'C:\\xampp\\htdocs\\AppCrowdFunding\\Smarty\\templates\\HomePage.tpl',
-      1 => 1531730837,
+      1 => 1531748371,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:navbar.tpl' => 1,
   ),
 ),false)) {
-function content_5b4c5fe6df78c2_60013726 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b4ca0a2c93445_07038970 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html>
 
@@ -32,10 +32,10 @@ function content_5b4c5fe6df78c2_60013726 (Smarty_Internal_Template $_smarty_tpl)
   <link rel="stylesheet" href="/AppCrowdFunding/Smarty/templates/css/theme.css" type="text/css"> 
 </head>
 
-<body>
+<body style="background-image: url('/AppCrowdFunding/Smarty/img/wallpaperRazzo.jpg'); background-size:cover;">
 <?php $_smarty_tpl->_subTemplateRender('file:navbar.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
-  <div class="py-5 text-center" style="background-image: url('/AppCrowdFunding/Smarty/img/wallpaperRazzo.jpg');background-size:cover;">
+  <div class="py-5 text-center">
     <div class="container py-5">
       <div class="row">
         <div class="col-md-12">

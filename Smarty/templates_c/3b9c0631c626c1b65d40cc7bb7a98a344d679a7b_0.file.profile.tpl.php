@@ -1,28 +1,29 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-07-16 11:36:55
+/* Smarty version 3.1.32, created on 2018-07-16 15:42:24
   from 'C:\xampp\htdocs\AppCrowdFunding\Smarty\templates\profile.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b4c67373e64c1_60794343',
+  'unifunc' => 'content_5b4ca0c0d0ec06_94602967',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '3b9c0631c626c1b65d40cc7bb7a98a344d679a7b' => 
     array (
       0 => 'C:\\xampp\\htdocs\\AppCrowdFunding\\Smarty\\templates\\profile.tpl',
-      1 => 1531730756,
+      1 => 1531748402,
       2 => 'file',
     ),
   ),
   'includes' => 
   array (
     'file:navbar.tpl' => 1,
+    'file:profileinfo.tpl' => 1,
     'file:campprofile.tpl' => 1,
   ),
 ),false)) {
-function content_5b4c67373e64c1_60794343 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b4ca0c0d0ec06_94602967 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html>
 
@@ -32,9 +33,10 @@ function content_5b4c67373e64c1_60794343 (Smarty_Internal_Template $_smarty_tpl)
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
   <link rel="stylesheet" href="/AppCrowdFunding/Smarty/templates/css/theme.css"> </head>
 
-<body> <?php $_smarty_tpl->_subTemplateRender('file:navbar.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+<body style="background-image: url('/AppCrowdFunding/Smarty/img/wallpaperRazzo.jpg'); background-size:cover;">
+<?php $_smarty_tpl->_subTemplateRender('file:navbar.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
-  <div class="py-5 text-center bg-light" style="background-image: url(&quot;Smarty/img/wallpaperRazzo2.jpg&quot;); background-size: cover;">
+  <div class="py-5 text-center ">
     <div class="container">
       <div class="row">
         <div class="p-4" style="transition: all 0.25s;">
@@ -43,16 +45,16 @@ function content_5b4c67373e64c1_60794343 (Smarty_Internal_Template $_smarty_tpl)
               <img class="d-block rounded-circle img-fluid" src="data:image/jpeg;base64,<?php echo $_smarty_tpl->tpl_vars['pic64']->value;?>
 " width=200 height=200>
               <hr>
-              <p class="text-left">Username: <?php echo $_smarty_tpl->smarty->registered_objects['user'][0]->getUsername(array(),$_smarty_tpl);?>
+              <p class="text-left">Username: <?php echo $_smarty_tpl->tpl_vars['user']->value->getUsername();?>
 </p>
               <hr>
-              <p class="text-left">Email: <?php echo $_smarty_tpl->smarty->registered_objects['user'][0]->getEmail(array(),$_smarty_tpl);?>
+              <p class="text-left">Email: <?php echo $_smarty_tpl->tpl_vars['user']->value->getEmail();?>
 </p>
               <hr>
-              <p class="text-left">Name: <?php echo $_smarty_tpl->smarty->registered_objects['user'][0]->getName(array(),$_smarty_tpl);?>
+              <p class="text-left">Name: <?php echo $_smarty_tpl->tpl_vars['user']->value->getName();?>
 </p>
               <hr>
-              <p class="text-left">Surname: <?php echo $_smarty_tpl->smarty->registered_objects['user'][0]->getSurname(array(),$_smarty_tpl);?>
+              <p class="text-left">Surname: <?php echo $_smarty_tpl->tpl_vars['user']->value->getSurname();?>
 </p>
             </div>
           </div>
@@ -71,7 +73,8 @@ function content_5b4c67373e64c1_60794343 (Smarty_Internal_Template $_smarty_tpl)
           </ul>
           <div class="tab-content mt-2">
             <div class="tab-pane fade show active" id="tabone" role="tabpanel">
-              <p class="">BIO</p>
+              <?php $_smarty_tpl->_subTemplateRender('file:profileinfo.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('description'=>$_smarty_tpl->tpl_vars['user']->value->getBio(),'city'=>$_smarty_tpl->tpl_vars['address']->value->getCity(),'street'=>$_smarty_tpl->tpl_vars['address']->value->getStreet(),'number'=>$_smarty_tpl->tpl_vars['address']->value->getNum(),'zipcode'=>$_smarty_tpl->tpl_vars['address']->value->getZipcode(),'country'=>$_smarty_tpl->tpl_vars['address']->value->getCountry(),'sex'=>$_smarty_tpl->tpl_vars['user']->value->getSex(),'datan'=>$_smarty_tpl->tpl_vars['user']->value->getDatan(),'telnum'=>$_smarty_tpl->tpl_vars['user']->value->getTel()), 0, false);
+?>
             </div>
             <div class="tab-pane fade" id="tabtwo" role="tabpanel">
               <?php
