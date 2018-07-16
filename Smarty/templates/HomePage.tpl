@@ -14,9 +14,8 @@
     <div class="container py-5">
       <div class="row">
         <div class="col-md-12">
-          <h1 class="display-3 mb-4 text-primary">Hero image intro</h1>
-          <p class="lead mb-5 text-light">Pingendo is a HTML editor for everyone. Easy for newbies, useful for professionals.
-            <br>Code quality is a must. Pingendo generates clean, battle-tested, modular Bootstrap 4 code. </p>
+          <h1 class="display-3 mb-4 text-light">Do you have any brilliant ideas?
+          <br>Share them with us and start like a... </h1><h1 class="display-3 mb-4 text-primary">rocket!</h1>
           <a href="#" class="btn btn-lg mx-1 btn-primary">Start a Project!</a>
           <a href="#" class="btn btn-lg btn-primary mx-1">Back a Project!</a>
         </div>

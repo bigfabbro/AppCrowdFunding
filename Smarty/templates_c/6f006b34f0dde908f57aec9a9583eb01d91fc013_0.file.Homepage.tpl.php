@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-07-16 15:39:34
+/* Smarty version 3.1.32, created on 2018-07-16 19:23:25
   from 'C:\xampp\htdocs\AppCrowdFunding\Smarty\templates\Homepage.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b4ca0166d5606_34049668',
+  'unifunc' => 'content_5b4cd48d90a851_75803879',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '6f006b34f0dde908f57aec9a9583eb01d91fc013' => 
     array (
       0 => 'C:\\xampp\\htdocs\\AppCrowdFunding\\Smarty\\templates\\Homepage.tpl',
-      1 => 1531748371,
+      1 => 1531760962,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:navbar.tpl' => 1,
   ),
 ),false)) {
-function content_5b4ca0166d5606_34049668 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b4cd48d90a851_75803879 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html>
 
@@ -39,9 +39,8 @@ function content_5b4ca0166d5606_34049668 (Smarty_Internal_Template $_smarty_tpl)
     <div class="container py-5">
       <div class="row">
         <div class="col-md-12">
-          <h1 class="display-3 mb-4 text-primary">Hero image intro</h1>
-          <p class="lead mb-5 text-light">Pingendo is a HTML editor for everyone. Easy for newbies, useful for professionals.
-            <br>Code quality is a must. Pingendo generates clean, battle-tested, modular Bootstrap 4 code. </p>
+          <h1 class="display-3 mb-4 text-light">Do you have any brilliant ideas?
+          <br>Share them with us and start like a... </h1><h1 class="display-3 mb-4 text-primary">rocket!</h1>
           <a href="#" class="btn btn-lg mx-1 btn-primary">Start a Project!</a>
           <a href="#" class="btn btn-lg btn-primary mx-1">Back a Project!</a>
         </div>

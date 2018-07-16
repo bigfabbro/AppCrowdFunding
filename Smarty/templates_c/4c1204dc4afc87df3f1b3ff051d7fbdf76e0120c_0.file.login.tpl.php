@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-07-16 15:40:42
+/* Smarty version 3.1.32, created on 2018-07-16 19:23:18
   from 'C:\xampp\htdocs\AppCrowdFunding\Smarty\templates\login.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b4ca05aebab03_06964971',
+  'unifunc' => 'content_5b4cd486e27887_14662568',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '4c1204dc4afc87df3f1b3ff051d7fbdf76e0120c' => 
     array (
       0 => 'C:\\xampp\\htdocs\\AppCrowdFunding\\Smarty\\templates\\login.tpl',
-      1 => 1531748393,
+      1 => 1531761162,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5b4ca05aebab03_06964971 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b4cd486e27887_14662568 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html>
 
@@ -31,7 +31,7 @@ function content_5b4ca05aebab03_06964971 (Smarty_Internal_Template $_smarty_tpl)
   <link rel="stylesheet" href="Smarty/templates/css/theme.css" type="text/css">
   <link rel="stylesheet" href="/AppCrowdFunding/Smarty/templates/css/theme.css"> </head>
 
-<body style="background-image: url('/AppCrowdFunding/Smarty/img/wallpaperRazzo.jpg'); background-size:cover;">
+<body style="background-image: url('/AppCrowdFunding/Smarty/img/login.jpg'); background-size:cover;">
   <div class="py-5 w-100 h-100">
     <div class="container">
       <div class="row">
@@ -40,7 +40,7 @@ function content_5b4ca05aebab03_06964971 (Smarty_Internal_Template $_smarty_tpl)
             <b>Society Of Funding!</b>
           </h1>
           <p class="lead text-light">
-            <b>Have you any dreams?</b>
+            <b>Do you have any idea?</b>
           </p>
         </div>
         <div class="col-md-6">

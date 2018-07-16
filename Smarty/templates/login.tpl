@@ -17,7 +17,7 @@
             <b>Society Of Funding!</b>
           </h1>
           <p class="lead text-light">
-            <b>Have you any dreams?</b>
+            <b>Do you have any idea?</b>
           </p>
         </div>
         <div class="col-md-6">
