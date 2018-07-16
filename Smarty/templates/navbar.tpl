@@ -6,14 +6,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
-  <link rel="stylesheet" href="Smarty/templates/css/theme.css" type="text/css">
-  <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="/AppCrowdFunding/Smarty/templates/css/theme.css" type="text/css">
 </head>
 
 <body>
   <nav class="navbar navbar-expand-md navbar-dark bg-primary">
     <div class="container">
-      <a class="navbar-brand" href="homepage">
+      <a class="navbar-brand" href="/AppCrowdFunding/HomePage">
         <i class="fa d-inline fa-lg fa-cloud"></i>
         <b>&nbsp;Society Of Funding</b>
       </a>
@@ -24,18 +23,18 @@
         <ul class="navbar-nav">
         {if $userlogged!='nouser'}
           <li class="nav-item text-light">
-            <a class="nav-link" href="profile">
+            <a class="nav-link" href="/AppCrowdFunding/Utente/profile">
               <i class="fa d-inline fa-lg fa-user-circle-o"></i> My Profile</a>
           </li>
         </ul>
         <span class="navbar-text text-light">&nbsp; Benvenuto, {$userlogged}</span>
-        <a class="btn navbar-btn ml-2 text-primary btn-light" href="logout">&nbsp; Logout &nbsp;</a>
+        <a class="btn navbar-btn ml-2 text-primary btn-light" href="/AppCrowdFunding/Utente/logout">&nbsp; Logout &nbsp;</a>
         {else}
-        <a href="login" class="btn navbar-btn ml-2 text-primary btn-light">
+        <a href="/AppCrowdFunding/Utente/login" class="btn navbar-btn ml-2 text-primary btn-light">
           <i class="fa d-inline fa-lg fa-user-circle-o text-primary"></i>&nbsp; Login</a>
         
         <span class="navbar-text text-light">&nbsp; OR</span>
-        <a class="btn navbar-btn ml-2 text-primary btn-light" href="registration">&nbsp; Sign Up &nbsp;</a>
+        <a class="btn navbar-btn ml-2 text-primary btn-light" href="/AppCrowdFunding/Utente/registration">&nbsp; Sign Up &nbsp;</a>
         {/if}
       </div>
     </div>

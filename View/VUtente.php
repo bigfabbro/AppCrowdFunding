@@ -49,14 +49,6 @@ require_once 'include.php';
          $this->smarty->display('welcome.tpl');
      }
 
-     function showHomePage(){
-         if(!CUtente::isLogged()) $this->smarty->display('Homepage.tpl');
-         else{
-         $this->navbar();
-         $this->smarty->display('HomePage.tpl');
-         }
-     }
-
      function showActivation(){
          $this->smarty->display('activation.tpl');
      }

@@ -16,7 +16,7 @@ require_once 'include.php';
                $_SESSION['id']= $user->getId();
                $_SESSION['username']=$user->getUserName();
                $_SESSION['activate']=$user->getActivate();
-               if($user->getActivate()) $view->showHomePage();
+               if($user->getActivate()) header('Location: /AppCrowdFunding/HomePage');
                else $view->showActivation();
             }
                
@@ -32,8 +32,18 @@ require_once 'include.php';
     }
 
     static function activation(){
-        $view=new VUtente();
-        $view->showActivation();
+        if($_SERVER['REQUEST_METHOD']=="GET"){
+             $view=new VUtente();
+              $view->showActivation();
+        }
+        else if($_SERVER['REQUEST_METHOD']=="POST"){
+            CUtente::activate();
+        }
+        else {
+            header('HTTP/1.1 405 Method Not Allowed');
+            header('Allow: GET, POST');
+        }
+
     }
 
     static function activate(){
@@ -42,28 +52,48 @@ require_once 'include.php';
         $iduser=$_SESSION['id'];
         $pinsert=$_POST['activate'];
         $mc=new EMailCheck($iduser,$pinsert);
-        if($mc->VerifyCode()) $view->showHomePage();
+        if($mc->VerifyCode()) header('Location: /AppCrowdFunding/HomePage');
         else $view->showActivation();
     }
 
     static function Login(){
-        $view=new VUtente();
-        $view->showFormLogin();
-    }
-
-    static function HomePage(){
-        $view=new VUtente();
-        $view->showHomePage();
+        if($_SERVER['REQUEST_METHOD']=="GET"){
+            if(CUtente::isLogged()) header('Location: /AppCrowdFunding/HomePage');
+            else{
+                $view=new VUtente();
+                $view->showFormLogin();
+            }
+        }
+        else if($_SERVER['REQUEST_METHOD']=="POST"){
+            CUtente::EnterIn();
+        }
+        else {
+            header('HTTP/1.1 405 Method Not Allowed');
+            header('Allow: GET, POST');
+        }
     }
 
     static function Registration(){
-        $view=new VUtente();
-        $view->showFormRegistration();
+        if($_SERVER['REQUEST_METHOD']=="GET"){
+           if(CUtente::isLogged()) header('Location: /AppCrowdFunding/HomePage');
+           else{
+               $view=new VUtente();
+               $view->showFormRegistration();
+           }
+        }
+        else if($_SERVER['REQUEST_METHOD']=="POST"){
+            CUtente::SignIn();
+        }
+        else {
+            header('HTTP/1.1 405 Method Not Allowed');
+            header('Allow: GET, POST');
+        }
     }
 
     static function profile(){
         $db=FDatabase::getInstance();
         $photos=array();
+        if(CUtente::isLogged()){
         $user=$db->load('Utente',$_SESSION['id']);
         $pic1=$db->load('MediaUser',$_SESSION['id']);
         $camps=$db->loadCampByFounder($_SESSION['id']);
@@ -76,14 +106,17 @@ require_once 'include.php';
         }
         $view=new VUtente();
         $view->showProfile($user,$pic1,$camps,$photos);
+        }
+        else{
+            header('Location: /AppCrowdFunding/Utente/login');
+        }
     }
 
     static function logout(){
         session_start();
         session_unset();
         session_destroy();
-        $view=new VUtente();
-        $view->showHomePage();
+        header('Location: /AppCrowdFunding/HomePage');
     }
 
     static function NotActivated(){

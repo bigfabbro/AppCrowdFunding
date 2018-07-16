@@ -1,53 +1,27 @@
 <?php
-   
-   require_once 'include.php';
 
-   class FrontController{
+require_once 'include.php';
 
-    public function dispatch($resource,$method){
-        if($resource == "login" && !CUtente::isLogged()){
-            if($method=="GET") CUtente::login();
-            else if($method=="POST") CUtente::EnterIn();
-            else {
-               header('HTTP/1.1 405 Method Not Allowed');
-               header('Allow: GET, POST');
-             }
-       }
-       else if($resource == "registration" && !CUtente::isLogged()){
-         if($method=="GET") CUtente::registration();
-         else if($method=="POST") CUtente::SignIn();
-         else {
-           header('HTTP/1.1 405 Method Not Allowed');
-           header('Allow: GET, POST');
-         }
-       }
-       else if($resource == "logout"){
-         if($method=="GET") CUtente::logout();
-         else {
-           header('HTTP/1.1 405 Method Not Allowed');
-           header('Allow: GET');
-         }
-       }
-       else if($resource == "activation" && CUtente::NotActivated()){
-        if($method=="GET") CUtente::activation();
-        else if($method=="POST") CUtente::activate();
-        else {
-          header('HTTP/1.1 405 Method Not Allowed');
-          header('Allow: GET, POST');
+// /Controller/function/param
+
+class FrontController{
+    
+    public function dispatch($paths){
+        $controller="C".$paths[2];
+        if(class_exists($controller)){
+            $function=$paths[3];
+            if(method_exists($controller,$function)){
+                if(isset($paths[3])) $controller::$function($paths[3]);
+                else $controller::$function();
+            }
         }
-      }
-       else if($resource == "profile"){
-         if($method=="GET"){
-           if(CUtente::isLogged()) CUtente::profile();
-           else header ('Location: /AppCrowdFunding/login');
+        else{
+         $smarty=ConfSmarty::configuration();
+         if(!CUtente::isLogged()) $smarty->display('Homepage.tpl');
+         else{
+         $smarty->assign('userlogged',$_SESSION['username']);
+         $smarty->display('HomePage.tpl');
          }
-         else {
-           header('HTTP/1.1 405 Method Not Allowed');
-           header('Allow: GET, POST');
-         }
-       }
-       else{
-         CUtente::HomePage();
-         }
+        }
     }
-   }
+}

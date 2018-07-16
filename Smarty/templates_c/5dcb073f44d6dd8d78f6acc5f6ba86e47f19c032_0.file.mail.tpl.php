@@ -1,4 +1,27 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office"><head>
+<?php
+/* Smarty version 3.1.32, created on 2018-07-16 12:24:03
+  from 'C:\xampp\htdocs\AppCrowdFunding\Smarty\templates\mail.tpl' */
+
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '3.1.32',
+  'unifunc' => 'content_5b4c7243da8654_28989929',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '5dcb073f44d6dd8d78f6acc5f6ba86e47f19c032' => 
+    array (
+      0 => 'C:\\xampp\\htdocs\\AppCrowdFunding\\Smarty\\templates\\mail.tpl',
+      1 => 1531736584,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+),false)) {
+function content_5b4c7243da8654_28989929 (Smarty_Internal_Template $_smarty_tpl) {
+?><!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office"><head>
     <!--[if gte mso 9]><xml>
      <o:OfficeDocumentSettings>
       <o:AllowPNG/>
@@ -313,7 +336,9 @@ a[x-apple-data-detectors=true] {
                     <div class="">
 	<!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 30px; padding-top: 10px; padding-bottom: 5px;"><![endif]-->
 	<div style="color:#555555;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;line-height:120%; padding-right: 10px; padding-left: 30px; padding-top: 10px; padding-bottom: 5px;">	
-		<div style="font-size:12px;line-height:14px;color:#555555;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;text-align:left;"><p style="margin: 0;font-size: 14px;line-height: 17px"><strong><span style="font-size: 24px; line-height: 28px;">Benvenuto, {$user}</span></strong></p><p style="margin: 0;font-size: 14px;line-height: 17px">Per attivare il tuo account clicca sul pulsante e inserisci nell'apposita sezione il codice di attivazione.</p><p style="margin: 0;font-size: 14px;line-height: 17px"><br data-mce-bogus="1"></p><p style="margin: 0;font-size: 14px;line-height: 17px">Codice di attivazione:{$pin}</p><p style="margin: 0;font-size: 14px;line-height: 17px"><span style="font-size: 14px; line-height: 16px;"><span style="line-height: 16px; font-size: 14px;"><strong><br data-mce-bogus="1"></strong></span></span></p></div>	
+		<div style="font-size:12px;line-height:14px;color:#555555;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;text-align:left;"><p style="margin: 0;font-size: 14px;line-height: 17px"><strong><span style="font-size: 24px; line-height: 28px;">Benvenuto, <?php echo $_smarty_tpl->tpl_vars['user']->value;?>
+</span></strong></p><p style="margin: 0;font-size: 14px;line-height: 17px">Per attivare il tuo account clicca sul pulsante e inserisci nell'apposita sezione il codice di attivazione.</p><p style="margin: 0;font-size: 14px;line-height: 17px"><br data-mce-bogus="1"></p><p style="margin: 0;font-size: 14px;line-height: 17px">Codice di attivazione:<?php echo $_smarty_tpl->tpl_vars['pin']->value;?>
+</p><p style="margin: 0;font-size: 14px;line-height: 17px"><span style="font-size: 14px; line-height: 16px;"><span style="line-height: 16px; font-size: 14px;"><strong><br data-mce-bogus="1"></strong></span></span></p></div>	
 	</div>
 	<!--[if mso]></td></tr></table><![endif]-->
 </div>
@@ -323,7 +348,8 @@ a[x-apple-data-detectors=true] {
 <div align="left"  class="button-container left " style="padding-right: 10px; padding-left: 30px; padding-top:10px; padding-bottom:10px;">
   <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-spacing: 0; border-collapse: collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;"><tr><td style="padding-right: 10px; padding-left: 30px; padding-top:10px; padding-bottom:10px;" align="left"><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="" style="height:25pt; v-text-anchor:middle; width:128pt;" arcsize="9%" strokecolor="#ff4500" fillcolor="#ff4500"><w:anchorlock/><v:textbox inset="0,0,0,0"><center style="color:#ffffff; font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; font-size:14px;"><![endif]-->
     <div style="color: #ffffff; background-color: #ff4500; border-radius: 3px; -webkit-border-radius: 3px; -moz-border-radius: 3px; max-width: 171px; width: 131px;width: auto; border-top: 0px solid transparent; border-right: 0px solid transparent; border-bottom: 0px solid transparent; border-left: 0px solid transparent; padding-top: 5px; padding-right: 20px; padding-bottom: 5px; padding-left: 20px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-align: center; mso-border-alt: none;">
-      <a style="display:inline-block; font-weight: 200; text-align: center; white-space: nowrap; vertical-align: middle; user-select: none; border: 1px solid transparent; padding: 0.375rem 0.75rem; font-size: 1rem; line-height: 1.5; border-radius: 1rem;" href="{$path}" target="_blank">Attiva il tuo account</a>
+      <a style="display:inline-block; font-weight: 200; text-align: center; white-space: nowrap; vertical-align: middle; user-select: none; border: 1px solid transparent; padding: 0.375rem 0.75rem; font-size: 1rem; line-height: 1.5; border-radius: 1rem;" href="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
+" target="_blank">Attiva il tuo account</a>
     </div>
   <!--[if mso]></center></v:textbox></v:roundrect></td></tr></table><![endif]-->
 </div>
@@ -646,4 +672,5 @@ a[x-apple-data-detectors=true] {
   <!--[if (mso)|(IE)]></div><![endif]-->
 
 
-</body></html>
+</body></html><?php }
+}

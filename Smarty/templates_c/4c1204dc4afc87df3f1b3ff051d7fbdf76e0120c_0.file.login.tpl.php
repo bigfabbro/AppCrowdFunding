@@ -1,4 +1,27 @@
-<!DOCTYPE html>
+<?php
+/* Smarty version 3.1.32, created on 2018-07-16 10:56:38
+  from 'C:\xampp\htdocs\AppCrowdFunding\Smarty\templates\login.tpl' */
+
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '3.1.32',
+  'unifunc' => 'content_5b4c5dc606b0a0_06099987',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '4c1204dc4afc87df3f1b3ff051d7fbdf76e0120c' => 
+    array (
+      0 => 'C:\\xampp\\htdocs\\AppCrowdFunding\\Smarty\\templates\\login.tpl',
+      1 => 1531731384,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+),false)) {
+function content_5b4c5dc606b0a0_06099987 (Smarty_Internal_Template $_smarty_tpl) {
+?><!DOCTYPE html>
 <html>
 
 <head>
@@ -36,7 +59,7 @@
                     <button type="submit" class="btn btn-primary">Login</button>
                   </form>
                 </div>
-                <div class="card-header text-primary text-center border border-light bg-light">{if $badlogin eq "true"}Attenzione! Username e/o password errati!{/if}</div>
+                <div class="card-header text-primary text-center border border-light bg-light"><?php if ($_smarty_tpl->tpl_vars['badlogin']->value == "true") {?>Attenzione! Username e/o password errati!<?php }?></div>
               </div>
             </div>
           </div>
@@ -55,9 +78,16 @@
       </div>
     </div>
   </nav>
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <?php echo '<script'; ?>
+ src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"><?php echo '</script'; ?>
+>
+  <?php echo '<script'; ?>
+ src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"><?php echo '</script'; ?>
+>
+  <?php echo '<script'; ?>
+ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"><?php echo '</script'; ?>
+>
 </body>
 
-</html>
+</html><?php }
+}

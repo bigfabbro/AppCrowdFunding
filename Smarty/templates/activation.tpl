@@ -5,12 +5,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
-  <link rel="stylesheet" href="Smarty/templates/css/theme.css" type="text/css"> 
+  <link rel="stylesheet" href="/AppCrowdFunding/Smarty/templates/css/theme.css" type="text/css"> 
 </head>
 
 <body>
 {include file='navbar.tpl'}
-  <div class="py-5 text-center h-100 w-100" style="background-image: url('Smarty/img/wallpaperRazzo.jpg');background-size:cover;" >
+  <div class="py-5 text-center h-100 w-100" style="background-image: url('/AppCrowdFunding/Smarty/img/wallpaperRazzo.jpg');background-size:cover;" >
     <div class="container py-5">
       <div class="row">
         <div class="col-md-12">

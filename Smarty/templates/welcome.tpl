@@ -5,12 +5,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
-  <link rel="stylesheet" href="Smarty/templates/css/theme.css" type="text/css"> 
+  <link rel="stylesheet" href="/AppCrowdFunding/Smarty/templates/css/theme.css" type="text/css"> 
 </head>
 
 <body>
 {include file='navbar.tpl'}
-  <div class="py-5 text-center w-100 h-100" style="background-image: url('Smarty/img/wallpaperRazzo.jpg');background-size:cover;">
+  <div class="py-5 text-center w-100 h-100" style="background-image: url('/AppCrowdFunding/Smarty/img/wallpaperRazzo.jpg');background-size:cover;">
     <div class="container py-5">
       <div class="row">
         <div class="col-md-12">
@@ -19,7 +19,7 @@
             <br>Clicca sul link all'interno del messaggio e inserisci il codice di attivazione nell'apposita sezione!
             <br>
           </p>
-          <a href="login" class="btn btn-lg btn-primary mx-1">Vai al login</a>
+          <a href="/AppCrowdFunding/Utente/login" class="btn btn-lg btn-primary mx-1">Vai al login</a>
         </div>
       </div>
     </div>

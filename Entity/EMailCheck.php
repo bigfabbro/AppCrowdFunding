@@ -4,7 +4,7 @@ require_once 'include.php';
 class EMailCheck {
 
     static $systemMail='societyofunding@gmail.com';
-    static $path='localhost/activation';
+    static $path='localhost/AppCrowdFunding/Utente/login';
     private $iduser;
     private $pin;
 
