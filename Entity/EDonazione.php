@@ -100,6 +100,45 @@ class EDonazione
 
     }
     
+    
+    /**
+     *  torna un booleano se la form è valida, i paramateri vengono passati per riferimento
+
+     */
+    public function validate(&$ownername, &$ownersurname, &$ccnumber, &$expirationdate, &$cvv ,&$amount) {
+        $validation=true; //variabile booleana che verifica che l'oggetto donazione è valido; quando anche solo uno dei campi non è valido, diventa false
+        $replace=array(" ","'");
+           if(!preg_match("/^([a-zA-Z]{3,30})$/",str_replace($replace,'',$this->ownername))){
+               $ownername=true;
+               $validation=false;
+           }
+           if(!preg_match("/^([a-zA-Z]{3,30})$/",str_replace($replace,'',$this->surname))){
+            $ownersurname=true;
+            $validation=false;
+           }
+
+           if(!preg_match("/^([0-9]{16})$/",$this->ccnumber)){
+            $ccnumber=true;
+            $validation=false;
+           }
+
+           $date=explode('-',$this->expirationdate);
+           if(!checkdate($date[1],$date[2],$date[0])){
+            $expirationdate=true; 
+            $validation=false;}
+
+
+           if(!preg_match("/^([0-9]{3})$/",$this->CVV)){
+            $CVV=true;
+            $validation=false;
+           }
+           
+           if(!preg_match("/^([0-9]{1,10})$/",$this->amount)){
+            $amount=true;
+            $validation=false;
+           }
+           return validation;
+      }
     /**
      * @access public
      * @param $donationoccurred boolean
