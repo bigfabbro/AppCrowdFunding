@@ -15,8 +15,8 @@
       <div class="row">
         <div class="col-md-12">
           <h1 class="display-3 mb-4 text-light">Do you have any brilliant ideas?
-          <br>Share them with us and start like a... </h1><h1 class="display-3 mb-4 text-primary">rocket!</h1>
-          <a href="#" class="btn btn-lg mx-1 btn-primary">Start a Project!</a>
+          <br>Share them with us and start like a... </h1><span><h1 class="display-3 mb-4 text-primary">rocket!</h1></span>
+          <a href="/AppCrowdFunding/Campagna/StartProject" class="btn btn-lg mx-1 btn-primary">Start a Project!</a>
           <a href="#" class="btn btn-lg btn-primary mx-1">Back a Project!</a>
         </div>
       </div>

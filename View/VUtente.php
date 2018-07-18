@@ -16,6 +16,7 @@ require_once 'include.php';
             'password' => false,
             'name'=> false,
             'surname'=> false,
+            'sex'=>false,
             'email'=> false,
             'date'=>false,
             'telnumber'=> false,
@@ -37,7 +38,6 @@ require_once 'include.php';
          if(CUtente::isLogged()) $this->smarty->assign('userlogged',$_SESSION['username']);
      }
      function showFormRegistration($errors=null,$valori=null){
-         $this->navbar();
          if(isset($errors)){
              $this->smarty->assign('errors',$errors);
              $this->smarty->assign('values',$valori);
@@ -50,6 +50,7 @@ require_once 'include.php';
      }
 
      function showActivation(){
+         $this->navbar();
          $this->smarty->display('activation.tpl');
      }
 
@@ -85,79 +86,92 @@ require_once 'include.php';
         {
            return false;
         }
-        else {return true;}
+        else return true;
     }
 
+    /** Funzione che verifica la correttezza del form di registrazione.
+     * Prima si verifica se la relativa componente  dell'array $_POST è settato 
+     * ed in tal caso si richiama il metodo statico dell'entità corrispondente per 
+     * verificare la correttezza. Per i campi non necessari (numero di telefono e foto del profilo) 
+     * non è previsto che il not validate sia posto a true anche nel caso in cui non siano inseriti
+     * nel form. Per i campi che devono essere univoci si verifica anche l'univocità. La funzione
+     * restituisce l'array $notval che specifica per ogni campo del form se è valido o meno.
+     */
     function valFormRegistration(){
-        if(isset($_POST['name']) && isset($_POST['surname']) && isset($_POST['date']) && isset($_POST['city']) && isset($_POST['street']) && isset($_POST['zipcode']) && isset($_POST['country']) && isset($_POST['email']) && isset($_POST['username']) && isset($_POST['password1']) && isset($_POST['password2']))
-        {
-           $replace=array(" ","'");
-           if(!preg_match("/^([a-zA-Z]{3,30})$/",str_replace($replace,'',$_POST['name']))){
-               $this->notval['name']=true;
-           }
-           if(!preg_match("/^([a-zA-Z]{3,30})$/",str_replace($replace,'',$_POST['surname']))){
-            $this->notval['surname']=true;
-           }
-           $date=explode('-',$_POST['date']);
-           if(!checkdate($date[1],$date[2],$date[0])){
-            $this->notval['date']=true;
-           }
-           if(!preg_match("/^([a-zA-Z]{3,30})$/",str_replace($replace,'',$_POST['city']))){
-            $this->notval['city']=true;
-           }
-           if(!preg_match("/^([a-zA-Z]{3,30})$/",str_replace($replace,'',$_POST['street']))){
-            $this->notval['street']=true;
-           }
-           if(!preg_match("/^([0-9]{0,3})$/",$_POST['number'])){
-            $this->notval['number']=true;
-           }
-           if(!preg_match("/^([0-9]{5})$/",$_POST['zipcode'])){
-            $this->notval['zipcode']=true;
-           }
-           if(!preg_match("/^([a-zA-Z]{3,30})$/",str_replace($replace,'',$_POST['country']))){
-            $this->notval['country']=true;
-           }
-           if(isset($_POST['telephon'])){
-            if(!preg_match("/^([0-9]{9,10})$/",$_POST['telephon'])){
-             $this->notval['telnumber']=true;
-            }
-           }
-           if(!preg_match("/^[A-z0-9\.\+_-]+@[A-z0-9\._-]+\.[A-z]{2,6}$/",$_POST['email'])){
-            $this->notval['email']=true;
-           }
-           if(!preg_match("/^([a-zA-Z0-9_]{3,30})$/",$_POST['username'])){
-            $this->notval['username']=true;
-           }
-           if(!preg_match("/^([a-zA-Z0-9_]{8,30})$/",$_POST['password1'])){
-            $this->notval['password']=true;
-           }
-           if(!preg_match("/^([a-zA-Z0-9_]{8,30})$/",$_POST['password2'])){
-            $this->notval['password']=true;
-           }
-           if(!($_POST['password1']==$_POST['password2'])){
-            $this->notval['password']=true;
-           }
-           if(isset($_FILES['upicture'])){
-              if(!($_FILES['upicture']['type']=='image/png' || $_FILES['upicture']['type']=='image/jpeg')){
-                $this->notval['profpic']=true;
-              }
-            }
-            else $this->notaval['profpic']=true;
+
+        if(isset($_POST['name'])){
+            $this->notval['name']=!EUtente::valName($_POST['name']); 
         }
-        else
-        {
-            if(!isset($_POST['name'])) $this->notval['name']=true;
-            if(!isset($_POST['surname'])) $this->notval['surname']=true;
-            if(!isset($_POST['date'])) $this->notval['date']=true;
-            if(!isset($_POST['city'])) $this->notval['city']=true;
-            if(!isset($_POST['street'])) $this->notval['street']=true;
-            if(!isset($_POST['zipcode'])) $this->notval['zipcode']=true;
-            if(!isset($_POST['country'])) $this->notval['country']=true;
-            if(!isset($_POST['email'])) $this->notval['email']=true;
-            if(!isset($_POST['username'])) $this->notval['username']=true;
-            if(!isset($_POST['password1'])|| !isset($_POST['password2'])) $this->notval['password']=true;
+        else   $this->notval['name']=true;
+
+        if(isset($_POST['surname'])){
+            $this->notval['surname']=!EUtente::valSurname($_POST['surname']); 
         }
-          return $this->notval;
+        else   $this->notval['surname']=true;
+
+        if(isset($_POST['username'])){
+            if(!EUtente::valUsername($_POST['username']) || EUtente::UsernameExist($_POST['username'])){
+                $this->notval['username']=true;
+            }
+        }
+        else   $this->notval['username']=true;
+
+        if(isset($_POST['sex'])){
+            $this->notval['sex']=!EUtente::valSex($_POST['sex']); 
+        }
+        else  $notval['sex']=true;
+
+        if(isset($_POST['email'])){
+            if(!EUtente::valEmail($_POST['email']) || EUtente::MailExist($_POST['email'])){
+                $this->notval['email']=true;
+            }
+        }
+        else   $this->notval['email']=true;
+
+        if(isset($_POST['telnumber'])){
+            $this->notval['telnumber']=!EUtente::valTelnum($_POST['telnumber']); 
+        }
+
+        if(isset($_POST['date'])){
+            $this->notval['date']=!EUtente::valDatan($_POST['date']); 
+        }
+        else   $this->notval['date']=true;
+
+        if($_POST['password1']==$_POST['password2']){
+            $this->notval['password']=!EUtente::valPassword($_POST['password1']);
+        }
+        else  $this->notval['password']=true;
+
+        if($_FILES['upicture']['errors']!=0){
+            $this->notval['upicture']=!EMediaUser::valPic($_FILES['upicture']['type']);
+        }
+
+        if(isset($_POST['city'])){
+            $this->notval['city']=!EIndirizzo::valCity($_POST['city']);
+        }
+        else $notval['city']=true;
+
+        if(isset($_POST['street'])){
+            $this->notval['street']=!EIndirizzo::valStreet($_POST['street']);
+        }
+        else  $this->notval['street']=true;
+
+        if(isset($_POST['number'])){
+            $this->notval['number']=!EIndirizzo::valNumber($_POST['number']);
+        }
+        else  $this->notval['number']=true;
+
+        if(isset($_POST['zipcode'])){
+            $this->notval['zipcode']=!EIndirizzo::valZipcode($_POST['zipcode']);
+        }
+        else  $this->notval['zipcode']=true;
+
+        if(isset($_POST['country'])){
+            $this->notval['country']=!EIndirizzo::valCountry($_POST['country']);
+        }
+        else  $this->notval['country']=true;
+
+        return $this->notval;
     }
 
     public function setBadLogin(){

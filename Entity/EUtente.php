@@ -116,13 +116,6 @@ class EUtente
     public function setActivate($act){
         $this->activate=$act;
     }
-
-    public function CreaUtente(EIndirizzo $address, EMediaUser $picture){
-        $db=FDatabase::getInstance();
-        $db->store($address);
-        $db->store($picture);
-    }
-    
     
     public function CreaReward($name,$pled,$desc,$media,$idcamp){
         $rew=new EReward($name, $pled, $desc, $media, $idcamp);
@@ -142,10 +135,12 @@ class EUtente
     
     
     public function CreaCampagna($na, $de, $cat, $cou, $startd,$endd, $bc, $gl){
-        $cr=new ECampagna(15,$na, $de, $cat, $cou, $startd,$endd, $bc, $gl);
+        $cr=new ECampagna($this->getId(),$na, $de, $cat, $cou, $startd,$endd, $bc, $gl);
         echo $cr;
         $db=FDatabase::getInstance();
         $db->store($cr);
+        $id=$db->exist('Campagna','name',$na);
+        return $id;
     }
     
     public function EliminaCampagna(ECampagna $camp){
@@ -249,7 +244,77 @@ class EUtente
   
     }
 
+    //validation
     
+    static function valName($val):bool{
+        $replace=array(" ","'");
+        if(!preg_match("/^([a-zA-Z]{3,30})$/",str_replace($replace,'',$val))){
+            return false;
+        }
+        else return true;
+    }
+    
+    static function valSurname($val):bool{
+        $replace=array(" ","'");
+        if(!preg_match("/^([a-zA-Z]{3,30})$/",str_replace($replace,'',$val))){
+            return false;
+        }
+        else return true;
+    }
+
+    static function valUsername($val):bool{
+        if(!preg_match("/^([a-zA-Z0-9_]{3,30})$/",$val)){
+            return false;
+           }
+        return true;
+    }
+
+    static function valPassword($val):bool{
+        if(!preg_match("/^([a-zA-Z0-9_]{8,30})$/",$val)){
+            return false;
+           }
+        return true;
+    }
+    
+    static function valSex($val):bool{
+        if(!($val=="m" || $val=="M" || $val=="F" || $val=="f")){
+            return false;
+           }
+        return true;
+    }
+
+    static function valDatan($val):bool{
+        $date=explode('-',$val);
+        if(!checkdate($date[1],$date[2],$date[0])){
+            return false;
+        }
+        else return true;
+    }
+
+    static function valEmail($val):bool{
+        if(filter_var($val, FILTER_VALIDATE_EMAIL)) return true;
+        else return false;
+    }
+
+    static function valTelnum($val):bool{
+        if(!preg_match("/^([0-9]{9,10})$/",$val)){
+            return false;
+        }
+        else return true;
+    }
+
+    static function UsernameExist($val):bool{
+        $db=FDatabase::getInstance();
+        if($db->exist('Utente','username',$val)) return true;
+        else return false;
+    }
+
+    static function MailExist($val):bool{
+        $db=FDatabase::getInstance();
+        if($db->exist('Utente','email',$val)) return true;
+        else return false;
+    }
+
 
 }
 

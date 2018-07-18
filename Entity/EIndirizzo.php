@@ -9,7 +9,7 @@ class EIndirizzo{
     private $country;
     private $iduser;
 
-    public function __construct($ci,$str,$num,$zc,$co,$idu){
+    public function __construct($ci,$str,$num,$zc,$co,$idu=null){
         $this->city=$ci;
         $this->street=$str;
         $this->number=$num;
@@ -75,5 +75,45 @@ class EIndirizzo{
     public function __toString(){
         $st="ID: ".$this->getId()." City: ".$this->getCity()." street: ".$this->getStreet()." number: ".$this->getNum();
         return $st;
+    }
+
+    //validation
+
+    static function valCity($val){
+        $replace=array(" ","'");
+        if(!preg_match("/^([a-zA-Z]{0,50})$/",str_replace($replace,'',$val))){
+            return false;
+        }
+        else return true;
+    }
+
+    static function valStreet($val){
+        $replace=array(" ","'");
+        if(!preg_match("/^([a-zA-Z]{0,100})$/",str_replace($replace,'',$val))){
+            return false;
+        }
+        else return true;
+    }
+
+    static function valNumber($val){
+        if(!preg_match("/^([0-9]{0,4})$/",$val)){
+            return false;
+        }
+        else return true;
+    }
+
+    static function valZipcode($val){
+        if(!preg_match("/^([0-9]{0,5})$/",$val)){
+            return false;
+        }
+        else return true;
+    }
+
+    static function valCountry($val){
+        $replace=array(" ","'");
+        if(!preg_match("/^([a-zA-Z]{0,100})$/",str_replace($replace,'',$val))){
+            return false;
+        }
+        else return true;
     }
 }

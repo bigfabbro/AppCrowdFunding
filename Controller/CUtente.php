@@ -155,54 +155,45 @@ require_once 'include.php';
       else return false;
     }
 
+    /** Funzione che dopo aver verificato il form rimanda al form di registrazione segnalando gli errori (controllo server side)
+     * e reinserendo nel form i valori corretti; oppure provvede, attraverso i metodi di livello foundation, ad inserire i dati dell'utente 
+     * creato nel database e invia la mail di attivazione alla mail indicata.
+     */
     static function SignIn(){
         $val=true;
         $view=new VUtente();
         $notval=$view->ValFormRegistration();
         foreach($notval as $errore => $valore){
-            if ($valore==true&&$errore!="profpic"&&$errore!="telnumber") {$val=false; break;}
-        }
-        if($val){
-            $db=FDatabase::getInstance();
-            $unameval=$db->exist('Utente','username',$_POST['username']);
-            $emailval=$db->exist('Utente','email',$_POST['email']);
-            $numberval=$db->exist('Utente','telephon',$_POST['telephon']);
-            if($unameval || $emailval || $numberval){
-              if($unameval){
-                $notval['username']=true;
-              }
-              if($emailval){
-                $notval['email']=true;
-              }
-              if($numberval){
-                $notval['numver']=true;
-              }
-              $view->showFormRegistration($notval,$_POST);
+            if ($valore==true) {
+                $val=false; 
+                break;
             }
-            else{
-                $user=new EUtente($_POST['username'],$_POST['password1'],$_POST['name'],$_POST['surname'],$_POST['sex'],$_POST['date'],$_POST['email'],$_POST['telephon'],$_POST['description']);
-                $db=Fdatabase::getInstance();
-                $db->store($user);
-                $iduser= $db->exist('Utente','username',$user->getUserName());
-                $address=new EIndirizzo($_POST['city'],$_POST['street'],$_POST['number'],$_POST['zipcode'],$_POST['country'],$iduser);
-                $up=new Upload();
-                if(!$notval['profpic']){
-                    $picture=$up->myphoto($_FILES['upicture'],$iduser);
-                    $user->CreaUtente($address,$picture);
-                }
-                else {
-                    $picture=$up->standard($iduser);
-                    $user->CreaUtente($address,$picture);
-                }
-                $mail=new EMailCheck();
-                if($mail->sendActivEmail($user->getEmail(),$user->getUserName())){;
+        }
+        if(!$val) {
+            $view->showFormRegistration($notval,$_POST);
+        }
+        else{
+            $user=new EUtente($_POST['username'],$_POST['password1'],$_POST['name'],$_POST['surname'],$_POST['sex'],$_POST['date'],$_POST['email'],$_POST['telnumber'],$_POST['description']);
+            $db=Fdatabase::getInstance();
+            $db->store($user);
+            $iduser= $db->exist('Utente','username',$user->getUserName());
+            $address=new EIndirizzo($_POST['city'],$_POST['street'],$_POST['number'],$_POST['zipcode'],$_POST['country'],$iduser);
+            $db->store($address);
+            $up=new Upload();
+            if(!$notval['profpic']){
+                $picture=$up->myphoto($_FILES['upicture'],$iduser);
+                $db->store($picture);
+            }
+            else {
+                $picture=$up->standard($iduser);
+                $db->store($picture);
+            }
+            $mail=new EMailCheck();
+            if($mail->sendActivEmail($user->getEmail(),$user->getUserName())){;
                 $mail->setIdUser($iduser);
                 $db->store($mail);
-                }
-
-                $view->showWelcome();
             }
+            $view->showWelcome();
         }
-        else $view->showFormRegistration($notval,$_POST);
     }
   }

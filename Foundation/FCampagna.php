@@ -6,7 +6,7 @@ require_once 'include.php';
 class FCampagna
 {
     private static $tables="campagne";
-    private static $values="(:id,:founder,:name,:description,:category,:media,:country,:startdate,:enddate,:bankcount,:goal,:funds,:visibility)";
+    private static $values="(:id,:founder,:name,:description,:category,:country,:startdate,:enddate,:bankcount,:goal,:funds,:visibility)";
     
     public function __construct(){}
 
@@ -22,11 +22,10 @@ class FCampagna
         $stmt->bindValue(':name', $camp->getName(), PDO::PARAM_STR); //ricorda di "collegare" la giusta variabile al bind
         $stmt->bindValue(':description', $camp->getDescription(), PDO::PARAM_STR);
         $stmt->bindValue(':category', $camp->getCategory(), PDO::PARAM_STR);
-        $stmt->bindValue(':media', null, PDO::PARAM_INT);
         $stmt->bindValue(':country', $camp->getCountry(), PDO::PARAM_STR);
         $stmt->bindValue(':startdate', $camp->getStartDate(), PDO::PARAM_STR);
         $stmt->bindValue(':enddate', $camp->getEndDate(), PDO::PARAM_STR);
-        $stmt->bindValue(':bankcount', $camp->getBankCount(), PDO::PARAM_INT);
+        $stmt->bindValue(':bankcount', $camp->getBankCount(), PDO::PARAM_STR);
         $stmt->bindValue(':goal', $camp->getGoal(), PDO::PARAM_STR);
         $stmt->bindValue(':funds', $camp->getFunds(), PDO::PARAM_STR);
         $stmt->bindValue(':visibility', $camp->getVis(), PDO::PARAM_STR);
@@ -69,6 +68,24 @@ class FCampagna
     
     public static function getValues(){
         return static::$values;
+    }
+
+    public static function exist(PDO &$db,$field,$val) {
+        if(is_array($field))
+        {
+            $sql="SELECT id"." FROM ".static::getTables()." WHERE ".$field[0]."= '".$val[0]."' AND ".$field[1]."='".$val[1]."';";
+        }
+        else $sql="SELECT id"." FROM ".static::getTables()." WHERE ".$field."='".$val."';";
+        try{
+            $stmt=$db->prepare($sql);
+            $stmt->execute();
+            $row=$stmt->fetch(PDO::FETCH_ASSOC);
+            return $row['id'];
+         }
+         catch(PDOException $e){
+             echo "Attenzione errore: ".$e->getMessage();
+             die;
+         }
     }
     
     

@@ -29,10 +29,10 @@
                   <form action="login" method="POST">
                     <div class="form-group bg-light">
                       <label class="text-primary">Username</label>
-                      <input type="text" class="form-control" placeholder="Enter username" name="username"> </div>
+                      <input type="text" class="form-control" placeholder="Enter username" name="username" required="required"> </div>
                     <div class="form-group bg-light">
                       <label class="text-primary">Password</label>
-                      <input type="password" class="form-control" placeholder="Enter password" name="password"> </div>
+                      <input type="password" class="form-control" placeholder="Enter password" name="password" required="required"> </div>
                     <button type="submit" class="btn btn-primary">Login</button>
                   </form>
                 </div>

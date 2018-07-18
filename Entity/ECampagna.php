@@ -160,8 +160,6 @@ class ECampagna
         return $this->comments;
     }
 
-
-    
     public function __toString(){
         $st="Founder: ".$this->getFounder()." ID: ".$this->getId()." Name: ".$this->getName()." Description: ".$this->getDescription()." Goal: ".$this->getGoal()." Bank account: ".$this->bankcount." Start Date: ".$this->startdate." End Date: ".$this->enddate." Funds: ".$this->getFunds()."\n";
         foreach($this->getRew() as $rew){

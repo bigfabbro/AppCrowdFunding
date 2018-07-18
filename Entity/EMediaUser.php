@@ -21,5 +21,12 @@ class EMediaUser extends EMedia{
         return $st;
     }
 
+    //validation
+
+    static function valPic($pictype){
+        if($pictype=="image/jpeg" || $pictype=="image/png") return true;
+        else return false;
+    }
+
 
 }

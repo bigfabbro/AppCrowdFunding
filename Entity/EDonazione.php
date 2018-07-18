@@ -8,7 +8,7 @@ class EDonazione
     private $amount; //quantità di denaro che si desidera donare
     private $date; //data relativa alla donazione
     private $reward; 
-    private $idutente; //username dell'utente che effettua la donazione
+    private $idutente; //id dell'utente che effettua la donazione
     private $idcamp; //id della campagna per la quale si vuole effettuare la donazione
     private $donationoccurred; //variabile booleana posta a true nel caso in cui la donazione è andata a buon fine
     private $idcc; //carta di credito con cui si effettua la donazione

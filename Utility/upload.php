@@ -22,5 +22,14 @@ class Upload{
         return $picture;
     }
 
-
+    public function photoCamp($files,$idcamp){
+        $pictures=array();
+        for($i=0; $i<count($files['tmp_name']); $i++){
+            if(move_uploaded_file($files['tmp_name'][$i],static::$path.$files['name'][$i])){
+                $pictures[]=new EMediaCamp($files['name'][$i],$idcamp);
+                echo $pictures[$i];
+            }  
+        }
+        return $pictures;
+    }
 }

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+  <link rel="stylesheet" href="C:/Users/Bigfa/Documents/GitHub/AppCrowdFunding/Smarty/templates/css/theme.css"> </head>
+
+<body style="background-image: url('../../img/wallpaperRazzo.jpg');background-size:cover;background-repeat:no-repeat;">
+  <div class="py-5">
+    <div class="container" style="position:absolute;top:20%;left:10%;visibility:visible">
+      <div class="row">
+        <div class="align-self-center col-md-6 text-white">
+          <h1 class="text-center text-md-left display-3">Welcome to the campaign creation section!</h1>
+        </div>
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-body p-5" style="height:500px">
+              <form action="https://formspree.io/YOUREMAILHERE">
+                <div class="form-group">
+                  <label for="exampleInputEmail1" style="position:absolute; top:120px; left:190px">Press "Start" to begin!&nbsp;</label>
+                </div>
+                <button type="submit" class="btn btn-primary w-75" style="position:absolute; top:200px; left:65px">Start</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container" style="position:absolute;top:20%;left:10%;visibility:hidden">
+      <div class="row">
+        <div class="align-self-center col-md-6 text-white">
+          <h1 class="text-center text-md-left display-3">Tell me your name...&nbsp;
+            <br>and I'll tell you who you are!</h1>
+        </div>
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-body p-5" style="height:500px">
+              <form action="https://formspree.io/YOUREMAILHERE">
+                <div class="form-group">
+                  <label>Campaign name</label>
+                  <input class="form-control"> </div>
+                <div class="form-group">
+                  <label>Category</label>
+                  <select name="category">
+                    <option value="Tecnology">Tecnology</option>
+                    <option value="Art">Art</option>
+                    <option value="Charities">Charities</option>
+                    <option value="Music">Music</option>
+                    <option value="Food">Food</option>
+                    <option value="Fashion">Fashion</option>
+                    <option value="Film &amp; Video">Film &amp; Video</option>
+                  </select>
+                  <div class="form-group">
+                    <label>Country</label>
+                    <input type="text" class="form-control"> </div>
+                  <button type="submit" class="btn mt-2 btn-outline-primary" style="position:absolute; top:420px; left:410">Next</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container" style="position:absolute;top:20%;left:10%;visibility:hidden">
+      <div class="row">
+        <div class="align-self-center col-md-6 text-white">
+          <h1 class="text-center text-md-left display-3">Tell us about your idea...&nbsp; </h1>
+        </div>
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-body p-5" style="height:500px">
+              <form action="https://formspree.io/YOUREMAILHERE">
+                <div class="form-group"> </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Description</label>
+                  <textarea class="form-control w-100 h-75" id="exampleTextarea" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn mt-2 btn-outline-primary" style="position:absolute; top:420px; left:410">Next</button>
+                <button type="submit" class="btn mt-2 btn-outline-primary" style="position:absolute; top:420px; left:350">Back</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container" style="position:absolute;top:20%;left:10%;visibility:hidden">
+      <div class="row">
+        <div class="align-self-center col-md-6 text-white">
+          <h1 class="text-center text-md-left display-3">Dates and Goals</h1>
+        </div>
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-body p-5" style="height:500px">
+              <form action="https://formspree.io/YOUREMAILHERE">
+                <div class="form-group">
+                  <label>Start date</label>
+                  <input class="form-control" type="date" required="required"> </div>
+                <div class="form-group">
+                  <label>End date</label>
+                  <input class="form-control" type="date" required="required"> </div>
+                <div class="form-group">
+                  <label>Bank account</label>
+                  <input class="form-control" type="text" required="required"> </div>
+                <div class="form-group">
+                  <div class="form-group">
+                    <label>Goal (in €)</label>
+                    <input type="number" class="form-control" max="1000000" min="0" step="1" required="required"> </div>
+                  <button type="submit" class="btn mt-2 btn-outline-primary" style="position:absolute; top:420px; left:410">Next</button>
+                  <button type="submit" class="btn mt-2 btn-outline-primary" style="position:absolute; top:420px; left:350">Back</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container" style="position:absolute;top:20%;left:10%;visibility:hidden">
+      <div class="row">
+        <div class="align-self-center col-md-6 text-white">
+          <h1 class="text-center text-md-left display-3">Pictures</h1>
+        </div>
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-body p-5" style="height:500px">
+              <form action="https://formspree.io/YOUREMAILHERE">
+                <div class="form-group">
+                  <label>Select max 5 pictures!</label>
+                  <input class="form-control-file" type="file" required="required" max="5" multiple=""> </div>
+                <div class="form-group">
+                  <button type="submit" class="btn mt-2 btn-outline-primary" style="position:absolute; top:420px; left:410">Next</button>
+                  <button type="submit" class="btn mt-2 btn-outline-primary" style="position:absolute; top:420px; left:350">Back</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container" style="position:absolute;top:20%;left:10%;visibility:hidden">
+      <div class="row">
+        <div class="align-self-center col-md-6 text-white">
+          <h1 class="text-center text-md-left display-3">Rewards</h1>
+        </div>
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-body p-5" style="height:500px">
+              <form action="https://formspree.io/YOUREMAILHERE">
+                <div class="form-group">
+                  <label>How many rewards do you want to offer?</label>
+                  <input class="form-control" type="number" max="6" min="0"> </div>
+                <div class="form-group">
+                  <label>The rewards are important, more interesting they are, more people will want to support your idea!</label>
+                </div>
+                <button type="submit" class="btn mt-2 btn-outline-primary" style="position:absolute; top:420px; left:410">Next</button>
+                <button type="submit" class="btn mt-2 btn-outline-primary" style="position:absolute; top:420px; left:350">Back</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container" style="position:absolute;top:20%;left:10%;visibility:hidden">
+      <div class="row">
+        <div class="align-self-center col-md-6 text-white">
+          <h1 class="text-center text-md-left display-3">Reward&nbsp;</h1>
+        </div>
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-body p-5" style="height:500px">
+              <form action="https://formspree.io/YOUREMAILHERE">
+                <div class="form-group">
+                  <label>Reward Name</label>
+                  <input class="form-control"> </div>
+                <div class="form-group">
+                  <label>Pledge (in €)</label>
+                  <input class="form-control" type="number" min="0"> </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Description</label>
+                  <textarea class="form-control form-control-sm" id="exampleTextarea" rows="3"></textarea>
+                  <div class="form-group">
+                    <label>Picture</label>
+                    <input class="form-control-file" type="file" max="1"> </div>
+                </div>
+                <button type="submit" class="btn mt-2 btn-outline-primary" style="position:absolute; top:420px; left:410">Next</button>
+                <button type="submit" class="btn mt-2 btn-outline-primary" style="position:absolute; top:420px; left:350">Back</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container" style="position:absolute;top:20%;left:10%;visibility:hidden">
+      <div class="row">
+        <div class="align-self-center col-md-6 text-white">
+          <h1 class="text-center text-md-left display-3">Congratulations you have created a campaign!</h1>
+        </div>
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-body p-5" style="height:500px">
+              <form action="https://formspree.io/YOUREMAILHERE">
+                <button type="submit" class="btn mt-2 btn-outline-primary" style="position:absolute; top:420px; left:410">Back</button>
+                <button type="submit" class="btn btn-primary w-75" style="position:absolute; top:200px; left:65px">Submit</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </div>
+  <pingendo onclick="window.open('https://pingendo.com/', '_blank')" style="cursor:pointer;position: fixed;bottom: 10px;right:10px;padding:4px;background-color: #00b0eb;border-radius: 8px; width:250px;display:flex;flex-direction:row;align-items:center;justify-content:center;font-size:14px;color:white">Made with Pingendo Free&nbsp;&nbsp;
+    <img src="https://pingendo.com/site-assets/Pingendo_logo_big.png" class="d-block" alt="Pingendo logo" height="16">
+  </pingendo>
+</body>
+
+</html>

@@ -14,42 +14,51 @@ require_once 'include.php';
          $this->notval= array (
             'name' => false,
             'category'=> false,
-            'description'=> false,
             'country'=> false,
             'stardate'=> false,
             'enddate'=> false,
-            'goal'=>false
+            'goal'=>false,
+            'numrew'=>false,
+            'bankcount'=>false,
         );
      }
 
-     function showCreaCampagna($nv=null){
-         $this->smarty->assign('notval',$nv);
-         $this->smarty->display('creacampagna.tpl');
+     function showFormCreation($errors=null,$values=null){
+        if(CUtente::isLogged()) $this->smarty->assign('userlogged',$_SESSION['username']);
+        if(isset($errors)) {
+            $this->smarty->assign('errors',$errors);
+            $this->smarty->assign('values',$values);
+        }
+        $this->smarty->assign('today',date('Y-m-d'));
+        $this->smarty->display('CampaignCreation.tpl');
      }
 
      function valFormCreaCampagna() :bool {
-         if(isset($_POST['name']) && isset($_POST['category']) && isset($_POST['country']) && isset($_POST['startdate']) && isset($_POST['enddate']) && isset($_POST['goal']))
+         if(isset($_POST['name'])&& isset($_POST['country']) && isset($_POST['enddate']) && isset($_POST['bankcount']) && isset($_POST['goal']) && isset($_POST['numrew']))
          {
-            $sdate=explode("/",$_POST['startdate']);
-            $edate=explode("/",$_POST['enddate']);
-
-            if(!preg_match('^[a-zA-Z0-9]{3,50}$',$_POST['name'])){
-                $this->notval['name']=true;
+            $replace=array(" ","'");
+            $enddate=explode('-',$_POST['enddate']);
+            if(!checkdate($enddate[1],$enddate[2],$enddate[0])){
+             $this->notval['enddate']=true;
             }
-            if(!preg_match('^[a-zA-Z]$',$_POST['category'])){
-                $this->notval['category']=true;
+            if(preg_match('/^[a-zA-Z0-9]{3,50}$/',str_replace($replace,'',$_POST['name']))){
+                $db=FDatabase::getInstance();
+                if($db->exist('Campagna','name',$_POST['name'])){
+                    $this->notval['name']=true;
+                }
             }
-            if(!preg_match('^[a-zA-Z]$',$_POST['country'])){
+            else $this->notval['name']=true;
+            if(!preg_match('/^[a-zA-Z]{0,30}$/',str_replace($replace,'',$_POST['country']))){
                 $this->notval['country']=true;
             }
-            if(!checkdate($sdate[1],$sdate[0],$sdate[2])){
-                $this->notval['startdate']=true;
-            }
-            if(!checkdate($edate[1],$edate[0],$edate[2])){
-                $this->notval['enddate']=true;
-            }
-            if(!preg_match('^[0-9]$',$_POST['goal'])){
+            if(!preg_match('/^[0-9]{1,10}$/',$_POST['goal'])){
                 $this->notval['goal']=true;
+            } 
+            if(!preg_match('/^[a-zA-Z]{2}[0-9]{2}[a-zA-Z0-9]{4}[0-9]{7}([a-zA-Z0-9]?){0,16}$/i',str_replace($replace,'',$_POST['bankcount']))){
+                $this->notval['bankcount']=true;
+            }
+            if(!preg_match('/^[0-6]$/',$_POST['numrew'])){
+                $this->notval['numrew']=true;
             } 
          }
          else
@@ -57,11 +66,12 @@ require_once 'include.php';
              if(!isset($_POST['name'])) $this->notval['name']=true;
              if(!isset($_POST['category'])) $this->notval['category']=true;
              if(!isset($_POST['country'])) $this->notval['country']=true;
-             if(!isset($_POST['startdate'])) $this->notval['startdate']=true;
              if(!isset($_POST['enddate'])) $this->notval['enddate']=true;
              if(!isset($_POST['goal'])) $this->notval['goal']=true;
+             if(!isset($_POST['bankcount'])) $this->notval['bankcount']=true;
+             if(!isset($_POST['numrew'])) $this->notval['numrew']=true;
          }
-        if($this->notval['name']==true || $this->notval['category']==true || $this->notval['country']==true || $this->notval['startdate']==true || $this->notval['enddate']==true || $this->notval['goal']==true) 
+        if($this->notval['name']==true || $this->notval['category']==true || $this->notval['country']==true || $this->notval['enddate']==true || $this->notval['goal']==true || $this->notval['bankcount']==true || $this->notval['numrew']==true) 
         {
            return false;
         }

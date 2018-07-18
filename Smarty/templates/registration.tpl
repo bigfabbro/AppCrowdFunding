@@ -107,11 +107,11 @@
                   {/if}
                   <label>Telephon number</label>
                   {if isset($errors) && $errors.telnumber eq "true"}
-                  <input type="text" class="form-control border border-danger" placeholder="Your telephon number, please" name="telephon" > </div>
+                  <input type="text" class="form-control border border-danger" placeholder="Your telephon number, please" name="telnumber" > </div>
                   {else if isset($errors)}
-                  <input type="text" class="form-control border" value="{$values.telephon}" name="telephon" > </div>
+                  <input type="text" class="form-control border" value="{$values.telnumber}" name="telnumber" > </div>
                   {else}
-                  <input type="text" class="form-control border" placeholder="Your telephon number, please" name="telephon" > </div>
+                  <input type="text" class="form-control border" placeholder="Your telephon number, please" name="telnumber" > </div>
                   {/if}
                 <div class="form-group">
               </form>
@@ -161,9 +161,9 @@
                 <div class="form-group">
                   <label>Picture&nbsp;</label>
                   {if isset($errors) && $errors.profpic eq "true"}
-                  <input type="file" class="form-control-file border boder-danger" name="upicture"> </div>
+                  <input type="file" class="form-control-file border boder-danger" name="upicture" accept="image/*"> </div>
                   {else}
-                  <input type="file" class="form-control-file" name="upicture"> </div>
+                  <input type="file" class="form-control-file" name="upicture" accept="image/*"> </div>
                   {/if}
                 <button type="submit" class="btn btn-primary btn-lg submit-button" onclick="wait()">Submit</button>
             </div>
