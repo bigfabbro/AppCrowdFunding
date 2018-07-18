@@ -31,8 +31,8 @@ require_once 'include.php';
 
 
     function createDonation(){
-        if(isset($_POST['ownername']) && isset($_POST['ownersurname']) && isset($_POST['ccnumber']) && isset($_POST['expirationdate']) && isset($_POST['cvv'])&& isset($_POST['amount'])) {
-            $donazione= new EDonazione ($_POST['ownername'], $_POST['ownersurname'], $_POST['ccnumber'], $_POST['expirationdate'], $_POST['cvv'], $_POST['amount']);
+        if(isset($_POST['amount']) && isset($_POST['date']) && isset($_POST['ownername']) && isset($_POST['ownersurname']) && isset($_POST['ccnumber'])&& isset($_POST['expirationdate'])&& isset($_POST['cvv']) {
+            $donazione= new EDonazione ($_POST['amount'], $_POST['date'], $_POST['ownername'], $_POST['ownersurname'], $_POST['ccnumber'], $_POST['expirationdate'], $_POST['cvv']);
             return $donazione;
         }
 
@@ -43,11 +43,52 @@ require_once 'include.php';
         return null;
     }
 
-    /**
-    *prende come parametro l'oggetto donazione e ritorna il risultato del metodo validate contenuto in EDonazione, nel frattempo aggiorna gli indici dell'array notval per la form 
+    /** Funzione che verifica la correttezza del form di registrazione.
+     * Prima si verifica se la relativa componente  dell'array $_POST è settato 
+     * ed in tal caso si richiama il metodo statico presente in EDonazione  per 
+     * verificare la correttezza. La funzione
+     * restituisce l'array $notval che specifica per ogni campo del form se è valido o meno.
      */
-    function validateDonazione($donazione){
-        return $donazione->validate($this->notval['ownername'], $this->notval['ownersurname'], $this->notval['ccnumber'],$this->notval['expirationdate'], $this->notval['cvv'], $this->notval['amount'] );
+    
+
+
+    function valFormDonation(){
+
+        if(isset($_POST['ownername'])){
+            $this->notval['ownername']=!EDonazione::valOwnername($_POST['ownername']); 
+        }
+        else   $this->notval['ownername']=true;
+
+        if(isset($_POST['ownersurname'])){
+            $this->notval['ownersurname']=!EDonazione::valOwnersurname($_POST['ownersurname']); 
+        }
+        else   $this->notval['ownersurname']=true;
+
+        if(isset($_POST['ccnumber'])){
+            $this->notval['ccnumber']=!EDonazione::valCcnumber($_POST['ccnumber']); 
+        }
+        else   $this->notval['ccnumber']=true;
+
+        if(isset($_POST['expirationdate'])){
+            $this->notval['expirationdate']=!EDonazione::valExpdate($_POST['expirationdate']); 
+        }
+        else  $notval['expirationdate']=true;
+
+        if(isset($_POST['cvv'])){
+            $this->notval['cvv']=!EDonazione::valCvv($_POST['cvv']); 
+        }
+        else   $this->notval['cvv']=true;
+
+
+        if(isset($_POST['amount'])){
+            $this->notval['amount']=!EDonazione::valAmount($_POST['amount']); 
+        }
+        else   $this->notval['amount']=true;
+
+        
+        
+
+        return $this->notval;
     }
 
 }
