@@ -21,7 +21,6 @@ require_once 'include.php';
             'date'=>false,
             'telnumber'=> false,
             'profpic'=> false,
-            'badlogin'=>false,
             'city'=>false,
             'street'=>false,
             'number'=>false,
@@ -30,29 +29,39 @@ require_once 'include.php';
         );
      }
 
-     function showFormLogin(){
-         $this->smarty->assign('badlogin',$this->notval['badlogin']);
+    /*****************************************************SHOW*************************************************************** */
+
+    /**Metodo per mostrare il form di login. Se $badlogin è "true" mostra un errore.*/
+
+     function showFormLogin($badlogin=null){
+         if(isset($badlogin)) $this->smarty->assign('badlogin',$badlogin);
          $this->smarty->display('login.tpl');
      }
-     function navbar(){
-         if(CUtente::isLogged()) $this->smarty->assign('userlogged',$_SESSION['username']);
-     }
-     function showFormRegistration($errors=null,$valori=null){
+
+     /**Metodo per mostrare il form di registrazione. L'array $errors è utilizzato per mostrare gli errori effettuati nella compilazione del form,
+      * l'array $values per reinserire i valori corretti della precedente compilazione non avvenuta con successo.
+      */
+     function showFormRegistration($errors=null,$values=null){
          if(isset($errors)){
              $this->smarty->assign('errors',$errors);
-             $this->smarty->assign('values',$valori);
+             $this->smarty->assign('values',$values);
          }
          $this->smarty->display('registration.tpl');
      }
+
+     /**Metodo per mostrare la pagina di benvenuto quando la registrazion va a buon fine. */
 
      function showWelcome(){
          $this->smarty->display('welcome.tpl');
      }
 
+     /**Metodo per mostrare la pagina di attivazione dell'account.*/
      function showActivation(){
          $this->navbar();
          $this->smarty->display('activation.tpl');
      }
+
+     /**Metodo per mostrare la pagina del profilo di un utente*/
 
      function showProfile(EUtente $user,EMediaUser $pic,$camps,$photos,EIndirizzo $address,$myProf){
         $this->navbar();
@@ -67,32 +76,33 @@ require_once 'include.php';
         $this->smarty->display('profile.tpl');
     }
 
-    function valFormLogin() :bool {
-         if(isset($_POST['username']) && isset($_POST['password']))
-         {
-            if(!preg_match("/^([a-zA-Z0-9]{3,15})$/",$_POST['username'])){
-                $this->notval['username']=true;
-            }
-            if(!preg_match('/^[a-zA-Z0-9]+$/',$_POST['password'])){
-                $this->notval['password']=true;
-            }
-         }
-         else
-         {
-             if(!isset($_POST['username'])) $this->notval['username']=true;
-             if(!isset($_POST['password'])) $this->notval['password']=true;
-         }
-        if($this->notval['username']==true || $this->notval['password']==true) 
-        {
-           return false;
-        }
-        else return true;
+    /** Metodo utilizzato per assegnare lo username da inserire nella navbar se l'utente è loggato */
+    
+    function navbar(){
+        if(CUtente::isLogged()) $this->smarty->assign('userlogged',$_SESSION['username']);
     }
 
-    /** Funzione che verifica la correttezza del form di registrazione.
-     * Prima si verifica se la relativa componente  dell'array $_POST è settato 
+    /*******************************************************VALIDATION******************************************************** */
+
+    /**Funzione che verifica la correttezza dei dati inseriti nel form di login.
+     * Prima si verifica se la relativa componenete dell'array $_POST settata
+     * ed in tal caso si richiamam il metodo statico dell'entità corrispondente 
+     * per verificarne la correttezza. Restituisce un booleano.
+     */
+
+    function valFormLogin() :bool {
+         if(isset($_POST['username']) && isset($_POST['password'])){
+            if(!EUtente::valUsername($_POST['username']) || !EUtente::valPassword($_POST['password'])){
+                 return false;
+            }
+         }
+         return true;
+    }
+
+    /** Funzione che verifica la correttezza dei dati inseriti nel form di registrazione.
+     * Prima si verifica se la relativa componente  dell'array $_POST è settata
      * ed in tal caso si richiama il metodo statico dell'entità corrispondente per 
-     * verificare la correttezza. Per i campi non necessari (numero di telefono e foto del profilo) 
+     * verificarne la correttezza. Per i campi non necessari (numero di telefono e foto del profilo) 
      * non è previsto che il not validate sia posto a true anche nel caso in cui non siano inseriti
      * nel form. Per i campi che devono essere univoci si verifica anche l'univocità. La funzione
      * restituisce l'array $notval che specifica per ogni campo del form se è valido o meno.
@@ -174,11 +184,10 @@ require_once 'include.php';
         return $this->notval;
     }
 
-    public function setBadLogin(){
-        $this->notval['badlogin']=true;
-    }
+    /**Funzione che restituisce il vettore degli errori */
 
     function getNotVal(){
         return $this->notval;
     }
+
 }

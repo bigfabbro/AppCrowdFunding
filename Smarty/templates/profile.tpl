@@ -41,7 +41,7 @@
           </ul>
           <div class="tab-content mt-2">
             <div class="tab-pane fade show active" id="tabone" role="tabpanel">
-              {include file='profileinfo.tpl'  description=$user->getBio() city=$address->getCity() street=$address->getStreet() number=$address->getNum() zipcode=$address->getZipcode() country=$address->getCountry() sex=$user->getSex() datan=$user->getDatan() telnum=$user->getTel() }
+              {include file='profileinfo.tpl'  username=$user->getUserName() description=$user->getBio() city=$address->getCity() street=$address->getStreet() number=$address->getNum() zipcode=$address->getZipcode() country=$address->getCountry() sex=$user->getSex() datan=$user->getDatan() telnum=$user->getTel() }
             </div>
             <div class="tab-pane fade" id="tabtwo" role="tabpanel">
               {foreach $camps as $camp}

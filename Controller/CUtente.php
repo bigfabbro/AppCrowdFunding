@@ -4,59 +4,17 @@ require_once 'include.php';
 
   class CUtente{
 
-  static function EnterIn(){
-        $view=new VUtente();
-         if($view->ValFormLogin()){
-           $db=FDatabase::getInstance();
-           $id=$db->exist('Utente',array('username','password'),array($_POST['username'],$_POST['password']));
-           if($id){
-            if (session_status() == PHP_SESSION_NONE) session_start();
-               $user=$db->load('Utente',$id);
-               $db->closeDbConnection();
-               $_SESSION['id']= $user->getId();
-               $_SESSION['username']=$user->getUserName();
-               $_SESSION['activate']=$user->getActivate();
-               if($user->getActivate()) header('Location: /AppCrowdFunding/HomePage');
-               else $view->showActivation();
-            }
-               
-           else{
-            $view->setBadLogin();
-            $view->showFormLogin();
-           }
-        }
-        else{   
-            $view->setBadLogin();
-            $view->showFormLogin();
-        }
-    }
+/*********************************************LOGIN**************************************************** */
 
-    static function activation(){
-        if($_SERVER['REQUEST_METHOD']=="GET"){
-             $view=new VUtente();
-              $view->showActivation();
-        }
-        else if($_SERVER['REQUEST_METHOD']=="POST"){
-            CUtente::activate();
-        }
-        else {
-            header('HTTP/1.1 405 Method Not Allowed');
-            header('Allow: GET, POST');
-        }
-
-    }
-
-    static function activate(){
-        if (session_status() == PHP_SESSION_NONE) session_start();
-        $view= new VUtente();
-        $iduser=$_SESSION['id'];
-        $pinsert=$_POST['activate'];
-        $mc=new EMailCheck($iduser,$pinsert);
-        if($mc->VerifyCode()) header('Location: /AppCrowdFunding/HomePage');
-        else $view->showActivation();
-    }
-
-    static function Login(){
+/**Metodo che in base al metodo di richiesta HTTP provvede:
+ * 1) nel caso in cui il metodo di richiesta sia GET:
+ *   1a) se l'utente non è loggato a mostrare la pagina di login;
+ *   1b) se l'utente è già loggato a mostrare la homepage (non può loggarsi nuovamente!);
+ * 2) nel caso in cui il metodo di richiesta sia POST ad effettuare tutti i controlli necessari
+ *   al fine del login.
+ * 3) se il metodo di richiesta è diverso da GET e POST restituisce un errore di metodo non permesso.
+ */
+   static function Login(){
         if($_SERVER['REQUEST_METHOD']=="GET"){
             if(CUtente::isLogged()) header('Location: /AppCrowdFunding/HomePage');
             else{
@@ -72,6 +30,94 @@ require_once 'include.php';
             header('Allow: GET, POST');
         }
     }
+
+/**Metodo che dopo aver verificato la correttezza del form di login, verifica, attraverso
+ * il richiamo della metodo exist che esista la coppia (username, password) specificata.
+ * Si possono avere due situazioni:
+ * 1) La coppia (username, password) esiste --> viene aperta la sessione con i dati dell'utente;
+ *    1a) se l'account dell'utente è stato stato già attivato --> viene mostrata la homepage;
+ *    1b) se l'account dell'utente non è stato ancora attivato --> viene mostrata la pagina di attivazione;
+ * 2) La coppia (username,password) non esiste --> viene mostrata nuovamente la pagina di login con messaggio di errore.
+ */
+
+  static function EnterIn(){
+        $view=new VUtente();
+         if($view->ValFormLogin()){
+           $db=FDatabase::getInstance();
+           $id=$db->exist('Utente',array('username','password'),array($_POST['username'],$_POST['password']));
+           if($id){
+            if (session_status() == PHP_SESSION_NONE) session_start();
+               $user=$db->load('Utente',$id);
+               $db->closeDbConnection();
+               $_SESSION['id']= $user->getId();
+               $_SESSION['username']=$user->getUserName();
+               $_SESSION['activate']=$user->getActivate();
+               if($user->getActivate()) header('Location: /AppCrowdFunding/HomePage');
+               else $view->showActivation();
+            } 
+           else{
+            $view->showFormLogin(true); //il true sta per "login errato! Ci sono errori"
+           }
+        }
+        else{   
+            $view->showFormLogin(false); //il fase sta per "login corretto! Non ci sono errori"
+        }
+    }
+
+    /*********************************************ACTIVATION************************************************************** */
+
+    /**Metodo che in base al metodo di richiesta HTTP provvede:
+ * 1) nel caso in cui il metodo di richiesta sia GET:
+ *   1a) se l'utente non ha ancora attivato l'account a mostrare la pagina di attivazione;
+ *   1b) se l'utente ha già attivato l'account a mostrare la homepage (non può attivarlo nuovamente!);
+ * 2) nel caso in cui il metodo di richiesta sia POST rinvia alla metodo che effettua il controllo sull'attivazione
+ * 3) se il metodo di richiesta è diverso da GET e POST restituisce un errore di metodo non permesso.
+ */
+    static function activation(){
+        if($_SERVER['REQUEST_METHOD']=="GET"){
+            if(CUtente::NotActivated()){
+             $view=new VUtente();
+              $view->showActivation();
+            }
+            else header('Location: /AppCrowdFunding/HomePage');
+        }
+        else if($_SERVER['REQUEST_METHOD']=="POST"){
+            CUtente::activate();
+        }
+        else {
+            header('HTTP/1.1 405 Method Not Allowed');
+            header('Allow: GET, POST');
+        }
+
+    }
+
+    /** Metodo che provvede a verificare che il pin di attivazione inserito dall'utente nell'apposito form
+     * corrisponde a quello inviato tramite mail e:
+     * 1) nel caso in cui il metodo VerifyCode() (che provvede a verificare tramite DB se il pin corrisponde ed eventualmente a contrassegnare
+     *    come attivato l'account) restituisca "true" mostra la homepage;
+     * ") nel caso in cui il metodo VerifyCode() restituisca "false" mostra nuovamente la pagina di attivazione.
+     */
+
+    static function activate(){
+        if (session_status() == PHP_SESSION_NONE) session_start();
+        $view= new VUtente();
+        $iduser=$_SESSION['id'];
+        $pinsert=$_POST['activate'];
+        $mc=new EMailCheck($iduser,$pinsert);
+        if($mc->VerifyCode()) header('Location: /AppCrowdFunding/HomePage');
+        else $view->showActivation();
+    }
+
+    /*************************************************************REGISTRATION******************************************* */
+
+     /**Metodo che in base al metodo di richiesta HTTP provvede:
+ * 1) nel caso in cui il metodo di richiesta sia GET:
+ *   1a) se l'utente non è loggato a mostrare la pagina di registrazione;
+ *   1b) se l'utente è loggato a mostrare la homepage (non può registrarsi!);
+ * 2) nel caso in cui il metodo di richiesta sia POST rinvia alla metodo che effettua il controllo del form di registrazione 
+ *    nonché di richiamare i metodi per l'inserimento dei dati nel DB;
+ * 3) se il metodo di richiesta è diverso da GET e POST restituisce un errore di metodo non permesso.
+ */
 
     static function Registration(){
         if($_SERVER['REQUEST_METHOD']=="GET"){
@@ -90,74 +136,12 @@ require_once 'include.php';
         }
     }
 
-    static function profile($username=null){
-        $db=FDatabase::getInstance();
-        $id=null;
-        $myProf=false;
-        if(isset($username)){
-            $id=$db->exist('Utente','username',$username);
-        }
-        else {
-           if(CUtente::isLogged()) $id=$_SESSION['id'];
-        }
-        if(isset($id)){
-            $photos=array();
-            $user=$db->load('Utente',$id);
-            $pic1=$db->load('MediaUser',$id);
-            $camps=$db->loadCampByFounder($id);
-            $address=$db->load('Indirizzo',$id);
-            foreach($camps as $camp){
-                $pics=$db->load('MediaCamp',$camp->getId());
-                if(count($pics)){
-                    $photos[$camp->getId()]=base64_encode($pics[0]->getData());
-                }
-                else $photos[$camp->getId()]=null;
-            }
-            if($_SESSION['id']==$id) $myProf=true;
-            $view=new VUtente();
-            $view->showProfile($user,$pic1,$camps,$photos,$address,$myProf);
-        }
-        else header('Location: /AppCrowdFunding/HomePage');
-    }
-
-    static function removeUser():bool{
-        if(CUtente::isLogged()){
-            $db=FDatabase::getInstance();
-            if($db->delete('Utente','id',$_SESSION['id'])){
-                 CUtente::logout();
-                 header('Location: /AppCrowdFunding/HomePage');
-            }
-            else header('Location: /AppCrowdFunding/Utente/profile');
-        }
-        else header('Location: /AppCrowdFunding/Utente/login');
-    }
-
-    static function logout(){
-        session_start();
-        session_unset();
-        session_destroy();
-        header('Location: /AppCrowdFunding/HomePage');
-    }
-
-    static function NotActivated(){
-        if(session_status()== PHP_SESSION_NONE){
-            session_start();
-        }
-        if(isset($_SESSION['activated'])&&(!$_SESSION['activated'])) return true;
-        else return false;
-    }
-
-    static function isLogged(){
-       if (session_status() == PHP_SESSION_NONE) {
-            session_start();
-       }
-      if(isset($_SESSION['username'])) return true;
-      else return false;
-    }
-
-    /** Funzione che dopo aver verificato il form rimanda al form di registrazione segnalando gli errori (controllo server side)
-     * e reinserendo nel form i valori corretti; oppure provvede, attraverso i metodi di livello foundation, ad inserire i dati dell'utente 
-     * creato nel database e invia la mail di attivazione alla mail indicata.
+    /**Metodo che dopo aver verificato il form attraverso il metodo ValFormRegistration() provvede a:
+     * 1) nel caso in cui il form sia corretto a inserire nel DB l'utente e tutti i suoi dati (Indirizzo e Foto profilo),
+     *    ad inviare l'email di attivazione/verifica dell'account e a mostrare la pagina di benvenuto;
+     * 2) nel caso in cui il form non è corretto (Es. per inserimento di dati che non rispettano il formato richiesto, oppure
+     *    per esistenza di un altro account con stessa email e/o stesso username) rinvia alla pagina di registrazione specificando 
+     *    anche gli eventuali errori.
      */
     static function SignIn(){
         $val=true;
@@ -196,4 +180,96 @@ require_once 'include.php';
             $view->showWelcome();
         }
     }
+
+    /********************************************PROFILE E MANAGEMENT ************************************************************* */
+
+    /** Metodo che mostra il profilo dell'utente loggato o il profilo di un altro utente a seconda del tipo di URL:
+     * 1) URL: /AppCrowdFunding/Utente/profile/username --> mostra il profilo dell'utente corrispondente all'username (se esiste);
+     * 2) URL: /AppCrowdFunding/Utente/profile --> mostra il profilo dell'utente loggato (se è loggato)
+     * 3) in tutti gli altri casi (utente non loggato o username inesistente) mostra la homepage.
+     */
+
+    static function profile($username=null){
+        $db=FDatabase::getInstance();
+        $id=null;
+        $myProf=false;
+        if(isset($username) && $id=$db->exist('Utente','username',$username));
+        else if(CUtente::isLogged()) $id=$_SESSION['id'];
+        else header('Location: /AppCrowdFunding/HomePage');
+        if(isset($id)){
+            $photos=array();
+            $user=$db->load('Utente',$id);
+            $pic1=$db->load('MediaUser',$id);
+            $camps=$db->loadCampByFounder($id);
+            $address=$db->load('Indirizzo',$id);
+            foreach($camps as $camp){
+                $pics=$db->load('MediaCamp',$camp->getId());
+                if(count($pics)){
+                    $photos[$camp->getId()]=base64_encode($pics[0]->getData());
+                }
+                else $photos[$camp->getId()]=null;
+            }
+            if($_SESSION['id']==$id) $myProf=true; //booleano che serve a riconoscere se il profilo è il proprio per abilitare funzionalità di management dell'account (Es. Cancellazione dell'account)
+            $view=new VUtente();                   
+            $view->showProfile($user,$pic1,$camps,$photos,$address,$myProf);
+        }
+    }
+
+    /**Metodo per la cancellazione di un account. Si basa su una URL del tipo: /AppCrowdFunding/Utente/removeUser/username
+     * dove lo username è quello dell'utente da rimuovere. Possono verificarsi diverse situazioni:
+     * 1) se l'utente è loggato:
+     *   1a) se il suo username corrisponde a quello dell'utente da cancellare si provvede alla cancellazione, viene effettuato il logout e
+     *       viene mostrata la homepage;
+     *   1b) se il suo username non corrisponde viene rispedito alla homepage;
+     * 2) se l'utente non è loggato viene rinviato alla pagina di login.
+     */
+
+    static function removeUser($username=null){
+    if(isset($username)){
+        if(CUtente::isLogged()){
+            if($_SESSION['username']==$username){
+                $db=FDatabase::getInstance();
+                if($db->delete('Utente','id',$_SESSION['id'])){
+                    CUtente::logout();
+                    header('Location: /AppCrowdFunding/HomePage');
+                }
+                else header('Location: /AppCrowdFunding/Utente/profile');
+            }
+            else header('Location: /AppCrowdFunding/HomePage');
+        }
+        else header('Location: /AppCrowdFunding/Utente/login');
+    }
+    else header('Location: /AppCrowdFunding/HomePage');
+    }
+
+    /** Metodo che provvede alla rimozione delle variabili di sessione, alla sua distruzione e a rinviare alla homepage  */
+
+    static function logout(){
+        session_start();
+        session_unset();
+        session_destroy();
+        header('Location: /AppCrowdFunding/HomePage');
+    }
+
+    /**Metodo che verifica l'attivazione dell'account dell'utente loggato */
+
+    static function NotActivated(){
+        if(session_status()== PHP_SESSION_NONE){
+            session_start();
+        }
+        if(isset($_SESSION['activated'])&&(!$_SESSION['activated'])) return true;
+        else return false;
+    }
+
+    /**Metodo che verifica se l'utente è loggato */
+
+    static function isLogged(){
+       if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+       }
+      if(isset($_SESSION['username'])) return true;
+      else return false;
+    }
+
+    
   }

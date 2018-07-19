@@ -33,7 +33,7 @@
       <div class="row">
         <div class="col-md-6">
           <div class="card">
-            <div class="card-body p-5 h-100">
+            <div class="card-body p-5 style="height:940px"">
               <h3 class="pb-3">Basic Information</h3>
                 <div class="form-group">
                   <label>Name</label>
@@ -120,7 +120,7 @@
         </div>
         <div class="col-md-6">
           <div class="card">
-            <div class="card-body p-5 h-100">
+            <div class="card-body p-5 style="height:955px"">
               <h3 class="pb-3">Profile information</h3>
                 <div class="form-group">
                   <label>E-mail</label>

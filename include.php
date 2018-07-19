@@ -28,7 +28,7 @@
    require_once 'Foundation/FIndirizzo.php';
    require_once 'Foundation/FMailCheck.php';
    require_once 'Entity/EMailCheck.php';
-
+   require_once 'Controller/CCampagna.php';
    require_once 'Entity/EDonazione.php';
    require_once 'View/VDonazione.php';
    require_once 'Foundation/FDonazione.php';

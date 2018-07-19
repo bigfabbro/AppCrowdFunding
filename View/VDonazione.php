@@ -31,7 +31,7 @@ require_once 'include.php';
 
 
     function createDonation(){
-        if(isset($_POST['amount']) && isset($_POST['date']) && isset($_POST['ownername']) && isset($_POST['ownersurname']) && isset($_POST['ccnumber'])&& isset($_POST['expirationdate'])&& isset($_POST['cvv']) {
+        if(isset($_POST['amount']) && isset($_POST['date']) && isset($_POST['ownername']) && isset($_POST['ownersurname']) && isset($_POST['ccnumber'])&& isset($_POST['expirationdate'])&& isset($_POST['cvv'])) {
             $donazione= new EDonazione ($_POST['amount'], $_POST['date'], $_POST['ownername'], $_POST['ownersurname'], $_POST['ccnumber'], $_POST['expirationdate'], $_POST['cvv']);
             return $donazione;
         }

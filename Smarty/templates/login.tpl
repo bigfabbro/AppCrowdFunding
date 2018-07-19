@@ -36,7 +36,7 @@
                     <button type="submit" class="btn btn-primary">Login</button>
                   </form>
                 </div>
-                <div class="card-header text-primary text-center border border-light bg-light">{if $badlogin eq "true"}Attenzione! Username e/o password errati!{/if}</div>
+                <div class="card-header text-primary text-center border border-light bg-light">{if isset($badlogin) && $badlogin eq "true"}Attenzione! Username e/o password errati!{/if}</div>
               </div>
             </div>
           </div>

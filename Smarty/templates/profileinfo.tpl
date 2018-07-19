@@ -16,7 +16,7 @@
             <div class="card-body">
               <h4 class="card-title">Attenzione! Ti ricordiamo che la cancellazione dell'account è irreversibile e comporta la cancellazione di tutte le campagne!.</h4>
               <a class="btn btn-light text-dark" style="height:40px;width:150px" onclick="cancel()" >Cancel</a>
-              <a class="btn btn-danger" style="height:40px;width:150px" href="/AppCrowdFunding/Utente/removeUser" >Delete Account</a>
+              <a class="btn btn-danger" style="height:40px;width:150px" href="/AppCrowdFunding/Utente/removeUser/{$username}" >Delete Account</a>
             </div>
           </div>
         </div>
