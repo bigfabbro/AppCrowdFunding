@@ -77,6 +77,12 @@ class EIndirizzo{
         return $st;
     }
 
+    static function Update($field,$val,$iduser){
+        $db=FDatabase::getInstance();
+        $address=$db->load('Indirizzo',$iduser);
+        $db->update('Indirizzo',$address->getId(),$field,$val);
+    }
+
     //validation
 
     static function valCity($val){

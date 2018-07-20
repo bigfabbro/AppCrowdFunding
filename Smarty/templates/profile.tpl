@@ -9,6 +9,7 @@
 
 <body style="background-image: url('/AppCrowdFunding/Smarty/img/wallpaperRazzo.jpg'); background-size:cover;">
 {include file='navbar.tpl'}
+{include file='modifyprof.tpl' description=$user->getBio() city=$address->getCity() street=$address->getStreet() number=$address->getNum() zipcode=$address->getZipcode() country=$address->getCountry() datan=$user->getDatan() telnum=$user->getTel()}
   <div class="py-5 text-center ">
     <div class="container">
       <div class="row">

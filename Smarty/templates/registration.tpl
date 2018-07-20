@@ -20,7 +20,7 @@
           </div>
         </div>
       </div>
-  <div class="py-5">
+  <div class="py-5" style="height:940px">
     <div class="container">
       <div class="row">
         <div class="col-md-12">
@@ -120,7 +120,7 @@
         </div>
         <div class="col-md-6">
           <div class="card">
-            <div class="card-body p-5 style="height:955px"">
+            <div class="card-body p-5 style="height:955px">
               <h3 class="pb-3">Profile information</h3>
                 <div class="form-group">
                   <label>E-mail</label>

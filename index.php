@@ -1,6 +1,5 @@
 <?php
   require_once 'include.php';
-  $path = $_SERVER['REQUEST_URI'];
-  $paths=explode("/",$path); 
+  $url = $_SERVER['REQUEST_URI'];
   $fcontroller=new FrontController();
-  $fcontroller->dispatch($paths);
+  $fcontroller->dispatch($url);

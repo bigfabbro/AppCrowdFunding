@@ -184,19 +184,19 @@ require_once 'include.php';
     /********************************************PROFILE E MANAGEMENT ************************************************************* */
 
     /** Metodo che mostra il profilo dell'utente loggato o il profilo di un altro utente a seconda del tipo di URL:
-     * 1) URL: /AppCrowdFunding/Utente/profile/username --> mostra il profilo dell'utente corrispondente all'username (se esiste);
+     * 1) URL: /AppCrowdFunding/Utente/profile?username=nomeutente --> mostra il profilo dell'utente corrispondente all'username (se esiste);
      * 2) URL: /AppCrowdFunding/Utente/profile --> mostra il profilo dell'utente loggato (se è loggato)
      * 3) in tutti gli altri casi (utente non loggato o username inesistente) mostra la homepage.
      */
 
-    static function profile($username=null){
+    static function profile($param=null){
         $db=FDatabase::getInstance();
         $id=null;
         $myProf=false;
-        if(isset($username) && $id=$db->exist('Utente','username',$username));
+        if(isset($param['username'])) $id=$db->exist('Utente','username',$param['username']);
         else if(CUtente::isLogged()) $id=$_SESSION['id'];
         else header('Location: /AppCrowdFunding/HomePage');
-        if(isset($id)){
+        if($id){
             $photos=array();
             $user=$db->load('Utente',$id);
             $pic1=$db->load('MediaUser',$id);
@@ -209,6 +209,7 @@ require_once 'include.php';
                 }
                 else $photos[$camp->getId()]=null;
             }
+            CUtente::isLogged();
             if($_SESSION['id']==$id) $myProf=true; //booleano che serve a riconoscere se il profilo è il proprio per abilitare funzionalità di management dell'account (Es. Cancellazione dell'account)
             $view=new VUtente();                   
             $view->showProfile($user,$pic1,$camps,$photos,$address,$myProf);
@@ -242,6 +243,32 @@ require_once 'include.php';
     else header('Location: /AppCrowdFunding/HomePage');
     }
 
+    /**Metodo per l'update di alcune informazioni dell'account. Di norma il metodo è utilizzato
+     * da una richiesta AJAX del tipo: /AppCrowdFunding/Utente/UpdateProfile?chiave1=valore1&chiave2=valore2.
+     * Il frontcontroller consegna al metodo l'array $param contenente le coppie "chiave-valore".
+     * Il metodo richiama poi, in base al campo da aggiornare, il giusto metodo di classe di livello Entity.
+     */
+    static function UpdateProfile($param){
+        if(($_SERVER['REQUEST_METHOD']=="POST")){
+            if(CUtente::isLogged()){
+                for($i=0; $i<count($param); $i++){
+                    if(key($param)=="city" || key($param)=="street" || key($param)=="number" || key($param)=="zipcode" || key($param)=="country"){
+                        EIndirizzo::update(key($param),current($param),$_SESSION['id']);
+                    }
+                    else{
+                        EUtente::update(key($param),current($param),$_SESSION['id']);
+                    }
+                    next($param);
+                }
+            }
+            else header('Location: /AppCrowdFunding/Utente/login');
+        }
+        else{
+            header('HTTP/1.1 405 Method Not Allowed');
+            header('Allow: POST');
+        }
+    }
+
     /** Metodo che provvede alla rimozione delle variabili di sessione, alla sua distruzione e a rinviare alla homepage  */
 
     static function logout(){
@@ -270,6 +297,7 @@ require_once 'include.php';
       if(isset($_SESSION['username'])) return true;
       else return false;
     }
+
 
     
   }

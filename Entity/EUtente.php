@@ -117,23 +117,7 @@ class EUtente
         $this->activate=$act;
     }
     
-    public function CreaReward($name,$pled,$desc,$media,$idcamp){
-        $rew=new EReward($name, $pled, $desc, $media, $idcamp);
-        $db=FDatabase::getInstance();
-        $db->store($rew);
-        return $rew;
-    }
-    
-    public function EliminaReward(EReward $rew){
-        $db=FDatabase::getInstance();
-        if($db->delete("Reward",$rew->getId())){
-            echo "Reward Cancellata!";
-            unset($rew);
-        }
-        else echo "Errore!";
-    }
-    
-    
+
     public function CreaCampagna($na, $de, $cat, $cou, $startd,$endd, $bc, $gl){
         $cr=new ECampagna($this->getId(),$na, $de, $cat, $cou, $startd,$endd, $bc, $gl);
         echo $cr;
@@ -142,106 +126,10 @@ class EUtente
         $id=$db->exist('Campagna','name',$na);
         return $id;
     }
-    
-    public function EliminaCampagna(ECampagna $camp){
-        $db=FDatabase::getInstance();
-        if($db->delete("Campagna",$camp->getId())) {
-            echo "Campagna Cancellata!";
-            unset($camp);
-        }
-        else echo "Errore!";
-    }
 
-    public function AddImgCampagna($filename,$idcamp)
-    {
-        $img=new EMedia($filename,$idcamp);
+    static function Update($field,$val,$id){
         $db=FDatabase::getInstance();
-        $db->store($img);
-    }
-
-    public function ElimImgCampagna(EMedia $img){
-        $db=FDatabase::getInstance();
-        if($db->delete("Media",$img->getId())) {
-            echo "Immagine Cancellata!";
-            unset($img);
-        }
-        else echo "Errore!";
-    }
-    
-    //Update Campagna
-    public function UpdImgCampagna($id,$newvalue){
-        $db=FDatabase::getInstance();
-        $db->update("Media",$id,"data",$newvalue);
-    }
-    
-    public function UpdNomeCampagna ($id, $newvalue){
-        $db=FDatabase::getInstance();
-        $db->update("Campagna",$id,"name",$newvalue);
-    }
-    
-    public function UpdDescrCampagna ($id, $newvalue){
-        $db=FDatabase::getInstance();
-        $db->update("Campagna",$id,"description",$newvalue);
-    }
-    
-    public function UpdCountryCampagna ($id, $newvalue){
-        $db=FDatabase::getInstance();
-        $db->update("Campagna",$id,"country",$newvalue);
-    }
-    
-    //Update Reward
-    
-    public function UpdNameReward ($id, $newvalue) {
-        $db=FDatabase::getInstance();
-        $db->update("Reward", $id, "namereward", $newvalue);
-    }
-    
-    public function UpdPledged ($id, $newvalue) {
-        $db=FDatabase::getInstance();
-        $db->update("Reward", $id, "pledged", $newvalue);
-    }
-    
-    public function UpdDescriptRew ($id, $newvalue) {
-        $db=FDatabase::getInstance();
-        $db->update("Reward", $id, "descriptionrew", $newvalue);
-    }
-    
-    public function UpdMediaRew ($id, $newvalue) {
-        $db=FDatabase::getInstance();
-        $db->update("Reward", $id, "mediarew", $newvalue);
-  
-    }
-
-    //Update Carta di Credito
-
-    public function UpdOwnerName ($ccnumber, $newvalue) {
-        $db=FDatabase::getInstance();
-        $db->update("CartaCredito", $ccnumber, "ownername", $newvalue);
-  
-    }
-
-    public function UpdOwnerSurname ($ccnumber, $newvalue) {
-        $db=FDatabase::getInstance();
-        $db->update("CartaCredito", $ccnumber, "ownersurname", $newvalue);
-  
-    }
-
-    public function UpdCvv ($ccnumber, $newvalue) {
-        $db=FDatabase::getInstance();
-        $db->update("CartaCredito", $ccnumber, "cvv", $newvalue);
-  
-    }
-
-    public function UpdExpirationDate ($ccnumber, $newvalue) {
-        $db=FDatabase::getInstance();
-        $db->update("CartaCredito", $ccnumber, "expirationdate", $newvalue);
-  
-    }
-
-    public function UpdCcNumber ($ccnumber, $newvalue) {
-        $db=FDatabase::getInstance();
-        $db->update("CartaCredito", $ccnumber, "ccnumber", $newvalue);
-  
+        $db->update('Utente',$id,$field,$val);
     }
 
     //validation
