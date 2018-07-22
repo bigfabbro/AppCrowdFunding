@@ -26,11 +26,11 @@ function closemodifypanel()
         document.getElementById("number"),
         document.getElementById("country"),
         document.getElementById("zipcode"),
-        document.getElementById("telnum"),
+        document.getElementById("telnumber"),
         document.getElementById("datan")
         ]
     for(i=0; i<inp.length; i++){
-        if(inp[i].value!=inp[i].defaultValue){
+        if(inp[i].value!=("ci"+inp[i].getAttribute('id')).innerHTML){
             if(i>0 && change==true){
                 request=request+"&"+inp[i].getAttribute('id')+"="+inp[i].value
             }
@@ -44,10 +44,31 @@ function closemodifypanel()
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange= function(){
             if(this.readyState == 4 && this.status == 200){
-                location.reload();
+                for(i=0; i<inp.length;  i++){
+                    if(inp[i].value!=("ci"+inp[i].getAttribute('id')).innerHTML){
+                        document.getElementById("ci"+inp[i].getAttribute('id')).innerHTML=inp[i].value
+                    }
+                }
             }
         }
-        xmlhttp.open("POST",request,true);
-        xmlhttp.send();
+        xmlhttp.open("POST",request,true)
+        xmlhttp.send()
+    }
+}
+
+function inputVerify(id){
+    var request="/AppCrowdFunding/Utente/Modify?"
+    var inp=document.getElementById('id')
+    if(inp.value!=("ci"+id.innerHTML)){
+        request=request+id+"="+inp.value
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange= function(){
+            if(this.readyState == 4 && this.status == 200){ //readyState==4 --> request finished and response is ready status==200 --> OK
+                if(this.responseText==true) alert("YES")
+                else alert("NO")
+            }
+        }
+        xmlhttp.open("POST",request,true)
+        xmlhttp.send()
     }
 }

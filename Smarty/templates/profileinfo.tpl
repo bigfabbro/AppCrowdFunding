@@ -31,16 +31,20 @@
             </div>
             <div class="card-body">
               <h5 class="card-title">Address and Telephone number:</h5>
-              <p class="card-text">City: {$city}
-                <br>Street:{$street},{$number}
-                <br>Zipcode: {$zipcode}
-                <br>Country: {$country}
-                <br>Tel. Number:{$telnum}</p>
+              <p class="card-text" style="display:inline">City: </p><p class="card-text" id="cicity" style="display:inline">{$city}</p>
+              <br>
+              <p class="card-text" style="display:inline">Street: </p><p class="card-text" style="display:inline" id="cistreet">{$street}</p><p class="card-text" style="display:inline">, </p><p class="card-text" id="cinumber" style="display:inline">{$number} </p>
+              <br>
+              <p class="card-text" style="display:inline">Zipcode: </p><p class="card-text" id="cizipcode" style="display:inline">{$zipcode}</p>
+              <br>
+              <p class="card-text" style="display:inline">Country: </p><p class="card-text" id="cicountry" style="display:inline">{$country}</p>
+              <br>
+              <p class="card-text" style="display:inline">Tel. Number:</p><p class="card-text" id="citelnumber" style="display:inline">{$telnum}</p>
             </div>
             <div class="card-body">
               <h5 class="card-title">Other:</h5>
-              <p class="card-text">Birth date: {$datan}
-                <br>Sex: {$sex}</p>
+              <p class="card-text" style="display:inline">Birth date: </p> <p class="card-text" id="cidatan" style="display:inline">{$datan}</p>
+              <p class="card-text">Sex: {$sex}</p>
             </div>
             {if $myProf eq "true"}
             <div class="card-body">

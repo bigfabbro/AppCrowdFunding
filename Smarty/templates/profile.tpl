@@ -14,7 +14,7 @@
     <div class="container">
       <div class="row">
         <div class="p-4" style="transition: all 0.25s;">
-          <div class="card text-white p-5 m-0 box-input1">
+          <div class="card text-white p-5 m-0 box-input1" style="width:390px">
             <div class="card-block my-3">
               <img class="d-block rounded-circle img-fluid" src="data:image/jpeg;base64,{$pic64}" width=200 height=200>
               <hr>

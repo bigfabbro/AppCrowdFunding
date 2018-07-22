@@ -269,6 +269,18 @@ require_once 'include.php';
         }
     }
 
+    static function Modify($param){
+        if(($_SERVER['REQUEST_METHOD']=="POST")){
+            $view=new VUtente();
+            if($view->valFormModify()) return true;
+            else return false;
+        }
+        else{
+            header('HTTP/1.1 405 Method Not Allowed');
+            header('Allow: POST');
+        }
+    }
+
     /** Metodo che provvede alla rimozione delle variabili di sessione, alla sua distruzione e a rinviare alla homepage  */
 
     static function logout(){

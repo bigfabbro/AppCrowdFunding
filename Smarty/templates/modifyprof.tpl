@@ -33,7 +33,7 @@
           <div class="card-body p-5">
               <div class="form-group">
                 <label>Telephon number</label>
-                <input class="form-control" placeholder="Tel. number" value="{$telnum}" id="telnum"> 
+                <input class="form-control" placeholder="Tel. number" value="{$telnum}" id="telnumber"> 
               </div>
               <div class="form-group">
                 <label>Date of Birth</label>
