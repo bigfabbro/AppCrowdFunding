@@ -1,13 +1,19 @@
+//Funzione utilizzata per l'apertura del messaggio di warning per la cancellazione dell'account 
+
 function attention() 
     {
+        document.getElementById("modalmodify").style.visibility= "hidden"
         document.getElementById("modalattention").style.visibility = "visible"
- 
     }
+
+// Funzione utilizzata per la chiusura del messaggio di warning per la cancellazione dell'account
 
 function cancelattention()
 {
     document.getElementById("modalattention").style.visibility = "hidden"
 }
+
+// Funzione per l'apertura del pannello di modifica del profilo
 
 function openmodifypanel()
 {
@@ -15,6 +21,13 @@ function openmodifypanel()
     document.getElementById("modalmodify").style.visibility= "visible"
 }
 
+/** Funzione per la chiusura del pannello di modifica del profilo. In primis verifica se sono state apportate delle modifiche e:
+ * 1) Se non sono presenti delle modifiche si limita a rendere invisibile il pannello;
+ * 2) Se sono presenti delle modifiche:
+ *    a) crea la stringa dei parametri della richiesta POST da inviare al server;
+ *    b) invia una richiesta AJAX di tipo POST al server --> quest'ultimo attraverso un apposito metodo effettua (dopo quello effettuato client-side
+ *       con il metodo "inputVerify()") un controllo sull'input e inserisce i nuovi dati nel database.
+ */
 function closemodifypanel()
 {
     var change=false
@@ -49,6 +62,7 @@ function closemodifypanel()
                 for(i=0; i<inp.length;  i++){
                     if(inp[i].value!=document.getElementById("ci"+inp[i].getAttribute('id')).innerHTML){
                         document.getElementById("ci"+inp[i].getAttribute('id')).innerHTML=inp[i].value
+                        inp[i].defaultValue = inp[i].value
                     }
                 }
             }
@@ -59,9 +73,17 @@ function closemodifypanel()
     }
 }
 
+/** Funzione che si occupa del controllo client-side degli errori. Viene richiamata ogni qualvolta viene cambiato il contenuto di una
+ * input box del form ed invia una richiesta AJAX di tipo POST al server che verifica la validità dell'input e restituisce una risposta true o false
+ * sottoforma di stringa. Si possono avere due circostanze:
+ * 1) se l'input è corretto è possibile rendere permanenti le modifiche cliccando sul tasto finish;
+ * 2) se l'input di una o più input box non è corretto, l'errore viene esplicitato dal fatto che le input box vengono circondate da un bordo rosso
+ *   e il bottone "finish" viene disabilitato --> verrà riabilitato quando tutte le input box con bordo rosso saranno corrette.
+  */
+
 function inputVerify(id){
     var param=""
-    var request="/AppCrowdFunding/Utente/Modify"
+    var request="/AppCrowdFunding/Utente/VerifyModify"
     var inp=document.getElementById(id)
     var inps=[
         document.getElementById("city"),
@@ -102,6 +124,8 @@ function inputVerify(id){
         xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded")
         xmlhttp.send(param)
 }
+
+/** Funzione che si occupa del reset del form di modifica del profilo. Viene attivata cliccando sul bottone "cancel". */
 
 function cancelmodify(){
     var inps=[

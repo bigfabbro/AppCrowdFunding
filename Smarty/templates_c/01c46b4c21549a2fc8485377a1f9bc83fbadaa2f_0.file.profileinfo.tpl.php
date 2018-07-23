@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-07-23 13:53:11
+/* Smarty version 3.1.32, created on 2018-07-23 18:03:29
   from 'C:\xampp\htdocs\AppCrowdFunding\Smarty\templates\profileinfo.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b55c1a73ed7c0_59205162',
+  'unifunc' => 'content_5b55fc51ecf4a2_56510294',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '01c46b4c21549a2fc8485377a1f9bc83fbadaa2f' => 
     array (
       0 => 'C:\\xampp\\htdocs\\AppCrowdFunding\\Smarty\\templates\\profileinfo.tpl',
-      1 => 1532346592,
+      1 => 1532361781,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5b55c1a73ed7c0_59205162 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b55fc51ecf4a2_56510294 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html>
 
@@ -89,9 +89,6 @@ function content_5b55c1a73ed7c0_59205162 (Smarty_Internal_Template $_smarty_tpl)
           </div>
 
         </div>
-  <?php echo '<script'; ?>
- src="/AppCrowdFunding/Smarty/templates/js/modal.js"><?php echo '</script'; ?>
->
   <?php echo '<script'; ?>
  src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"><?php echo '</script'; ?>
 >

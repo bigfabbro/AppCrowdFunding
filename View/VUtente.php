@@ -184,7 +184,7 @@ require_once 'include.php';
         return $this->notval;
     }
 
-    public function ValFormModify() :bool {
+    public function ValModify() :bool {
         $val=key($_POST);
         if($val=="city") return EIndirizzo::valCity($_POST['city']);
         else if($val=="street") return EIndirizzo::valStreet($_POST['street']);
@@ -193,6 +193,33 @@ require_once 'include.php';
         else if($val=="country") return EIndirizzo::valCountry($_POST['country']);
         else if($val=="telnum") return EUtente::valTelnum($_POST['telnum']);
         else if($val=="datan") return EUtente::valDatan($_POST['city']);
+    }
+
+    public function ValRegistration() :bool {
+        $val=key($_POST);
+        if($val=="name") return EUtente::valName($_POST['name']);
+        else if($val=="surname") return EUtente::valSurname($_POST['surname']);
+        else if($val=="sex") return EUtente::valSex($_POST['sex']);
+        else if($val=="city") return EIndirizzo::valCity($_POST['city']);
+        else if($val=="street") return EIndirizzo::valStreet($_POST['street']);
+        else if($val=="number") return EIndirizzo::valNumber($_POST['number']);
+        else if($val=="zipcode") return EIndirizzo::valZipcode($_POST['zipcode']);
+        else if($val=="country") return EIndirizzo::valCountry($_POST['country']);   
+        else if($val=="telnum") return EUtente::valTelnum($_POST['telnum']);
+        else if($val=="datan") return EUtente::valDatan($_POST['city']);
+        else if($val=="email"){
+            if(EUtente::valEmail($_POST['email'])){
+                if(!EUtente::MailExist($_POST['email'])) return true;
+            }
+            else return false;
+        }
+        else if($val=="username"){
+            if(EUtente::valUsername($_POST['username'])){
+                if(!EUtente::UsernameExist($_POST['username'])) return true;
+            }
+            else return false;
+        }
+        else if($val=="password1") return EUtente::valPassword($_POST['password1']);
     }
 
     /**Funzione che restituisce il vettore degli errori */

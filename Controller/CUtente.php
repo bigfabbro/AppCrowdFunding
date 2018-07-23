@@ -250,12 +250,15 @@ require_once 'include.php';
     static function UpdateProfile(){
         if(($_SERVER['REQUEST_METHOD']=="POST")){
             if(CUtente::isLogged()){
+                $view=new VUtente();
                 for($i=0; $i<count($_POST); $i++){
-                    if(key($_POST)=="city" || key($_POST)=="street" || key($_POST)=="number" || key($_POST)=="zipcode" || key($_POST)=="country"){
-                        EIndirizzo::update(key($_POST),current($_POST),$_SESSION['id']);
-                    }
-                    else{
-                        EUtente::update(key($_POST),current($_POST),$_SESSION['id']);
+                    if($view->ValFormModify()){
+                        if(key($_POST)=="city" || key($_POST)=="street" || key($_POST)=="number" || key($_POST)=="zipcode" || key($_POST)=="country"){
+                            EIndirizzo::update(key($_POST),current($_POST),$_SESSION['id']);
+                        }
+                        else{
+                            EUtente::update(key($_POST),current($_POST),$_SESSION['id']);
+                        }
                     }
                     next($_POST);
                 }
@@ -268,10 +271,14 @@ require_once 'include.php';
         }
     }
 
-    static function Modify(){
-        if(($_SERVER['REQUEST_METHOD']=="POST")){
+/** Metodo che viene utilizzato per verificare se l'input inserito dall'utente nel form di modifica del profilo utente è corretto o meno.
+ *  Più precisamente viene effettuata una richiesta AJAX al server e dalla risposta si capisce se l'input e corretto o meno.
+*/
+
+    static function VerifyModify(){
+        if($_SERVER['REQUEST_METHOD']=="POST"){
             $view=new VUtente();
-            if($view->ValFormModify()) echo "true";
+            if($view->ValModify()) echo "true";
             else echo "false";
         }
         else{
@@ -280,7 +287,19 @@ require_once 'include.php';
         }
     }
 
-    /** Metodo che provvede alla rimozione delle variabili di sessione, alla sua distruzione e a rinviare alla homepage  */
+    static function VerifyRegistration(){
+        if($_SERVER['REQUEST_METHOD']=="POST"){
+            $view=new VUtente();
+            if($view->ValRegistration()) echo "true";
+            else echo "false";
+        }
+        else{
+            header('HTTP/1.1 405 Method Not Allowed');
+            header('Allow: POST');
+        }
+    }
+
+/** Metodo che provvede alla rimozione delle variabili di sessione, alla sua distruzione e a rinviare alla homepage  */
 
     static function logout(){
         session_start();

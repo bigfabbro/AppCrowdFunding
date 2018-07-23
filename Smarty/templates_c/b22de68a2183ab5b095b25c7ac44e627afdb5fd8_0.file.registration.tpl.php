@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-07-16 19:39:43
+/* Smarty version 3.1.32, created on 2018-07-23 18:33:37
   from 'C:\xampp\htdocs\AppCrowdFunding\Smarty\templates\registration.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b4cd85fbc42e6_74496654',
+  'unifunc' => 'content_5b560361caebb9_73835233',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'b22de68a2183ab5b095b25c7ac44e627afdb5fd8' => 
     array (
       0 => 'C:\\xampp\\htdocs\\AppCrowdFunding\\Smarty\\templates\\registration.tpl',
-      1 => 1531757366,
+      1 => 1532363340,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:navbar.tpl' => 1,
   ),
 ),false)) {
-function content_5b4cd85fbc42e6_74496654 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b560361caebb9_73835233 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html>
 
@@ -45,7 +45,7 @@ function content_5b4cd85fbc42e6_74496654 (Smarty_Internal_Template $_smarty_tpl)
           </div>
         </div>
       </div>
-  <div class="py-5">
+  <div class="py-5" style="height:940px">
     <div class="container">
       <div class="row">
         <div class="col-md-12">
@@ -58,7 +58,7 @@ function content_5b4cd85fbc42e6_74496654 (Smarty_Internal_Template $_smarty_tpl)
       <div class="row">
         <div class="col-md-6">
           <div class="card">
-            <div class="card-body p-5 h-100">
+            <div class="card-body p-5 style="height:940px"">
               <h3 class="pb-3">Basic Information</h3>
                 <div class="form-group">
                   <label>Name</label>
@@ -140,12 +140,12 @@ function content_5b4cd85fbc42e6_74496654 (Smarty_Internal_Template $_smarty_tpl)
                   <?php }?>
                   <label>Telephon number</label>
                   <?php if (isset($_smarty_tpl->tpl_vars['errors']->value) && $_smarty_tpl->tpl_vars['errors']->value['telnumber'] == "true") {?>
-                  <input type="text" class="form-control border border-danger" placeholder="Your telephon number, please" name="telephon" > </div>
+                  <input type="text" class="form-control border border-danger" placeholder="Your telephon number, please" name="telnumber" > </div>
                   <?php } elseif (isset($_smarty_tpl->tpl_vars['errors']->value)) {?>
-                  <input type="text" class="form-control border" value="<?php echo $_smarty_tpl->tpl_vars['values']->value['telephon'];?>
-" name="telephon" > </div>
+                  <input type="text" class="form-control border" value="<?php echo $_smarty_tpl->tpl_vars['values']->value['telnumber'];?>
+" name="telnumber" > </div>
                   <?php } else { ?>
-                  <input type="text" class="form-control border" placeholder="Your telephon number, please" name="telephon" > </div>
+                  <input type="text" class="form-control border" placeholder="Your telephon number, please" name="telnumber" > </div>
                   <?php }?>
                 <div class="form-group">
               </form>
@@ -154,7 +154,7 @@ function content_5b4cd85fbc42e6_74496654 (Smarty_Internal_Template $_smarty_tpl)
         </div>
         <div class="col-md-6">
           <div class="card">
-            <div class="card-body p-5 h-100">
+            <div class="card-body p-5 style="height:955px">
               <h3 class="pb-3">Profile information</h3>
                 <div class="form-group">
                   <label>E-mail</label>
@@ -197,9 +197,9 @@ function content_5b4cd85fbc42e6_74496654 (Smarty_Internal_Template $_smarty_tpl)
                 <div class="form-group">
                   <label>Picture&nbsp;</label>
                   <?php if (isset($_smarty_tpl->tpl_vars['errors']->value) && $_smarty_tpl->tpl_vars['errors']->value['profpic'] == "true") {?>
-                  <input type="file" class="form-control-file border boder-danger" name="upicture"> </div>
+                  <input type="file" class="form-control-file border boder-danger" name="upicture" accept="image/*"> </div>
                   <?php } else { ?>
-                  <input type="file" class="form-control-file" name="upicture"> </div>
+                  <input type="file" class="form-control-file" name="upicture" accept="image/*"> </div>
                   <?php }?>
                 <button type="submit" class="btn btn-primary btn-lg submit-button" onclick="wait()">Submit</button>
             </div>
