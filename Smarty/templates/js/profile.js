@@ -96,7 +96,7 @@ function inputVerify(id){
         document.getElementById("datan")
         ]
     var cansubmit=true
-        param=param+id+"="+inp.value
+        param=id+"="+inp.value
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange= function(){
             if(this.readyState == 4 && this.status == 200){ //readyState==4 --> request finished and response is ready status==200 --> OK

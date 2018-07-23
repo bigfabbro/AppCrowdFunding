@@ -192,7 +192,7 @@ require_once 'include.php';
         else if($val=="zipcode") return EIndirizzo::valZipcode($_POST['zipcode']);
         else if($val=="country") return EIndirizzo::valCountry($_POST['country']);
         else if($val=="telnum") return EUtente::valTelnum($_POST['telnum']);
-        else if($val=="datan") return EUtente::valDatan($_POST['city']);
+        else if($val=="datan") return EUtente::valDatan($_POST['datan']);
     }
 
     public function ValRegistration() :bool {
@@ -205,8 +205,8 @@ require_once 'include.php';
         else if($val=="number") return EIndirizzo::valNumber($_POST['number']);
         else if($val=="zipcode") return EIndirizzo::valZipcode($_POST['zipcode']);
         else if($val=="country") return EIndirizzo::valCountry($_POST['country']);   
-        else if($val=="telnum") return EUtente::valTelnum($_POST['telnum']);
-        else if($val=="datan") return EUtente::valDatan($_POST['city']);
+        else if($val=="telnumber") return EUtente::valTelnum($_POST['telnumber']);
+        else if($val=="date") return EUtente::valDatan($_POST['date']);
         else if($val=="email"){
             if(EUtente::valEmail($_POST['email'])){
                 if(!EUtente::MailExist($_POST['email'])) return true;

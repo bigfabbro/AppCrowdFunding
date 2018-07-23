@@ -87,7 +87,7 @@ class EIndirizzo{
 
     static function valCity($val){
         $replace=array(" ","'");
-        if(!preg_match("/^([a-zA-Z]{0,50})$/",str_replace($replace,'',$val))){
+        if(!preg_match("/^([a-zA-Z]{4,50})$/",str_replace($replace,'',$val))){
             return false;
         }
         else return true;
@@ -95,21 +95,21 @@ class EIndirizzo{
 
     static function valStreet($val){
         $replace=array(" ","'");
-        if(!preg_match("/^([a-zA-Z]{0,100})$/",str_replace($replace,'',$val))){
+        if(!preg_match("/^([a-zA-Z]{4,100})$/",str_replace($replace,'',$val))){
             return false;
         }
         else return true;
     }
 
     static function valNumber($val){
-        if(!preg_match("/^([0-9]{0,4})$/",$val)){
+        if(!preg_match("/^([0-9]{1,4})$/",$val)){
             return false;
         }
         else return true;
     }
 
     static function valZipcode($val){
-        if(!preg_match("/^([0-9]{0,5})$/",$val)){
+        if(!preg_match("/^([0-9]{4,5})$/",$val)){
             return false;
         }
         else return true;
@@ -117,7 +117,7 @@ class EIndirizzo{
 
     static function valCountry($val){
         $replace=array(" ","'");
-        if(!preg_match("/^([a-zA-Z]{0,100})$/",str_replace($replace,'',$val))){
+        if(!preg_match("/^([a-zA-Z]{4,100})$/",str_replace($replace,'',$val))){
             return false;
         }
         else return true;
