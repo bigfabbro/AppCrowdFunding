@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-07-23 11:52:50
+/* Smarty version 3.1.32, created on 2018-07-23 13:53:11
   from 'C:\xampp\htdocs\AppCrowdFunding\Smarty\templates\profileinfo.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b55a572b24375_28214761',
+  'unifunc' => 'content_5b55c1a73ed7c0_59205162',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '01c46b4c21549a2fc8485377a1f9bc83fbadaa2f' => 
     array (
       0 => 'C:\\xampp\\htdocs\\AppCrowdFunding\\Smarty\\templates\\profileinfo.tpl',
-      1 => 1532339541,
+      1 => 1532346592,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5b55a572b24375_28214761 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b55c1a73ed7c0_59205162 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html>
 
@@ -38,7 +38,7 @@ function content_5b55a572b24375_28214761 (Smarty_Internal_Template $_smarty_tpl)
           <div class="card text-white p-5 bg-primary box-input1">
             <div class="card-body">
               <h4 class="card-title">Attenzione! Ti ricordiamo che la cancellazione dell'account è irreversibile e comporta la cancellazione di tutte le campagne!.</h4>
-              <a class="btn btn-light text-dark" style="height:40px;width:150px" onclick="cancel()" >Cancel</a>
+              <a class="btn btn-light text-dark" style="height:40px;width:150px" onclick="cancelattention()" >Cancel</a>
               <a class="btn btn-danger" style="height:40px;width:150px" href="/AppCrowdFunding/Utente/removeUser/<?php echo $_smarty_tpl->tpl_vars['username']->value;?>
 " >Delete Account</a>
             </div>

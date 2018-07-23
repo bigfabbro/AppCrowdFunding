@@ -184,6 +184,17 @@ require_once 'include.php';
         return $this->notval;
     }
 
+    public function ValFormModify() :bool {
+        $val=key($_POST);
+        if($val=="city") return EIndirizzo::valCity($_POST['city']);
+        else if($val=="street") return EIndirizzo::valStreet($_POST['street']);
+        else if($val=="number") return EIndirizzo::valNumber($_POST['number']);
+        else if($val=="zipcode") return EIndirizzo::valZipcode($_POST['zipcode']);
+        else if($val=="country") return EIndirizzo::valCountry($_POST['country']);
+        else if($val=="telnum") return EUtente::valTelnum($_POST['telnum']);
+        else if($val=="datan") return EUtente::valDatan($_POST['city']);
+    }
+
     /**Funzione che restituisce il vettore degli errori */
 
     function getNotVal(){

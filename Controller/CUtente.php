@@ -268,11 +268,11 @@ require_once 'include.php';
         }
     }
 
-    static function Modify($param){
+    static function Modify(){
         if(($_SERVER['REQUEST_METHOD']=="POST")){
             $view=new VUtente();
-            if($view->valFormModify()) return true;
-            else return false;
+            if($view->ValFormModify()) echo "true";
+            else echo "false";
         }
         else{
             header('HTTP/1.1 405 Method Not Allowed');
