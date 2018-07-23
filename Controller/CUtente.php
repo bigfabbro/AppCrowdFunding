@@ -193,7 +193,7 @@ require_once 'include.php';
         $db=FDatabase::getInstance();
         $id=null;
         $myProf=false;
-        if(isset($_POST['username'])) $id=$db->exist('Utente','username',$_POST['username']);
+        if(isset($param)) $id=$db->exist('Utente','username',$param);
         else if(CUtente::isLogged()) $id=$_SESSION['id'];
         else header('Location: /AppCrowdFunding/HomePage');
         if($id){
