@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-07-16 19:39:08
+/* Smarty version 3.1.32, created on 2018-07-23 11:15:39
   from 'C:\xampp\htdocs\AppCrowdFunding\Smarty\templates\HomePage.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b4cd83cac0543_47011806',
+  'unifunc' => 'content_5b559cbb38b350_63274409',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '0f1476ee2058f95887a7e0f9112918b9770c6a1c' => 
     array (
       0 => 'C:\\xampp\\htdocs\\AppCrowdFunding\\Smarty\\templates\\HomePage.tpl',
-      1 => 1531760962,
+      1 => 1531816137,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:navbar.tpl' => 1,
   ),
 ),false)) {
-function content_5b4cd83cac0543_47011806 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b559cbb38b350_63274409 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html>
 
@@ -40,8 +40,8 @@ function content_5b4cd83cac0543_47011806 (Smarty_Internal_Template $_smarty_tpl)
       <div class="row">
         <div class="col-md-12">
           <h1 class="display-3 mb-4 text-light">Do you have any brilliant ideas?
-          <br>Share them with us and start like a... </h1><h1 class="display-3 mb-4 text-primary">rocket!</h1>
-          <a href="#" class="btn btn-lg mx-1 btn-primary">Start a Project!</a>
+          <br>Share them with us and start like a... </h1><span><h1 class="display-3 mb-4 text-primary">rocket!</h1></span>
+          <a href="/AppCrowdFunding/Campagna/StartProject" class="btn btn-lg mx-1 btn-primary">Start a Project!</a>
           <a href="#" class="btn btn-lg btn-primary mx-1">Back a Project!</a>
         </div>
       </div>

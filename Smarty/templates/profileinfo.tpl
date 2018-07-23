@@ -25,7 +25,7 @@
           <div class="card w-100 h-100">
             <div class="card-body">
               <h5 class="card-title">Description:</h5>
-              <p class="card-text">
+              <p class="card-text" id="cidescription">
                 <i>"{$description}"</i>
               </p>
             </div>

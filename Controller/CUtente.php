@@ -193,7 +193,7 @@ require_once 'include.php';
         $db=FDatabase::getInstance();
         $id=null;
         $myProf=false;
-        if(isset($param['username'])) $id=$db->exist('Utente','username',$param['username']);
+        if(isset($_POST['username'])) $id=$db->exist('Utente','username',$_POST['username']);
         else if(CUtente::isLogged()) $id=$_SESSION['id'];
         else header('Location: /AppCrowdFunding/HomePage');
         if($id){
@@ -243,22 +243,21 @@ require_once 'include.php';
     else header('Location: /AppCrowdFunding/HomePage');
     }
 
-    /**Metodo per l'update di alcune informazioni dell'account. Di norma il metodo è utilizzato
-     * da una richiesta AJAX del tipo: /AppCrowdFunding/Utente/UpdateProfile?chiave1=valore1&chiave2=valore2.
-     * Il frontcontroller consegna al metodo l'array $param contenente le coppie "chiave-valore".
-     * Il metodo richiama poi, in base al campo da aggiornare, il giusto metodo di classe di livello Entity.
+    /**Metodo per l'update di alcune informazioni dell'account. Di norma il metodo è richiamato
+     * da una richiesta javascript AJAX di tipo POST. In base ai parametri ricevuti nella richiesta POST
+     * richiama il giusto metodo di livello entity per l'update delle informazioni.
      */
-    static function UpdateProfile($param){
+    static function UpdateProfile(){
         if(($_SERVER['REQUEST_METHOD']=="POST")){
             if(CUtente::isLogged()){
-                for($i=0; $i<count($param); $i++){
-                    if(key($param)=="city" || key($param)=="street" || key($param)=="number" || key($param)=="zipcode" || key($param)=="country"){
-                        EIndirizzo::update(key($param),current($param),$_SESSION['id']);
+                for($i=0; $i<count($_POST); $i++){
+                    if(key($_POST)=="city" || key($_POST)=="street" || key($_POST)=="number" || key($_POST)=="zipcode" || key($_POST)=="country"){
+                        EIndirizzo::update(key($_POST),current($_POST),$_SESSION['id']);
                     }
                     else{
-                        EUtente::update(key($param),current($param),$_SESSION['id']);
+                        EUtente::update(key($_POST),current($_POST),$_SESSION['id']);
                     }
-                    next($param);
+                    next($_POST);
                 }
             }
             else header('Location: /AppCrowdFunding/Utente/login');

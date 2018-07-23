@@ -6,7 +6,7 @@ require_once 'include.php';
 class FUtente
 {
     private static $tables="utenti";
-    private static $values="(:id,:username,:password,:name,:surname,:sex,:datan,:email,:telnumber,:bio,:activate)";
+    private static $values="(:id,:username,:password,:name,:surname,:sex,:datan,:email,:telnumber,:description,:activate)";
     
     public function __construct(){}
 
@@ -26,7 +26,7 @@ class FUtente
         $stmt->bindValue(':datan', $user->getDatan(), PDO::PARAM_STR);
         $stmt->bindValue(':email', $user->getEmail(), PDO::PARAM_STR);
         $stmt->bindValue(':telnumber', $user->getTel(), PDO::PARAM_STR);
-        $stmt->bindValue(':bio', $user->getBio(), PDO::PARAM_STR);
+        $stmt->bindValue(':description', $user->getBio(), PDO::PARAM_STR);
         $stmt->bindValue(':activate', $user->getActivate(), PDO::PARAM_STR);
     }
 
@@ -45,7 +45,7 @@ class FUtente
            $stmt=$db->prepare($sql);
            $stmt->execute();
            $row=$stmt->fetch(PDO::FETCH_ASSOC);
-           $user=new EUtente($row['username'],$row['password'], $row['name'], $row['surname'],$row['sex'],$row['datan'], $row['email'],$row['telnumber'],$row['bio']);
+           $user=new EUtente($row['username'],$row['password'], $row['name'], $row['surname'],$row['sex'],$row['datan'], $row['email'],$row['telnumber'],$row['description']);
            $user->setId($row['id']);
            $user->setActivate($row['activate']);
            return $user;

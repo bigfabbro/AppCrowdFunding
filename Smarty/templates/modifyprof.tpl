@@ -41,7 +41,7 @@
               </div>
               <div class="form-group">
                 <label for="exampleInputEmail1">Description</label>
-                <textarea class="form-control" id="exampleTextarea" rows="3" id="description">{$description}</textarea>
+                <textarea class="form-control" rows="3" id="description">{$description}</textarea>
               </div>
               <button type="button" class="btn mt-2 btn-outline-primary" style="position:absolute; right:80" onclick="closemodifypanel()">Finish</button>
             </form>

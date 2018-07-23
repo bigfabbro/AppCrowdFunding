@@ -18,7 +18,8 @@ function openmodifypanel()
 function closemodifypanel()
 {
     var change=false
-    var request="/AppCrowdFunding/Utente/UpdateProfile?"
+    var request="/AppCrowdFunding/Utente/UpdateProfile"
+    var param=""
     document.getElementById("modalmodify").style.visibility= "hidden"
     var inp=[
         document.getElementById("city"),
@@ -27,32 +28,35 @@ function closemodifypanel()
         document.getElementById("country"),
         document.getElementById("zipcode"),
         document.getElementById("telnumber"),
+        document.getElementById("description"),
         document.getElementById("datan")
         ]
     for(i=0; i<inp.length; i++){
-        if(inp[i].value!=("ci"+inp[i].getAttribute('id')).innerHTML){
+        if(inp[i].value!=document.getElementById("ci"+inp[i].getAttribute('id')).innerHTML){
             if(i>0 && change==true){
-                request=request+"&"+inp[i].getAttribute('id')+"="+inp[i].value
+                param=param+"&"+inp[i].getAttribute('id')+"="+inp[i].value
             }
             else{
-                request=request+inp[i].getAttribute('id')+"="+inp[i].value
+                param=param+inp[i].getAttribute('id')+"="+inp[i].value
             }
             change=true
         }
     }
+    alert(param)
     if(change==true){
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange= function(){
             if(this.readyState == 4 && this.status == 200){
                 for(i=0; i<inp.length;  i++){
-                    if(inp[i].value!=("ci"+inp[i].getAttribute('id')).innerHTML){
+                    if(inp[i].value!=document.getElementById("ci"+inp[i].getAttribute('id')).innerHTML){
                         document.getElementById("ci"+inp[i].getAttribute('id')).innerHTML=inp[i].value
                     }
                 }
             }
         }
         xmlhttp.open("POST",request,true)
-        xmlhttp.send()
+        xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded")
+        xmlhttp.send(param)
     }
 }
 

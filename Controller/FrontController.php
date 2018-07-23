@@ -2,7 +2,7 @@
 
 require_once 'include.php';
 
-// /AppCrowdFunding/controller/function?chiave1=valore1&chiave2=valore2 ecc.
+// /AppCrowdFunding/controller/function/parameter...
 
 class FrontController{
     
@@ -15,12 +15,11 @@ class FrontController{
             if(method_exists($controller,$function)){
                 $param=array();
                 for($i=4; $i<count($request); $i++){
-                    $split=explode("=",str_replace("%20"," ",$request[$i]));
-                    $param[$split[0]]=$split[1];
+                    $param[]=$request[$i];
                 }
-                if(count($param)){
-                    $controller::$function($param);
-                }
+                if(count($param)==1) $controller::$function($param[0]);
+                else if (count($param)==2) $controller::$function($param[0],$param[1]);
+                else if (count($param)==3) $controller::$function($param[0],$param[1],$param[2]);
                 else $controller::$function();
             }
             else{
