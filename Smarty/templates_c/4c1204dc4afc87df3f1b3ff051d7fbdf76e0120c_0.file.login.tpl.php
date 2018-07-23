@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-07-16 19:23:18
+/* Smarty version 3.1.32, created on 2018-07-23 14:19:13
   from 'C:\xampp\htdocs\AppCrowdFunding\Smarty\templates\login.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b4cd486e27887_14662568',
+  'unifunc' => 'content_5b55c7c1737298_18472250',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '4c1204dc4afc87df3f1b3ff051d7fbdf76e0120c' => 
     array (
       0 => 'C:\\xampp\\htdocs\\AppCrowdFunding\\Smarty\\templates\\login.tpl',
-      1 => 1531761162,
+      1 => 1532348349,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5b4cd486e27887_14662568 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b55c7c1737298_18472250 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html>
 
@@ -52,14 +52,14 @@ function content_5b4cd486e27887_14662568 (Smarty_Internal_Template $_smarty_tpl)
                   <form action="login" method="POST">
                     <div class="form-group bg-light">
                       <label class="text-primary">Username</label>
-                      <input type="text" class="form-control" placeholder="Enter username" name="username"> </div>
+                      <input type="text" class="form-control" placeholder="Enter username" name="username" required="required"> </div>
                     <div class="form-group bg-light">
                       <label class="text-primary">Password</label>
-                      <input type="password" class="form-control" placeholder="Enter password" name="password"> </div>
+                      <input type="password" class="form-control" placeholder="Enter password" name="password" required="required"> </div>
                     <button type="submit" class="btn btn-primary">Login</button>
                   </form>
                 </div>
-                <div class="card-header text-primary text-center border border-light bg-light"><?php if ($_smarty_tpl->tpl_vars['badlogin']->value == "true") {?>Attenzione! Username e/o password errati!<?php }?></div>
+                <div class="card-header text-primary text-center border border-light bg-light"><?php if (isset($_smarty_tpl->tpl_vars['badlogin']->value) && $_smarty_tpl->tpl_vars['badlogin']->value == "true") {?>Attenzione! Username e/o password errati!<?php }?></div>
               </div>
             </div>
           </div>
