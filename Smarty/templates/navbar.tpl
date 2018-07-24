@@ -16,6 +16,31 @@
         <i class="fa d-inline fa-lg fa-cloud"></i>
         <b>&nbsp;Society Of Funding</b>
       </a>
+
+      <ul class="navbar-nav" >
+          <li class="nav-item text-light" >
+            <a class="nav-link" href="/AppCrowdFunding/HomePage"> Home Page</a>
+          </li>
+        </ul>
+
+      <ul class="navbar-nav">
+          <li class="nav-item text-light"  >
+            <a class="nav-link" href="/AppCrowdFunding/Info/info" > Chi siamo</a>
+          </li>
+        </ul>
+
+      <ul class="navbar-nav">
+          <li class="nav-item text-light" >
+            <a class="nav-link" href="/AppCrowdFunding/Info/info" > Perché sceglierci</a>
+          </li>
+        </ul>
+
+
+      <ul class="navbar-nav">
+          <li class="nav-item text-light" >
+            <a class="nav-link" href="/AppCrowdFunding/Info/info"> Contatti</a>
+          </li>
+        </ul>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar2SupportedContent">
         <span class="navbar-toggler-icon"></span>
       </button>

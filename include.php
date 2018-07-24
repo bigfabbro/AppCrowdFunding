@@ -33,7 +33,11 @@
    require_once 'View/VDonazione.php';
    require_once 'Foundation/FDonazione.php';
    require_once 'Controller/CDonazione.php';
+   require_once 'View/VInfo.php';
+   require_once 'View/VInfo.php';
+   require_once 'Controller/CInfo.php';
+  
+   
    //in alternativa si puo' utilizzare include autoload
 
-?>
 ?>

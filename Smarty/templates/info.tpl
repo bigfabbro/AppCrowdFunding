@@ -5,10 +5,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
-  <link rel="stylesheet" href="../Documents/Pingendo/css/theme.css">
+   <link rel="stylesheet" href="/AppCrowdFunding/Smarty/templates/css/theme.css" type="text/css"> 
 </head>
 
 <body >
+{include file='navbar.tpl'}
   <div class="py-5">
     <div class="container">
       <div class="row mb-5">
@@ -21,11 +22,11 @@
             il web.&nbsp;</p>
         </div>
         <div class="col-md-5 align-self-center">
-          <img class="img-fluid d-block w-100 img-thumbnail" src="../Downloads/19029396_10208279357891619_7158651639669035561_n.jpg"> </div>
+          <img class="img-fluid d-block w-100 img-thumbnail" src="/AppCrowdFunding/Smarty/img/serena.jpg"> </div>
       </div>
       <div class="row">
         <div class="col-md-5">
-          <img class="img-fluid d-block mb-4 w-100 img-thumbnail" src="../Downloads/21687653_10212367305690811_2645243196611113008_n.jpg"> </div>
+          <img class="img-fluid d-block mb-4 w-100 img-thumbnail" src="/AppCrowdFunding/Smarty/img/fabri.jpg"> </div>
         <div class="col-md-7">
           <h2 class="text-primary pt-3">Perché scegliere SoF?</h2>
           <p class="">SoF è una piattaforma sicura e veloce.&nbsp;
@@ -58,7 +59,7 @@
             <br>Università degli Studi dell'Aquila</p>
         </div>
         <div class="col-md-5 align-self-center">
-          <img class="img-fluid d-block w-100 img-thumbnail" src="../Downloads/11011955_10204665099254417_8242263602644971583_n.jpg"> </div>
+          <img class="img-fluid d-block w-100 img-thumbnail" src="/AppCrowdFunding/Smarty/img/oscar.jpg"> </div>
       </div>
     </div>
   </div>
