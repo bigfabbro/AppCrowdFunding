@@ -44,15 +44,13 @@ function SubmitOrNot()
             if(inps[i].classList.contains("border-success")) cansubmit=true
             else{
                 cansubmit=false
-                break
+                if(!inps[i].classList.contains("border-danger")) inps[i].classList.add("border-danger")
             }
         }
         if(cansubmit) {
             document.getElementById("modalwait").visibility= "visible"
             document.getElementById("registrationform").submit()
         }
-        else alert("Ci sono errori!")
-    
 }
 
 function passverification(){
