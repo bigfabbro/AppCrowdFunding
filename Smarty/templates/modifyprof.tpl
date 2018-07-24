@@ -17,15 +17,15 @@
             <form action="#" id="formmodify">
               <div class="form-group">
                 <label>Address</label>
-                <input class="form-control" placeholder="City" value="{$city}" id="city" onchange="inputVerify(this.id)"> </div>
+                <input class="form-control" placeholder="City" value="{$city}" id="city" onchange="inputVerifyModify(this.id)"> </div>
               <div class="form-group">
-                <input type="text" class="form-control" placeholder="Street" value="{$street}" id="street"  onchange="inputVerify(this.id)"> </div>
+                <input type="text" class="form-control" placeholder="Street" value="{$street}" id="street"  onchange="inputVerifyModify(this.id)"> </div>
               <div class="form-group">
-                <input type="number" class="form-control" placeholder="Number" value="{$number}" id="number"  onchange="inputVerify(this.id)"> </div>
+                <input type="number" class="form-control" placeholder="Number" value="{$number}" id="number"  onchange="inputVerifyModify(this.id)"> </div>
               <div class="form-group">
-                <input type="number" class="form-control" placeholder="Zipcode" value="{$zipcode}" id="zipcode"  onchange="inputVerify(this.id)"> </div>
+                <input type="number" class="form-control" placeholder="Zipcode" value="{$zipcode}" id="zipcode"  onchange="inputVerifyModify(this.id)"> </div>
             <div class="form-group">
-              <input type="text" class="form-control" placeholder="Country" value="{$country}" id="country"  onchange="inputVerify(this.id)"> 
+              <input type="text" class="form-control" placeholder="Country" value="{$country}" id="country"  onchange="inputVerifyModify(this.id)"> 
             </div>
           </div>
         </div>
@@ -33,11 +33,11 @@
           <div class="card-body p-5">
               <div class="form-group">
                 <label>Telephon number</label>
-                <input class="form-control" placeholder="Tel. number" value="{$telnum}" id="telnumber"  onchange="inputVerify(this.id)"> 
+                <input class="form-control" placeholder="Tel. number" value="{$telnum}" id="telnumber"  onchange="inputVerifyModify(this.id)"> 
               </div>
               <div class="form-group">
                 <label>Date of Birth</label>
-                <input class="form-control" type="date" value="{$datan}" id="datan"  onchange="inputVerify(this.id)"> 
+                <input class="form-control" type="date" value="{$datan}" id="datan"  onchange="inputVerifyModify(this.id)"> 
               </div>
               <div class="form-group">
                 <label for="exampleInputEmail1">Description</label>

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-07-23 22:05:10
+/* Smarty version 3.1.32, created on 2018-07-24 13:15:59
   from 'C:\xampp\htdocs\AppCrowdFunding\Smarty\templates\registration.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b5634f6bbc041_28147395',
+  'unifunc' => 'content_5b570a6f9f2455_51683966',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'b22de68a2183ab5b095b25c7ac44e627afdb5fd8' => 
     array (
       0 => 'C:\\xampp\\htdocs\\AppCrowdFunding\\Smarty\\templates\\registration.tpl',
-      1 => 1532376257,
+      1 => 1532430956,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:navbar.tpl' => 1,
   ),
 ),false)) {
-function content_5b5634f6bbc041_28147395 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b570a6f9f2455_51683966 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html>
 
@@ -63,89 +63,89 @@ function content_5b5634f6bbc041_28147395 (Smarty_Internal_Template $_smarty_tpl)
                 <div class="form-group">
                   <label>Name</label>
                   <?php if (isset($_smarty_tpl->tpl_vars['errors']->value) && $_smarty_tpl->tpl_vars['errors']->value['name'] == "true") {?>
-                  <input class="form-control border border-danger" placeholder="Your name, please" name="name" id="name" onchange="inputVerify(this.id)"></div>
+                  <input class="form-control border border-danger" placeholder="Your name, please" name="name" id="name" onchange="inputVerifyRegistration(this.id)"></div>
                   <?php } elseif (isset($_smarty_tpl->tpl_vars['errors']->value)) {?>
                       <input class="form-control" value="<?php echo $_smarty_tpl->tpl_vars['values']->value['name'];?>
-" name="name" id="name" onchange="inputVerify(this.id)"></div>
+" name="name" id="name" onchange="inputVerifyRegistration(this.id)"></div>
                   <?php } else { ?>
-                      <input class="form-control" placeholder="Your name, please" name="name" id="name" onchange="inputVerify(this.id)"></div>
+                      <input class="form-control" placeholder="Your name, please" name="name" id="name" onchange="inputVerifyRegistration(this.id)"></div>
                   <?php }?>
                 <div class="form-group">
                   <label>Surname</label>
                   <?php if (isset($_smarty_tpl->tpl_vars['errors']->value) && $_smarty_tpl->tpl_vars['errors']->value['surname'] == "true") {?>
-                  <input class="form-control border border-danger" placeholder="You surname, please" name="surname" id="surname" onchange="inputVerify(this.id)"> </div>
+                  <input class="form-control border border-danger" placeholder="You surname, please" name="surname" id="surname" onchange="inputVerifyRegistration(this.id)"> </div>
                   <?php } elseif (isset($_smarty_tpl->tpl_vars['errors']->value)) {?>
                   <input class="form-control  value="<?php echo $_smarty_tpl->tpl_vars['values']->value['surname'];?>
-" name="surname" id="surname" onchange="inputVerify(this.id)"> </div>
+" name="surname" id="surname" onchange="inputVerifyRegistration(this.id)"> </div>
                   <?php } else { ?>
-                  <input class="form-control" placeholder="You surname, please" name="surname" id="surname" onchange="inputVerify(this.id)"> </div>
+                  <input class="form-control" placeholder="You surname, please" name="surname" id="surname" onchange="inputVerifyRegistration(this.id)"> </div>
                   <?php }?>
                   <div class="form-group">
                   <label>Sesso</label>
                   <br>
-                  <center><label>M</label></center><input class="form-control" name="sex" type="radio" value="M" checked="checked" id="sex" onchange="inputVerify(this.id)">
-                  <center><label>F</label></center><input class="form-control" name="sex" type="radio" value="F" id="sex" onchange="inputVerify(this.id)"> 
+                  <center><label>M</label></center><input class="form-control" name="sex" type="radio" value="M" checked="checked" id="sex" onchange="inputVerifyRegistration(this.id)">
+                  <center><label>F</label></center><input class="form-control" name="sex" type="radio" value="F" id="sex" onchange="inputVerifyRegistration(this.id)"> 
                   </div>
                 <div class="form-group">
                   <label>Date of Birth</label>
                   <?php if (isset($_smarty_tpl->tpl_vars['errors']->value) && $_smarty_tpl->tpl_vars['errors']->value['date'] == "true") {?>
-                  <input type="date" class="form-control border border-danger"  name="date" id="date" onchange="inputVerify(this.id)"> </div>
+                  <input type="date" class="form-control border border-danger"  name="date" id="date" onchange="inputVerifyRegistration(this.id)"> </div>
                   <?php } elseif (isset($_smarty_tpl->tpl_vars['errors']->value)) {?>
                   <input type="date" class="form-control"  value="<?php echo $_smarty_tpl->tpl_vars['values']->value['date'];?>
-" name="date" id="date" onchange="inputVerify(this.id)"> </div>
+" name="date" id="date" onchange="inputVerifyRegistration(this.id)"> </div>
                   <?php } else { ?>
-                  <input type="date" class="form-control"  name="date" id="date" onchange="inputVerify(this.id)"> </div>
+                  <input type="date" class="form-control"  name="date" id="date" onchange="inputVerifyRegistration(this.id)"> </div>
                   <?php }?>
                 <div class="form-group">
                   <label>Address</label>
                   <?php if (isset($_smarty_tpl->tpl_vars['errors']->value) && $_smarty_tpl->tpl_vars['errors']->value['city'] == "true") {?>
-                  <input type="text" class="form-control border border-danger" placeholder="City" name="city" id="city" onchange="inputVerify(this.id)">
+                  <input type="text" class="form-control border border-danger" placeholder="City" name="city" id="city" onchange="inputVerifyRegistration(this.id)">
                   <?php } elseif (isset($_smarty_tpl->tpl_vars['errors']->value)) {?>
                   <input type="text" class="form-control" value="<?php echo $_smarty_tpl->tpl_vars['values']->value['city'];?>
-" name="city" id="city" onchange="inputVerify(this.id)">
+" name="city" id="city" onchange="inputVerifyRegistration(this.id)">
                   <?php } else { ?>
-                  <input type="text" class="form-control" placeholder="City" name="city" id="city" onchange="inputVerify(this.id)">
+                  <input type="text" class="form-control" placeholder="City" name="city" id="city" onchange="inputVerifyRegistration(this.id)">
                   <?php }?>
                   <?php if (isset($_smarty_tpl->tpl_vars['errors']->value) && $_smarty_tpl->tpl_vars['errors']->value['street'] == "true") {?>
-                  <input type="text" class="form-control border border-danger" placeholder="Street" name="street" id="street" onchange="inputVerify(this.id)">
+                  <input type="text" class="form-control border border-danger" placeholder="Street" name="street" id="street" onchange="inputVerifyRegistration(this.id)">
                   <?php } elseif (isset($_smarty_tpl->tpl_vars['errors']->value)) {?>
                   <input type="text" class="form-control" value="<?php echo $_smarty_tpl->tpl_vars['values']->value['street'];?>
-"  name="street" id="street" onchange="inputVerify(this.id)">
+"  name="street" id="street" onchange="inputVerifyRegistration(this.id)">
                   <?php } else { ?>
-                  <input type="text" class="form-control" placeholder="Street" name="street" id="street" onchange="inputVerify(this.id)">
+                  <input type="text" class="form-control" placeholder="Street" name="street" id="street" onchange="inputVerifyRegistration(this.id)">
                   <?php }?>
                   <?php if (isset($_smarty_tpl->tpl_vars['errors']->value) && $_smarty_tpl->tpl_vars['errors']->value['number'] == "true") {?>
-                  <input type="number" class="form-control border border-danger" placeholder="Number" name="number" id="number" onchange="inputVerify(this.id)">
+                  <input type="number" class="form-control border border-danger" placeholder="Number" name="number" id="number" onchange="inputVerifyRegistration(this.id)">
                   <?php } elseif (isset($_smarty_tpl->tpl_vars['errors']->value)) {?>
                   <input type="number" class="form-control border" value="<?php echo $_smarty_tpl->tpl_vars['values']->value['number'];?>
-" name="number" id="number" onchange="inputVerify(this.id)">
+" name="number" id="number" onchange="inputVerifyRegistration(this.id)">
                   <?php } else { ?>
-                  <input type="number" class="form-control" placeholder="Number" name="number" id="number" onchange="inputVerify(this.id)">
+                  <input type="number" class="form-control" placeholder="Number" name="number" id="number" onchange="inputVerifyRegistration(this.id)">
                   <?php }?>
                   <?php if (isset($_smarty_tpl->tpl_vars['errors']->value) && $_smarty_tpl->tpl_vars['errors']->value['zipcode'] == "true") {?>
-                  <input type="text" class="form-control border border-danger" placeholder="Zipcode" name="zipcode" id="zipcode" onchange="inputVerify(this.id)">
+                  <input type="text" class="form-control border border-danger" placeholder="Zipcode" name="zipcode" id="zipcode" onchange="inputVerifyRegistration(this.id)">
                   <?php } elseif (isset($_smarty_tpl->tpl_vars['errors']->value)) {?>
                   <input type="text" class="form-control" value="<?php echo $_smarty_tpl->tpl_vars['values']->value['zipcode'];?>
-" name="zipcode" id="zipcode" onchange="inputVerify(this.id)">
+" name="zipcode" id="zipcode" onchange="inputVerifyRegistration(this.id)">
                   <?php } else { ?>
-                  <input type="text" class="form-control" placeholder="Zipcode" name="zipcode" id="zipcode" onchange="inputVerify(this.id)">
+                  <input type="text" class="form-control" placeholder="Zipcode" name="zipcode" id="zipcode" onchange="inputVerifyRegistration(this.id)">
                   <?php }?>
                   <?php if (isset($_smarty_tpl->tpl_vars['errors']->value) && $_smarty_tpl->tpl_vars['errors']->value['country'] == "true") {?>
-                  <input type="text" class="form-control border border-danger" placeholder="Country" name="country" id="country" onchange="inputVerify(this.id)"> </div>
+                  <input type="text" class="form-control border border-danger" placeholder="Country" name="country" id="country" onchange="inputVerifyRegistration(this.id)"> </div>
                   <?php } elseif (isset($_smarty_tpl->tpl_vars['errors']->value)) {?>
                   <input type="text" class="form-control" value="<?php echo $_smarty_tpl->tpl_vars['values']->value['country'];?>
-" name="country" id="country" onchange="inputVerify(this.id)"> </div>
+" name="country" id="country" onchange="inputVerifyRegistration(this.id)"> </div>
                   <?php } else { ?>
-                  <input type="text" class="form-control" placeholder="Country" name="country" id="country" onchange="inputVerify(this.id)"> </div>
+                  <input type="text" class="form-control" placeholder="Country" name="country" id="country" onchange="inputVerifyRegistration(this.id)"> </div>
                   <?php }?>
                   <label>Telephon number</label>
                   <?php if (isset($_smarty_tpl->tpl_vars['errors']->value) && $_smarty_tpl->tpl_vars['errors']->value['telnumber'] == "true") {?>
-                  <input type="text" class="form-control border border-danger" placeholder="Your telephon number, please" name="telnumber" id="telnumber" onchange="inputVerify(this.id)"> </div>
+                  <input type="text" class="form-control border border-danger" placeholder="Your telephon number, please" name="telnumber" id="telnumber" onchange="inputVerifyRegistration(this.id)"> </div>
                   <?php } elseif (isset($_smarty_tpl->tpl_vars['errors']->value)) {?>
                   <input type="text" class="form-control" value="<?php echo $_smarty_tpl->tpl_vars['values']->value['telnumber'];?>
-" name="telnumber" onchange="inputVerify(this.id)" id="telnumber" > </div>
+" name="telnumber" onchange="inputVerifyRegistration(this.id)" id="telnumber" > </div>
                   <?php } else { ?>
-                  <input type="text" class="form-control" placeholder="Your telephon number, please" name="telnumber" onchange="inputVerify(this.id)" id="telnumber"> </div>
+                  <input type="text" class="form-control" placeholder="Your telephon number, please" name="telnumber" onchange="inputVerifyRegistration(this.id)" id="telnumber"> </div>
                   <?php }?>
                 <div class="form-group">
               </form>
@@ -159,36 +159,36 @@ function content_5b5634f6bbc041_28147395 (Smarty_Internal_Template $_smarty_tpl)
                 <div class="form-group">
                   <label>E-mail</label>
                   <?php if (isset($_smarty_tpl->tpl_vars['errors']->value) && $_smarty_tpl->tpl_vars['errors']->value['email'] == "true") {?>
-                  <input type="email" class="form-control border border-danger" placeholder="Your email, please" name="email" id="email" onchange="inputVerify(this.id)"> </div>
+                  <input type="email" class="form-control border border-danger" placeholder="Your email, please" name="email" id="email" onchange="inputVerifyRegistration(this.id)"> </div>
                   <?php } elseif (isset($_smarty_tpl->tpl_vars['errors']->value)) {?> 
                   <input type="email" class="form-control" value="<?php echo $_smarty_tpl->tpl_vars['values']->value['email'];?>
-" name="email" id="email" onchange="inputVerify(this.id)"> </div>
+" name="email" id="email" onchange="inputVerifyRegistration(this.id)"> </div>
                   <?php } else { ?>
-                  <input type="email" class="form-control" placeholder="Your email, please" name="email" id="email" onchange="inputVerify(this.id)"> </div>
+                  <input type="email" class="form-control" placeholder="Your email, please" name="email" id="email" onchange="inputVerifyRegistration(this.id)"> </div>
                   <?php }?>
                 <div class="form-group">
                   <label>Username</label>
                   <?php if (isset($_smarty_tpl->tpl_vars['errors']->value) && $_smarty_tpl->tpl_vars['errors']->value['email'] == "true") {?>
-                  <input class="form-control border border-danger" placeholder="Choose a username!" name="username" id="username" onchange="inputVerify(this.id)"> </div>
+                  <input class="form-control border border-danger" placeholder="Choose a username!" name="username" id="username" onchange="inputVerifyRegistration(this.id)"> </div>
                   <?php } elseif (isset($_smarty_tpl->tpl_vars['errors']->value)) {?>
                   <input class="form-control" value="<?php echo $_smarty_tpl->tpl_vars['values']->value['username'];?>
-" name="username" id="username" onchange="inputVerify(this.id)"> </div>
+" name="username" id="username" onchange="inputVerifyRegistration(this.id)"> </div>
                   <?php } else { ?>
-                  <input class="form-control" placeholder="Choose a username!" name="username" id="username" onchange="inputVerify(this.id)"> </div>
+                  <input class="form-control" placeholder="Choose a username!" name="username" id="username" onchange="inputVerifyRegistration(this.id)"> </div>
                   <?php }?>
                 <div class="form-group">
                   <label>Password</label>
                  <?php if (isset($_smarty_tpl->tpl_vars['errors']->value) && $_smarty_tpl->tpl_vars['errors']->value['password'] == "true") {?>
-                  <input type="password" class="form-control border border-danger" placeholder="Choose a password" name="password1" id="password1" onchange="inputVerify(this.id)"> </div>
+                  <input type="password" class="form-control border border-danger" placeholder="Choose a password" name="password1" id="password1" onchange="inputVerifyRegistration(this.id)"> </div>
                  <?php } else { ?>
-                 <input type="password" class="form-control" placeholder="Choose a password" name="password1" id="password1" onchange="inputVerify(this.id)"> </div>
+                 <input type="password" class="form-control" placeholder="Choose a password" name="password1" id="password1" onchange="inputVerifyRegistration(this.id)"> </div>
                  <?php }?>
                 <div class="form-group">
                   <label>Confirm Password</label>
                   <?php if (isset($_smarty_tpl->tpl_vars['errors']->value) && $_smarty_tpl->tpl_vars['errors']->value['password'] == "true") {?>
-                  <input type="password" class="form-control border border-danger" placeholder="Re-insert the same password" name="password2" id="password2" onchange="passverification()"> </div>
+                  <input type="password" class="form-control border border-danger" placeholder="Re-insert the same password" name="password2" id="password2" onchange="passverification(this.id)"> </div>
                  <?php } else { ?>
-                 <input type="password" class="form-control" placeholder="Re-insert the same password" name="password2" id="password2" onchange="passverification()"> </div>
+                 <input type="password" class="form-control" placeholder="Re-insert the same password" name="password2" id="password2" onchange="passverification(this.id)"> </div>
                  <?php }?>
                 <div class="form-group">
                   <label>Short description</label>
@@ -197,9 +197,9 @@ function content_5b5634f6bbc041_28147395 (Smarty_Internal_Template $_smarty_tpl)
                 <div class="form-group">
                   <label>Picture&nbsp;</label>
                   <?php if (isset($_smarty_tpl->tpl_vars['errors']->value) && $_smarty_tpl->tpl_vars['errors']->value['profpic'] == "true") {?>
-                  <input type="file" class="form-control-file border border-danger" name="upicture" accept="image/*"> </div>
+                  <input type="file" class="form-control-file border border-danger" name="upicture" id="upciture" onchange="inputVerifyRegistration(this.id)" accept="image/*"> </div>
                   <?php } else { ?>
-                  <input type="file" class="form-control-file" name="upicture" accept="image/*"> </div>
+                  <input type="file" class="form-control-file border" name="upicture" id="upicture" onchange="inputVerifyRegistration(this.id)"> </div>
                   <?php }?>
                 <button type="button" class="btn btn-primary btn-lg submit-button" id="submitbutton" onclick="SubmitOrNot()">Submit</button>
             </div>

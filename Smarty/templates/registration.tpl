@@ -38,80 +38,80 @@
                 <div class="form-group">
                   <label>Name</label>
                   {if isset($errors) && $errors.name eq "true"}
-                  <input class="form-control border border-danger" placeholder="Your name, please" name="name" id="name" onchange="inputVerify(this.id)"></div>
+                  <input class="form-control border border-danger" placeholder="Your name, please" name="name" id="name" onchange="inputVerifyRegistration(this.id)"></div>
                   {else if isset($errors) }
-                      <input class="form-control" value="{$values.name}" name="name" id="name" onchange="inputVerify(this.id)"></div>
+                      <input class="form-control" value="{$values.name}" name="name" id="name" onchange="inputVerifyRegistration(this.id)"></div>
                   {else}
-                      <input class="form-control" placeholder="Your name, please" name="name" id="name" onchange="inputVerify(this.id)"></div>
+                      <input class="form-control" placeholder="Your name, please" name="name" id="name" onchange="inputVerifyRegistration(this.id)"></div>
                   {/if}
                 <div class="form-group">
                   <label>Surname</label>
                   {if isset($errors) && $errors.surname eq "true"}
-                  <input class="form-control border border-danger" placeholder="You surname, please" name="surname" id="surname" onchange="inputVerify(this.id)"> </div>
+                  <input class="form-control border border-danger" placeholder="You surname, please" name="surname" id="surname" onchange="inputVerifyRegistration(this.id)"> </div>
                   {else if isset($errors)}
-                  <input class="form-control  value="{$values.surname}" name="surname" id="surname" onchange="inputVerify(this.id)"> </div>
+                  <input class="form-control  value="{$values.surname}" name="surname" id="surname" onchange="inputVerifyRegistration(this.id)"> </div>
                   {else}
-                  <input class="form-control" placeholder="You surname, please" name="surname" id="surname" onchange="inputVerify(this.id)"> </div>
+                  <input class="form-control" placeholder="You surname, please" name="surname" id="surname" onchange="inputVerifyRegistration(this.id)"> </div>
                   {/if}
                   <div class="form-group">
                   <label>Sesso</label>
                   <br>
-                  <center><label>M</label></center><input class="form-control" name="sex" type="radio" value="M" checked="checked" id="sex" onchange="inputVerify(this.id)">
-                  <center><label>F</label></center><input class="form-control" name="sex" type="radio" value="F" id="sex" onchange="inputVerify(this.id)"> 
+                  <center><label>M</label></center><input class="form-control" name="sex" type="radio" value="M" checked="checked" id="sex" onchange="inputVerifyRegistration(this.id)">
+                  <center><label>F</label></center><input class="form-control" name="sex" type="radio" value="F" id="sex" onchange="inputVerifyRegistration(this.id)"> 
                   </div>
                 <div class="form-group">
                   <label>Date of Birth</label>
                   {if isset($errors) && $errors.date eq "true"}
-                  <input type="date" class="form-control border border-danger"  name="date" id="date" onchange="inputVerify(this.id)"> </div>
+                  <input type="date" class="form-control border border-danger"  name="date" id="date" onchange="inputVerifyRegistration(this.id)"> </div>
                   {else if isset($errors)}
-                  <input type="date" class="form-control"  value="{$values.date}" name="date" id="date" onchange="inputVerify(this.id)"> </div>
+                  <input type="date" class="form-control"  value="{$values.date}" name="date" id="date" onchange="inputVerifyRegistration(this.id)"> </div>
                   {else}
-                  <input type="date" class="form-control"  name="date" id="date" onchange="inputVerify(this.id)"> </div>
+                  <input type="date" class="form-control"  name="date" id="date" onchange="inputVerifyRegistration(this.id)"> </div>
                   {/if}
                 <div class="form-group">
                   <label>Address</label>
                   {if isset($errors) && $errors.city eq "true"}
-                  <input type="text" class="form-control border border-danger" placeholder="City" name="city" id="city" onchange="inputVerify(this.id)">
+                  <input type="text" class="form-control border border-danger" placeholder="City" name="city" id="city" onchange="inputVerifyRegistration(this.id)">
                   {else if isset($errors)}
-                  <input type="text" class="form-control" value="{$values.city}" name="city" id="city" onchange="inputVerify(this.id)">
+                  <input type="text" class="form-control" value="{$values.city}" name="city" id="city" onchange="inputVerifyRegistration(this.id)">
                   {else}
-                  <input type="text" class="form-control" placeholder="City" name="city" id="city" onchange="inputVerify(this.id)">
+                  <input type="text" class="form-control" placeholder="City" name="city" id="city" onchange="inputVerifyRegistration(this.id)">
                   {/if}
                   {if isset($errors) && $errors.street eq "true"}
-                  <input type="text" class="form-control border border-danger" placeholder="Street" name="street" id="street" onchange="inputVerify(this.id)">
+                  <input type="text" class="form-control border border-danger" placeholder="Street" name="street" id="street" onchange="inputVerifyRegistration(this.id)">
                   {else if isset($errors)}
-                  <input type="text" class="form-control" value="{$values.street}"  name="street" id="street" onchange="inputVerify(this.id)">
+                  <input type="text" class="form-control" value="{$values.street}"  name="street" id="street" onchange="inputVerifyRegistration(this.id)">
                   {else}
-                  <input type="text" class="form-control" placeholder="Street" name="street" id="street" onchange="inputVerify(this.id)">
+                  <input type="text" class="form-control" placeholder="Street" name="street" id="street" onchange="inputVerifyRegistration(this.id)">
                   {/if}
                   {if isset($errors) && $errors.number eq "true"}
-                  <input type="number" class="form-control border border-danger" placeholder="Number" name="number" id="number" onchange="inputVerify(this.id)">
+                  <input type="number" class="form-control border border-danger" placeholder="Number" name="number" id="number" onchange="inputVerifyRegistration(this.id)">
                   {else if isset($errors)}
-                  <input type="number" class="form-control border" value="{$values.number}" name="number" id="number" onchange="inputVerify(this.id)">
+                  <input type="number" class="form-control border" value="{$values.number}" name="number" id="number" onchange="inputVerifyRegistration(this.id)">
                   {else}
-                  <input type="number" class="form-control" placeholder="Number" name="number" id="number" onchange="inputVerify(this.id)">
+                  <input type="number" class="form-control" placeholder="Number" name="number" id="number" onchange="inputVerifyRegistration(this.id)">
                   {/if}
                   {if isset($errors) && $errors.zipcode eq "true"}
-                  <input type="text" class="form-control border border-danger" placeholder="Zipcode" name="zipcode" id="zipcode" onchange="inputVerify(this.id)">
+                  <input type="text" class="form-control border border-danger" placeholder="Zipcode" name="zipcode" id="zipcode" onchange="inputVerifyRegistration(this.id)">
                   {else if isset($errors)}
-                  <input type="text" class="form-control" value="{$values.zipcode}" name="zipcode" id="zipcode" onchange="inputVerify(this.id)">
+                  <input type="text" class="form-control" value="{$values.zipcode}" name="zipcode" id="zipcode" onchange="inputVerifyRegistration(this.id)">
                   {else}
-                  <input type="text" class="form-control" placeholder="Zipcode" name="zipcode" id="zipcode" onchange="inputVerify(this.id)">
+                  <input type="text" class="form-control" placeholder="Zipcode" name="zipcode" id="zipcode" onchange="inputVerifyRegistration(this.id)">
                   {/if}
                   {if isset($errors) && $errors.country eq "true"}
-                  <input type="text" class="form-control border border-danger" placeholder="Country" name="country" id="country" onchange="inputVerify(this.id)"> </div>
+                  <input type="text" class="form-control border border-danger" placeholder="Country" name="country" id="country" onchange="inputVerifyRegistration(this.id)"> </div>
                   {else if isset($errors)}
-                  <input type="text" class="form-control" value="{$values.country}" name="country" id="country" onchange="inputVerify(this.id)"> </div>
+                  <input type="text" class="form-control" value="{$values.country}" name="country" id="country" onchange="inputVerifyRegistration(this.id)"> </div>
                   {else}
-                  <input type="text" class="form-control" placeholder="Country" name="country" id="country" onchange="inputVerify(this.id)"> </div>
+                  <input type="text" class="form-control" placeholder="Country" name="country" id="country" onchange="inputVerifyRegistration(this.id)"> </div>
                   {/if}
                   <label>Telephon number</label>
                   {if isset($errors) && $errors.telnumber eq "true"}
-                  <input type="text" class="form-control border border-danger" placeholder="Your telephon number, please" name="telnumber" id="telnumber" onchange="inputVerify(this.id)"> </div>
+                  <input type="text" class="form-control border border-danger" placeholder="Your telephon number, please" name="telnumber" id="telnumber" onchange="inputVerifyRegistration(this.id)"> </div>
                   {else if isset($errors)}
-                  <input type="text" class="form-control" value="{$values.telnumber}" name="telnumber" onchange="inputVerify(this.id)" id="telnumber" > </div>
+                  <input type="text" class="form-control" value="{$values.telnumber}" name="telnumber" onchange="inputVerifyRegistration(this.id)" id="telnumber" > </div>
                   {else}
-                  <input type="text" class="form-control" placeholder="Your telephon number, please" name="telnumber" onchange="inputVerify(this.id)" id="telnumber"> </div>
+                  <input type="text" class="form-control" placeholder="Your telephon number, please" name="telnumber" onchange="inputVerifyRegistration(this.id)" id="telnumber"> </div>
                   {/if}
                 <div class="form-group">
               </form>
@@ -125,34 +125,34 @@
                 <div class="form-group">
                   <label>E-mail</label>
                   {if isset($errors) && $errors.email eq "true"}
-                  <input type="email" class="form-control border border-danger" placeholder="Your email, please" name="email" id="email" onchange="inputVerify(this.id)"> </div>
+                  <input type="email" class="form-control border border-danger" placeholder="Your email, please" name="email" id="email" onchange="inputVerifyRegistration(this.id)"> </div>
                   {else if isset($errors)} 
-                  <input type="email" class="form-control" value="{$values.email}" name="email" id="email" onchange="inputVerify(this.id)"> </div>
+                  <input type="email" class="form-control" value="{$values.email}" name="email" id="email" onchange="inputVerifyRegistration(this.id)"> </div>
                   {else}
-                  <input type="email" class="form-control" placeholder="Your email, please" name="email" id="email" onchange="inputVerify(this.id)"> </div>
+                  <input type="email" class="form-control" placeholder="Your email, please" name="email" id="email" onchange="inputVerifyRegistration(this.id)"> </div>
                   {/if}
                 <div class="form-group">
                   <label>Username</label>
                   {if isset($errors) && $errors.email eq "true"}
-                  <input class="form-control border border-danger" placeholder="Choose a username!" name="username" id="username" onchange="inputVerify(this.id)"> </div>
+                  <input class="form-control border border-danger" placeholder="Choose a username!" name="username" id="username" onchange="inputVerifyRegistration(this.id)"> </div>
                   {else if isset($errors)}
-                  <input class="form-control" value="{$values.username}" name="username" id="username" onchange="inputVerify(this.id)"> </div>
+                  <input class="form-control" value="{$values.username}" name="username" id="username" onchange="inputVerifyRegistration(this.id)"> </div>
                   {else}
-                  <input class="form-control" placeholder="Choose a username!" name="username" id="username" onchange="inputVerify(this.id)"> </div>
+                  <input class="form-control" placeholder="Choose a username!" name="username" id="username" onchange="inputVerifyRegistration(this.id)"> </div>
                   {/if}
                 <div class="form-group">
                   <label>Password</label>
                  {if isset($errors) && $errors.password eq "true"}
-                  <input type="password" class="form-control border border-danger" placeholder="Choose a password" name="password1" id="password1" onchange="inputVerify(this.id)"> </div>
+                  <input type="password" class="form-control border border-danger" placeholder="Choose a password" name="password1" id="password1" onchange="inputVerifyRegistration(this.id)"> </div>
                  {else}
-                 <input type="password" class="form-control" placeholder="Choose a password" name="password1" id="password1" onchange="inputVerify(this.id)"> </div>
+                 <input type="password" class="form-control" placeholder="Choose a password" name="password1" id="password1" onchange="inputVerifyRegistration(this.id)"> </div>
                  {/if}
                 <div class="form-group">
                   <label>Confirm Password</label>
                   {if isset($errors) && $errors.password eq "true"}
-                  <input type="password" class="form-control border border-danger" placeholder="Re-insert the same password" name="password2" id="password2" onchange="passverification()"> </div>
+                  <input type="password" class="form-control border border-danger" placeholder="Re-insert the same password" name="password2" id="password2" onchange="passverification(this.id)"> </div>
                  {else}
-                 <input type="password" class="form-control" placeholder="Re-insert the same password" name="password2" id="password2" onchange="passverification()"> </div>
+                 <input type="password" class="form-control" placeholder="Re-insert the same password" name="password2" id="password2" onchange="passverification(this.id)"> </div>
                  {/if}
                 <div class="form-group">
                   <label>Short description</label>
@@ -161,9 +161,9 @@
                 <div class="form-group">
                   <label>Picture&nbsp;</label>
                   {if isset($errors) && $errors.profpic eq "true"}
-                  <input type="file" class="form-control-file border border-danger" name="upicture" accept="image/*"> </div>
+                  <input type="file" class="form-control-file border border-danger" name="upicture" id="upciture" onchange="inputVerifyRegistration(this.id)" accept="image/*"> </div>
                   {else}
-                  <input type="file" class="form-control-file" name="upicture" accept="image/*"> </div>
+                  <input type="file" class="form-control-file border" name="upicture" id="upicture" onchange="inputVerifyRegistration(this.id)"> </div>
                   {/if}
                 <button type="button" class="btn btn-primary btn-lg submit-button" id="submitbutton" onclick="SubmitOrNot()">Submit</button>
             </div>

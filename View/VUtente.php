@@ -207,6 +207,7 @@ require_once 'include.php';
         else if($val=="country") return EIndirizzo::valCountry($_POST['country']);   
         else if($val=="telnumber") return EUtente::valTelnum($_POST['telnumber']);
         else if($val=="date") return EUtente::valDatan($_POST['date']);
+        else if(isset($_FILES['upicture'])) {return EMediaUser::valPic($_FILES['upicture']['type']); echo "sono qui";}
         else if($val=="email"){
             if(EUtente::valEmail($_POST['email'])){
                 if(!EUtente::MailExist($_POST['email'])) return true;

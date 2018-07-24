@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-07-23 13:54:36
+/* Smarty version 3.1.32, created on 2018-07-24 13:39:14
   from 'C:\xampp\htdocs\AppCrowdFunding\Smarty\templates\modifyprof.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b55c1fcca3d79_74798233',
+  'unifunc' => 'content_5b570fe20ad4c8_48173627',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '394ab027d9776fbc7938f53d6abfaa75caabaa7b' => 
     array (
       0 => 'C:\\xampp\\htdocs\\AppCrowdFunding\\Smarty\\templates\\modifyprof.tpl',
-      1 => 1532346873,
+      1 => 1532423667,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5b55c1fcca3d79_74798233 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b570fe20ad4c8_48173627 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html>
 
@@ -41,19 +41,19 @@ function content_5b55c1fcca3d79_74798233 (Smarty_Internal_Template $_smarty_tpl)
               <div class="form-group">
                 <label>Address</label>
                 <input class="form-control" placeholder="City" value="<?php echo $_smarty_tpl->tpl_vars['city']->value;?>
-" id="city" onchange="inputVerify(this.id)"> </div>
+" id="city" onchange="inputVerifyModify(this.id)"> </div>
               <div class="form-group">
                 <input type="text" class="form-control" placeholder="Street" value="<?php echo $_smarty_tpl->tpl_vars['street']->value;?>
-" id="street"  onchange="inputVerify(this.id)"> </div>
+" id="street"  onchange="inputVerifyModify(this.id)"> </div>
               <div class="form-group">
                 <input type="number" class="form-control" placeholder="Number" value="<?php echo $_smarty_tpl->tpl_vars['number']->value;?>
-" id="number"  onchange="inputVerify(this.id)"> </div>
+" id="number"  onchange="inputVerifyModify(this.id)"> </div>
               <div class="form-group">
                 <input type="number" class="form-control" placeholder="Zipcode" value="<?php echo $_smarty_tpl->tpl_vars['zipcode']->value;?>
-" id="zipcode"  onchange="inputVerify(this.id)"> </div>
+" id="zipcode"  onchange="inputVerifyModify(this.id)"> </div>
             <div class="form-group">
               <input type="text" class="form-control" placeholder="Country" value="<?php echo $_smarty_tpl->tpl_vars['country']->value;?>
-" id="country"  onchange="inputVerify(this.id)"> 
+" id="country"  onchange="inputVerifyModify(this.id)"> 
             </div>
           </div>
         </div>
@@ -62,12 +62,12 @@ function content_5b55c1fcca3d79_74798233 (Smarty_Internal_Template $_smarty_tpl)
               <div class="form-group">
                 <label>Telephon number</label>
                 <input class="form-control" placeholder="Tel. number" value="<?php echo $_smarty_tpl->tpl_vars['telnum']->value;?>
-" id="telnumber"  onchange="inputVerify(this.id)"> 
+" id="telnumber"  onchange="inputVerifyModify(this.id)"> 
               </div>
               <div class="form-group">
                 <label>Date of Birth</label>
                 <input class="form-control" type="date" value="<?php echo $_smarty_tpl->tpl_vars['datan']->value;?>
-" id="datan"  onchange="inputVerify(this.id)"> 
+" id="datan"  onchange="inputVerifyModify(this.id)"> 
               </div>
               <div class="form-group">
                 <label for="exampleInputEmail1">Description</label>

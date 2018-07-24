@@ -81,7 +81,7 @@ function closemodifypanel()
  *   e il bottone "finish" viene disabilitato --> verrà riabilitato quando tutte le input box con bordo rosso saranno corrette.
   */
 
-function inputVerify(id){
+function inputVerifyModify(id){
     var param=""
     var request="/AppCrowdFunding/Utente/VerifyModify"
     var inp=document.getElementById(id)
