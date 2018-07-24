@@ -9,7 +9,7 @@ require_once 'include.php';
      private $notval;
 
 
-     function __construct(){
+    public function __construct(){
          $this->smarty=ConfSmarty::configuration();
          $this->notval=array (
             'username' => false,
@@ -33,7 +33,7 @@ require_once 'include.php';
 
     /**Metodo per mostrare il form di login. Se $badlogin è "true" mostra un errore.*/
 
-     function showFormLogin($badlogin=null){
+    public function showFormLogin($badlogin=null){
          if(isset($badlogin)) $this->smarty->assign('badlogin',$badlogin);
          $this->smarty->display('login.tpl');
      }
@@ -41,7 +41,7 @@ require_once 'include.php';
      /**Metodo per mostrare il form di registrazione. L'array $errors è utilizzato per mostrare gli errori effettuati nella compilazione del form,
       * l'array $values per reinserire i valori corretti della precedente compilazione non avvenuta con successo.
       */
-     function showFormRegistration($errors=null,$values=null){
+    public function showFormRegistration($errors=null,$values=null){
          if(isset($errors)){
              $this->smarty->assign('errors',$errors);
              $this->smarty->assign('values',$values);
@@ -51,7 +51,7 @@ require_once 'include.php';
 
      /**Metodo per mostrare la pagina di benvenuto quando la registrazion va a buon fine. */
 
-     function showWelcome(){
+    public function showWelcome(){
          $this->smarty->display('welcome.tpl');
      }
 
@@ -63,7 +63,7 @@ require_once 'include.php';
 
      /**Metodo per mostrare la pagina del profilo di un utente*/
 
-     function showProfile(EUtente $user,EMediaUser $pic,$camps,$photos,EIndirizzo $address,$myProf){
+    public function showProfile(EUtente $user,EMediaUser $pic,$camps,$photos,EIndirizzo $address,$myProf){
         $this->navbar();
         $pic64=base64_encode($pic->getData());
         $this->smarty->assign('myProf',$myProf);
@@ -78,7 +78,7 @@ require_once 'include.php';
 
     /** Metodo utilizzato per assegnare lo username da inserire nella navbar se l'utente è loggato */
     
-    function navbar(){
+    public function navbar(){
         if(CUtente::isLogged()) $this->smarty->assign('userlogged',$_SESSION['username']);
     }
 
@@ -90,7 +90,7 @@ require_once 'include.php';
      * per verificarne la correttezza. Restituisce un booleano.
      */
 
-    function valFormLogin() :bool {
+    public function valFormLogin() :bool {
          if(isset($_POST['username']) && isset($_POST['password'])){
             if(!EUtente::valUsername($_POST['username']) || !EUtente::valPassword($_POST['password'])){
                  return false;
@@ -107,7 +107,7 @@ require_once 'include.php';
      * nel form. Per i campi che devono essere univoci si verifica anche l'univocità. La funzione
      * restituisce l'array $notval che specifica per ogni campo del form se è valido o meno.
      */
-    function valFormRegistration(){
+    public function valFormRegistration(){
 
         if(isset($_POST['name'])){
             $this->notval['name']=!EUtente::valName($_POST['name']); 
@@ -225,7 +225,7 @@ require_once 'include.php';
 
     /**Funzione che restituisce il vettore degli errori */
 
-    function getNotVal(){
+    public function getNotVal(){
         return $this->notval;
     }
 

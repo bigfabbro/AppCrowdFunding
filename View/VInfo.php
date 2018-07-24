@@ -9,6 +9,7 @@ require_once 'include.php';
 
     function showInfo(){
         $this->smarty=ConfSmarty::configuration();
+        if(CUtente::isLogged()) $this->smarty->assign('userlogged',$_SESSION['username']);
         $this->smarty->display('info.tpl');
     }
  }

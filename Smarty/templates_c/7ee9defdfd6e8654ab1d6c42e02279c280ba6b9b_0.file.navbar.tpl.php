@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-07-16 19:23:25
+/* Smarty version 3.1.32, created on 2018-07-24 13:40:19
   from 'C:\xampp\htdocs\AppCrowdFunding\Smarty\templates\navbar.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b4cd48d9b0b97_29182707',
+  'unifunc' => 'content_5b571023e5bd58_57849635',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '7ee9defdfd6e8654ab1d6c42e02279c280ba6b9b' => 
     array (
       0 => 'C:\\xampp\\htdocs\\AppCrowdFunding\\Smarty\\templates\\navbar.tpl',
-      1 => 1531733550,
+      1 => 1532432384,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5b4cd48d9b0b97_29182707 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b571023e5bd58_57849635 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_assignInScope('userlogged', (($tmp = @$_smarty_tpl->tpl_vars['userlogged']->value)===null||$tmp==='' ? 'nouser' : $tmp));?>
 
 <!DOCTYPE html>
@@ -39,6 +39,31 @@ $_smarty_tpl->_assignInScope('userlogged', (($tmp = @$_smarty_tpl->tpl_vars['use
         <i class="fa d-inline fa-lg fa-cloud"></i>
         <b>&nbsp;Society Of Funding</b>
       </a>
+
+      <ul class="navbar-nav" >
+          <li class="nav-item text-light" >
+            <a class="nav-link" href="/AppCrowdFunding/HomePage"> Home Page</a>
+          </li>
+        </ul>
+
+      <ul class="navbar-nav">
+          <li class="nav-item text-light"  >
+            <a class="nav-link" href="/AppCrowdFunding/Info/info" > Chi siamo</a>
+          </li>
+        </ul>
+
+      <ul class="navbar-nav">
+          <li class="nav-item text-light" >
+            <a class="nav-link" href="/AppCrowdFunding/Info/info" > Perché sceglierci</a>
+          </li>
+        </ul>
+
+
+      <ul class="navbar-nav">
+          <li class="nav-item text-light" >
+            <a class="nav-link" href="/AppCrowdFunding/Info/info"> Contatti</a>
+          </li>
+        </ul>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar2SupportedContent">
         <span class="navbar-toggler-icon"></span>
       </button>
