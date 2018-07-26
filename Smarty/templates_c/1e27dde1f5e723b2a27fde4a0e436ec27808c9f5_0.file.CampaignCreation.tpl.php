@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-07-23 14:21:33
+/* Smarty version 3.1.32, created on 2018-07-24 16:14:54
   from 'C:\xampp\htdocs\AppCrowdFunding\Smarty\templates\CampaignCreation.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b55c84de1df04_00259007',
+  'unifunc' => 'content_5b57345e71d310_73674731',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '1e27dde1f5e723b2a27fde4a0e436ec27808c9f5' => 
     array (
       0 => 'C:\\xampp\\htdocs\\AppCrowdFunding\\Smarty\\templates\\CampaignCreation.tpl',
-      1 => 1531848725,
+      1 => 1532441679,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:navbar.tpl' => 1,
   ),
 ),false)) {
-function content_5b55c84de1df04_00259007 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b57345e71d310_73674731 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html>
 
@@ -214,40 +214,12 @@ function content_5b55c84de1df04_00259007 (Smarty_Internal_Template $_smarty_tpl)
     <div class="container" style="position:absolute;top:20%;left:10%;visibility:hidden" id="c5">
       <div class="row">
         <div class="align-self-center col-md-6 text-white">
-          <h1 class="text-center text-md-left display-3">Rewards</h1>
-        </div>
-        <div class="col-md-6">
-          <div class="card">
-            <div class="card-body p-5" style="height:500px">
-                <div class="form-group">
-                  <label>How many rewards do you want to offer?</label>
-                  <?php if (isset($_smarty_tpl->tpl_vars['errors']->value) && $_smarty_tpl->tpl_vars['errors']->value['numrew'] == "true") {?>
-                  <input class="form-control border border-danger" type="number" max="6" min="0" id="nrew" name="numrew"> </div>
-                  <?php } elseif (isset($_smarty_tpl->tpl_vars['errors']->value)) {?>
-                  <input class="form-control" type="number" max="6" min="0" id="nrew" value="<?php echo $_smarty_tpl->tpl_vars['values']->value['numrew'];?>
-" name="numrew"> </div>
-                  <?php } else { ?>
-                  <input class="form-control" type="number" max="6" min="0" id="nrew" name="numrew"> </div>
-                  <?php }?>
-                <div class="form-group">
-                  <label>The rewards are important, more interesting they are, more people will want to support your idea!</label>
-                </div>
-                <button type="button" class="btn mt-2 btn-outline-primary" style="float:right" id="n5" onclick="Next(this.id)">Next</button>
-                <button type="button" class="btn mt-2 btn-outline-primary" style="float:right" id="b5" onclick="Back(this.id)">Back</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="container" style="position:absolute;top:20%;left:10%;visibility:hidden" id="c6">
-      <div class="row">
-        <div class="align-self-center col-md-6 text-white">
           <h1 class="text-center text-md-left display-3">Congratulations you have created a campaign!</h1>
         </div>
         <div class="col-md-6">
           <div class="card">
             <div class="card-body p-5" style="height:500px">
-                <button type="button" class="btn mt-2 btn-outline-primary" style="float:right" onclick="Back(this.id)" id="b6">Back</button>
+                <button type="button" class="btn mt-2 btn-outline-primary" style="float:right" onclick="Back(this.id)" id="b5">Back</button>
                 <button type="submit" class="btn btn-primary w-75" style="position:absolute; top:200px; left:65px">Submit</button>
             </div>
           </div>

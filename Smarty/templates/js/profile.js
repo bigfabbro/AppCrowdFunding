@@ -100,9 +100,9 @@ function inputVerifyModify(id){
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange= function(){
             if(this.readyState == 4 && this.status == 200){ //readyState==4 --> request finished and response is ready status==200 --> OK
-                if(this.responseText.toString()==="?>?>true") {
-                    document.getElementById(id).classList.remove("border")
+                if(this.responseText.toString()==="true") {
                     document.getElementById(id).classList.remove("border-danger")
+                    document.getElementById(id).classList.add("border-success")
                     for(i=0; i<inps.length; i++){
                         if(inps[i].classList.contains("border-danger")){
                             cansubmit=false
@@ -114,7 +114,6 @@ function inputVerifyModify(id){
                     else document.getElementById("endbutton").disabled=true
                 }
                 else{
-                    document.getElementById(id).classList.add("border")
                     document.getElementById(id).classList.add("border-danger")
                     document.getElementById("endbutton").disabled=true
                 }

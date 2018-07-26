@@ -14,7 +14,7 @@
     <div class="container">
       <div class="row">
         <div class="p-4" style="transition: all 0.25s;">
-          <div class="card text-white p-5 m-0 box-input1" style="width:390px">
+          <div class="card text-white p-5 m-0 box-input1" style="width:390px;height:650px">
             <div class="card-block my-3">
               <img class="d-block rounded-circle img-fluid" src="data:image/jpeg;base64,{$pic64}" width=200 height=200>
               <hr>
@@ -40,7 +40,7 @@
               <a class="nav-link" href="" data-toggle="tab" data-target="#tabthree">My Pledge</a>
             </li>
           </ul>
-          <div class="tab-content mt-2">
+          <div class="tab-content mt-2" style="height:650px;overflow-x:hidden;overflow-y:auto">
             <div class="tab-pane fade show active" id="tabone" role="tabpanel">
               {include file='profileinfo.tpl'  username=$user->getUserName() description=$user->getBio() city=$address->getCity() street=$address->getStreet() number=$address->getNum() zipcode=$address->getZipcode() country=$address->getCountry() sex=$user->getSex() datan=$user->getDatan() telnum=$user->getTel() }
             </div>

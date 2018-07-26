@@ -18,7 +18,6 @@ require_once 'include.php';
             'stardate'=> false,
             'enddate'=> false,
             'goal'=>false,
-            'numrew'=>false,
             'bankcount'=>false,
         );
      }
@@ -34,7 +33,7 @@ require_once 'include.php';
      }
 
      function valFormCreaCampagna() :bool {
-         if(isset($_POST['name'])&& isset($_POST['country']) && isset($_POST['enddate']) && isset($_POST['bankcount']) && isset($_POST['goal']) && isset($_POST['numrew']))
+         if(isset($_POST['name'])&& isset($_POST['country']) && isset($_POST['enddate']) && isset($_POST['bankcount']) && isset($_POST['goal']))
          {
             $replace=array(" ","'");
             $enddate=explode('-',$_POST['enddate']);
@@ -57,9 +56,6 @@ require_once 'include.php';
             if(!preg_match('/^[a-zA-Z]{2}[0-9]{2}[a-zA-Z0-9]{4}[0-9]{7}([a-zA-Z0-9]?){0,16}$/i',str_replace($replace,'',$_POST['bankcount']))){
                 $this->notval['bankcount']=true;
             }
-            if(!preg_match('/^[0-6]$/',$_POST['numrew'])){
-                $this->notval['numrew']=true;
-            } 
          }
          else
          {
@@ -69,9 +65,8 @@ require_once 'include.php';
              if(!isset($_POST['enddate'])) $this->notval['enddate']=true;
              if(!isset($_POST['goal'])) $this->notval['goal']=true;
              if(!isset($_POST['bankcount'])) $this->notval['bankcount']=true;
-             if(!isset($_POST['numrew'])) $this->notval['numrew']=true;
          }
-        if($this->notval['name']==true || $this->notval['category']==true || $this->notval['country']==true || $this->notval['enddate']==true || $this->notval['goal']==true || $this->notval['bankcount']==true || $this->notval['numrew']==true) 
+        if($this->notval['name']==true || $this->notval['category']==true || $this->notval['country']==true || $this->notval['enddate']==true || $this->notval['goal']==true || $this->notval['bankcount']==true) 
         {
            return false;
         }

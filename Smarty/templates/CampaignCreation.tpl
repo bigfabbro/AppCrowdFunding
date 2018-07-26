@@ -177,39 +177,12 @@
     <div class="container" style="position:absolute;top:20%;left:10%;visibility:hidden" id="c5">
       <div class="row">
         <div class="align-self-center col-md-6 text-white">
-          <h1 class="text-center text-md-left display-3">Rewards</h1>
-        </div>
-        <div class="col-md-6">
-          <div class="card">
-            <div class="card-body p-5" style="height:500px">
-                <div class="form-group">
-                  <label>How many rewards do you want to offer?</label>
-                  {if isset($errors) && $errors.numrew eq "true"}
-                  <input class="form-control border border-danger" type="number" max="6" min="0" id="nrew" name="numrew"> </div>
-                  {else if isset($errors)}
-                  <input class="form-control" type="number" max="6" min="0" id="nrew" value="{$values.numrew}" name="numrew"> </div>
-                  {else}
-                  <input class="form-control" type="number" max="6" min="0" id="nrew" name="numrew"> </div>
-                  {/if}
-                <div class="form-group">
-                  <label>The rewards are important, more interesting they are, more people will want to support your idea!</label>
-                </div>
-                <button type="button" class="btn mt-2 btn-outline-primary" style="float:right" id="n5" onclick="Next(this.id)">Next</button>
-                <button type="button" class="btn mt-2 btn-outline-primary" style="float:right" id="b5" onclick="Back(this.id)">Back</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="container" style="position:absolute;top:20%;left:10%;visibility:hidden" id="c6">
-      <div class="row">
-        <div class="align-self-center col-md-6 text-white">
           <h1 class="text-center text-md-left display-3">Congratulations you have created a campaign!</h1>
         </div>
         <div class="col-md-6">
           <div class="card">
             <div class="card-body p-5" style="height:500px">
-                <button type="button" class="btn mt-2 btn-outline-primary" style="float:right" onclick="Back(this.id)" id="b6">Back</button>
+                <button type="button" class="btn mt-2 btn-outline-primary" style="float:right" onclick="Back(this.id)" id="b5">Back</button>
                 <button type="submit" class="btn btn-primary w-75" style="position:absolute; top:200px; left:65px">Submit</button>
             </div>
           </div>

@@ -191,7 +191,7 @@ require_once 'include.php';
         else if($val=="number") return EIndirizzo::valNumber($_POST['number']);
         else if($val=="zipcode") return EIndirizzo::valZipcode($_POST['zipcode']);
         else if($val=="country") return EIndirizzo::valCountry($_POST['country']);
-        else if($val=="telnum") return EUtente::valTelnum($_POST['telnum']);
+        else if($val=="telnumber") return EUtente::valTelnum($_POST['telnumber']);
         else if($val=="datan") return EUtente::valDatan($_POST['datan']);
     }
 

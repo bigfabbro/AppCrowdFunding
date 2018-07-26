@@ -116,16 +116,6 @@ class EUtente
     public function setActivate($act){
         $this->activate=$act;
     }
-    
-
-    public function CreaCampagna($na, $de, $cat, $cou, $startd,$endd, $bc, $gl){
-        $cr=new ECampagna($this->getId(),$na, $de, $cat, $cou, $startd,$endd, $bc, $gl);
-        echo $cr;
-        $db=FDatabase::getInstance();
-        $db->store($cr);
-        $id=$db->exist('Campagna','name',$na);
-        return $id;
-    }
 
     static function Update($field,$val,$id){
         $db=FDatabase::getInstance();

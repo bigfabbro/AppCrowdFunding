@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-07-23 18:03:29
+/* Smarty version 3.1.32, created on 2018-07-24 20:50:18
   from 'C:\xampp\htdocs\AppCrowdFunding\Smarty\templates\profile.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b55fc51e7e927_85440687',
+  'unifunc' => 'content_5b5774ea7fe2e7_30783033',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '3b9c0631c626c1b65d40cc7bb7a98a344d679a7b' => 
     array (
       0 => 'C:\\xampp\\htdocs\\AppCrowdFunding\\Smarty\\templates\\profile.tpl',
-      1 => 1532361781,
+      1 => 1532458212,
       2 => 'file',
     ),
   ),
@@ -24,7 +24,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:campprofile.tpl' => 1,
   ),
 ),false)) {
-function content_5b55fc51e7e927_85440687 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b5774ea7fe2e7_30783033 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html>
 
@@ -42,7 +42,7 @@ $_smarty_tpl->_subTemplateRender('file:modifyprof.tpl', $_smarty_tpl->cache_id, 
     <div class="container">
       <div class="row">
         <div class="p-4" style="transition: all 0.25s;">
-          <div class="card text-white p-5 m-0 box-input1" style="width:390px">
+          <div class="card text-white p-5 m-0 box-input1" style="width:390px;height:650px">
             <div class="card-block my-3">
               <img class="d-block rounded-circle img-fluid" src="data:image/jpeg;base64,<?php echo $_smarty_tpl->tpl_vars['pic64']->value;?>
 " width=200 height=200>
@@ -73,7 +73,7 @@ $_smarty_tpl->_subTemplateRender('file:modifyprof.tpl', $_smarty_tpl->cache_id, 
               <a class="nav-link" href="" data-toggle="tab" data-target="#tabthree">My Pledge</a>
             </li>
           </ul>
-          <div class="tab-content mt-2">
+          <div class="tab-content mt-2" style="height:650px;overflow-x:hidden;overflow-y:auto">
             <div class="tab-pane fade show active" id="tabone" role="tabpanel">
               <?php $_smarty_tpl->_subTemplateRender('file:profileinfo.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('username'=>$_smarty_tpl->tpl_vars['user']->value->getUserName(),'description'=>$_smarty_tpl->tpl_vars['user']->value->getBio(),'city'=>$_smarty_tpl->tpl_vars['address']->value->getCity(),'street'=>$_smarty_tpl->tpl_vars['address']->value->getStreet(),'number'=>$_smarty_tpl->tpl_vars['address']->value->getNum(),'zipcode'=>$_smarty_tpl->tpl_vars['address']->value->getZipcode(),'country'=>$_smarty_tpl->tpl_vars['address']->value->getCountry(),'sex'=>$_smarty_tpl->tpl_vars['user']->value->getSex(),'datan'=>$_smarty_tpl->tpl_vars['user']->value->getDatan(),'telnum'=>$_smarty_tpl->tpl_vars['user']->value->getTel()), 0, false);
 ?>

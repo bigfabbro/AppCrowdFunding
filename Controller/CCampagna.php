@@ -30,20 +30,20 @@ class CCampagna{
     $view=new VCampagna();
     if($view->valFormCreaCampagna()){
         $db=FDatabase::getInstance();
-        CUtente::isLogged();
-        $user=$db->load('Utente',$_SESSION['id']);
-        $idcamp=$user->CreaCampagna($_POST['name'],$_POST['description'],$_POST['category'],$_POST['country'],date('Y-m-d'),$_POST['enddate'],$_POST['bankcount'],$_POST['goal']); 
-        $up=new Upload();
-        $photos=$up->photoCamp($_FILES['picture'],$idcamp);
-        foreach($photos as $photo){
-            $db->store($photo);
+        if(CUtente::isLogged()){
+            $camp= new ECampagna($_SESSION['id'],$_POST['name'],$_POST['description'],$_POST['category'],$_POST['country'],date('Y-m-d'),$_POST['enddate'],$_POST['bankcount'],$_POST['goal']);
+            $db->store($camp);
+            $idcamp=$db->exist("Campagna","name",$camp->getName());
+            $up=new Upload();
+            $photos=$up->photoCamp($_FILES['picture'],$idcamp);
+            echo $camp;
+            foreach($photos as $photo){
+                $db->store($photo);
+            }
         }
     }
     else{
       $notval=$view->getNotVal();
-      foreach($notval as $errore =>$valore){
-          echo $errore."=".$valore." ";
-      }
       $view->showFormCreation($notval,$_POST);
       
     }
