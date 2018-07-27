@@ -1,24 +1,21 @@
 //Funzione utilizzata per l'apertura del messaggio di warning per la cancellazione dell'account 
 
-function attention() 
-    {
-        document.getElementById("modalmodify").style.visibility= "hidden"
-        document.getElementById("modalattention").style.visibility = "visible"
-    }
+function attention() {
+    document.getElementById("modalmodify").style.visibility = "hidden"
+    document.getElementById("modalattention").style.visibility = "visible"
+}
 
 // Funzione utilizzata per la chiusura del messaggio di warning per la cancellazione dell'account
 
-function cancelattention()
-{
+function cancelattention() {
     document.getElementById("modalattention").style.visibility = "hidden"
 }
 
 // Funzione per l'apertura del pannello di modifica del profilo
 
-function openmodifypanel()
-{
+function openmodifypanel() {
     document.getElementById("modalattention").style.visibility = "hidden"
-    document.getElementById("modalmodify").style.visibility= "visible"
+    document.getElementById("modalmodify").style.visibility = "visible"
 }
 
 /** Funzione per la chiusura del pannello di modifica del profilo. In primis verifica se sono state apportate delle modifiche e:
@@ -28,13 +25,12 @@ function openmodifypanel()
  *    b) invia una richiesta AJAX di tipo POST al server --> quest'ultimo attraverso un apposito metodo effettua (dopo quello effettuato client-side
  *       con il metodo "inputVerify()") un controllo sull'input e inserisce i nuovi dati nel database.
  */
-function closemodifypanel()
-{
-    var change=false
-    var request="/AppCrowdFunding/Utente/UpdateProfile"
-    var param=""
-    document.getElementById("modalmodify").style.visibility= "hidden"
-    var inp=[
+function closemodifypanel() {
+    var change = false
+    var request = "/AppCrowdFunding/Utente/UpdateProfile"
+    var param = ""
+    document.getElementById("modalmodify").style.visibility = "hidden"
+    var inp = [
         document.getElementById("city"),
         document.getElementById("street"),
         document.getElementById("number"),
@@ -43,32 +39,32 @@ function closemodifypanel()
         document.getElementById("telnumber"),
         document.getElementById("description"),
         document.getElementById("datan")
-        ]
-    for(i=0; i<inp.length; i++){
-        if(inp[i].value!=document.getElementById("ci"+inp[i].getAttribute('id')).innerHTML){
-            if(i>0 && change==true){
-                param=param+"&"+inp[i].getAttribute('id')+"="+inp[i].value
+    ]
+    for (i = 0; i < inp.length; i++) {
+        if (inp[i].value != document.getElementById("ci" + inp[i].getAttribute('id')).innerHTML) {
+            if (i > 0 && change == true) {
+                param = param + "&" + inp[i].getAttribute('id') + "=" + inp[i].value
             }
-            else{
-                param=param+inp[i].getAttribute('id')+"="+inp[i].value
+            else {
+                param = param + inp[i].getAttribute('id') + "=" + inp[i].value
             }
-            change=true
+            change = true
         }
     }
-    if(change==true){
+    if (change == true) {
         var xmlhttp = new XMLHttpRequest();
-        xmlhttp.onreadystatechange= function(){
-            if(this.readyState == 4 && this.status == 200){  //readyState==4 --> request finished and response is ready status==200 --> OK
-                for(i=0; i<inp.length;  i++){
-                    if(inp[i].value!=document.getElementById("ci"+inp[i].getAttribute('id')).innerHTML){
-                        document.getElementById("ci"+inp[i].getAttribute('id')).innerHTML=inp[i].value
+        xmlhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {  //readyState==4 --> request finished and response is ready status==200 --> OK
+                for (i = 0; i < inp.length; i++) {
+                    if (inp[i].value != document.getElementById("ci" + inp[i].getAttribute('id')).innerHTML) {
+                        document.getElementById("ci" + inp[i].getAttribute('id')).innerHTML = inp[i].value
                         inp[i].defaultValue = inp[i].value
                     }
                 }
             }
         }
-        xmlhttp.open("POST",request,true)
-        xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded")
+        xmlhttp.open("POST", request, true)
+        xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
         xmlhttp.send(param)
     }
 }
@@ -81,11 +77,11 @@ function closemodifypanel()
  *   e il bottone "finish" viene disabilitato --> verrà riabilitato quando tutte le input box con bordo rosso saranno corrette.
   */
 
-function inputVerifyModify(id){
-    var param=""
-    var request="/AppCrowdFunding/Utente/VerifyModify"
-    var inp=document.getElementById(id)
-    var inps=[
+function inputVerifyModify(id) {
+    var param = ""
+    var request = "/AppCrowdFunding/Utente/VerifyModify"
+    var inp = document.getElementById(id)
+    var inps = [
         document.getElementById("city"),
         document.getElementById("street"),
         document.getElementById("number"),
@@ -94,40 +90,40 @@ function inputVerifyModify(id){
         document.getElementById("telnumber"),
         document.getElementById("description"),
         document.getElementById("datan")
-        ]
-    var cansubmit=true
-        param=id+"="+inp.value
-        var xmlhttp = new XMLHttpRequest();
-        xmlhttp.onreadystatechange= function(){
-            if(this.readyState == 4 && this.status == 200){ //readyState==4 --> request finished and response is ready status==200 --> OK
-                if(this.responseText.toString()==="true") {
-                    document.getElementById(id).classList.remove("border-danger")
-                    document.getElementById(id).classList.add("border-success")
-                    for(i=0; i<inps.length; i++){
-                        if(inps[i].classList.contains("border-danger")){
-                            cansubmit=false
-                            break
-                        }
-                        else cansubmit=true
+    ]
+    var cansubmit = true
+    param = id + "=" + inp.value
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) { //readyState==4 --> request finished and response is ready status==200 --> OK
+            if (this.responseText.toString() === "true") {
+                document.getElementById(id).classList.remove("border-danger")
+                document.getElementById(id).classList.add("border-success")
+                for (i = 0; i < inps.length; i++) {
+                    if (inps[i].classList.contains("border-danger")) {
+                        cansubmit = false
+                        break
                     }
-                    if(cansubmit) document.getElementById("endbutton").disabled=false
-                    else document.getElementById("endbutton").disabled=true
+                    else cansubmit = true
                 }
-                else{
-                    document.getElementById(id).classList.add("border-danger")
-                    document.getElementById("endbutton").disabled=true
-                }
+                if (cansubmit) document.getElementById("endbutton").disabled = false
+                else document.getElementById("endbutton").disabled = true
+            }
+            else {
+                document.getElementById(id).classList.add("border-danger")
+                document.getElementById("endbutton").disabled = true
             }
         }
-        xmlhttp.open("POST",request,true)
-        xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded")
-        xmlhttp.send(param)
+    }
+    xmlhttp.open("POST", request, true)
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
+    xmlhttp.send(param)
 }
 
 /** Funzione che si occupa del reset del form di modifica del profilo. Viene attivata cliccando sul bottone "cancel". */
 
-function cancelmodify(){
-    var inps=[
+function cancelmodify() {
+    var inps = [
         document.getElementById("city"),
         document.getElementById("street"),
         document.getElementById("number"),
@@ -136,15 +132,16 @@ function cancelmodify(){
         document.getElementById("telnumber"),
         document.getElementById("description"),
         document.getElementById("datan")
-        ]
-    for(i=0; i<inps.length; i++){
-        if(inps[i].classList.contains("border-danger")){
-            inps[i].classList.remove("border")
-            inps[i].classList.remove("border-danger")    
-        }    
+    ]
+    for (i = 0; i < inps.length; i++) {
+        if (inps[i].classList.contains("border-danger")) {
+            inps[i].classList.remove("border-danger")
+        }
+        else if (inps[i].classList.contains("border-success")) {
+            inps[i].classList.remove("border-success")
+        }
     }
-    document.getElementById("modalmodify").style.visibility= "hidden"
-    document.getElementById("endbutton").disabled=false
+    document.getElementById("modalmodify").style.visibility = "hidden"
+    document.getElementById("endbutton").disabled = false
     document.getElementById("formmodify").reset()
-
 }
