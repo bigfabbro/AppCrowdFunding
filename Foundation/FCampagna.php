@@ -30,64 +30,86 @@ class FCampagna
         $stmt->bindValue(':funds', $camp->getFunds(), PDO::PARAM_STR);
         $stmt->bindValue(':visibility', $camp->getVis(), PDO::PARAM_STR);
     }
-
-    /**
-     * 
-     * Questo metodo seleziona la campagna con un certo id
-     * @param PDO &$db 
-     * @param int $id numero identificativo della campagna da selezionare
-     * @return ECampagna $camp restituisce un oggetto ECampagna creato con i dati restituiti dal DBMS 
-     * 
-     */
     
-    public static function load(PDO &$db,$id){
-        $sql="SELECT * FROM ".static::$tables." WHERE id=".$id.";";
-        try{
-           $stmt=$db->prepare($sql);
-           $stmt->execute();
-           $row=$stmt->fetch(PDO::FETCH_ASSOC);
-           $camp=new ECampagna($row['founder'],$row['name'], $row['description'], $row['category'], $row['country'],$row['startdate'], $row['enddate'], $row['bankcount'],$row['goal']);
-           $camp->setId($row['id']);
-           $camp->setFunds($row['funds']); //aggiorna l'informazione coerentemente con il db infatti il costruttore setterebbe  founds a zero e visibility a false
-           $camp->setRew(FReward::load($db, $camp->getId()));
-           $camp->setComm(FCommento::load($db, $camp->getId()));
-           $camp->setMedia(FMediaCamp::load($db,$camp->getId()));
-           if($row['visibility']) $camp->setVis(); 
-           return $camp;
-        }
-        catch(PDOException $e){
-            echo "Attenzione errore: ".$e->getMessage();
-            die;
-        }
-    }
+    //Metodo che restituisce il nome della tabella nel database
     
     public static function getTables(){
         return static::$tables;
     }
 
-    
+    // Metodo che restitusice la struttura della tabella nel database
+
     public static function getValues(){
         return static::$values;
     }
 
-    public static function exist(PDO &$db,$field,$val) {
-        if(is_array($field))
-        {
-            $sql="SELECT id"." FROM ".static::getTables()." WHERE ".$field[0]."= '".$val[0]."' AND ".$field[1]."='".$val[1]."';";
-        }
-        else $sql="SELECT id"." FROM ".static::getTables()." WHERE ".$field."='".$val."';";
-        try{
-            $stmt=$db->prepare($sql);
-            $stmt->execute();
-            $row=$stmt->fetch(PDO::FETCH_ASSOC);
-            return $row['id'];
-         }
-         catch(PDOException $e){
-             echo "Attenzione errore: ".$e->getMessage();
-             die;
-         }
+    /** Metodo che genera la query per l'insert di una campagna all'interno del database e richiama l'instanza di FDatabase per la store */
+
+    public static function store($camp){
+        $sql="INSERT INTO ".static::getTables()." VALUES ".static::getValues();
+        $db=FDatabase::getInstance();
+        $id=$db->store($sql,"FCampagna",$camp);
+        if($id) return $id;
+        else return null;
     }
-    
+
+    /** Metodo che genera la query per la load di una campagna sulla base dell'id della stessa, richiama l'instanza di FDatabase per la load 
+     * e ricevuto il risultato della query crea il relativo oggetto ECampagna.
+    */
+    public static function loadById($id){
+        $sql="SELECT * FROM ".static::getTables()." WHERE id=".$id.";";
+        $db=FDatabase::getInstance();
+        $result=$db->loadSingle($sql);
+        if($result!=null){
+            $camp=new ECampagna($result['founder'],$result['name'], $result['description'], $result['category'], $result['country'],$result['startdate'], $result['enddate'], $result['bankcount'],$result['goal']);
+            $camp->setId($result['id']);
+            $camp->setFunds($result['funds']); //aggiorna l'informazione coerentemente con il db infatti il costruttore setterebbe  founds a zero e visibility a false
+            $camp->setRew(FReward::loadByIdCamp($camp->getId()));
+            $camp->setComm(FCommento::loadByIdCamp($camp->getId()));
+            $camp->setMedia(FMediaCamp::loadByIdCamp($camp->getId()));
+            if($result['visibility']) $camp->setVis(); 
+            return $camp;
+        }
+        else return null;
+    }
+
+    /** Metodo che genera la query per la load delle campagne create da un certo founder, richiama l'instanza di FDatabase per la load 
+     * e ricevuto il risultato della query crea un array contenente tutte le campagne.
+    */
+
+    public static function loadByFounder($id){
+        $sql="SELECT * FROM ".static::getTables()." WHERE founder=".$id.";";
+        $db=FDatabase::getInstance();
+        $result=$db->loadMultiple($sql);
+        if($result!=null){
+                $camps=array();
+                for($i=0; $i<count($result); $i++){
+                    $camps[]=new ECampagna($result[$i]['founder'],$result[$i]['name'], $result[$i]['description'], $result[$i]['category'], $result[$i]['country'],$result[$i]['startdate'], $result[$i]['enddate'], $result[$i]['bankcount'],$result[$i]['goal']);
+                    $camps[$i]->setId($result[$i]['id']);
+                    $camps[$i]->setFunds($result[$i]['funds']); //aggiorna l'informazione coerentemente con il db infatti il costruttore setterebbe  founds a zero e visibility a false
+                    $camps[$i]->setRew(FReward::loadByIdCamp($camps[$i]->getId()));
+                    $camps[$i]->setComm(FCommento::loadByIdCamp($camps[$i]->getId()));
+                    $camps[$i]->setMedia(FMediaCamp::loadByIdCamp($camps[$i]->getId()));
+                    if($result[$i]['visibility']) $camps[$i]->setVis(); 
+                }
+                return $camps;
+        }
+        else return null;
+    }
+
+    /** Metodo che verifica se esiste una campagna con un certo nome:
+     * 1) se esiste restituisce true;
+     * 2) viceversa restituisce false.
+     */
+
+    public function ExistName($name){
+        $sql="SELECT * FROM ".static::getTables()." WHERE name='".$name."';";
+        $db=FDatabase::getInstance();
+        $result=$db->exist($sql);
+        if($result!=null) return true;
+        else return false;
+    }
+
     
 }
 

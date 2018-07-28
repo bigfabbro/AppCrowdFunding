@@ -47,17 +47,6 @@ class EMailCheck {
       else return false;
     }
 
-    public function VerifyCode():bool{
-        $db=FDatabase::getInstance();
-        $mc=$db->load("MailCheck",$this->getIdUser());
-        if($this->getPin()==$mc->getPin()) {
-            $db->update("Utente",$this->getIdUser(),"activate",true);
-            $db->delete("MailCheck","iduser",$this->getIdUser());
-            return true;
-        }
-        else return false;
-    }
-
     public function generate5PIN(){
         $pin="";
         for($i=0; $i<5; $i++){

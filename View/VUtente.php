@@ -70,7 +70,7 @@ require_once 'include.php';
         $this->smarty->assign('photos',$photos);
         $this->smarty->assign('pic64',$pic64);
         $this->smarty->assign('camps',$camps);
-        $this->smarty->assign('numcamps',count($camps));
+        $this->smarty->assign('numcamps',0);
         $this->smarty->assign('address',$address);
         $this->smarty->assign('user',$user);
         $this->smarty->display('profile.tpl');
@@ -120,7 +120,7 @@ require_once 'include.php';
         else   $this->notval['surname']=true;
 
         if(isset($_POST['username'])){
-            if(!EUtente::valUsername($_POST['username']) || EUtente::UsernameExist($_POST['username'])){
+            if(!EUtente::valUsername($_POST['username']) || FUtente::ExistUsername($_POST['username'])){
                 $this->notval['username']=true;
             }
         }
@@ -132,7 +132,7 @@ require_once 'include.php';
         else  $notval['sex']=true;
 
         if(isset($_POST['email'])){
-            if(!EUtente::valEmail($_POST['email']) || EUtente::MailExist($_POST['email'])){
+            if(!EUtente::valEmail($_POST['email']) || FUtente::ExistMail($_POST['email'])){
                 $this->notval['email']=true;
             }
         }
@@ -193,6 +193,7 @@ require_once 'include.php';
         else if($val=="country") return EIndirizzo::valCountry($_POST['country']);
         else if($val=="telnumber") return EUtente::valTelnum($_POST['telnumber']);
         else if($val=="datan") return EUtente::valDatan($_POST['datan']);
+        else if($val=="description") return true;
     }
 
     public function ValRegistration() :bool {
@@ -210,13 +211,13 @@ require_once 'include.php';
         else if(isset($_FILES['upicture'])) {return EMediaUser::valPic($_FILES['upicture']['type']); echo "sono qui";}
         else if($val=="email"){
             if(EUtente::valEmail($_POST['email'])){
-                if(!EUtente::MailExist($_POST['email'])) return true;
+                if(!FUtente::ExistMail($_POST['email'])) return true;
             }
             else return false;
         }
         else if($val=="username"){
             if(EUtente::valUsername($_POST['username'])){
-                if(!EUtente::UsernameExist($_POST['username'])) return true;
+                if(!FUtente::ExistUsername($_POST['username'])) return true;
             }
             else return false;
         }

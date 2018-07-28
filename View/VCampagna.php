@@ -41,8 +41,7 @@ require_once 'include.php';
              $this->notval['enddate']=true;
             }
             if(preg_match('/^[a-zA-Z0-9]{3,50}$/',str_replace($replace,'',$_POST['name']))){
-                $db=FDatabase::getInstance();
-                if($db->exist('Campagna','name',$_POST['name'])){
+                if(FCampagna::ExistName($_POST['name'])){
                     $this->notval['name']=true;
                 }
             }

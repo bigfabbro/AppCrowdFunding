@@ -75,12 +75,10 @@ function SubmitOrNot()
             document.getElementById("password1"),
             document.getElementById("password2")
         ]
-        var cansubmit=false
+        var cansubmit=true
         for(i=0; i<inps.length; i++){
-            if(inps[i].classList.contains("border-success")) cansubmit=true
-            else{
+            if(inps[i].classList.contains("border-danger")){
                 cansubmit=false
-                if(!inps[i].classList.contains("border-danger")) inps[i].classList.add("border-danger")
             }
         }
 

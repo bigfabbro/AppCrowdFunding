@@ -97,7 +97,14 @@ class EDonazione
 
     public function setCreditCard($creditcard){
         $this->idcc= $creditcard;
+    }
 
+/**
+     * @access public
+     * @param $donationoccurred boolean
+     */
+    public function setDonEffettuata($donationoccurred) {
+        $this->donationoccurred=$donationoccurred;
     }
     
     
@@ -158,20 +165,9 @@ class EDonazione
         else return true;
     }
     
-
-
-    /**
-     * @access public
-     * @param $donationoccurred boolean
-     */
-    public function setDonEffettuata($donationoccurred) {
-        $this->donationoccurred=$donationoccurred;
-    }
-
-
     
     public function __toString(){
-        $st="Id: ".$this->getId()." Amount: ".$this->getAmount()." Data: ".$this->getData()." Reward: ".$this->getReward()."Username".$this->getUsername()."IdCamp:".$this->getIdCamp;
+        $st="Id: ".$this->getId()." Amount: ".$this->getAmount()." Data: ".$this->getDate()." Reward: ".$this->getReward()."IdCamp:".$this->getIdCamp();
         return $st;
     }
 

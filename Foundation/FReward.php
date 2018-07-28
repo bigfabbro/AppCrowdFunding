@@ -5,7 +5,7 @@ require_once 'include.php';
 class FReward
 {
     private static $tables="rewards";
-    private static $values="(:id,:name,:pledged,:description,:media,:idcamp)";
+    private static $values="(:id,:name,:pledged,:description,:reward,:idcamp)";
     
     public function __construct()
     {}
@@ -21,7 +21,7 @@ class FReward
         $stmt->bindValue(':name', $rew->getName(), PDO::PARAM_STR);
         $stmt->bindValue(':pledged', $rew->getPledged(), PDO::PARAM_STR);
         $stmt->bindValue(':description', $rew->getDescriptionRe(), PDO::PARAM_STR);
-        $stmt->bindValue(':media', $rew->getMedia(), PDO::PARAM_STR);
+        $stmt->bindValue(':reward', $rew->getreward(), PDO::PARAM_STR);
         $stmt->bindValue(':idcamp', $rew->getIdCamp(), PDO::PARAM_STR);
     }
 
@@ -34,7 +34,7 @@ class FReward
      * 
      */
 
-    public static function load(PDO &$db,$id){
+    /*public static function load(PDO &$db,$id){
         $sql="SELECT * FROM ".static::$tables." WHERE idcamp=".$id.";";
         $rew=array();
         try{
@@ -42,8 +42,8 @@ class FReward
             $stmt->execute();
             $rews=$stmt->fetchAll(PDO::FETCH_ASSOC);
             for($i=0; $i<count($rews); $i++){
-                $rew[]=new EReward($rews[$i]['name'], $rews[$i]['pledged'], $rews[$i]['description'], $rews[$i]['media'], $rews[$i]['idcamp']);
-                $rew[$i]->setId($rews[$i]['id']);
+                $rew[]=new EReward($result['name'], $result['pledged'], $result['description'], $result['reward'], $result['idcamp']);
+                $rew[$i]->setId($result['id']);
             }
             return $rew;
         }
@@ -87,7 +87,7 @@ class FReward
             return false;
         }
         
-    }
+    }*/
     
     public static function getTables(){
         return static::$tables;
@@ -95,6 +95,28 @@ class FReward
     
     public static function getValues(){
         return static::$values;
+    }
+
+    public static function loadByIdCamp($id){
+        $sql="SELECT * FROM ".static::getTables()." WHERE idcamp=".$id.";";
+        $db=FDatabase::getInstance();
+        $result=$db->loadMultiple($sql);
+        if($result!=null){
+            if(is_array($result)){
+                $rewards=array();
+                for($i=0; $i<count($result); $i++){
+                    $rewards[]=new EReward($result['name'], $result['pledged'], $result['description'], $result['reward'], $result['idcamp']);
+                    $rewards[$i]->setId($result['id']);
+                }
+                return $rewards;
+            }
+            else{
+                $reward=new EReward($result['name'], $result['pledged'], $result['description'], $result['reward'], $result['idcamp']);
+                $reward->setId($result['id']);
+                return $reward;
+            }
+        }
+        return null;
     }
     
 }

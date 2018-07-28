@@ -19,86 +19,72 @@ class FDonazione
 
         public static function bind($stmt, EDonazione $don){
             $stmt->bindValue(':id',NULL, PDO::PARAM_INT);
-            $stmt->bindValue(':amount', $don->getAmount(), PDO::PARAM_STR);
+            $stmt->bindValue(':amount', $don->getAmount(), PDO::PARAM_INT);
             $stmt->bindValue(':date', $don->getDate(), PDO::PARAM_STR);
             $stmt->bindValue(':reward', $don->getReward(), PDO::PARAM_STR);
             $stmt->bindValue(':idutente', $don->getIdUtente(), PDO::PARAM_INT);
             $stmt->bindValue(':idcamp', $don->getIdCamp(), PDO::PARAM_INT);
-            $stmt->bindValue(':donationoccurred',$don->getOcc(), PDO::PARAM_BOOL);
+            $stmt->bindValue(':donationoccured',$don->getOcc(), PDO::PARAM_BOOL);
             $stmt->bindValue(':idcc', $don->getCreditCard(), PDO::PARAM_INT);
         }
 
-    
-
-     /**
-     * 
-     * Questo metodo seleziona la donazione con un certo id
-     * @param PDO &$db 
-     * @param int $id numero identificativo della donazione da selezionare
-     * @return EDonazione $don restituisce un oggetto EDonazione creato con i dati restituiti dal DBMS 
-     * 
-     */
-    
-    public static function load(PDO &$db,$id){
-        $sql="SELECT * FROM ".static::$tables." WHERE id=".$id.";";
-        try{
-           $stmt=$db->prepare($sql);
-           $stmt->execute();
-           $row=$stmt->fetch(PDO::FETCH_ASSOC);
-           $don=new EDonazione($row['amount'],$row['date'], $row['reward'], $row['idutente'], $row['idcamp'],$row['donationoccurred'], $row['idcc']);
-           $don->setId($row['id']);
-           $don->setCc(FReward::load($db, $don->getId()));
-           
-           
-           return $cc;
-        }
-        catch(PDOException $e){
-            echo "Attenzione errore: ".$e->getMessage();
-            die;
-        }
+    public static function getTables(){
+        return static::$tables;
     }
-
-
-
-
-
-    
-    /**
-     * 
-     * Questo metodo rimuove dal database una donazione con un certo id
-     * 
-     * @param PDO &$db
-     * @param int $id numero identificativo della donazione da eliminare 
-     * @return bool restituisce true se la delete e' andataa buon fine, false viceversa
-     */
-    
-    public static function delete(PDO &$db, $id):bool{
-        $sql="DELETE FROM ".static::getTables()." WHERE id=".$id.";";
-        try{
-            $db->beginTransaction(); //avvia la transazione; se la tipologia di database non supporta le transazioni darà come return FALSE, metre ci darà TRUE negli altri casi
-            $stmt=$db->prepare($sql);  //prepara la query in attesa dell'esecuzione
-            $stmt->execute(); //esegue la query
-            $db->commit(); //esegue le operazioni che fanno parte della transazione
-            return true;
-        }
-        catch(PDOException $e){
-            echo "Attenzione errore: ".$e->getMessage();
-            $db->rollBack(); //annulla le operazioni eseguite nell'ambito della transazione
-            die;
-            return false;
-        }
-    }
-
-
-
-
-
-        public static function getTables(){
-            return static::$tables;
-        }
         
-        public static function getValues(){
-            return static::$values;
-        }
-
+    public static function getValues(){
+        return static::$values;
     }
+
+    public static function loadById($id){
+        $sql="SELECT * FROM ".static::getTables()." WHERE id=".$id.";";
+        $db=FDatabase::getInstance();
+        $result=$db->loadSingle($sql);
+        if($result!=null){
+            $don=new EDonazione($result['amount'],$result['date'], $result['reward'], $result['idutente'], $result['idcamp'], $result['idcc']);
+            $don->setId($result['id']);
+            $don->setDonEffettuata($result['donationoccured']); 
+            return $don;
+        }
+        else return null;
+    }
+
+    public static function loadByIdUser($id){
+        $sql="SELECT * FROM ".static::getTables()." WHERE idutente=".$id.";";
+        $db=FDatabase::getInstance();
+        $result=$db->loadMultiple($sql);
+        if($result!=null){
+            $dons=array();
+            for($i=0; $i<count($result); $i++){
+                $dons[]=new EDonazione($result[$i]['amount'], $result[$i]['date'], $result[$i]['reward'], $result[$i]['idutente'],$result[$i]['idcamp'],$result[$i]['idcc']);
+                $dons[$i]->setId($result[$i]['id']);
+                $dons[$i]->setDonEffettuata($result['donationoccured']);
+            }
+            return $dons;
+        }
+        else return null;
+    }
+
+    public static function loadByIdCamp($id){
+        $sql="SELECT * FROM ".static::getTables()." WHERE idcamp=".$id.";";
+        $db=FDatabase::getInstance();
+        $result=$db->loadMultiple($sql);
+        if($result!=null){
+            $dons=array();
+            for($i=0; $i<count($result); $i++){
+                $dons[]=new EDonazione($result[$i]['amount'], $result[$i]['date'], $result[$i]['reward'], $result[$i]['idutente'],$result[$i]['idcamp'],$result[$i]['idcc']);
+                $dons[$i]->setId($result[$i]['id']);
+                $dons[$i]->setDonEffettuata($result['donationoccured']);
+            }
+            return $dons;
+        }
+        else return null;
+    }
+
+    public static function delete($id){
+        $sql="DELETE FROM ".static::getTables()." WHERE id=".$id.";";
+        $db=FDatabase::getInstance();
+        if($db->delete($sql)) return true;
+        else return false;
+    }
+}

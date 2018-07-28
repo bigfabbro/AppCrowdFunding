@@ -24,40 +24,28 @@ class FCommento
         $stmt->bindValue(':idcamp', $camp->getIdCamp(), PDO::PARAM_INT);
     }
 
-    /**
-     * 
-     * Questo metodo seleziona i commenti relativi ad una certa campagna
-     * @param PDO &$db 
-     * @param int $id numero identificativo della campagna della quale si vogliono selezionare i commenti
-     * @return  $camp restituisce un array di commenti relativi ad un certa campagna
-     * 
-     */
-    
-    public static function load(PDO &$db,$id){
-        $sql="SELECT * FROM ".static::$tables." WHERE idcamp=".$id.";";
-        $comm=array();
-        try{
-            $stmt=$db->prepare($sql);
-            $stmt->execute();
-            $comms=$stmt->fetchAll(PDO::FETCH_ASSOC);
-            for($i=0; $i<count($comms); $i++){
-                $comm[]=new ECommento($comms[$i]['user'], $comms[$i]['text'], $comms[$i]['date'], $comms[$i]['idcamp']);
-                $comm[$i]->setId($comms[$i]['id']);
-            }
-            return $comm;
-        }
-        catch(PDOException $e){
-            echo "Attenzione errore: ".$e->getMessage();
-            die;
-        }
-    }   
-
+   
     public static function getTables(){
         return static::$tables;
     }
     
     public static function getValues(){
         return static::$values;
+    }
+
+    public static function loadByIdCamp($id){
+        $sql="SELECT * FROM ".static::getTables()." WHERE idcamp=".$id.";";
+        $db=FDatabase::getInstance();
+        $result=$db->loadMultiple($sql);
+        if($result!=null){
+            $comms=array();
+            for($i=0; $i<count($result); $i++){
+                $comms[]=new ECommento($result[$i]['user'], $result[$i]['text'], $result[$i]['date'], $result[$i]['idcamp']);
+                $comms[$i]->setId($result[$i]['id']);
+            }
+            return $comms;
+        }
+        return null;
     }
 }
 

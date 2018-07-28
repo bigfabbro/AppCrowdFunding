@@ -175,7 +175,7 @@ class EUtente
     }
 
     static function valTelnum($val):bool{
-        if(!preg_match("/^([0-9]{9,10})$/",$val)){
+        if(!preg_match("/^([0-9]{0,10})$/",$val)){
             return false;
         }
         else return true;
@@ -193,7 +193,10 @@ class EUtente
         else return false;
     }
 
-
+    public function __toString(){
+        $st="Nome: ".$this->name." Cognome: ".$this->surname." Username: ".$this->username;
+        return $st;
+    }
 }
 
 

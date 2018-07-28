@@ -30,97 +30,69 @@ class FDatabase
         }
         return static::$instance;
     }
-    
-    public function recClass($eobj){
-        switch($eobj){
-            case(get_class($eobj)=="ECampagna"):
-               $fobj="FCampagna";
-               break;
-            case(get_class($eobj)=="EReward"):
-               $fobj="FReward";
-               break;
-            case(get_class($eobj)=="EMediaCamp"):
-               $fobj="FMediaCamp";
-               break;
-            case(get_class($eobj)=="EMediaRew"):
-               $fobj="FMediaRew";
-               break;
-            case(get_class($eobj)=="EMediaUser"):
-               $fobj="FMediaUser";
-               break;
-            case(get_class($eobj)=="EDonazione"):
-               $fobj="FDonazione";
-               break;
-            case(get_class($eobj)=="ECartaCredito");
-               $fobj="FCartaCredito";
-               break;
-            case(get_class($eobj)=="EUtente");
-               $fobj="FUtente";
-               break;
-            case(get_class($eobj)=="EIndirizzo");
-               $fobj="FIndirizzo";
-               break;
-            case(get_class($eobj)=="EMailCheck");
-               $fobj="FMailCheck";
-               break;
-        }
-        return $fobj;
-    }
-    
-    public function store($eobj){
-        $fobj=$this->recClass($eobj); //viene riconosciuta la classe dell'oggetto i cui dati devono essere inseriti nel Db
-        $sql="INSERT INTO ".$fobj::getTables()." VALUES".$fobj::getValues(); //si genera il codice sql attraverso gli attributi statici della determinata classe Foundation
-        $this->runQuery($sql,$fobj,$eobj); 
-    }
-    
-    public function runQuery($sql,$fobj,$eobj){
+
+    public function store($sql,$class,$eobj){
         try{
-           $this->db->beginTransaction(); //inizia la transazione 
-           $stmt=$this->db->prepare($sql); //viene preparata la query 
-           $fobj::bind($stmt,$eobj); //bind dei parametri attraverso metodo statico della determinata classe Foundation
-           $stmt->execute(); //esecuzione della query
-           $this->db->commit(); // se non ci sono errori le modifiche vengono rese definitive
+            $this->db->beginTransaction();
+            $stmt=$this->db->prepare($sql);
+            $class::bind($stmt,$eobj);
+            $stmt->execute();
+            $id=$this->db->lastInsertId();
+            $this->db->commit();
+            $this->closeDbConnection();
+            return $id;
         }
         catch(PDOException $e){
-            echo "Attenzione errore: ".$e->getMessage()." [".$e->getCode()."]"; 
-            $this->db->rollBack(); //in caso di errori si torna alla situazione precedente 
+            echo "Attenzione errore: ".$e->getMessage();
+            $this->db->rollBack();
+            die;
+            return null;
         }
     }
-    
-    public function load($class,$id){ // $class contiene il nome della classe Es. Campagna, Utente ecc.
-        $fobj="F".$class; //si aggiunge F alla stringa $class cosi da ottenere il nome della classe Foundation
-        $eobj=$fobj::load($this->db,$id); // si richiama il metodo statico load della determinata classe Foundation
-        return $eobj;
-    }
-    
-    public function loadCampByFounder($id){
-            $sql="SELECT * FROM ".FCampagna::getTables()." WHERE founder=".$id.";";
-            $camps=array();
-            try{
-                $stmt=$this->db->prepare($sql);
-                $stmt->execute();
-                $rows=$stmt->fetchAll(PDO::FETCH_ASSOC);
-                for($i=0; $i<count($rows); $i++){
-                    $camps[]=new ECampagna($rows[$i]['founder'],$rows[$i]['name'], $rows[$i]['description'], $rows[$i]['category'],$rows[$i]['country'],$rows[$i]['startdate'], $rows[$i]['enddate'],$rows[$i]['bankcount'],$rows[$i]['goal']);
-                    $camps[$i]->setId($rows[$i]['id']);
-                    $camps[$i]->setFunds($rows[$i]['funds']);
-                }
-                return $camps;
-            }
-            catch(PDOException $e){
-                echo "Attenzione errore: ".$e->getMessage();
-                die;
-            }
-        }
 
-    public function delete($class, $field,$id):bool{
-        $fobj="F".$class;
-        $sql="DELETE FROM ".$fobj::getTables()." WHERE ".$field."=".$id.";";
+    public function loadMultiple($sql){
+        try{
+            $rows=array();
+            $this->db->beginTransaction();
+            $stmt=$this->db->prepare($sql);
+            $stmt->execute();
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            while($row=$stmt->fetch()){
+                $rows[]=$row;
+            }
+            $this->closeDbConnection();
+            return $rows;
+        }
+        catch(PDOException $e){
+            echo "Attenzione errore: ".$e->getMessage();
+            die;
+            return null;
+        }
+    }
+
+    public function loadSingle($sql){
+        try{
+            $this->db->beginTransaction();
+            $stmt=$this->db->prepare($sql);
+            $stmt->execute();
+            $row=$stmt->fetch(PDO::FETCH_ASSOC);
+            $this->closeDbConnection();
+            return $row;
+        }
+        catch(PDOException $e){
+            echo "Attenzione errore: ".$e->getMessage();
+            die;
+            return null;
+        }
+    }
+
+    public function delete($sql){
         try{
             $this->db->beginTransaction();
             $stmt=$this->db->prepare($sql);
             $stmt->execute();
             $this->db->commit();
+            $this->closeDbConnection();
             return true;
         }
         catch(PDOException $e){
@@ -130,53 +102,44 @@ class FDatabase
             return false;
         }
     }
-    
-    public function update($class, $id, $field, $newvalue):bool {
-        $fobj="F".$class;
-        if($field=="data"){
-            $path=FDatabase::$UpPath.$newvalue; //nel caso in cui si voglia modificare un'immagine $newvalue è il nome del file
-            $file=fopen($path,'rb') or die ("Attenzione! Impossibile da aprire!");
-            $sql="UPDATE ".$fobj::getTables()." SET data=:data WHERE id=".$id.";";
-        }
-        else{
-            $sql="UPDATE ".$fobj::getTables()." SET ".$field."="."'".$newvalue."'"." WHERE id=".$id.";";
-            try {
-               $this->db->beginTransaction();
-               $stmt=$this->db->prepare($sql);
-               if($field=="data"){
-                $stmt->bindValue(':data', fread($file,filesize($path)), PDO::PARAM_LOB);
-               }
-               $stmt->execute();
-               $this->db->commit();
-               return true;
+
+    public function update($sql){
+        try{
+             $this->db->beginTransaction();
+              $stmt=$this->db->prepare($sql);
+              $stmt->execute();
+              $this->db->commit();
+              $this->closeDbConnection();
+              return true;
             }
-            catch(PDOException $e){
+        catch(PDOException $e){
             echo "Attenzione errore: ".$e->getMessage();
             $this->db->rollBack();
             die;
             return false;
-            }
         }
     }
 
-    public function exist($class,$field,$val){
-        $fobj="F".$class;
-        $id=$fobj::exist($this->db,$field,$val);
-        if($id){ 
-            return $id;
+    public function exist($sql){
+        try{
+            $stmt=$this->db->prepare($sql);
+            $stmt->execute();
+            $rows=$stmt->fetchAll(PDO::FETCH_ASSOC);
+            if(count($rows)==1) return $rows[0];
+            else if(count($rows)>1) return $rows;
+            $this->closeDbConnection();
         }
-        else return null;
-    }
-
-    public static function getUpPath(){
-        return static::$UpPath;
+        catch(PDOException $e){
+            echo "Attenzione errore: ".$e->getMessage();
+            die;
+            return null;
+        }
     }
 
     public function closeDbConnection(){
-        unset($this->db);
+        static::$instance=null;
     }
-    
-    
-    
-}
 
+
+
+}

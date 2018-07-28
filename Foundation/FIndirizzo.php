@@ -22,7 +22,7 @@ class FIndirizzo
     }
 
     
-    public static function load(PDO &$db,$id){
+    /*public static function load(PDO &$db,$id){
         $sql="SELECT * FROM ".static::$tables." WHERE iduser=".$id.";";
         try{
            $stmt=$db->prepare($sql);
@@ -36,7 +36,7 @@ class FIndirizzo
             echo "Attenzione errore: ".$e->getMessage();
             die;
         }
-    }
+    }*/
 
     /**
      * 
@@ -47,7 +47,7 @@ class FIndirizzo
      * @return bool restituisce true se la delete e' andataa buon fine, false viceversa
      */
     
-    public static function delete(PDO &$db, $id):bool{
+   /* public static function delete(PDO &$db, $id):bool{
         $sql="DELETE FROM ".static::getTables()." WHERE id=".$id.";";
         try{
             $db->beginTransaction(); //avvia la transazione; se la tipologia di database non supporta le transazioni darà come return FALSE, metre ci darà TRUE negli altri casi
@@ -62,7 +62,7 @@ class FIndirizzo
             die;
             return false;
         }
-    }
+    }*/
 
     /**
      * 
@@ -75,7 +75,7 @@ class FIndirizzo
      * @return bool restituisce true se la modifica e' andata a buon fine, false viceversa
      */
     
-    public static function update(PDO &$db, $id, $field, $newvalue):bool {
+    /*public static function update(PDO &$db, $id, $field, $newvalue):bool {
         $sql="UPDATE ".static::getTables()." SET ".$field."="."'".$newvalue."'"." WHERE id=".$id.";";
         try {
             $db->beginTransaction();
@@ -89,8 +89,7 @@ class FIndirizzo
             $db->rollBack();
             die;
             return false;
-        }
-    }
+        }*/
 
     /**
      * 
@@ -98,21 +97,9 @@ class FIndirizzo
      * @return string $tables nome della tabella
      */
 
-    public static function getTables(){
-        return static::$tables;
-    }
+   
 
-     /**
-     * 
-     * questo metodo restituisce la stringa dei useri della tabella sul DB per la costruzione delle Query
-     * @return string $values useri della tabella
-     */
-    
-    public static function getValues(){
-        return static::$values;
-    }
-
-    public static function exist(PDO &$db,$field,$val) {
+    /*public static function exist(PDO &$db,$field,$val) {
         if(is_array($field))
         {
             $sql="SELECT id"." FROM ".static::getTables()." WHERE ".$field[0]."= '".$val[0]."' AND ".$field[1]."='".$val[1]."';";
@@ -128,8 +115,96 @@ class FIndirizzo
              echo "Attenzione errore: ".$e->getMessage();
              die;
          }
+    }*/
+
+    public static function getTables(){
+        return static::$tables;
+    }
+
+     /**
+     * 
+     * questo metodo restituisce la stringa dei useri della tabella sul DB per la costruzione delle Query
+     * @return string $values useri della tabella
+     */
+    
+    public static function getValues(){
+        return static::$values;
     }
     
+    public static function store($address){
+        $sql="INSERT INTO ".static::getTables()." VALUES ".static::getValues();
+        $db=FDatabase::getInstance();
+        $id=$db->store($sql,"FIndirizzo",$address);
+        if($id) return $id;
+        else return null;
+    }
+
+    public static function loadById($id){
+        $sql="SELECT * FROM ".static::getTables()." WHERE id=".$id.";";
+        $db=FDatabase::getInstance();
+        $result=$db->loadSingle($sql);
+        if($result!=null){
+            $address=new EIndirizzo($result['city'],$result['street'], $result['number'], $result['zipcode'],$result['country'],$result['iduser']);
+            $address->setId($row['id']);
+            return $address;
+        }
+        else return null;
+    }
+
+    public static function loadByIdUser($id){
+        $sql="SELECT * FROM ".static::getTables()." WHERE iduser=".$id.";";
+        $db=FDatabase::getInstance();
+        $result=$db->loadSingle($sql);
+        if($result!=null){
+            $address=new EIndirizzo($result['city'],$result['street'], $result['number'], $result['zipcode'],$result['country'],$result['iduser']);
+            $address->setId($result['id']);
+            return $address;
+        }
+        else return null;
+    }
+
+    public static function delete($id){
+        $sql="DELETE FROM ".static::getTables()." WHERE id=".$id.";";
+        $db=FDatabase::getInstance();
+        if($db->delete($sql)) return true;
+        else return false;
+    }
+
+    public static function UpdateCity($id,$city){
+        $field="city";
+        if(FIndirizzo::update($id,$field,$city)) return true;
+        else return false;
+    }
+
+    public static function UpdateStreet($id,$street){
+        $field="street";
+        if(FIndirizzo::update($id,$field,$street)) return true;
+        else return false;
+    }
+
+    public static function UpdateNumber($id,$number){
+        $field="number";
+        if(FIndirizzo::update($id,$field,$number)) return true;
+        else return false;
+    }
+
+    public static function UpdateZipcode($id,$zipcode){
+        $field="zipcode";
+        if(FIndirizzo::update($id,$field,$zipcode)) return true;
+        else return false;
+    }
     
+    public static function UpdateCountry($id,$country){
+        $field="country";
+        if(FIndirizzo::update($id,$field,$country)) return true;
+        else return false;
+    }
+
+    public static function Update($id,$field,$newvalue){
+        $sql="UPDATE ".static::getTables()." SET ".$field."='".$newvalue."' WHERE id=".$id.";";
+        $db=FDatabase::getInstance();
+        if($db->update($sql)) return true;
+        else return false;
+    }
 }
 

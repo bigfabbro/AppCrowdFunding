@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-07-24 13:15:59
+/* Smarty version 3.1.32, created on 2018-07-28 18:31:28
   from 'C:\xampp\htdocs\AppCrowdFunding\Smarty\templates\registration.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b570a6f9f2455_51683966',
+  'unifunc' => 'content_5b5c9a603d0d42_26630226',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'b22de68a2183ab5b095b25c7ac44e627afdb5fd8' => 
     array (
       0 => 'C:\\xampp\\htdocs\\AppCrowdFunding\\Smarty\\templates\\registration.tpl',
-      1 => 1532430956,
+      1 => 1532794986,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:navbar.tpl' => 1,
   ),
 ),false)) {
-function content_5b570a6f9f2455_51683966 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b5c9a603d0d42_26630226 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html>
 
@@ -75,7 +75,7 @@ function content_5b570a6f9f2455_51683966 (Smarty_Internal_Template $_smarty_tpl)
                   <?php if (isset($_smarty_tpl->tpl_vars['errors']->value) && $_smarty_tpl->tpl_vars['errors']->value['surname'] == "true") {?>
                   <input class="form-control border border-danger" placeholder="You surname, please" name="surname" id="surname" onchange="inputVerifyRegistration(this.id)"> </div>
                   <?php } elseif (isset($_smarty_tpl->tpl_vars['errors']->value)) {?>
-                  <input class="form-control  value="<?php echo $_smarty_tpl->tpl_vars['values']->value['surname'];?>
+                  <input class="form-control"  value="<?php echo $_smarty_tpl->tpl_vars['values']->value['surname'];?>
 " name="surname" id="surname" onchange="inputVerifyRegistration(this.id)"> </div>
                   <?php } else { ?>
                   <input class="form-control" placeholder="You surname, please" name="surname" id="surname" onchange="inputVerifyRegistration(this.id)"> </div>

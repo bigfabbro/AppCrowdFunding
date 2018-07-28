@@ -49,7 +49,7 @@
                   {if isset($errors) && $errors.surname eq "true"}
                   <input class="form-control border border-danger" placeholder="You surname, please" name="surname" id="surname" onchange="inputVerifyRegistration(this.id)"> </div>
                   {else if isset($errors)}
-                  <input class="form-control  value="{$values.surname}" name="surname" id="surname" onchange="inputVerifyRegistration(this.id)"> </div>
+                  <input class="form-control"  value="{$values.surname}" name="surname" id="surname" onchange="inputVerifyRegistration(this.id)"> </div>
                   {else}
                   <input class="form-control" placeholder="You surname, please" name="surname" id="surname" onchange="inputVerifyRegistration(this.id)"> </div>
                   {/if}

@@ -65,7 +65,7 @@ class FUtente
      * @return bool restituisce true se la delete e' andataa buon fine, false viceversa
      */
     
-    public static function delete(PDO &$db, $id):bool{
+    /*public static function delete(PDO &$db, $id):bool{
         $sql="DELETE FROM ".static::getTables()." WHERE id=".$id.";";
         try{
             $db->beginTransaction(); //avvia la transazione; se la tipologia di database non supporta le transazioni darà come return FALSE, metre ci darà TRUE negli altri casi
@@ -80,7 +80,7 @@ class FUtente
             die;
             return false;
         }
-    }
+    }*/
 
     /**
      * 
@@ -93,7 +93,7 @@ class FUtente
      * @return bool restituisce true se la modifica e' andata a buon fine, false viceversa
      */
     
-    public static function update(PDO &$db, $id, $field, $newvalue):bool {
+    /*public static function update(PDO &$db, $id, $field, $newvalue):bool {
         $sql="UPDATE ".static::getTables()." SET ".$field."="."'".$newvalue."'"." WHERE id=".$id.";";
         try {
             $db->beginTransaction();
@@ -109,6 +109,7 @@ class FUtente
             return false;
         }
     }
+    */
 
     /**
      * 
@@ -146,6 +147,108 @@ class FUtente
              echo "Attenzione errore: ".$e->getMessage();
              die;
          }
+    }
+
+    public static function store($user){
+        $sql="INSERT INTO ".static::getTables()." VALUES ".static::getValues();
+        $db=FDatabase::getInstance();
+        $id=$db->store($sql,"FUtente",$user);
+        if($id) return $id;
+        else return null;
+    }
+
+    public static function loadById($id){
+        $sql="SELECT * FROM ".static::getTables()." WHERE id=".$id.";";
+        $db=FDatabase::getInstance();
+        $result=$db->loadSingle($sql);
+        if($result!=null){
+            echo "SI";
+            $user=new EUtente($result['username'],$result['password'], $result['name'], $result['surname'],$result['sex'],$result['datan'], $result['email'],$result['telnumber'],$result['description']);
+            $user->setId($result['id']);
+            $user->setActivate($result['activate']);
+            return $user;
+        }
+        else return null;
+    }
+
+    public static function loadByUsername($username){
+        $sql="SELECT * FROM ".static::getTables()." WHERE username='".$username."';";
+        $db=FDatabase::getInstance();
+        $result=$db->loadSingle($sql);
+        if($result!=null){
+            $user=new EUtente($result['username'],$result['password'], $result['name'], $result['surname'],$result['sex'],$result['datan'], $result['email'],$result['telnumber'],$result['description']);
+            $user->setId($result['id']);
+            $user->setActivate($result['activate']);
+            return $user;
+        }
+        else return null;
+    }
+
+    public static function delete($id){
+        $sql="DELETE FROM ".static::getTables()." WHERE id=".$id.";";
+        $db=FDatabase::getInstance();
+        if($db->delete($sql)) return true;
+        else return false;
+    }
+
+    public static function UpdateTelNum($id,$telnum){
+        $field="telnumber";
+        if(FUtente::update($id,$field,$telnum)) return true;
+        else return false;
+    }
+
+    public static function UpdateDatan($id,$datan){
+        $field="datan";
+        if(FUtente::update($id,$field,$datan)) return true;
+        else return false;
+    }
+
+    public static function UpdateDescription($id,$description){
+        $field="description";
+        if(FUtente::update($id,$field,$description)) return true;
+        else return false;
+    }
+
+    public static function UpdateActivate($id,$activate){
+        $field="activate";
+        if(FUtente::update($id,$field,$activate)) return true;
+        else return false;
+    }
+
+    public static function Update($id,$field,$newvalue){
+        $sql="UPDATE ".static::getTables()." SET ".$field."='".$newvalue."' WHERE id=".$id.";";
+        $db=FDatabase::getInstance();
+        if($db->update($sql)) return true;
+        else return false;
+    }
+
+    public static function ExistUserPass($username,$password){
+        $sql="SELECT * FROM ".static::getTables()." WHERE username='".$username."' AND "."password='".$password."';";
+        $db=FDatabase::getInstance();
+        $result=$db->exist($sql);
+        if($result!=null){
+             $user=new EUtente($result['username'],$result['password'], $result['name'], $result['surname'],$result['sex'],$result['datan'], $result['email'],$result['telnumber'],$result['description']);
+             $user->setId($result['id']);
+             $user->setActivate($result['activate']);
+             return $user;
+        }
+        else return null;
+    }
+
+    public static function ExistUsername($username){
+        $sql="SELECT * FROM ".static::getTables()." WHERE username='".$username."';";
+        $db=FDatabase::getInstance();
+        $result=$db->exist($sql);
+        if($result!=null) return true;
+        else return false;
+    }
+
+    public static function ExistMail($mail){
+        $sql="SELECT * FROM ".static::getTables()." WHERE email='".$mail."';";
+        $db=FDatabase::getInstance();
+        $result=$db->exist($sql);
+        if($result!=null) return true;
+        else return false;
     }
     
     

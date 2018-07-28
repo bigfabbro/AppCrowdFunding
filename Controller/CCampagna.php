@@ -29,16 +29,14 @@ class CCampagna{
   static function Creation(){
     $view=new VCampagna();
     if($view->valFormCreaCampagna()){
-        $db=FDatabase::getInstance();
         if(CUtente::isLogged()){
             $camp= new ECampagna($_SESSION['id'],$_POST['name'],$_POST['description'],$_POST['category'],$_POST['country'],date('Y-m-d'),$_POST['enddate'],$_POST['bankcount'],$_POST['goal']);
-            $db->store($camp);
-            $idcamp=$db->exist("Campagna","name",$camp->getName());
+            $idcamp=FCampagna::store($camp);
             $up=new Upload();
             $photos=$up->photoCamp($_FILES['picture'],$idcamp);
             echo $camp;
             foreach($photos as $photo){
-                $db->store($photo);
+                FMediaCamp::store($photo);
             }
         }
     }
@@ -48,4 +46,17 @@ class CCampagna{
       
     }
   }
+
+  static function profile($id=null){
+      if(isset($id)){
+          $db=FDatabase::getInstance();
+          if($db->exist('Campagna','id',$id)){
+              $camp=$db->load('Campagna',$id);
+              $medias=$db->load('MediaCamp',$id);
+              $donations=$db->load('Donazione',$id,'idutente');
+          }
+      }
+  }
 }
+
+

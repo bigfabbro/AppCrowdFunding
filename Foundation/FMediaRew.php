@@ -28,33 +28,7 @@ class FMediaRew
         unset($file);
         unlink($path);
     }
-
-    /**
-     * 
-     * Questo metodo seleziona tutti i media relativi  ad una certa campagna 
-     * @param PDO &$db 
-     * @param int $id numero identificativo della campagna della quale si vogliono selezionare i media
-     * @return $media restituisce un array di media relativi ad una certa campagna
-     * 
-     */
-    
-    public static function load(PDO &$db,$id){
-        $sql="SELECT * FROM ".static::$tables." WHERE idrew=".$id.";";
-        $media=array();
-        try{
-            $stmt=$db->prepare($sql);
-            $stmt->execute();
-            $row=$stmt->fetch(PDO::FETCH_ASSOC);
-            $media=new EMediaRew($row['filename'], $row['idrew']);
-            $media->setId($row['id']);
-            $media->setData($row['data']);
-            return $media;
-        }
-        catch(PDOException $e){
-            echo "Attenzione errore: ".$e->getMessage();
-            die;
-        }
-    }
+   
 
     public static function getTables(){
         return static::$tables;

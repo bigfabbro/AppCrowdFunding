@@ -43,12 +43,9 @@ require_once 'include.php';
   static function EnterIn(){
         $view=new VUtente();
          if($view->ValFormLogin()){
-           $db=FDatabase::getInstance();
-           $id=$db->exist('Utente',array('username','password'),array($_POST['username'],$_POST['password']));
-           if($id){
+           $user=FUtente::ExistUserPass($_POST['username'],$_POST['password']);
+           if($user!=null){
             if (session_status() == PHP_SESSION_NONE) session_start();
-               $user=$db->load('Utente',$id);
-               $db->closeDbConnection();
                $_SESSION['id']= $user->getId();
                $_SESSION['username']=$user->getUserName();
                $_SESSION['activate']=$user->getActivate();
@@ -103,8 +100,14 @@ require_once 'include.php';
         $view= new VUtente();
         $iduser=$_SESSION['id'];
         $pinsert=$_POST['activate'];
-        $mc=new EMailCheck($iduser,$pinsert);
-        if($mc->VerifyCode()) header('Location: /AppCrowdFunding/HomePage');
+        $mc=FMailCheck::loadByIdUser($iduser);
+        if($mc->getPin()==$pinsert){
+            if(FUtente::UpdateActivate($iduser,true)){
+                if(FMailCheck::deleteByIdUser($iduser)) header('Location: /AppCrowdFunding/HomePage');
+                else $view->showActivation();
+            }
+            else $view->showActivation();
+        }
         else $view->showActivation();
     }
 
@@ -158,24 +161,22 @@ require_once 'include.php';
         }
         else{
             $user=new EUtente($_POST['username'],$_POST['password1'],$_POST['name'],$_POST['surname'],$_POST['sex'],$_POST['date'],$_POST['email'],$_POST['telnumber'],$_POST['description']);
-            $db=Fdatabase::getInstance();
-            $db->store($user);
-            $iduser= $db->exist('Utente','username',$user->getUserName());
+            $iduser=FUtente::store($user);
             $address=new EIndirizzo($_POST['city'],$_POST['street'],$_POST['number'],$_POST['zipcode'],$_POST['country'],$iduser);
-            $db->store($address);
+            FIndirizzo::store($address);
             $up=new Upload();
             if(!$notval['profpic']){
                 $picture=$up->myphoto($_FILES['upicture'],$iduser);
-                $db->store($picture);
+                FMediaUser::store($picture);
             }
             else {
                 $picture=$up->standard($iduser);
-                $db->store($picture);
+                FMediaUser::store($picture);
             }
             $mail=new EMailCheck();
             if($mail->sendActivEmail($user->getEmail(),$user->getUserName())){;
                 $mail->setIdUser($iduser);
-                $db->store($mail);
+                FMailCheck::store($mail);
             }
             $view->showWelcome();
         }
@@ -190,24 +191,32 @@ require_once 'include.php';
      */
 
     static function profile($param=null){
-        $db=FDatabase::getInstance();
         $id=null;
         $myProf=false;
-        if(isset($param)) $id=$db->exist('Utente','username',$param);
-        else if(CUtente::isLogged()) $id=$_SESSION['id'];
+        if(isset($param)){
+            $user=FUtente::loadByUsername($param);
+            if($user!=null){
+                $id=$user->getId();
+            }
+        }
+        else if(CUtente::isLogged()){
+            $id=$_SESSION['id'];
+            $user=FUtente::loadById($id);
+        }
         else header('Location: /AppCrowdFunding/HomePage');
         if($id){
             $photos=array();
-            $user=$db->load('Utente',$id);
-            $pic1=$db->load('MediaUser',$id);
-            $camps=$db->loadCampByFounder($id);
-            $address=$db->load('Indirizzo',$id);
-            foreach($camps as $camp){
-                $pics=$db->load('MediaCamp',$camp->getId());
-                if(count($pics)){
-                    $photos[$camp->getId()]=base64_encode($pics[0]->getData());
+            $pic1=FMediaUser::loadByIdUser($id);
+            $camps=FCampagna::loadByFounder($id);
+            $address=FIndirizzo::loadByIdUser($id);
+            if($camps!=null){
+                foreach($camps as $camp){
+                    $pics=$camp->getMedia();
+                    if(count($pics)){
+                        $photos[$camp->getId()]=base64_encode($pics[0]->getData());
+                    }
+                    else $photos[$camp->getId()]=null;
                 }
-                else $photos[$camp->getId()]=null;
             }
             CUtente::isLogged();
             if($_SESSION['id']==$id) $myProf=true; //booleano che serve a riconoscere se il profilo è il proprio per abilitare funzionalità di management dell'account (Es. Cancellazione dell'account)
@@ -229,8 +238,7 @@ require_once 'include.php';
     if(isset($username)){
         if(CUtente::isLogged()){
             if($_SESSION['username']==$username){
-                $db=FDatabase::getInstance();
-                if($db->delete('Utente','id',$_SESSION['id'])){
+                if(FUtente::delete($_SESSION['id'])){
                     CUtente::logout();
                     header('Location: /AppCrowdFunding/HomePage');
                 }
@@ -245,20 +253,25 @@ require_once 'include.php';
 
     /**Metodo per l'update di alcune informazioni dell'account. Di norma il metodo è richiamato
      * da una richiesta javascript AJAX di tipo POST. In base ai parametri ricevuti nella richiesta POST
-     * richiama il giusto metodo di livello entity per l'update delle informazioni.
+     * richiama il giusto metodo di livello entity per l'updatU delle informazioni.
      */
     static function UpdateProfile(){
         if(($_SERVER['REQUEST_METHOD']=="POST")){
             if(CUtente::isLogged()){
                 $view=new VUtente();
                 for($i=0; $i<count($_POST); $i++){
-                    if($view->ValFormModify()){
-                        if(key($_POST)=="city" || key($_POST)=="street" || key($_POST)=="number" || key($_POST)=="zipcode" || key($_POST)=="country"){
-                            EIndirizzo::update(key($_POST),current($_POST),$_SESSION['id']);
-                        }
-                        else{
-                            EUtente::update(key($_POST),current($_POST),$_SESSION['id']);
-                        }
+                    if($view->ValModify()){
+                        echo "SI";
+                        $address=FIndirizzo::loadByIdUser($_SESSION['id']);
+                        $idaddress=$address->getId();
+                        if(key($_POST)=="city") FIndirizzo::UpdateCity($idaddress,$_POST['city']);
+                        else if(key($_POST)=="street") FIndirizzo::UpdateStreet($idaddress,$_POST['street']);
+                        else if(key($_POST)=="number") FIndirizzo::UpdateNumber($idaddress,$_POST['number']);
+                        else if(key($_POST)=="zipcode") FIndirizzo::UpdateZipcode($idaddress,$_POST['zipcode']);
+                        else if(key($_POST)=="country") FIndirizzo::UpdateCountry($idaddress,$_POST['country']);
+                        else if(key($_POST)=="telnumber") FUtente::UpdateTelNum($_SESSION['id'],$_POST['telnumber']);
+                        else if(key($_POST)=="datan") FUtente::UpdateDatan($_SESSION['id'],$_POST['datan']);
+                        else if(key($_POST)=="description") FUtente::UpdateDescription($_SESSION['id'],$_POST['description']);
                     }
                     next($_POST);
                 }
