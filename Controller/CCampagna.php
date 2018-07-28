@@ -48,14 +48,17 @@ class CCampagna{
   }
 
   static function profile($id=null){
-      if(isset($id)){
-          $db=FDatabase::getInstance();
-          if($db->exist('Campagna','id',$id)){
-              $camp=$db->load('Campagna',$id);
-              $medias=$db->load('MediaCamp',$id);
-              $donations=$db->load('Donazione',$id,'idutente');
-          }
-      }
+    if(isset($id)){
+        $camp=FCampagna::loadById($id);
+        $user=FUtente::loadById($camp->getFounder());
+        $userpic=FMediaUser::loadByIdUser($camp->getFounder());
+        if($camp && $user && $userpic){
+            $view=new VCampagna();
+            $view->showCampaignProfile($camp,$user,$userpic);
+        } 
+        else header('Location: /AppCrowdFunding/HomePage');
+    }
+    else header('Location: /AppCrowdFunding/HomePage');
   }
 }
 

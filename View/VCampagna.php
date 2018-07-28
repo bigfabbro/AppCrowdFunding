@@ -9,7 +9,7 @@ require_once 'include.php';
      private $notval;
 
 
-     function __construct(){
+    public function __construct(){
          $this->smarty=ConfSmarty::configuration();
          $this->notval= array (
             'name' => false,
@@ -22,7 +22,7 @@ require_once 'include.php';
         );
      }
 
-     function showFormCreation($errors=null,$values=null){
+    public function showFormCreation($errors=null,$values=null){
         if(CUtente::isLogged()) $this->smarty->assign('userlogged',$_SESSION['username']);
         if(isset($errors)) {
             $this->smarty->assign('errors',$errors);
@@ -32,7 +32,7 @@ require_once 'include.php';
         $this->smarty->display('CampaignCreation.tpl');
      }
 
-     function valFormCreaCampagna() :bool {
+    public function valFormCreaCampagna() :bool {
          if(isset($_POST['name'])&& isset($_POST['country']) && isset($_POST['enddate']) && isset($_POST['bankcount']) && isset($_POST['goal']))
          {
             $replace=array(" ","'");
@@ -72,7 +72,24 @@ require_once 'include.php';
         else return true;
     }
 
-    function getNotVal(){
+
+    public function showCampaignProfile(ECampagna $camp, EUtente $founder,EMediaUser $founderpic){
+        $this->smarty->assign('camp',$camp);
+        $this->smarty->assign('founder',$founder);
+        $this->smarty->assign('founderpic',base64_encode($founderpic->getData()));
+        $camppic=$camp->getMedia();
+        if($camppic){
+            for($i=0; $i<count($camppic); $i++){
+                $camppic[$i]=base64_encode($camppic[$i]->getData());
+            }
+        }
+        $this->smarty->assign('camppic',$camppic);
+        if(CUtente::isLogged()) $this->smarty->assign('userlogged',$_SESSION['username']);
+        $this->smarty->display('campaignpage.tpl');
+    }
+
+
+    public function getNotVal(){
         return $this->notval;
     }
 }
