@@ -8,14 +8,12 @@ class EReward
     private $namereward;
     private $pledged; //donazione minima affinche si riceva un reward
     private $descriptionrew; //descrizione del reward
-    private $mediarew; //media relativo al reward (unico) al contrario dei media della campagna
     private $idcamp;
     
-    public function __construct($nare, $ple, $der, $medre,$idcamp){
+    public function __construct($nare, $ple, $der,$idcamp){
         $this->namereward=$nare;
         $this->pledged=$ple;
         $this->descriptionrew=$der;
-        $this->mediarew=$medre;
         $this->idcamp=$idcamp;
     }
     
@@ -57,14 +55,6 @@ class EReward
     
     public function setDescriptionRe ($der){
         $this->descriptionre=$der;
-    }
-    
-    public function getMedia () {
-        return $this->mediarew;
-    }
-    
-    public function setMedia ($medre){
-        $this->mediarew=$medre;
     }
     
     public function __toString(){

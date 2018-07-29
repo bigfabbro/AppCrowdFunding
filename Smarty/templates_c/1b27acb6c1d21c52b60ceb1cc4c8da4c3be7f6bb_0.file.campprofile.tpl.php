@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-07-24 16:31:54
+/* Smarty version 3.1.32, created on 2018-07-29 11:30:40
   from 'C:\xampp\htdocs\AppCrowdFunding\Smarty\templates\campprofile.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b57385a58c5a7_07889779',
+  'unifunc' => 'content_5b5d8940e35f59_59672575',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '1b27acb6c1d21c52b60ceb1cc4c8da4c3be7f6bb' => 
     array (
       0 => 'C:\\xampp\\htdocs\\AppCrowdFunding\\Smarty\\templates\\campprofile.tpl',
-      1 => 1531741317,
+      1 => 1532856637,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5b57385a58c5a7_07889779 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b5d8940e35f59_59672575 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html>
 
@@ -46,8 +46,9 @@ function content_5b57385a58c5a7_07889779 (Smarty_Internal_Template $_smarty_tpl)
         <div class="col-md-9">
           <div class="row">
             <div class="col-md-6">
-              <p class="lead text-center"><?php echo $_smarty_tpl->tpl_vars['name']->value;?>
-</p>
+              <a href="/AppCrowdFunding/Campagna/profile/<?php echo $_smarty_tpl->tpl_vars['id']->value;?>
+"><p class="lead text-center"><?php echo $_smarty_tpl->tpl_vars['name']->value;?>
+</p></a>
               <div class="progress">
                 <div class="progress-bar progress-bar-striped" role="progressbar" style="width: <?php echo (100*$_smarty_tpl->tpl_vars['funds']->value)/$_smarty_tpl->tpl_vars['goal']->value;?>
 %"><?php echo (100*$_smarty_tpl->tpl_vars['funds']->value)/$_smarty_tpl->tpl_vars['goal']->value;?>

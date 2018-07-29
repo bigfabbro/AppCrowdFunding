@@ -22,7 +22,7 @@
         <div class="col-md-9">
           <div class="row">
             <div class="col-md-6">
-              <p class="lead text-center">{$name}</p>
+              <a href="/AppCrowdFunding/Campagna/profile/{$id}"><p class="lead text-center">{$name}</p></a>
               <div class="progress">
                 <div class="progress-bar progress-bar-striped" role="progressbar" style="width: {(100*$funds)/$goal}%">{(100*$funds)/$goal}%</div>
               </div>

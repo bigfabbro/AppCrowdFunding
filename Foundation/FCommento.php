@@ -40,7 +40,7 @@ class FCommento
         if($result!=null){
             $comms=array();
             for($i=0; $i<count($result); $i++){
-                $comms[]=new ECommento($result[$i]['user'], $result[$i]['text'], $result[$i]['date'], $result[$i]['idcamp']);
+                $comms[]=new ECommento($result[$i]['iduser'], $result[$i]['text'], $result[$i]['date'], $result[$i]['idcamp']);
                 $comms[$i]->setId($result[$i]['id']);
             }
             return $comms;

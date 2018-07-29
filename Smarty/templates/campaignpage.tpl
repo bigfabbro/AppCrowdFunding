@@ -1,4 +1,5 @@
 {assign var=piccount value=$camppic|@count} 
+{assign var=commcount value=$comments|@count}
 <!DOCTYPE html>
 <html>
 
@@ -20,7 +21,7 @@
         <div class="col-md-3">
           <div class="row">
             <div class="col-md-6 text-center align-self-center">
-              <h5 class="">by {$founder->getUsername()}</h5>
+              <h5 class="">by <a href="/AppCrowdFunding/Utente/profile/{$founder->getUsername()}">{$founder->getUsername()}</a></h5>
             </div>
             <div class="col-md-6">
               <img class="img-fluid d-block rounded-circle mx-auto" src="data:image/jpeg;base64,{$founderpic}" style="width:80; height:80"> </div>
@@ -75,6 +76,7 @@
                   {/for}
                 {/if}
                 </div>
+                {if $piccount>1}
                 <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
                   <span class="carousel-control-prev-icon"></span>
                   <span class="sr-only">Previous</span>
@@ -83,6 +85,7 @@
                   <span class="carousel-control-next-icon"></span>
                   <span class="sr-only">Next</span>
                 </a>
+                {/if}
               </div>
             </div>
           </div>
@@ -95,14 +98,15 @@
           </div>
           <div class="row">
             <div class="col-md-12" style="height: 600px; overflow-x: hidden; overflow-y: auto;">
+            {foreach $rewards as $rew}
               <div class="card">
-                <div class="card-header"> Header </div>
+                <div class="card-header">{$rew->getName()}</div>
                 <div class="card-body">
-                  <h4>Card title</h4>
-                  <h6 class="text-muted">Subtitle</h6>
-                  <p>Some quick example text to build on the card title .</p>
+                  <h4>{$rew->getPledged()}€</h4>
+                  <p>{$rew->getDescriptionRe()}</p>
                 </div>
               </div>
+            {/foreach}
             </div>
           </div>
         </div>
@@ -122,18 +126,21 @@
                 <i>
                   <u>Description:</u>
                 </i>
+                {$camp->getDescription()}
                 <br>
                 <br>
                 <br>
                 <i>
                   <u>Category:</u>
                 </i>
+                {$camp->getCategory()}
                 <br>
                 <br>
                 <br>
                 <i>
                   <u>Country:</u>
                 </i>
+                {$camp->getCountry()}
               </p>
             </div>
           </div>
@@ -146,12 +153,14 @@
               </div>
               <div class="row h-50">
                 <div class="col-md-12" style="overflow-x:hidden;overflow-y:auto">
+                {for $i=0 to $commcount-1}
                   <div class="card">
-                    <div class="card-header"> User</div>
+                    <a href="/AppCrowdFunding/Utente/profile/{$authors[$i]}"><div class="card-header"> {$authors[$i]}</div></a>
                     <div class="card-body">
-                      <p>Comment text</p>
+                      <p>{$comments[$i]->getText()}</p>
                     </div>
                   </div>
+                {/for}
                 </div>
               </div>
               <div class="row h-25">

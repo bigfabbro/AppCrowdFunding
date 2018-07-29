@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-07-28 13:23:32
+/* Smarty version 3.1.32, created on 2018-07-29 11:30:40
   from 'C:\xampp\htdocs\AppCrowdFunding\Smarty\templates\profile.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b5c5234a5c6e8_83519895',
+  'unifunc' => 'content_5b5d8940ce3510_05040863',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '3b9c0631c626c1b65d40cc7bb7a98a344d679a7b' => 
     array (
       0 => 'C:\\xampp\\htdocs\\AppCrowdFunding\\Smarty\\templates\\profile.tpl',
-      1 => 1532774360,
+      1 => 1532856611,
       2 => 'file',
     ),
   ),
@@ -24,7 +24,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:campprofile.tpl' => 1,
   ),
 ),false)) {
-function content_5b5c5234a5c6e8_83519895 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b5d8940ce3510_05040863 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html>
 
@@ -84,7 +84,7 @@ $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->t
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['camp']->value) {
 ?>
-              <?php $_smarty_tpl->_subTemplateRender('file:campprofile.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('myProf'=>$_smarty_tpl->tpl_vars['myProf']->value,'name'=>$_smarty_tpl->tpl_vars['camp']->value->getName(),'description'=>$_smarty_tpl->tpl_vars['camp']->value->getDescription(),'goal'=>$_smarty_tpl->tpl_vars['camp']->value->getGoal(),'funds'=>$_smarty_tpl->tpl_vars['camp']->value->getFunds(),'photo'=>$_smarty_tpl->tpl_vars['photos']->value[$_smarty_tpl->tpl_vars['camp']->value->getId()]), 0, true);
+              <?php $_smarty_tpl->_subTemplateRender('file:campprofile.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('myProf'=>$_smarty_tpl->tpl_vars['myProf']->value,'id'=>$_smarty_tpl->tpl_vars['camp']->value->getId(),'name'=>$_smarty_tpl->tpl_vars['camp']->value->getName(),'description'=>$_smarty_tpl->tpl_vars['camp']->value->getDescription(),'goal'=>$_smarty_tpl->tpl_vars['camp']->value->getGoal(),'funds'=>$_smarty_tpl->tpl_vars['camp']->value->getFunds(),'photo'=>$_smarty_tpl->tpl_vars['photos']->value[$_smarty_tpl->tpl_vars['camp']->value->getId()]), 0, true);
 ?>
               <hr>
               <?php

@@ -16,7 +16,6 @@
    require_once 'Foundation/FDonazione.php';
    require_once 'Foundation/FUtente.php';
    require_once 'Foundation/FMediaUser.php';
-   require_once 'Foundation/FMediaRew.php';
    require_once 'View/VCampagna.php';
    require_once 'View/VUtente.php';
    require_once 'Controller/CUtente.php';

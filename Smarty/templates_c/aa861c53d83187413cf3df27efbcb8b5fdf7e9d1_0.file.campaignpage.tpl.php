@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-07-28 21:43:40
+/* Smarty version 3.1.32, created on 2018-07-29 11:53:32
   from 'C:\xampp\htdocs\AppCrowdFunding\Smarty\templates\campaignpage.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b5cc76cbd4c71_42056886',
+  'unifunc' => 'content_5b5d8e9c0cc487_32981468',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'aa861c53d83187413cf3df27efbcb8b5fdf7e9d1' => 
     array (
       0 => 'C:\\xampp\\htdocs\\AppCrowdFunding\\Smarty\\templates\\campaignpage.tpl',
-      1 => 1532807015,
+      1 => 1532858009,
       2 => 'file',
     ),
   ),
@@ -21,8 +21,9 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:navbar.tpl' => 1,
   ),
 ),false)) {
-function content_5b5cc76cbd4c71_42056886 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b5d8e9c0cc487_32981468 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_assignInScope('piccount', count($_smarty_tpl->tpl_vars['camppic']->value));?> 
+<?php $_smarty_tpl->_assignInScope('commcount', count($_smarty_tpl->tpl_vars['comments']->value));?>
 <!DOCTYPE html>
 <html>
 
@@ -46,8 +47,9 @@ $_smarty_tpl->_assignInScope('piccount', count($_smarty_tpl->tpl_vars['camppic']
         <div class="col-md-3">
           <div class="row">
             <div class="col-md-6 text-center align-self-center">
-              <h5 class="">by <?php echo $_smarty_tpl->tpl_vars['founder']->value->getUsername();?>
-</h5>
+              <h5 class="">by <a href="/AppCrowdFunding/Utente/profile/<?php echo $_smarty_tpl->tpl_vars['founder']->value->getUsername();?>
+"><?php echo $_smarty_tpl->tpl_vars['founder']->value->getUsername();?>
+</a></h5>
             </div>
             <div class="col-md-6">
               <img class="img-fluid d-block rounded-circle mx-auto" src="data:image/jpeg;base64,<?php echo $_smarty_tpl->tpl_vars['founderpic']->value;?>
@@ -117,6 +119,7 @@ $_smarty_tpl->tpl_vars['i']->first = $_smarty_tpl->tpl_vars['i']->iteration === 
 ?>
                 <?php }?>
                 </div>
+                <?php if ($_smarty_tpl->tpl_vars['piccount']->value > 1) {?>
                 <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
                   <span class="carousel-control-prev-icon"></span>
                   <span class="sr-only">Previous</span>
@@ -125,6 +128,7 @@ $_smarty_tpl->tpl_vars['i']->first = $_smarty_tpl->tpl_vars['i']->iteration === 
                   <span class="carousel-control-next-icon"></span>
                   <span class="sr-only">Next</span>
                 </a>
+                <?php }?>
               </div>
             </div>
           </div>
@@ -137,14 +141,25 @@ $_smarty_tpl->tpl_vars['i']->first = $_smarty_tpl->tpl_vars['i']->iteration === 
           </div>
           <div class="row">
             <div class="col-md-12" style="height: 600px; overflow-x: hidden; overflow-y: auto;">
+            <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['rewards']->value, 'rew');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['rew']->value) {
+?>
               <div class="card">
-                <div class="card-header"> Header </div>
+                <div class="card-header"><?php echo $_smarty_tpl->tpl_vars['rew']->value->getName();?>
+</div>
                 <div class="card-body">
-                  <h4>Card title</h4>
-                  <h6 class="text-muted">Subtitle</h6>
-                  <p>Some quick example text to build on the card title .</p>
+                  <h4><?php echo $_smarty_tpl->tpl_vars['rew']->value->getPledged();?>
+€</h4>
+                  <p><?php echo $_smarty_tpl->tpl_vars['rew']->value->getDescriptionRe();?>
+</p>
                 </div>
               </div>
+            <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
             </div>
           </div>
         </div>
@@ -164,18 +179,24 @@ $_smarty_tpl->tpl_vars['i']->first = $_smarty_tpl->tpl_vars['i']->iteration === 
                 <i>
                   <u>Description:</u>
                 </i>
+                <?php echo $_smarty_tpl->tpl_vars['camp']->value->getDescription();?>
+
                 <br>
                 <br>
                 <br>
                 <i>
                   <u>Category:</u>
                 </i>
+                <?php echo $_smarty_tpl->tpl_vars['camp']->value->getCategory();?>
+
                 <br>
                 <br>
                 <br>
                 <i>
                   <u>Country:</u>
                 </i>
+                <?php echo $_smarty_tpl->tpl_vars['camp']->value->getCountry();?>
+
               </p>
             </div>
           </div>
@@ -188,12 +209,23 @@ $_smarty_tpl->tpl_vars['i']->first = $_smarty_tpl->tpl_vars['i']->iteration === 
               </div>
               <div class="row h-50">
                 <div class="col-md-12" style="overflow-x:hidden;overflow-y:auto">
+                <?php
+$_smarty_tpl->tpl_vars['i'] = new Smarty_Variable(null, $_smarty_tpl->isRenderingCache);$_smarty_tpl->tpl_vars['i']->step = 1;$_smarty_tpl->tpl_vars['i']->total = (int) ceil(($_smarty_tpl->tpl_vars['i']->step > 0 ? $_smarty_tpl->tpl_vars['commcount']->value-1+1 - (0) : 0-($_smarty_tpl->tpl_vars['commcount']->value-1)+1)/abs($_smarty_tpl->tpl_vars['i']->step));
+if ($_smarty_tpl->tpl_vars['i']->total > 0) {
+for ($_smarty_tpl->tpl_vars['i']->value = 0, $_smarty_tpl->tpl_vars['i']->iteration = 1;$_smarty_tpl->tpl_vars['i']->iteration <= $_smarty_tpl->tpl_vars['i']->total;$_smarty_tpl->tpl_vars['i']->value += $_smarty_tpl->tpl_vars['i']->step, $_smarty_tpl->tpl_vars['i']->iteration++) {
+$_smarty_tpl->tpl_vars['i']->first = $_smarty_tpl->tpl_vars['i']->iteration === 1;$_smarty_tpl->tpl_vars['i']->last = $_smarty_tpl->tpl_vars['i']->iteration === $_smarty_tpl->tpl_vars['i']->total;?>
                   <div class="card">
-                    <div class="card-header"> User</div>
+                    <a href="/AppCrowdFunding/Utente/profile/<?php echo $_smarty_tpl->tpl_vars['authors']->value[$_smarty_tpl->tpl_vars['i']->value];?>
+"><div class="card-header"> <?php echo $_smarty_tpl->tpl_vars['authors']->value[$_smarty_tpl->tpl_vars['i']->value];?>
+</div></a>
                     <div class="card-body">
-                      <p>Comment text</p>
+                      <p><?php echo $_smarty_tpl->tpl_vars['comments']->value[$_smarty_tpl->tpl_vars['i']->value]->getText();?>
+</p>
                     </div>
                   </div>
+                <?php }
+}
+?>
                 </div>
               </div>
               <div class="row h-25">

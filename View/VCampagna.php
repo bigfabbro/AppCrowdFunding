@@ -83,6 +83,22 @@ require_once 'include.php';
                 $camppic[$i]=base64_encode($camppic[$i]->getData());
             }
         }
+        $comments=$camp->getComm();
+        var_dump($comments);
+        $authors=array();
+        if($comments){
+            foreach($comments as $comm){
+                $user=FUtente::loadById($comm->getUser());
+                if($user){
+                    $authors[]=$user->getUsername();
+                }
+                else $authors[]="anonymous";
+            }
+        }
+        $rewards=$camp->getRew();
+        $this->smarty->assign('rewards',$rewards);
+        $this->smarty->assign('comments',$comments);
+        $this->smarty->assign('authors',$authors);
         $this->smarty->assign('camppic',$camppic);
         if(CUtente::isLogged()) $this->smarty->assign('userlogged',$_SESSION['username']);
         $this->smarty->display('campaignpage.tpl');
