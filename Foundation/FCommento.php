@@ -18,10 +18,10 @@ class FCommento
     
     public static function bind($stmt,ECommento $comm){
         $stmt->bindValue(':id',NULL, PDO::PARAM_INT); //l'id � posto a NULL poich� viene dato automaticamente dal DBMS (AUTOINCREMENT_ID)
-        $stmt->bindValue(':user', $camp->getUser(), PDO::PARAM_INT);
-        $stmt->bindValue(':text', $camp->getText(), PDO::PARAM_STR);
-        $stmt->bindValue(':date', $camp->getDate(), PDO::PARAM_STR);
-        $stmt->bindValue(':idcamp', $camp->getIdCamp(), PDO::PARAM_INT);
+        $stmt->bindValue(':user', $comm->getUser(), PDO::PARAM_INT);
+        $stmt->bindValue(':text', $comm->getText(), PDO::PARAM_STR);
+        $stmt->bindValue(':date', $comm->getDate(), PDO::PARAM_STR);
+        $stmt->bindValue(':idcamp', $comm->getIdCamp(), PDO::PARAM_INT);
     }
 
    
@@ -31,6 +31,14 @@ class FCommento
     
     public static function getValues(){
         return static::$values;
+    }
+
+    public static function store($comm){
+        $sql="INSERT INTO ".static::getTables()." VALUES ".static::getValues();
+        $db=FDatabase::getInstance();
+        $id=$db->store($sql,"FCommento",$comm);
+        if($id) return $id;
+        else return null;
     }
 
     public static function loadByIdCamp($id){

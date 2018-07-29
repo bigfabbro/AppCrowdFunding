@@ -60,6 +60,19 @@ class CCampagna{
     }
     else header('Location: /AppCrowdFunding/HomePage');
   }
+
+  static function Comment(){
+    if(($_SERVER['REQUEST_METHOD']=="POST")){
+        if(CUtente::isLogged()){
+           $comm= new ECommento($_SESSION['id'],$_POST['text'],date('Y-m-d'),$_POST['idcamp']);
+           FCommento::store($comm);
+        }
+    }
+    else{
+        header('HTTP/1.1 405 Method Not Allowed');
+        header('Allow: POST');
+    }
+  }
 }
 
 
