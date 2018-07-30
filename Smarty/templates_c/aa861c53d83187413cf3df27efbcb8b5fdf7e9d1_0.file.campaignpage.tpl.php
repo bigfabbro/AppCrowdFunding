@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-07-29 18:06:55
+/* Smarty version 3.1.32, created on 2018-07-30 11:58:09
   from 'C:\xampp\htdocs\AppCrowdFunding\Smarty\templates\campaignpage.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b5de61f1fe087_91662335',
+  'unifunc' => 'content_5b5ee131b08d64_07577314',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'aa861c53d83187413cf3df27efbcb8b5fdf7e9d1' => 
     array (
       0 => 'C:\\xampp\\htdocs\\AppCrowdFunding\\Smarty\\templates\\campaignpage.tpl',
-      1 => 1532880412,
+      1 => 1532944686,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:comment.tpl' => 1,
   ),
 ),false)) {
-function content_5b5de61f1fe087_91662335 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b5ee131b08d64_07577314 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_assignInScope('piccount', count($_smarty_tpl->tpl_vars['camppic']->value));?> <?php $_smarty_tpl->_assignInScope('commcount', count($_smarty_tpl->tpl_vars['comments']->value));?>
 <!DOCTYPE html>
 <html>
@@ -232,7 +232,7 @@ $_smarty_tpl->tpl_vars['i']->first = $_smarty_tpl->tpl_vars['i']->iteration === 
               </div>
               <div class="row h-25">
                 <div class="col-md-12">
-                  <button type="button" class="btn btn-light" onclick="opencommentmodal()">Make a comment!</button>
+                  <button type="button" class="btn btn-primary" onclick="opencommentmodal()">Make a comment!</button>
                 </div>
               </div>
               <div class="col-md-12"> </div>

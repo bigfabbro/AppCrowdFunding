@@ -73,6 +73,14 @@ class CCampagna{
         header('Allow: POST');
     }
   }
+
+  static function DeleteComment(){
+      if(($_SERVER['REQUEST_METHOD']=="POST")){
+          if(CUtente::isLogged()){
+              
+          }
+      }
+  }
 }
 
 

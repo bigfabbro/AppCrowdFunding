@@ -84,7 +84,6 @@ require_once 'include.php';
             }
         }
         $comments=$camp->getComm();
-        var_dump($comments);
         $authors=array();
         if($comments){
             foreach($comments as $comm){

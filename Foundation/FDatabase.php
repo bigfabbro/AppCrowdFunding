@@ -136,6 +136,10 @@ class FDatabase
         }
     }
 
+    public static function getUpPath(){
+        return static::$UpPath;
+    }
+
     public function closeDbConnection(){
         static::$instance=null;
     }

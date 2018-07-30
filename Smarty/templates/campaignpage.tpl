@@ -164,7 +164,7 @@
               </div>
               <div class="row h-25">
                 <div class="col-md-12">
-                  <button type="button" class="btn btn-light" onclick="opencommentmodal()">Make a comment!</button>
+                  <button type="button" class="btn btn-primary" onclick="opencommentmodal()">Make a comment!</button>
                 </div>
               </div>
               <div class="col-md-12"> </div>
