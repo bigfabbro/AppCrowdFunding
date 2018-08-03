@@ -49,7 +49,10 @@ require_once 'include.php';
                $_SESSION['id']= $user->getId();
                $_SESSION['username']=$user->getUserName();
                $_SESSION['activate']=$user->getActivate();
-               if($user->getActivate()) header('Location: /AppCrowdFunding/HomePage');
+               if($user->getActivate()){
+                   if(isset($_SESSION['redirect'])) header('Location: '.$_SESSION['redirect']);
+                   else header('Location: /AppCrowdFunding/HomePage');
+               }
                else $view->showActivation();
             } 
            else{
@@ -337,7 +340,10 @@ require_once 'include.php';
             session_start();
        }
       if(isset($_SESSION['username'])) return true;
-      else return false;
+      else {
+          if($_SERVER['REQUEST_URI']!="/AppCrowdFunding/Utente/login") $_SESSION['redirect']=$_SERVER['REQUEST_URI'];
+          return false;
+      }
     }
 
 

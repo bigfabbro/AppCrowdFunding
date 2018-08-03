@@ -159,7 +159,11 @@
               </div>
               <div class="row">
                 <div class="col-md-12">
+                  {if isset($userlogged)}
                   <button class="btn btn-outline-primary my-1" onclick="opencommentmodal()" id="commentbtn">Make a comment!</button>
+                  {else}
+                  <a href="/AppCrowdFunding/Utente/login" class="btn btn-outline-primary my-1">Make a comment!</a>
+                  {/if}
                 </div>
               </div>
               <div class="row my-2" style="display:none" id="modalcomment">
