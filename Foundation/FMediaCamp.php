@@ -29,35 +29,6 @@ class FMediaCamp
         unlink($path);
     }
 
-    /**
-     * 
-     * Questo metodo seleziona tutti i media relativi  ad una certa campagna 
-     * @param PDO &$db 
-     * @param int $id numero identificativo della campagna della quale si vogliono selezionare i media
-     * @return $media restituisce un array di media relativi ad una certa campagna
-     * 
-     */
-    
-    /*public static function load(PDO &$db,$id){
-        $sql="SELECT * FROM ".static::$tables." WHERE idcamp=".$id.";";
-        $media=array();
-        try{
-            $stmt=$db->prepare($sql);
-            $stmt->execute();
-            $medias=$stmt->fetchAll(PDO::FETCH_ASSOC);
-            for($i=0; $i<count($medias); $i++){
-                $media[]=new EMediaCamp($medias[$i]['filename'], $medias[$i]['idcamp']);
-                $media[$i]->setId($medias[$i]['id']);
-                $media[$i]->setData($medias[$i]['data']);
-            }
-            return $media;
-        }
-        catch(PDOException $e){
-            echo "Attenzione errore: ".$e->getMessage();
-            die;
-        }
-    }*/
-
     public static function getTables(){
         return static::$tables;
     }

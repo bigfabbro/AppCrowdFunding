@@ -4,7 +4,6 @@
    require_once 'Entity/EUtente.php';
    require_once 'Entity/EMedia.php';
    require_once 'Entity/EMediaCamp.php';
-   require_once 'Entity/EMediaRew.php';
    require_once 'Entity/EMediaUser.php';
    require_once 'Entity/EDonazione.php';
    require_once 'Foundation/FDatabase.php';

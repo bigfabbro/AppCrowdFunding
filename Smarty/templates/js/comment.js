@@ -1,10 +1,13 @@
 function cancelcomment() {
-    document.getElementById("modalcomment").style.visibility= "hidden"
+    document.getElementById("modalcomment").style.display= "none"
+    document.getElementById("commentbtn").style.display= "block"
     document.getElementById("commentform").reset();
 }
 
 function opencommentmodal() {
-    document.getElementById("modalcomment").style.visibility= "visible"
+    document.getElementById("modalcomment").style.display= "block"
+    document.getElementById("commentbtn").style.display= "none"
+    document.getElementById("commText").focus()
 }
 
 function comment(idcamp){

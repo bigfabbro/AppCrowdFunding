@@ -8,8 +8,8 @@
   <link rel="stylesheet" href="/AppCrowdFunding/Smarty/templates/css/theme.css" type="text/css"> 
 </head>
 
-<body>
-  <div class="py-5 wait" id="modalcomment" style="visibility:hidden">
+<body >
+  <div class="py-5 wait" id="modalcomment" style="visibility:hidden; top: 400px" >
     <div class="container">
       <div class="row">
         <div class="col-md-12">

@@ -59,7 +59,6 @@ class FCartaDiCredito
         $db=FDatabase::getInstance();
         $result=$db->loadSingle($sql);
         if($result!=null){
-            echo "SI";
             $cc=new ECartaDiCredito($result['ownername'],$result['ownersurname'], $result['epirationdate'], $result['ccnumber'],$result['cvv']);
             $cc->setId($result['id']);
             return $cc;

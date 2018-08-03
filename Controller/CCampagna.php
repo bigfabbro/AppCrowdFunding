@@ -34,7 +34,6 @@ class CCampagna{
             $idcamp=FCampagna::store($camp);
             $up=new Upload();
             $photos=$up->photoCamp($_FILES['picture'],$idcamp);
-            echo $camp;
             foreach($photos as $photo){
                 FMediaCamp::store($photo);
             }

@@ -94,13 +94,26 @@ require_once 'include.php';
                 else $authors[]="anonymous";
             }
         }
+        $donations=FDonazione::loadByIdCamp($camp->getId());
+        $donators=array();
+        if($donations){
+            foreach($donations as $don){
+                $user=FUtente::loadById($don->getIdUtente());
+                if($user){
+                    $donators[]=$user->getUsername();
+                }
+                else $authors[]="anonymous";
+            }
+        }
         $rewards=$camp->getRew();
+        $this->smarty->assign('donators',$donators);
+        $this->smarty->assign('donations',$donations);
         $this->smarty->assign('rewards',$rewards);
         $this->smarty->assign('comments',$comments);
         $this->smarty->assign('authors',$authors);
         $this->smarty->assign('camppic',$camppic);
         if(CUtente::isLogged()) $this->smarty->assign('userlogged',$_SESSION['username']);
-        $this->smarty->display('campaignpage.tpl');
+        $this->smarty->display('camppage.tpl');
     }
 
 

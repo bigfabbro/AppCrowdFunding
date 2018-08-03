@@ -261,7 +261,6 @@ require_once 'include.php';
                 $view=new VUtente();
                 for($i=0; $i<count($_POST); $i++){
                     if($view->ValModify()){
-                        echo "SI";
                         $address=FIndirizzo::loadByIdUser($_SESSION['id']);
                         $idaddress=$address->getId();
                         if(key($_POST)=="city") FIndirizzo::UpdateCity($idaddress,$_POST['city']);
