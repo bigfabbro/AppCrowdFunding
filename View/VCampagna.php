@@ -113,7 +113,6 @@ require_once 'include.php';
         $this->smarty->assign('authors',$authors);
         $this->smarty->assign('camppic',$camppic);
         if(CUtente::isLogged()) $this->smarty->assign('userlogged',$_SESSION['username']);
-        echo $_SESSION['redirect'];
         $this->smarty->display('camppage.tpl');
     }
 
