@@ -2,9 +2,17 @@
 
 require_once 'include.php';
 
+
+/**
+ * La classe CDonazione implementa la funzionalità riguardante la donazione
+ * @author Sof
+ * @package Controller
+ */
+
+
 class CDonazione{
  /**
- * make sta per make a donation
+  * metodo che permette di effettuare la donazione
   */
     static function Make($idcamp){
     $Campagna=FDatabase::getInstance()->load('Campagna',$idcamp);
@@ -24,10 +32,9 @@ class CDonazione{
        FDatabase::getInstance()->store($donazione);
     
     /**
-     * creo la view
-     * richiamo il metodo crea donazione dalla view
-     * controllo che l'ogg sia valido
-     * se valido salvo nel db
+     * metodo che crea la view, quindi richiama il metodo presente in VDonazione
+     * controlla che l'oggetto sia valido;
+     * se valido salvo nel db.
      */
    }
    else {

@@ -2,16 +2,39 @@
 
 require_once 'include.php';
 
+
+/**
+ * La classe EDonazione contiene tutti gli attributi e metodi base riguardanti la donazione. Contiene i seguenti attributi (e i relativi metodi):
+ * - id: è un identificativo autoincrement, relativo alla donazione
+ * - amount: quantità di denaro che si desidera donare
+ * - date: data relativa alla donazione
+ * - reward: 
+ * - idutente: id dell'utente che effettua la donazione
+ * - idcamp: id della campagna per la quale si vuole effettuare la donazione
+ * - donationoccurred: variabile booleana posta a true nel caso in cui la donazione è andata a buon fine
+ * - idcc: carta di credito con cui si effettua la donazione
+ * @author Sof
+ * @package Entity
+ */
+
 class EDonazione
-{
+{   
+    /** id relativo alla donazione */
     private $id;
-    private $amount; //quantità di denaro che si desidera donare
-    private $date; //data relativa alla donazione
+    /** quantità di denaro che si vuole donare */
+    private $amount; 
+    /** data relativa alla donazione */
+    private $date; 
+
     private $reward; 
-    private $idutente; //id dell'utente che effettua la donazione
-    private $idcamp; //id della campagna per la quale si vuole effettuare la donazione
-    private $donationoccurred; //variabile booleana posta a true nel caso in cui la donazione è andata a buon fine
-    private $idcc; //carta di credito con cui si effettua la donazione
+    /** id dell'utente che effettua la donazione */
+    private $idutente;
+    /** id della campagna per la quale si vuole effettuare la donazione */
+    private $idcamp; 
+    /** variabile booleana posta a true nel caso in cui la donazione è andata a buon fine */
+    private $donationoccurred; 
+    /** id della carta di credito con cui si effettua la donazione */
+    private $idcc; 
 
 
     public function __construct($amount,$date,$reward=null,$user,$idcamp,$creditcard)
@@ -25,25 +48,47 @@ class EDonazione
         $this->idcc=$creditcard;
     }
    
+     /**
+     * 
+     * @return int l'id della donazione
+     */
     public function getId()
     {
         return $this->id;
     }
+
+     /**
+     * 
+     * @return float quantità di denaro che si vuole donare
+     */
 
     public function getAmount()
     {
         return $this->amount;
     }
 
+     /**
+     * 
+     * @return date data della donazione
+     */
+
+
     public function getDate()
     {
         return $this->date;
     }
 
+
     public function getReward()
     {
         return $this->reward;
     }
+
+     /**
+     * 
+     * @return int id dell'utente
+     */
+
 
     public function getIdUtente()
     {
@@ -55,24 +100,48 @@ class EDonazione
         return $this->idcamp;
     }
 
+     /**
+     * 
+     * @return int id della carta di credito
+     */
+
+
     public function getCreditCard()
     {
         return $this->idcc;
     }
 
+
     public function getOcc(){
         return $this->donationoccurred;
     }
+
+    /**
+     * 
+     * @param int $id della donazione
+     */
 
     public function setId($id)
     {
         $this->id = $id;
     }
 
+    /**
+     * 
+     * @param float $amount della donazione
+     */
+
+
     public function setAmount($amount)
     {
         $this->amount = $amount;
     }
+
+    /**
+     * 
+     * @param data $date della donazione
+     */
+
 
     public function setDate($date)
     {
@@ -84,15 +153,35 @@ class EDonazione
         $this->reward = $reward;
     }
 
+    /**
+     * 
+     * @param int $id dell'utente che effettua la donazione
+     */
+
+
     public function setIdUtente($user)
     {
         $this->idutente = $user;
     }
 
+
+    /**
+     * 
+     * @param int $id della campagna di cui si effettua la donazione
+     */
+
+
     public function setIdCamp($idcamp)
     {
         $this->idcamp = $idcamp;
     }
+
+
+    /**
+     * 
+     * @param int $id della carta di credico con cui si effettua la donazione
+     */
+
 
 
     public function setCreditCard($creditcard){

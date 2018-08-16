@@ -2,6 +2,11 @@
 
 require_once 'include.php';
 
+/**
+ * La classe FDonazione fornisce query per gli oggetti EDonazione
+ * @author Sof
+ * @package Foundation
+ */
 
 class FDonazione
 {
@@ -31,10 +36,13 @@ class FDonazione
     public static function getTables(){
         return static::$tables;
     }
+
+ 
         
     public static function getValues(){
         return static::$values;
     }
+
 
     public static function loadById($id){
         $sql="SELECT * FROM ".static::getTables()." WHERE id=".$id.";";

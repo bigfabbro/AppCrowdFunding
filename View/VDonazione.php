@@ -2,6 +2,11 @@
 
 require_once 'include.php';
 
+/**
+ * La classe VDonazione si occupa di creare e far visualizzare la form riguardante la donazione
+ * @author Sof
+ * @package View
+ */
  
  class VDonazione{
 
@@ -22,6 +27,8 @@ require_once 'include.php';
 
        );
     }
+
+    //** Metodo che consente di visualizzare la form della donazione (fa uso di smarty) */
 
        function showFormDonazione($campagna){
         $this->smarty->assign('NomeCampagna',$campagna->getName());
