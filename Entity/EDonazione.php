@@ -31,23 +31,77 @@ class EDonazione
     private $idutente;
     /** id della campagna per la quale si vuole effettuare la donazione */
     private $idcamp; 
-    /** variabile booleana posta a true nel caso in cui la donazione è andata a buon fine */
-    private $donationoccurred; 
-    /** id della carta di credito con cui si effettua la donazione */
-    private $idcc; 
+    private $cvv;
+    private $ccnumber;
+    private $expirationdate;
+    private $ownername;
+    private $ownersurname;
 
 
-    public function __construct($amount,$date,$reward=null,$user,$idcamp,$creditcard)
+
+    public function __construct()
     {
-        $this->amount=$amount;
-        $this->date=$date;
-        $this->reward=$reward;
-        $this->idutente=$user;
-        $this->idcamp=$idcamp;
-        $this->donationoccurred=false;
-        $this->idcc=$creditcard;
+
     }
-   
+    
+    public function getCcNumber()
+    {
+        return $this->ccnumber;
+    }
+
+    public function setCcNumber($ccnumber)
+    {
+         $this->ccnumber= $ccnumber;
+    }
+
+    public function getExpirationDate()
+    {
+        return $this->expirationdate;
+    }
+
+    public function setExpirationDate($expirationdate)
+    {
+       $this->expirationdate=$expirationdate;
+    }
+
+
+    public function getOwnerName()
+    {
+        return $this->ownername;
+    }
+
+
+    public function setOwnerName($ownername)
+    {
+       $this->ownername=$ownername;
+    }
+
+
+    public function getOwnerSurname()
+    {
+        return $this->ownersurname;
+    }
+
+    public function setOwnerSurname($ownersurname)
+    {
+       $this->ownersurname=$ownersurname;
+    }
+
+
+
+
+    public function getCvv()
+    {
+        return $this->cvv;
+    }
+
+
+    public function setCvv($cvv)
+    {
+       $this->cvv=$cvv;
+    }
+
+
      /**
      * 
      * @return int l'id della donazione
@@ -100,21 +154,7 @@ class EDonazione
         return $this->idcamp;
     }
 
-     /**
-     * 
-     * @return int id della carta di credito
-     */
-
-
-    public function getCreditCard()
-    {
-        return $this->idcc;
-    }
-
-
-    public function getOcc(){
-        return $this->donationoccurred;
-    }
+ 
 
     /**
      * 
@@ -188,14 +228,6 @@ class EDonazione
         $this->idcc= $creditcard;
     }
 
-/**
-     * @access public
-     * @param $donationoccurred boolean
-     */
-    public function setDonEffettuata($donationoccurred) {
-        $this->donationoccurred=$donationoccurred;
-    }
-    
     
     /**
      *  torna un booleano se la form è valida, i paramateri vengono passati per riferimento
@@ -221,7 +253,7 @@ class EDonazione
 
     static function valCcnumber($val):bool{
         $replace=array(" ","'");
-        if(!preg_match("/^([0-9]{16})$/",str_replace($replace,'',$val))){
+        if(!preg_match("/^([0-9]{10})$/",str_replace($replace,'',$val))){
             return false;
         }
         else return true;

@@ -32,14 +32,25 @@ require_once 'include.php';
 
        function showFormDonazione($campagna){
         $this->smarty->assign('NomeCampagna',$campagna->getName());
-        $this->smarty->assign('IdCampagna',$campagna->getId());
+        $this->smarty->assign('idcamp',$campagna->getId());
+        $this->smarty->assign('info', false);
         $this->smarty->display('donation.tpl');
     }
 
 
     function createDonation(){
-        if(isset($_POST['amount']) && isset($_POST['date']) && isset($_POST['ownername']) && isset($_POST['ownersurname']) && isset($_POST['ccnumber'])&& isset($_POST['expirationdate'])&& isset($_POST['cvv'])) {
-            $donazione= new EDonazione ($_POST['amount'], $_POST['date'], $_POST['ownername'], $_POST['ownersurname'], $_POST['ccnumber'], $_POST['expirationdate'], $_POST['cvv']);
+        if(isset($_POST['amount']) && isset($_POST['ownername']) && isset($_POST['ownersurname']) && isset($_POST['ccnumber'])&& isset($_POST['expirationdate'])&& isset($_POST['cvv'])) {
+            $donazione = new EDonazione ();
+            $donazione->setAmount($_POST['amount']);
+            $donazione->setOwnerName($_POST['ownername']);
+            $donazione->setOwnerSurname($_POST['ownersurname']);
+            $donazione->setCcNumber($_POST['ccnumber']);
+            $donazione->setExpirationDate($_POST['expirationdate']);
+            $donazione->setCvv($_POST['cvv']);
+
+
+
+            $donazione->setIdUtente($_SESSION['id']);
             return $donazione;
         }
 

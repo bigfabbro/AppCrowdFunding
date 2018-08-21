@@ -15,11 +15,11 @@ class CDonazione{
   * metodo che permette di effettuare la donazione
   */
     static function Make($idcamp){
-    $Campagna=FDatabase::getInstance()->load('Campagna',$idcamp);
+    $Campagna=FCampagna::loadById($idcamp);
     /**
      * controllo se l'utente è loggato e se la campagna esiste
      */
-   
+ 
     if(CUtente::isLogged() && $Campagna )
     {  if($_SERVER['REQUEST_METHOD']=="GET"){
         $view=new VDonazione();
@@ -27,9 +27,12 @@ class CDonazione{
    }
    else if($_SERVER['REQUEST_METHOD']=="POST"){
        $view=new VDonazione();
-       $view->createDonation();
-       if($view->validateDonazione($donazione))
-       FDatabase::getInstance()->store($donazione);
+       $donazione = $view->createDonation();
+       var_dump($donazione);
+       if($view->valFormDonation()){
+        echo 'si';
+        FDonazione::store($donazione);
+       }
     
     /**
      * metodo che crea la view, quindi richiama il metodo presente in VDonazione

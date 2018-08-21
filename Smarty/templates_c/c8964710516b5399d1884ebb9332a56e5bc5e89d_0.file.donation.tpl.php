@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-08-21 11:37:30
-  from 'C:\xampp\htdocs\AppCrowdFunding\Smarty\templates\login.tpl' */
+/* Smarty version 3.1.32, created on 2018-08-21 12:21:10
+  from 'C:\xampp\htdocs\AppCrowdFunding\Smarty\templates\donation.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b7bdd5add1e55_61613249',
+  'unifunc' => 'content_5b7be796a33e19_09298245',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    '4c1204dc4afc87df3f1b3ff051d7fbdf76e0120c' => 
+    'c8964710516b5399d1884ebb9332a56e5bc5e89d' => 
     array (
-      0 => 'C:\\xampp\\htdocs\\AppCrowdFunding\\Smarty\\templates\\login.tpl',
-      1 => 1532250752,
+      0 => 'C:\\xampp\\htdocs\\AppCrowdFunding\\Smarty\\templates\\donation.tpl',
+      1 => 1534846863,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5b7bdd5add1e55_61613249 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b7be796a33e19_09298245 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html>
 
@@ -34,32 +34,45 @@ function content_5b7bdd5add1e55_61613249 (Smarty_Internal_Template $_smarty_tpl)
 <body style="background-image: url('/AppCrowdFunding/Smarty/img/login.jpg'); background-size:cover;">
   <div class="py-5 w-100 h-100">
     <div class="container">
-      <div class="row">
         <div class="align-self-center col-md-6 text-white">
           <h1 class="text-md-left display-3 text-light">
-            <b>Society Of Funding!</b>
+            <b>Support:<?php echo $_smarty_tpl->tpl_vars['NomeCampagna']->value;?>
+</b>
           </h1>
-          <p class="lead text-light">
-            <b>Do you have any idea?</b>
-          </p>
+          <p>“No one is useless in this world who lightens the burdens of another.”&nbsp;
+            <br>― Charles Dickens</p>
         </div>
         <div class="col-md-6">
           <div class="row">
             <div class="col-md-12">
               <div class="card text-white p-5 bg-light">
                 <div class="card-body">
-                  <h1 class="mb-4 bg-light text-primary">Login</h1>
-                  <form action="login" method="POST">
+                  <h1 class="mb-4 bg-light text-primary">Donate</h1>
+                  
+                  <form action="/AppCrowdFunding/Donazione/make/<?php echo $_smarty_tpl->tpl_vars['idcamp']->value;?>
+" method="POST">
+                  
+                  <div class="form-group bg-light">
+                      <label class="text-primary">Owner Name</label>
+                      <input type="text" class="form-control" placeholder="Enter Owner Surname" name="ownername"> </div>
                     <div class="form-group bg-light">
-                      <label class="text-primary">Username</label>
-                      <input type="text" class="form-control" placeholder="Enter username" name="username" required="required"> </div>
+                      <label class="text-primary">Owner Surname</label>
+                      <input type="text" class="form-control" placeholder="Enter Owner Name" name="ownersurname"> </div>
                     <div class="form-group bg-light">
-                      <label class="text-primary">Password</label>
-                      <input type="password" class="form-control" placeholder="Enter password" name="password" required="required"> </div>
-                    <button type="submit" class="btn btn-primary">Login</button>
+                      <label class="text-primary">Credit Card Number</label>
+                      <input type="text" class="form-control" placeholder="Enter credit Card Number" name="ccnumber"> </div>
+                    <div class="form-group bg-light">
+                      <label class="text-primary">Expiration Date</label>
+                      <input type="date" class="form-control" placeholder="Enter username" name="expirationdate"> </div>
+                    <div class="form-group bg-light">
+                      <label class="text-primary">CVV</label>
+                      <input type="text" class="form-control" placeholder="Enter CVV" name="cvv"> </div>
+                    <div class="form-group bg-light">
+                      <label class="text-primary">Amount</label>
+                      <input type="number" class="form-control" placeholder="How much you would like to donate?" name="amount"> </div>
+                    <button type="submit" class="btn btn-primary">Donate</button>
                   </form>
                 </div>
-                <div class="card-header text-primary text-center border border-light bg-light"><?php if (isset($_smarty_tpl->tpl_vars['badlogin']->value) && $_smarty_tpl->tpl_vars['badlogin']->value == "true") {?>Attenzione! Username e/o password errati!<?php }?></div>
               </div>
             </div>
           </div>
@@ -67,17 +80,15 @@ function content_5b7bdd5add1e55_61613249 (Smarty_Internal_Template $_smarty_tpl)
       </div>
     </div>
   </div>
-  <nav class="navbar navbar-expand-md bg-dark navbar-dark" style="position:relative">
+
     <div class="container">
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar3SupportedContent">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse text-center justify-content-center" id="navbar3SupportedContent">
-        <span class="navbar-text text-light">OR</span>
-        <a class="ml-3 btn navbar-btn btn-primary" href="registration">Register now</a>
-      </div>
+      <div class="collapse navbar-collapse text-center justify-content-center" id="navbar3SupportedContent"> </div>
     </div>
   </nav>
+
   <?php echo '<script'; ?>
  src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"><?php echo '</script'; ?>
 >

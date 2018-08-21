@@ -11,7 +11,7 @@ require_once 'include.php';
 class FDonazione
 {
     private static $tables="donazioni";
-    private static $values="(:id,:amount,:date,:reward,:idutente, :idcamp, :donationoccurred, :idcc)";
+    private static $values="(:amount,:date,:idutente, :idcamp);";
 
     public function __construct()
     {}
@@ -22,15 +22,16 @@ class FDonazione
      * @param EDonazione $don donazione i cui dati devono essere inseriti nel DB
      */
 
-        public static function bind($stmt, EDonazione $don){
-            $stmt->bindValue(':id',NULL, PDO::PARAM_INT);
+        public static function bind(&$stmt, EDonazione $don){
             $stmt->bindValue(':amount', $don->getAmount(), PDO::PARAM_INT);
             $stmt->bindValue(':date', $don->getDate(), PDO::PARAM_STR);
-            $stmt->bindValue(':reward', $don->getReward(), PDO::PARAM_STR);
             $stmt->bindValue(':idutente', $don->getIdUtente(), PDO::PARAM_INT);
             $stmt->bindValue(':idcamp', $don->getIdCamp(), PDO::PARAM_INT);
-            $stmt->bindValue(':donationoccured',$don->getOcc(), PDO::PARAM_BOOL);
-            $stmt->bindValue(':idcc', $don->getCreditCard(), PDO::PARAM_INT);
+            $stmt->bindValue(':cvv', $don->getCvv(), PDO::PARAM_INT);
+            $stmt->bindValue(':ccnumber', $don->getCcNumber(), PDO::PARAM_STR);
+            $stmt->bindValue(':expirationdate', $don->getExpirationDate(), PDO::PARAM_STR);
+            $stmt->bindValue(':ownername', $don->getOwnerName(), PDO::PARAM_STR);
+            $stmt->bindValue(':ownersurname', $don->getOwnerSurname(), PDO::PARAM_STR);
         }
 
     public static function getTables(){
@@ -50,8 +51,7 @@ class FDonazione
         $result=$db->loadSingle($sql);
         if($result!=null){
             $don=new EDonazione($result['amount'],$result['date'], $result['reward'], $result['idutente'], $result['idcamp'], $result['idcc']);
-            $don->setId($result['id']);
-            $don->setDonEffettuata($result['donationoccured']); 
+            $don->setId($result['id']); 
             return $don;
         }
         else return null;
@@ -66,7 +66,6 @@ class FDonazione
             for($i=0; $i<count($result); $i++){
                 $dons[]=new EDonazione($result[$i]['amount'], $result[$i]['date'], $result[$i]['reward'], $result[$i]['idutente'],$result[$i]['idcamp'],$result[$i]['idcc']);
                 $dons[$i]->setId($result[$i]['id']);
-                $dons[$i]->setDonEffettuata($result[$i]['donationoccured']);
             }
             return $dons;
         }
@@ -94,5 +93,15 @@ class FDonazione
         $db=FDatabase::getInstance();
         if($db->delete($sql)) return true;
         else return false;
+    }
+
+      /** Metodo che genera la query per l'insert di una donazione all'interno del database e richiama l'instanza di FDatabase per la store */
+
+      public static function store($don){
+        $sql="INSERT INTO donazioni VALUES ".static::getValues();
+        
+        $db=FDatabase::getInstance();
+        $db->store($sql,"FDonazione",$don);
+        
     }
 }
