@@ -15,7 +15,7 @@ class FDonazione
 
     public function __construct()
     {
-        
+
     }
 
      /**
@@ -79,7 +79,6 @@ class FDonazione
             for($i=0; $i<count($result); $i++){
                 $dons[]=new EDonazione($result[$i]['amount'], $result[$i]['date'], $result[$i]['reward'], $result[$i]['idutente'],$result[$i]['idcamp'],$result[$i]['idcc']);
                 $dons[$i]->setId($result[$i]['id']);
-                $dons[$i]->setDonEffettuata($result[$i]['donationoccured']);
             }
             return $dons;
         }
@@ -93,13 +92,12 @@ class FDonazione
         else return false;
     }
 
-      /** Metodo che genera la query per l'insert di una donazione all'interno del database e richiama l'instanza di FDatabase per la store */
-
+     
       public static function store($don){
-        $sql="INSERT INTO donazioni VALUES ".static::getValues();
-        
+        $sql="INSERT INTO ".static::getTables()." VALUES ".static::getValues();
         $db=FDatabase::getInstance();
-        $db->store($sql,"FDonazione",$don);
-        
+        $id=$db->store($sql,"FDonazione",$don);
+        if($id) return $id;
+        else return null;
     }
 }

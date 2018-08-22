@@ -11,7 +11,7 @@ require_once 'include.php';
  * - reward: 
  * - idutente: id dell'utente che effettua la donazione
  * - idcc: carta di credito con cui si effettua la donazione
- * @author Sof
+ * @author SoF
  * @package Entity
  */
 
@@ -34,9 +34,11 @@ class EDonazione
 
 
 
-    public function __construct()
-    {
-
+    public function __construct($amount, $date, $reward)
+    {   $this->amount=$amount;
+        $this->date=$date;
+        $this->reward=$reawrd;
+    
     }
     
 
@@ -68,7 +70,7 @@ class EDonazione
 
     public function getDate()
     {
-        return $this->date;
+        return date();
     }
 
 

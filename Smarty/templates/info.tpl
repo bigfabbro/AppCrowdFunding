@@ -50,18 +50,19 @@
           <h2 id="contatti" class="text-primary">Contatti</h2>
           <p class="">Serena Pitotti
             <br>serenapitotti@gmail.com
-            <br>3396182219
+            <br>+393396182219
             <br>
             <br>Fabrizio D'Ascenzo
-            <br>inseritelavoi
-            <br>98980
+            <br>fabrizio.dascenzo@student.univaq.it
+            <br>1234567890
             <br>
             <br>Oscar Guerra
-            <br>opipoipi+
-            <br>hkjhkjhk
+            <br>oscar.guerra@student.univaq.it
+            <br>1234567890
             <br>
             <br>Sede Legale:
-            <br>Università degli Studi dell'Aquila</p>
+            <br>Università degli Studi dell'Aquila
+            <br>Via Vetoio (Coppito 1), 67100 Coppito (AQ)</p>
         </div>
         <div class="col-md-5 align-self-center">
           <img class="img-fluid d-block w-100 img-thumbnail" src="/AppCrowdFunding/Smarty/img/oscar.jpg"> </div>
