@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="Smarty/templates/css/theme.css" type="text/css">
   <link rel="stylesheet" href="/AppCrowdFunding/Smarty/templates/css/theme.css"> </head>
 
+{include file='navbar.tpl'}
 <body style="background-image: url('/AppCrowdFunding/Smarty/img/login.jpg'); background-size:cover;">
   <div class="py-5 w-100 h-100">
     <div class="container">

@@ -14,7 +14,9 @@ class FDonazione
     private static $values="(:amount,:date,:idutente, :idcamp);";
 
     public function __construct()
-    {}
+    {
+        
+    }
 
      /**
      * Questo metodo lega gli attributi della donazione da inserire con i parametri della INSERT
@@ -27,11 +29,7 @@ class FDonazione
             $stmt->bindValue(':date', $don->getDate(), PDO::PARAM_STR);
             $stmt->bindValue(':idutente', $don->getIdUtente(), PDO::PARAM_INT);
             $stmt->bindValue(':idcamp', $don->getIdCamp(), PDO::PARAM_INT);
-            $stmt->bindValue(':cvv', $don->getCvv(), PDO::PARAM_INT);
-            $stmt->bindValue(':ccnumber', $don->getCcNumber(), PDO::PARAM_STR);
-            $stmt->bindValue(':expirationdate', $don->getExpirationDate(), PDO::PARAM_STR);
-            $stmt->bindValue(':ownername', $don->getOwnerName(), PDO::PARAM_STR);
-            $stmt->bindValue(':ownersurname', $don->getOwnerSurname(), PDO::PARAM_STR);
+        
         }
 
     public static function getTables(){

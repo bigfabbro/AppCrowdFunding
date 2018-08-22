@@ -15,7 +15,7 @@ require_once 'include.php';
 
      function __construct(){
         $this->smarty=ConfSmarty::configuration();
-
+        
         $this->notval= array (
            'amount' => false,
            'date'=> false,
@@ -73,22 +73,22 @@ require_once 'include.php';
     function valFormDonation(){
 
         if(isset($_POST['ownername'])){
-            $this->notval['ownername']=!EDonazione::valOwnername($_POST['ownername']); 
+            $this->notval['ownername']=!EDonazione::valOwnerName($_POST['ownername']); 
         }
         else   $this->notval['ownername']=true;
 
         if(isset($_POST['ownersurname'])){
-            $this->notval['ownersurname']=!EDonazione::valOwnersurname($_POST['ownersurname']); 
+            $this->notval['ownersurname']=!EDonazione::valOwnerSurname($_POST['ownersurname']); 
         }
         else   $this->notval['ownersurname']=true;
 
         if(isset($_POST['ccnumber'])){
-            $this->notval['ccnumber']=!EDonazione::valCcnumber($_POST['ccnumber']); 
+            $this->notval['ccnumber']=!EDonazione::valCcNumber($_POST['ccnumber']); 
         }
         else   $this->notval['ccnumber']=true;
 
         if(isset($_POST['expirationdate'])){
-            $this->notval['expirationdate']=!EDonazione::valExpdate($_POST['expirationdate']); 
+            $this->notval['expirationdate']=!EDonazione::valExpirationDate($_POST['expirationdate']); 
         }
         else  $notval['expirationdate']=true;
 
@@ -109,4 +109,16 @@ require_once 'include.php';
         return $this->notval;
     }
 
+
+    public function ValDonation() :bool {
+        $val=key($_POST);
+        if($val=="ownername") return ECartadicredito::valOwnerName($_POST['ownername']);
+        else if($val=="ownersurname") return ECartadicredito::valOwnerSurname($_POST['ownersurname']);
+        else if($val=="ccnumber") return ECartadicredito::valCcNumber($_POST['ccnumber']);
+        else if($val=="cvv") return ECartadicredito::valCvv($_POST['cvv']);
+        else if($val=="expirationdate") return ECartadicredito::valExpirationDate($_POST['expirationdate']);
+        else if($val=="amount") return EDonazione::valAmount($_POST['amount']);
+    }
+        
+  
 }

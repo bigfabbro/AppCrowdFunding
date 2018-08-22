@@ -22,6 +22,7 @@ require_once 'include.php';
         );
      }
 
+
     public function showFormCreation($errors=null,$values=null){
         if(CUtente::isLogged()) $this->smarty->assign('userlogged',$_SESSION['username']);
         if(isset($errors)) {

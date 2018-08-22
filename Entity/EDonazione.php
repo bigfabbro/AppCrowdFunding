@@ -10,8 +10,6 @@ require_once 'include.php';
  * - date: data relativa alla donazione
  * - reward: 
  * - idutente: id dell'utente che effettua la donazione
- * - idcamp: id della campagna per la quale si vuole effettuare la donazione
- * - donationoccurred: variabile booleana posta a true nel caso in cui la donazione è andata a buon fine
  * - idcc: carta di credito con cui si effettua la donazione
  * @author Sof
  * @package Entity
@@ -31,11 +29,8 @@ class EDonazione
     private $idutente;
     /** id della campagna per la quale si vuole effettuare la donazione */
     private $idcamp; 
-    private $cvv;
-    private $ccnumber;
-    private $expirationdate;
-    private $ownername;
-    private $ownersurname;
+    /** id della carta di credito con la quale si effettua la donazione */
+    private $idcc;
 
 
 
@@ -44,62 +39,6 @@ class EDonazione
 
     }
     
-    public function getCcNumber()
-    {
-        return $this->ccnumber;
-    }
-
-    public function setCcNumber($ccnumber)
-    {
-         $this->ccnumber= $ccnumber;
-    }
-
-    public function getExpirationDate()
-    {
-        return $this->expirationdate;
-    }
-
-    public function setExpirationDate($expirationdate)
-    {
-       $this->expirationdate=$expirationdate;
-    }
-
-
-    public function getOwnerName()
-    {
-        return $this->ownername;
-    }
-
-
-    public function setOwnerName($ownername)
-    {
-       $this->ownername=$ownername;
-    }
-
-
-    public function getOwnerSurname()
-    {
-        return $this->ownersurname;
-    }
-
-    public function setOwnerSurname($ownersurname)
-    {
-       $this->ownersurname=$ownersurname;
-    }
-
-
-
-
-    public function getCvv()
-    {
-        return $this->cvv;
-    }
-
-
-    public function setCvv($cvv)
-    {
-       $this->cvv=$cvv;
-    }
 
 
      /**
@@ -148,6 +87,13 @@ class EDonazione
     {
         return $this->idutente;
     }
+    
+    
+     /**
+     * 
+     * @return int id della campagna
+     */
+
 
     public function getIdCamp()
     {
@@ -228,52 +174,11 @@ class EDonazione
         $this->idcc= $creditcard;
     }
 
-    
     /**
      *  torna un booleano se la form è valida, i paramateri vengono passati per riferimento
 
      */
     //validate
-     
-    static function valOwnername($val):bool{
-        $replace=array(" ","'");
-        if(!preg_match("/^([a-zA-Z]{3,30})$/",str_replace($replace,'',$val))){
-            return false;
-        }
-        else return true;
-    }
-    
-    static function valOwnersurname($val):bool{
-        $replace=array(" ","'");
-        if(!preg_match("/^([a-zA-Z]{3,30})$/",str_replace($replace,'',$val))){
-            return false;
-        }
-        else return true;
-    }
-
-    static function valCcnumber($val):bool{
-        $replace=array(" ","'");
-        if(!preg_match("/^([0-9]{10})$/",str_replace($replace,'',$val))){
-            return false;
-        }
-        else return true;
-    }
-
-    static function valExpdate($val):bool{
-        $date=explode('-',$val);
-        if(!checkdate($date[1],$date[2],$date[0])){
-            return false;
-        }
-        else return true;
-    } 
-    
-    static function valCvv($val):bool{
-        $replace=array(" ","'");
-        if(!preg_match("/^([0-9]{3})$/",str_replace($replace,'',$val))){
-            return false;
-        }
-        else return true;
-    }
     
 
 
