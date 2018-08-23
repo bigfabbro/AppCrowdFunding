@@ -52,8 +52,8 @@
             <br>98980
             <br>
             <br>Oscar Guerra
-            <br>opipoipi+
-            <br>hkjhkjhk
+            <br>oscar962009@hotmail.it
+            <br>3775036078
             <br>
             <br>Sede Legale:
             <br>Università degli Studi dell'Aquila</p>

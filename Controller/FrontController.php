@@ -7,7 +7,7 @@ require_once 'include.php';
 class FrontController{
     
     public function dispatch($url){
-        $request = preg_split("#[][&?/]#", $url);
+        $request = preg_split("#[][&?/]#", $_SERVER['REQUEST_URI']); // individua le componenti dell'url
         $controller="C".$request[2];
         if(class_exists($controller)){
             $function=$request[3];

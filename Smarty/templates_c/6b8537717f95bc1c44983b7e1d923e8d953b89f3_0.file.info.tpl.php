@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-07-24 13:40:27
+/* Smarty version 3.1.32, created on 2018-08-08 13:31:08
   from 'C:\xampp\htdocs\AppCrowdFunding\Smarty\templates\info.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b57102b4497a4_22366807',
+  'unifunc' => 'content_5b6ad47ccd2089_53839475',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '6b8537717f95bc1c44983b7e1d923e8d953b89f3' => 
     array (
       0 => 'C:\\xampp\\htdocs\\AppCrowdFunding\\Smarty\\templates\\info.tpl',
-      1 => 1532432384,
+      1 => 1533727866,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:navbar.tpl' => 1,
   ),
 ),false)) {
-function content_5b57102b4497a4_22366807 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b6ad47ccd2089_53839475 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html>
 
@@ -77,8 +77,8 @@ function content_5b57102b4497a4_22366807 (Smarty_Internal_Template $_smarty_tpl)
             <br>98980
             <br>
             <br>Oscar Guerra
-            <br>opipoipi+
-            <br>hkjhkjhk
+            <br>oscar962009@hotmail.it
+            <br>3775036078
             <br>
             <br>Sede Legale:
             <br>Università degli Studi dell'Aquila</p>
