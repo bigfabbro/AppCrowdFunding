@@ -23,18 +23,20 @@ class FrontController{
             }
             else{
                 $smarty=ConfSmarty::configuration();
-                if(!CUtente::isLogged()) $smarty->display('Homepage.tpl');
+                if(!CUtente::isLogged()) {$smarty->assign('info', false); $smarty->display('Homepage.tpl');}
                 else{
                 $smarty->assign('userlogged',$_SESSION['username']);
+                $smarty->assign('info', false);
                 $smarty->display('HomePage.tpl');
                 }
             }
         }
         else{
          $smarty=ConfSmarty::configuration();
-         if(!CUtente::isLogged()) $smarty->display('Homepage.tpl');
+         if(!CUtente::isLogged()){$smarty->assign('info', false); $smarty->display('Homepage.tpl');}
          else{
          $smarty->assign('userlogged',$_SESSION['username']);
+         $smarty->assign('info', false);
          $smarty->display('HomePage.tpl');
          }
         }

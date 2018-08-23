@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html>
 
@@ -9,6 +10,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
   <link rel="stylesheet" href="/AppCrowdFunding/Smarty/templates/css/theme.css" type="text/css">
+=======
+{assign var='userlogged' value=$userlogged|default:'nouser'}
+
+
+>>>>>>> 264fb67624f8da7997d418ee603ffdd4101efd31
   <nav class="navbar navbar-expand-md navbar-dark bg-primary">
     <a class="navbar-brand" href="/AppCrowdFunding/HomePage">
       <i class="fa d-inline fa-lg fa-cloud"></i>
@@ -16,6 +22,7 @@
     </a>
     <div class="container">
       <ul class="navbar-nav">
+<<<<<<< HEAD
         <li class="nav-item text-light">
           <a class="nav-link" href="/AppCrowdFunding/HomePage"> Home Page</a>
         </li>
@@ -40,6 +47,25 @@
           placeholder="Cerca tra le categorie" name="str">
         <button class="btn my-sm-0 ml-auto p-2 btn-outline-dark flex-row d-inline-flex submit-button" type="submit" style="background-image: url('../lente.ico');background-size:cover;background-position:right center;"></button>
       </form> 
+=======
+          <li class="nav-item text-light"  >
+            <a class="nav-link" href="/AppCrowdFunding/Info/info"   > Chi siamo</a>
+          </li>
+        </ul>
+
+      <ul class="navbar-nav">
+          <li class="nav-item text-light" >
+            <a class="nav-link" {if !$info} href="/AppCrowdFunding/Info/info" {else} href="#scelta" {/if}> Perché sceglierci</a>
+          </li>
+        </ul>
+
+
+      <ul class="navbar-nav">
+          <li class="nav-item text-light" >
+            <a class="nav-link" {if !$info}  href="/AppCrowdFunding/Info/info" {else} href="#contatti" {/if}> Contatti</a>
+          </li>
+        </ul>
+>>>>>>> 264fb67624f8da7997d418ee603ffdd4101efd31
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar2SupportedContent">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -59,6 +85,7 @@
         <a class="btn navbar-btn ml-2 text-primary btn-light" href="/AppCrowdFunding/Utente/registration">&nbsp; Sign Up &nbsp;</a> {/if} </div>
     </div>
   </nav>
+<<<<<<< HEAD
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
@@ -68,3 +95,6 @@
 </body>
 
 </html>
+=======
+  
+>>>>>>> 264fb67624f8da7997d418ee603ffdd4101efd31

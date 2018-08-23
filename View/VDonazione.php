@@ -2,6 +2,11 @@
 
 require_once 'include.php';
 
+/**
+ * La classe VDonazione si occupa di creare e far visualizzare la form riguardante la donazione
+ * @author Sof
+ * @package View
+ */
  
  class VDonazione{
 
@@ -10,7 +15,7 @@ require_once 'include.php';
 
      function __construct(){
         $this->smarty=ConfSmarty::configuration();
-
+        
         $this->notval= array (
            'amount' => false,
            'date'=> false,
@@ -23,16 +28,29 @@ require_once 'include.php';
        );
     }
 
+    //** Metodo che consente di visualizzare la form della donazione (fa uso di smarty) */
+
        function showFormDonazione($campagna){
         $this->smarty->assign('NomeCampagna',$campagna->getName());
-        $this->smarty->assign('IdCampagna',$campagna->getId());
+        $this->smarty->assign('idcamp',$campagna->getId());
+        $this->smarty->assign('info', false);
         $this->smarty->display('donation.tpl');
     }
 
 
     function createDonation(){
-        if(isset($_POST['amount']) && isset($_POST['date']) && isset($_POST['ownername']) && isset($_POST['ownersurname']) && isset($_POST['ccnumber'])&& isset($_POST['expirationdate'])&& isset($_POST['cvv'])) {
-            $donazione= new EDonazione ($_POST['amount'], $_POST['date'], $_POST['ownername'], $_POST['ownersurname'], $_POST['ccnumber'], $_POST['expirationdate'], $_POST['cvv']);
+        if(isset($_POST['amount']) && isset($_POST['ownername']) && isset($_POST['ownersurname']) && isset($_POST['ccnumber'])&& isset($_POST['expirationdate'])&& isset($_POST['cvv'])) {
+            $donazione = new EDonazione ();
+            $donazione->setAmount($_POST['amount']);
+            $donazione->setOwnerName($_POST['ownername']);
+            $donazione->setOwnerSurname($_POST['ownersurname']);
+            $donazione->setCcNumber($_POST['ccnumber']);
+            $donazione->setExpirationDate($_POST['expirationdate']);
+            $donazione->setCvv($_POST['cvv']);
+
+
+
+            $donazione->setIdUtente($_SESSION['id']);
             return $donazione;
         }
 
@@ -55,22 +73,22 @@ require_once 'include.php';
     function valFormDonation(){
 
         if(isset($_POST['ownername'])){
-            $this->notval['ownername']=!EDonazione::valOwnername($_POST['ownername']); 
+            $this->notval['ownername']=!EDonazione::valOwnerName($_POST['ownername']); 
         }
         else   $this->notval['ownername']=true;
 
         if(isset($_POST['ownersurname'])){
-            $this->notval['ownersurname']=!EDonazione::valOwnersurname($_POST['ownersurname']); 
+            $this->notval['ownersurname']=!EDonazione::valOwnerSurname($_POST['ownersurname']); 
         }
         else   $this->notval['ownersurname']=true;
 
         if(isset($_POST['ccnumber'])){
-            $this->notval['ccnumber']=!EDonazione::valCcnumber($_POST['ccnumber']); 
+            $this->notval['ccnumber']=!EDonazione::valCcNumber($_POST['ccnumber']); 
         }
         else   $this->notval['ccnumber']=true;
 
         if(isset($_POST['expirationdate'])){
-            $this->notval['expirationdate']=!EDonazione::valExpdate($_POST['expirationdate']); 
+            $this->notval['expirationdate']=!EDonazione::valExpirationDate($_POST['expirationdate']); 
         }
         else  $notval['expirationdate']=true;
 
@@ -91,4 +109,16 @@ require_once 'include.php';
         return $this->notval;
     }
 
+
+    public function ValDonation() :bool {
+        $val=key($_POST);
+        if($val=="ownername") return ECartadicredito::valOwnerName($_POST['ownername']);
+        else if($val=="ownersurname") return ECartadicredito::valOwnerSurname($_POST['ownersurname']);
+        else if($val=="ccnumber") return ECartadicredito::valCcNumber($_POST['ccnumber']);
+        else if($val=="cvv") return ECartadicredito::valCvv($_POST['cvv']);
+        else if($val=="expirationdate") return ECartadicredito::valExpirationDate($_POST['expirationdate']);
+        else if($val=="amount") return EDonazione::valAmount($_POST['amount']);
+    }
+        
+  
 }
