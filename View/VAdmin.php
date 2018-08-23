@@ -26,6 +26,10 @@ require_once 'include.php';
             'number'=>false,
             'country'=>false,
             'zipcode'=>false
+<<<<<<< HEAD
         );
     }
 }
+=======
+        );
+>>>>>>> 22f274f08d73eecabe8aba70e97de4e0c50262e2

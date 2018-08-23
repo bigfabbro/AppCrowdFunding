@@ -26,7 +26,11 @@ class CRicerca
         $vRicerca = new VRicerca();
         
         $string = $vRicerca->getValue();
+<<<<<<< HEAD
         //var_dump($string);
+=======
+        var_dump($string);
+>>>>>>> 22f274f08d73eecabe8aba70e97de4e0c50262e2
         if($string)
         { // se l'utente ha inviato tramite GET un valore, si cerca nel DB
             $oggetto = FDatabase::getInstance()->cerca(CRicerca::KEY_DEFAULT, CRicerca::VALUE_DEFAULT, $string);
@@ -59,8 +63,13 @@ class CRicerca
                 if($value == CRicerca::VALUE_DEFAULT || $value == CRicerca::VALUE_ADVANCED)
                 { // si prelevano gli oggetti
                     $objects = FDatabase::getInstance()->cerca($key, $value, $string);
+<<<<<<< HEAD
                     //var_dump($objects, $key, $value, $string);
                     $vRicerca->showSearchResult($objects, $key, $value, $string);
+=======
+                    var_dump($objects, $key, $value, $string);
+                    //$vRicerca->showSearchResult($objects, $key, $value, $string);
+>>>>>>> 22f274f08d73eecabe8aba70e97de4e0c50262e2
                 }
                 else //...altrimenti si mostra un errore
                     $vRicerca->showErrorPage('Seems like  value is not corrected...');
