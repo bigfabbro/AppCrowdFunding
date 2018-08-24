@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-08-21 11:37:47
+/* Smarty version 3.1.32, created on 2018-07-24 16:14:54
   from 'C:\xampp\htdocs\AppCrowdFunding\Smarty\templates\CampaignCreation.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b7bdd6bcf9a86_37213415',
+  'unifunc' => 'content_5b57345e71d310_73674731',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '1e27dde1f5e723b2a27fde4a0e436ec27808c9f5' => 
     array (
       0 => 'C:\\xampp\\htdocs\\AppCrowdFunding\\Smarty\\templates\\CampaignCreation.tpl',
-      1 => 1532594338,
+      1 => 1532441679,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:navbar.tpl' => 1,
   ),
 ),false)) {
-function content_5b7bdd6bcf9a86_37213415 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b57345e71d310_73674731 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html>
 

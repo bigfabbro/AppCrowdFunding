@@ -1,4 +1,3 @@
-
 <?php
 require_once 'include.php';
 $db=FDatabase::getInstance();

@@ -1,30 +1,18 @@
 <?php
-<<<<<<< HEAD
 /* Smarty version 3.1.32, created on 2018-08-08 13:31:08
-=======
-/* Smarty version 3.1.32, created on 2018-08-21 11:35:29
->>>>>>> 264fb67624f8da7997d418ee603ffdd4101efd31
   from 'C:\xampp\htdocs\AppCrowdFunding\Smarty\templates\info.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-<<<<<<< HEAD
   'unifunc' => 'content_5b6ad47ccd2089_53839475',
-=======
-  'unifunc' => 'content_5b7bdce12f7a31_70610163',
->>>>>>> 264fb67624f8da7997d418ee603ffdd4101efd31
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '6b8537717f95bc1c44983b7e1d923e8d953b89f3' => 
     array (
       0 => 'C:\\xampp\\htdocs\\AppCrowdFunding\\Smarty\\templates\\info.tpl',
-<<<<<<< HEAD
       1 => 1533727866,
-=======
-      1 => 1534843314,
->>>>>>> 264fb67624f8da7997d418ee603ffdd4101efd31
       2 => 'file',
     ),
   ),
@@ -33,32 +21,15 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:navbar.tpl' => 1,
   ),
 ),false)) {
-<<<<<<< HEAD
 function content_5b6ad47ccd2089_53839475 (Smarty_Internal_Template $_smarty_tpl) {
-=======
-function content_5b7bdce12f7a31_70610163 (Smarty_Internal_Template $_smarty_tpl) {
->>>>>>> 264fb67624f8da7997d418ee603ffdd4101efd31
 ?><!DOCTYPE html>
 <html>
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <?php echo '<script'; ?>
- src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"><?php echo '</script'; ?>
->
-  <?php echo '<script'; ?>
- src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"><?php echo '</script'; ?>
->
-  <?php echo '<script'; ?>
- src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"><?php echo '</script'; ?>
->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
-  <link rel="stylesheet" href="/AppCrowdFunding/Smarty/templates/css/theme.css" type="text/css"> 
-   <?php echo '<script'; ?>
- src="/AppCrowdFunding/Smarty/templates/js/scroll.js"><?php echo '</script'; ?>
->
-  
+   <link rel="stylesheet" href="/AppCrowdFunding/Smarty/templates/css/theme.css" type="text/css"> 
 </head>
 
 <body >
@@ -68,7 +39,7 @@ function content_5b7bdce12f7a31_70610163 (Smarty_Internal_Template $_smarty_tpl)
     <div class="container">
       <div class="row mb-5">
         <div class="col-md-7">
-          <h2 id="chisiamo" class="text-primary" >Chi siamo</h2>
+          <h2 class="text-primary">Chi siamo</h2>
           <p class="">Society of Funding nasce da Serena, Oscar e Fabrizio, tre studenti dell'Università degli Studi dell'Aquila con un sogno:&nbsp;aiutare gli altri a realizzare i propri di sogni.
             <br>SoF è una piattaforma di crowdfunding. Il termine Crowdfunding, del resto, deriva proprio dall'incrocio delle parole inglesi "crowd", folla, e "funding", finanziamento, indicando la pratica di "trovare fondi attraverso la folla", ossia una
             modalità di microfinanziamento dal basso che si avvale dell'aiuto di benefattori che scelgono di investire liberamente, ispirati dal progetto e dall'idea proposta.
@@ -82,7 +53,7 @@ function content_5b7bdce12f7a31_70610163 (Smarty_Internal_Template $_smarty_tpl)
         <div class="col-md-5">
           <img class="img-fluid d-block mb-4 w-100 img-thumbnail" src="/AppCrowdFunding/Smarty/img/fabri.jpg"> </div>
         <div class="col-md-7">
-          <h2 id="scelta" class="text-primary pt-3">Perché scegliere SoF?</h2>
+          <h2 class="text-primary pt-3">Perché scegliere SoF?</h2>
           <p class="">SoF è una piattaforma sicura e veloce.&nbsp;
             <br>Abbiamo raccolto più di 4 miliardi di dollari per chi ne aveva bisogno.&nbsp;
             <br>Siamo i numeri uno al mondo &nbsp;per la raccolta di fondi online.&nbsp;
@@ -96,7 +67,7 @@ function content_5b7bdce12f7a31_70610163 (Smarty_Internal_Template $_smarty_tpl)
     <div class="container">
       <div class="row mb-5">
         <div class="col-md-7">
-          <h2 id="contatti" class="text-primary">Contatti</h2>
+          <h2 class="text-primary">Contatti</h2>
           <p class="">Serena Pitotti
             <br>serenapitotti@gmail.com
             <br>3396182219
@@ -117,7 +88,15 @@ function content_5b7bdce12f7a31_70610163 (Smarty_Internal_Template $_smarty_tpl)
       </div>
     </div>
   </div>
- 
+  <?php echo '<script'; ?>
+ src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"><?php echo '</script'; ?>
+>
+  <?php echo '<script'; ?>
+ src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"><?php echo '</script'; ?>
+>
+  <?php echo '<script'; ?>
+ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"><?php echo '</script'; ?>
+>
 </body>
 
 </html><?php }
