@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-08-21 11:35:29
+/* Smarty version 3.1.32, created on 2018-08-22 17:56:33
   from 'C:\xampp\htdocs\AppCrowdFunding\Smarty\templates\info.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b7bdce12f7a31_70610163',
+  'unifunc' => 'content_5b7d87b1cca521_58708268',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '6b8537717f95bc1c44983b7e1d923e8d953b89f3' => 
     array (
       0 => 'C:\\xampp\\htdocs\\AppCrowdFunding\\Smarty\\templates\\info.tpl',
-      1 => 1534843314,
+      1 => 1534953319,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:navbar.tpl' => 1,
   ),
 ),false)) {
-function content_5b7bdce12f7a31_70610163 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b7d87b1cca521_58708268 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html>
 
@@ -83,18 +83,19 @@ function content_5b7bdce12f7a31_70610163 (Smarty_Internal_Template $_smarty_tpl)
           <h2 id="contatti" class="text-primary">Contatti</h2>
           <p class="">Serena Pitotti
             <br>serenapitotti@gmail.com
-            <br>3396182219
+            <br>+393396182219
             <br>
             <br>Fabrizio D'Ascenzo
-            <br>inseritelavoi
-            <br>98980
+            <br>fabrizio.dascenzo@student.univaq.it
+            <br>1234567890
             <br>
             <br>Oscar Guerra
-            <br>opipoipi+
-            <br>hkjhkjhk
+            <br>oscar.guerra@student.univaq.it
+            <br>1234567890
             <br>
             <br>Sede Legale:
-            <br>Università degli Studi dell'Aquila</p>
+            <br>Università degli Studi dell'Aquila
+            <br>Via Vetoio (Coppito 1), 67100 Coppito (AQ)</p>
         </div>
         <div class="col-md-5 align-self-center">
           <img class="img-fluid d-block w-100 img-thumbnail" src="/AppCrowdFunding/Smarty/img/oscar.jpg"> </div>

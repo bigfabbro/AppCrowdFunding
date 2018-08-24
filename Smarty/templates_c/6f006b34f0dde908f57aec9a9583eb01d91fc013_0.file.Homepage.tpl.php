@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-08-21 11:31:29
+/* Smarty version 3.1.32, created on 2018-08-24 17:49:41
   from 'C:\xampp\htdocs\AppCrowdFunding\Smarty\templates\Homepage.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b7bdbf16ffc13_82845857',
+  'unifunc' => 'content_5b802915f3f0a8_34932436',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '6f006b34f0dde908f57aec9a9583eb01d91fc013' => 
     array (
       0 => 'C:\\xampp\\htdocs\\AppCrowdFunding\\Smarty\\templates\\Homepage.tpl',
-      1 => 1531953543,
+      1 => 1534939319,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:navbar.tpl' => 1,
   ),
 ),false)) {
-function content_5b7bdbf16ffc13_82845857 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b802915f3f0a8_34932436 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html>
 
@@ -29,25 +29,26 @@ function content_5b7bdbf16ffc13_82845857 (Smarty_Internal_Template $_smarty_tpl)
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
-  <link rel="stylesheet" href="/AppCrowdFunding/Smarty/templates/css/theme.css" type="text/css"> 
-</head>
+  <link rel="stylesheet" href="/AppCrowdFunding/Smarty/templates/css/theme.css" type="text/css"> </head>
 
-<body style="background-image: url('/AppCrowdFunding/Smarty/img/wallpaperRazzo.jpg'); background-size:cover;">
-<?php $_smarty_tpl->_subTemplateRender('file:navbar.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+<body style="background-image: url('/AppCrowdFunding/Smarty/img/wallpaperRazzo.jpg'); background-size:cover;"> <?php $_smarty_tpl->_subTemplateRender('file:navbar.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
   <div class="py-5 text-center">
     <div class="container py-5">
       <div class="row">
         <div class="col-md-12">
           <h1 class="display-3 mb-4 text-light">Do you have any brilliant ideas?
-          <br>Share them with us and start like a... </h1><span><h1 class="display-3 mb-4 text-primary">rocket!</h1></span>
+            <br>Share them with us and start like a... </h1>
+          <span>
+            <h1 class="display-3 mb-4 text-primary">rocket!</h1>
+          </span>
           <a href="/AppCrowdFunding/Campagna/StartProject" class="btn btn-lg mx-1 btn-primary">Start a Project!</a>
           <a href="#" class="btn btn-lg btn-primary mx-1">Back a Project!</a>
         </div>
       </div>
     </div>
   </div>
-  <div class="py-5 text-center bg-light">
+  <div class="py-5 text-center bg-light" >
     <div class="container">
       <div class="row">
         <div class="col-md-12">
@@ -56,31 +57,31 @@ function content_5b7bdbf16ffc13_82845857 (Smarty_Internal_Template $_smarty_tpl)
       </div>
       <div class="row">
         <div class="col-md-4 p-4">
-          <img class="img-fluid d-block rounded-circle mx-auto" src="https://pingendo.github.io/templates/sections/assets/test_meow.jpg">
+          <img class="d-block mx-auto img-fluid img-thumbnail" src="/AppCrowdFunding/Smarty/img/cassetto.jpg">
           <p class="my-4">
-            <i>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.</i>
+            <i>Apri il cassetto e tira fuori uno dei tuoi sogni.</i>
           </p>
-          <p>
-            <b>Meow</b>
-            <br>Senior developer</p>
+          <p class="text-primary text-uppercase">
+            <b>Dream big..</b>
+          </p>
         </div>
         <div class="col-md-4 p-4">
-          <img class="img-fluid d-block rounded-circle mx-auto" src="https://pingendo.github.io/templates/sections/assets/test_fish.jpg">
+          <img class="img-fluid d-block mx-auto img-thumbnail" src="/AppCrowdFunding/Smarty/img/subscribe.jpg">
           <p class="my-4">
-            <i>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec. </i>
+            <i>Iscriviti a Sof e crea la tua campagna. </i>
           </p>
-          <p>
-            <b>J. L. Fish</b>
-            <br>UI designer</p>
+          <p class="text-primary text-uppercase">
+            <b>Create your own campaign</b>
+          </p>
         </div>
         <div class="col-md-4 p-4">
-          <img class="img-fluid d-block rounded-circle mx-auto" src="https://pingendo.github.io/templates/sections/assets/test_carlito.jpg">
+          <img class="img-fluid d-block mx-auto img-thumbnail" src="/AppCrowdFunding/Smarty/img/wallpaperRazzetto.jpg">
           <p class="my-4">
-            <i>Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Cum sociis natoque penatibus et magnis dis parturient montes.</i>
+            <i>Incassa i fondi e realizza il tuo sogno!</i>
           </p>
-          <p>
-            <b>Carlito</b>
-            <br>Boss</p>
+          <p class="text-primary text-uppercase">
+            <b>Make your dream real</b>
+          </p>
         </div>
       </div>
     </div>
