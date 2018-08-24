@@ -121,7 +121,7 @@ class FCampagna
     {
         return "SELECT campagne.*, utenti.username
                 FROM campagne, utenti
-                WHERE LOCATE( :campagne.name , campagne.name) > 0 AND campagne.founder = utenti.id;";
+                WHERE LOCATE( :name , name) > 0 AND campagne.founder = utenti.id;";
     }
     
     static function createObjectFromRow($row) 

@@ -1,18 +1,30 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-08-23 17:00:01
+<<<<<<< HEAD
+/* Smarty version 3.1.32, created on 2018-08-23 15:10:50
+=======
+/* Smarty version 3.1.32, created on 2018-08-21 11:31:29
+>>>>>>> 264fb67624f8da7997d418ee603ffdd4101efd31
   from 'C:\xampp\htdocs\AppCrowdFunding\Smarty\templates\navbar.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b7ecbf189bf11_29037672',
+<<<<<<< HEAD
+  'unifunc' => 'content_5b7eb25aed2b42_56316721',
+=======
+  'unifunc' => 'content_5b7bdbf173f613_40320730',
+>>>>>>> 264fb67624f8da7997d418ee603ffdd4101efd31
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '7ee9defdfd6e8654ab1d6c42e02279c280ba6b9b' => 
     array (
       0 => 'C:\\xampp\\htdocs\\AppCrowdFunding\\Smarty\\templates\\navbar.tpl',
-      1 => 1535035770,
+<<<<<<< HEAD
+      1 => 1535029845,
+=======
+      1 => 1534843370,
+>>>>>>> 264fb67624f8da7997d418ee603ffdd4101efd31
       2 => 'file',
     ),
   ),
@@ -20,9 +32,9 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5b7ecbf189bf11_29037672 (Smarty_Internal_Template $_smarty_tpl) {
-?><<<<<<< HEAD
-<!DOCTYPE html>
+<<<<<<< HEAD
+function content_5b7eb25aed2b42_56316721 (Smarty_Internal_Template $_smarty_tpl) {
+?><!DOCTYPE html>
 <html>
 
 <head>
@@ -34,7 +46,8 @@ function content_5b7ecbf189bf11_29037672 (Smarty_Internal_Template $_smarty_tpl)
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
   <link rel="stylesheet" href="/AppCrowdFunding/Smarty/templates/css/theme.css" type="text/css">
 =======
-<?php $_smarty_tpl->_assignInScope('userlogged', (($tmp = @$_smarty_tpl->tpl_vars['userlogged']->value)===null||$tmp==='' ? 'nouser' : $tmp));?>
+function content_5b7bdbf173f613_40320730 (Smarty_Internal_Template $_smarty_tpl) {
+$_smarty_tpl->_assignInScope('userlogged', (($tmp = @$_smarty_tpl->tpl_vars['userlogged']->value)===null||$tmp==='' ? 'nouser' : $tmp));?>
 
 
 >>>>>>> 264fb67624f8da7997d418ee603ffdd4101efd31
@@ -45,6 +58,7 @@ function content_5b7ecbf189bf11_29037672 (Smarty_Internal_Template $_smarty_tpl)
     </a>
     <div class="container">
       <ul class="navbar-nav">
+<<<<<<< HEAD
         <li class="nav-item text-light">
           <a class="nav-link" href="/AppCrowdFunding/HomePage"> Home Page</a>
         </li>
@@ -69,6 +83,25 @@ function content_5b7ecbf189bf11_29037672 (Smarty_Internal_Template $_smarty_tpl)
           placeholder="Cerca tra le categorie" name="str">
         <button class="btn my-sm-0 ml-auto p-2 btn-outline-dark flex-row d-inline-flex submit-button" type="submit" style="background-image: url('../lente.ico');background-size:cover;background-position:right center;"></button>
       </form> 
+=======
+          <li class="nav-item text-light"  >
+            <a class="nav-link" href="/AppCrowdFunding/Info/info"   > Chi siamo</a>
+          </li>
+        </ul>
+
+      <ul class="navbar-nav">
+          <li class="nav-item text-light" >
+            <a class="nav-link" <?php if (!$_smarty_tpl->tpl_vars['info']->value) {?> href="/AppCrowdFunding/Info/info" <?php } else { ?> href="#scelta" <?php }?>> Perché sceglierci</a>
+          </li>
+        </ul>
+
+
+      <ul class="navbar-nav">
+          <li class="nav-item text-light" >
+            <a class="nav-link" <?php if (!$_smarty_tpl->tpl_vars['info']->value) {?>  href="/AppCrowdFunding/Info/info" <?php } else { ?> href="#contatti" <?php }?>> Contatti</a>
+          </li>
+        </ul>
+>>>>>>> 264fb67624f8da7997d418ee603ffdd4101efd31
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar2SupportedContent">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -89,6 +122,7 @@ function content_5b7ecbf189bf11_29037672 (Smarty_Internal_Template $_smarty_tpl)
         <a class="btn navbar-btn ml-2 text-primary btn-light" href="/AppCrowdFunding/Utente/registration">&nbsp; Sign Up &nbsp;</a> <?php }?> </div>
     </div>
   </nav>
+<<<<<<< HEAD
   <?php echo '<script'; ?>
  src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"><?php echo '</script'; ?>
 >
@@ -103,6 +137,9 @@ function content_5b7ecbf189bf11_29037672 (Smarty_Internal_Template $_smarty_tpl)
   </pingendo>
 </body>
 
-</html>
+</html><?php }
+=======
+  
 <?php }
+>>>>>>> 264fb67624f8da7997d418ee603ffdd4101efd31
 }
