@@ -31,6 +31,7 @@ require_once 'include.php';
     //** Metodo che consente di visualizzare la form della donazione (fa uso di smarty) */
 
        function showFormDonazione($campagna){
+        if(CUtente::isLogged()) $this->smarty->assign('userlogged',$_SESSION['username']); 
         $this->smarty->assign('NomeCampagna',$campagna->getName());
         $this->smarty->assign('idcamp',$campagna->getId());
         $this->smarty->assign('info', false);
