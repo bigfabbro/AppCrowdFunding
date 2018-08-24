@@ -14,11 +14,7 @@ class CRicerca
     const KEY_DEFAULT = 'Campagna';
     /** Valore base: Ricerca per categoria */
     const VALUE_DEFAULT = 'Category';
-<<<<<<< HEAD
-    /** Valore avanzato: Ricerca per username */
-=======
-    /** Valore avanzato: Ricerca per name */
->>>>>>> 264fb67624f8da7997d418ee603ffdd4101efd31
+    /** Valore avanzato: Ricerca per nome */
     const VALUE_ADVANCED = 'Name';
 
     /**
@@ -30,19 +26,11 @@ class CRicerca
         $vRicerca = new VRicerca();
         
         $string = $vRicerca->getValue();
-<<<<<<< HEAD
         
         if($string)
         { // se l'utente ha inviato tramite GET un valore, si cerca nel DB
             $oggetto = FDatabase::getInstance()->cerca(CRicerca::KEY_DEFAULT, CRicerca::VALUE_DEFAULT, $string);
             //var_dump($string,$oggetto);
-=======
-        //var_dump($string);
-        if($string)
-        { // se l'utente ha inviato tramite GET un valore, si cerca nel DB
-            $oggetto = FDatabase::getInstance()->cerca(CRicerca::KEY_DEFAULT, CRicerca::VALUE_DEFAULT, $string);
-            //var_dump($oggetto);
->>>>>>> 264fb67624f8da7997d418ee603ffdd4101efd31
             $vRicerca->showSearchResult($oggetto, CRicerca::KEY_DEFAULT, CRicerca::VALUE_DEFAULT, $string);
          
         }
@@ -60,39 +48,22 @@ class CRicerca
         $vRicerca = new VRicerca();
         $utente = CUtente::isLogged();
         
-<<<<<<< HEAD
-        
-=======
->>>>>>> 264fb67624f8da7997d418ee603ffdd4101efd31
         if ($utente) // se l'utente è loggato 
         {   // si ricava la stringa inserita dall'utente per la ricerca
             $string = $vRicerca->getValue();
             
             if ($string) // se la stringa e' stata inserita
-<<<<<<< HEAD
-            { // si ricava il valore di ricerca scelto dall'utente
-                $value=$vRicerca->getValueType();
-                // se le chiavi corrispondono alle costanti...
-                if($value == CRicerca::VALUE_DEFAULT || $value == CRicerca::VALUE_ADVANCED)
-                { // si prelevano gli oggetti
-                    $objects = FDatabase::getInstance()->cerca(CRicerca::KEY_DEFAULT, $value, $string);
-                    $vRicerca->showSearchResult($objects, CRicerca::KEY_DEFAULT, $value, $string);
-                }
-                else //...altrimenti si mostra un errore
-                    $vRicerca->showErrorPage('Seems like key and value are not corrected...');
-=======
             { // si ricava il valore di ricerca scelti dall'utente
-                list($key, $value)=$vRicerca->getValueType();
+                $value=$vRicerca->getValueType();
                 // se i valori corrispondono alle costanti...
                 if($value == CRicerca::VALUE_DEFAULT || $value == CRicerca::VALUE_ADVANCED)
                 { // si prelevano gli oggetti
-                    $objects = FDatabase::getInstance()->cerca($key, $value, $string);
+                    $objects = FDatabase::getInstance()->cerca(CRicerca::KEY_DEFAULT, $value, $string);
                     //var_dump($objects, $key, $value, $string);
-                    $vRicerca->showSearchResult($objects, $key, $value, $string);
+                    $vRicerca->showSearchResult($objects, CRicerca::KEY_DEFAULT, $value, $string);
                 }
                 else //...altrimenti si mostra un errore
                     $vRicerca->showErrorPage('Seems like  value is not corrected...');
->>>>>>> 264fb67624f8da7997d418ee603ffdd4101efd31
             } 
             else // se una stringa non e' inserita, l'utente viene reindirizzato alla pagina della ricerca avanzata
             {
@@ -103,26 +74,5 @@ class CRicerca
             $vRicerca->showErrorPage('Devi essere loggato per usare la ricerca avanzata!');
     }
 
-<<<<<<< HEAD
-    /*static function ricerca()
-    {
-        $vRicerca = new VRicerca();
-        $string = $vRicerca->getValue(); //prendo la stringa inserita dall'utente
-        $contatore = 0;
-        if($string) // se l'utente ha inviato tramite GET un valore, si cerca nel DB
-        { 
-            while($contatore!=3)
-            {
-                $oggetto[]= FDatabase::getInstance()->cerca($contatore, $string);
-                $contatore++;
-            }
-            $vRicerca->showSearchResult($oggetto, $string);       
-        }
-        else // se l'utente non ha inserito nessun valore si torna alla home page
-            header('Location: /AppCrowdFunding/index');
-        
-    }*/
-=======
- 
->>>>>>> 264fb67624f8da7997d418ee603ffdd4101efd31
+
 }
