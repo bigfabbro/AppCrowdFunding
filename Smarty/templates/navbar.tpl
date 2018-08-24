@@ -41,12 +41,6 @@
             <a class="nav-link" href="/AppCrowdFunding/Info/info"> Contatti</a>
           </li>
         </ul>
-		<form class="form-inline my-2 my-lg-0" action="/AppCrowdFunding/Ricerca/rBase" method="get">
-        <input class="form-control mr-sm-2 mx-auto py-1 d-inline-flex flex-row justify-content-center align-items-center align-self-center box-campaign form-control-sm" type="search" style="background-size:cover;background-position:right center;background-repeat:no-repeat;"
-          placeholder="Cerca tra le categorie" name="str">
-        <button class="btn my-sm-0 ml-auto p-2 btn-outline-dark flex-row d-inline-flex submit-button" type="submit" style="background-image: url('../lente.ico');background-size:cover;background-position:right center;"></button>
-      </form>
-      <a class="nav-link"  href="/AppCrowdFunding/Ricerca/rAvanzata"> Ricerca Avanzata</a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar2SupportedContent">
         <span class="navbar-toggler-icon"></span>
       </button>
