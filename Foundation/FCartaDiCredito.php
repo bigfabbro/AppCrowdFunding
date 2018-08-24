@@ -18,11 +18,11 @@ class FCartaDiCredito
     
      public static function bind($stmt, ECartaDiCredito $cc){
         $stmt->bindValue(':id',NULL, PDO::PARAM_INT); //l'id � posto a NULL poich� viene dato automaticamente dal DBMS (AUTOINCREMENT_ID)
-        $stmt->bindValue(':ownername', $cc->getOwnerName(), PDO::PARAM_STR); 
-        $stmt->bindValue(':ownersurname', $cc->getOwnerSurname(), PDO::PARAM_STR);
-        $stmt->bindValue(':expirationdate', $cc->getExpirationDate(), PDO::PARAM_STR); 
-        $stmt->bindValue(':ccnumber', $cc->getCcNumber(), PDO::PARAM_STR); 
-        $stmt->bindValue(':cvv', $cc->getCvv(), PDO::PARAM_STR); 
+        $stmt->bindValue(':ownername', $cc->getOwnname(), PDO::PARAM_INT); 
+        $stmt->bindValue(':ownersurname', $cc->getOwnsurname(), PDO::PARAM_INT);
+        $stmt->bindValue(':expirationdate', $cc->getExdate(), PDO::PARAM_INT); 
+        $stmt->bindValue(':ccnumber', $cc->getCcnumber(), PDO::PARAM_INT); 
+        $stmt->bindValue(':cvv', $cc->getCvv(), PDO::PARAM_INT); 
      }
 
      /**
@@ -38,7 +38,7 @@ class FCartaDiCredito
     /**
      *  
      * questo metodo restituisce la stringa dei useri della tabella sul DB per la costruzione delle Query
-     * @return string $values user della tabella
+     * @return string $values useri della tabella
     */ 
 
     public static function getValues(){

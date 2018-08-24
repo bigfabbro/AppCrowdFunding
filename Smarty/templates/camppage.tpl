@@ -210,7 +210,7 @@
           </div>
           <div class="row">
             <div class="col-md-12 text-center">
-              <a href="/AppCrowdFunding/Donazione/make/{$idcamp}" class="btn my-1 btn-outline-light">Make a donation!</a>
+              <a href="#" class="btn my-1 btn-outline-light">Make a donation!</a>
             </div>
           </div>
         </div>

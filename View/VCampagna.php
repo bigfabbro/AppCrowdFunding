@@ -22,7 +22,6 @@ require_once 'include.php';
         );
      }
 
-
     public function showFormCreation($errors=null,$values=null){
         if(CUtente::isLogged()) $this->smarty->assign('userlogged',$_SESSION['username']);
         if(isset($errors)) {
@@ -30,7 +29,6 @@ require_once 'include.php';
             $this->smarty->assign('values',$values);
         }
         $this->smarty->assign('today',date('Y-m-d'));
-        $this->smarty->assign('info', false);
         $this->smarty->display('CampaignCreation.tpl');
      }
 
@@ -78,7 +76,6 @@ require_once 'include.php';
     public function showCampaignProfile(ECampagna $camp, EUtente $founder,EMediaUser $founderpic){
         $this->smarty->assign('camp',$camp);
         $this->smarty->assign('founder',$founder);
-        $this->smarty->assign('idcamp', $camp->getId());
         $this->smarty->assign('founderpic',base64_encode($founderpic->getData()));
         $camppic=$camp->getMedia();
         if($camppic){
@@ -116,7 +113,6 @@ require_once 'include.php';
         $this->smarty->assign('authors',$authors);
         $this->smarty->assign('camppic',$camppic);
         if(CUtente::isLogged()) $this->smarty->assign('userlogged',$_SESSION['username']);
-        $this->smarty->assign('info', false);
         $this->smarty->display('camppage.tpl');
     }
 

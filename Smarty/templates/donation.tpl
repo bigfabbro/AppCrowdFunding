@@ -8,7 +8,6 @@
   <link rel="stylesheet" href="Smarty/templates/css/theme.css" type="text/css">
   <link rel="stylesheet" href="/AppCrowdFunding/Smarty/templates/css/theme.css"> </head>
 
-{include file='navbar.tpl'}
 <body style="background-image: url('/AppCrowdFunding/Smarty/img/login.jpg'); background-size:cover;">
   <div class="py-5 w-100 h-100">
     <div class="container">
@@ -24,31 +23,32 @@
             <div class="col-md-12">
               <div class="card text-white p-5 bg-light">
                 <div class="card-body">
-                  <h1 class="mb-4 bg-light text-primary">Donate</h1>
+                  <h1 class="mb-4 bg-light text-primary">Login</h1>
                   
-                  <form action="/AppCrowdFunding/Donazione/make/{$idcamp}" method="POST">
+                  <form action="login" method="POST">
                   
                   <div class="form-group bg-light">
                       <label class="text-primary">Owner Name</label>
-                      <input type="text" class="form-control" placeholder="Enter Owner Surname" name="ownername"> </div>
+                      <input type="text" class="form-control" placeholder="Enter Owner Surname" name="username"> </div>
                     <div class="form-group bg-light">
                       <label class="text-primary">Owner Surname</label>
-                      <input type="text" class="form-control" placeholder="Enter Owner Name" name="ownersurname"> </div>
+                      <input type="text" class="form-control" placeholder="Enter Owner Name" name="username"> </div>
                     <div class="form-group bg-light">
                       <label class="text-primary">Credit Card Number</label>
-                      <input type="text" class="form-control" placeholder="Enter credit Card Number" name="ccnumber"> </div>
+                      <input type="text" class="form-control" placeholder="Enter credit Card Number" name="username"> </div>
                     <div class="form-group bg-light">
                       <label class="text-primary">Expiration Date</label>
-                      <input type="date" class="form-control" placeholder="Enter username" name="expirationdate"> </div>
+                      <input type="date" class="form-control" placeholder="Enter username" name="username"> </div>
                     <div class="form-group bg-light">
                       <label class="text-primary">CVV</label>
-                      <input type="text" class="form-control" placeholder="Enter CVV" name="cvv"> </div>
+                      <input type="text" class="form-control" placeholder="Enter CVV" name="username"> </div>
                     <div class="form-group bg-light">
                       <label class="text-primary">Amount</label>
-                      <input type="number" class="form-control" placeholder="How much you would like to donate?" name="amount"> </div>
+                      <input type="number" class="form-control" placeholder="How much you would like to donate?" name="username"> </div>
                     <button type="submit" class="btn btn-primary">Donate</button>
                   </form>
                 </div>
+                <div class="card-header text-primary text-center border border-light bg-light">{if $badlogin eq "true"}Attenzione! Username e/o password errati!{/if}</div>
               </div>
             </div>
           </div>
@@ -56,7 +56,7 @@
       </div>
     </div>
   </div>
-
+ <nav class="navbar navbar-expand-md bg-dark navbar-dark" style="position:relative">
     <div class="container">
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar3SupportedContent">
         <span class="navbar-toggler-icon"></span>
