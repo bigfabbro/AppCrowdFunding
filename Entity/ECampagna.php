@@ -19,7 +19,7 @@ class ECampagna
     private $visibility; //variabile di approvazione campagna
     private $comments; //commenti
     
-    public function  __construct($founder=null,$na=null, $de=null, $cat=null, $cou=null, $stad=null, $endd=null, $bc=null,$gl=null){
+    public function  __construct($founder,$na, $de=null, $cat, $cou, $stad, $endd, $bc,$gl){
         $this->founder=$founder;
         $this->name=$na;
         $this->description=$de;
@@ -97,7 +97,7 @@ class ECampagna
     }
     
     public function setStartDate ($stad){
-        $this->startdate=$stad;
+        $this->startdate=$endd;
     }
     
     public function getEndDate () {

@@ -6,7 +6,7 @@ require_once 'include.php';
 class FCampagna
 {
     private static $tables="campagne";
-    private static $values="(:id,:founder,:name,:description,:category,:,:startdate,:enddate,:bankcount,:goal,:funds,:visibility)";
+    private static $values="(:id,:founder,:name,:description,:category,:country,:startdate,:enddate,:bankcount,:goal,:funds,:visibility)";
     
     public function __construct(){}
 
@@ -22,7 +22,7 @@ class FCampagna
         $stmt->bindValue(':name', $camp->getName(), PDO::PARAM_STR); //ricorda di "collegare" la giusta variabile al bind
         $stmt->bindValue(':description', $camp->getDescription(), PDO::PARAM_STR);
         $stmt->bindValue(':category', $camp->getCategory(), PDO::PARAM_STR);
-        $stmt->bindValue(':', $camp->get(), PDO::PARAM_STR);
+        $stmt->bindValue(':country', $camp->getCountry(), PDO::PARAM_STR);
         $stmt->bindValue(':startdate', $camp->getStartDate(), PDO::PARAM_STR);
         $stmt->bindValue(':enddate', $camp->getEndDate(), PDO::PARAM_STR);
         $stmt->bindValue(':bankcount', $camp->getBankCount(), PDO::PARAM_STR);
@@ -61,7 +61,7 @@ class FCampagna
         $db=FDatabase::getInstance();
         $result=$db->loadSingle($sql);
         if($result!=null){
-            $camp=new ECampagna($result['founder'],$result['name'], $result['description'], $result['category'], $result[''],$result['startdate'], $result['enddate'], $result['bankcount'],$result['goal']);
+            $camp=new ECampagna($result['founder'],$result['name'], $result['description'], $result['category'], $result['country'],$result['startdate'], $result['enddate'], $result['bankcount'],$result['goal']);
             $camp->setId($result['id']);
             $camp->setFunds($result['funds']); //aggiorna l'informazione coerentemente con il db infatti il costruttore setterebbe  founds a zero e visibility a false
             $camp->setRew(FReward::loadByIdCamp($camp->getId()));
@@ -84,7 +84,7 @@ class FCampagna
         if($result!=null){
                 $camps=array();
                 for($i=0; $i<count($result); $i++){
-                    $camps[]=new ECampagna($result[$i]['founder'],$result[$i]['name'], $result[$i]['description'], $result[$i]['category'], $result[$i][''],$result[$i]['startdate'], $result[$i]['enddate'], $result[$i]['bankcount'],$result[$i]['goal']);
+                    $camps[]=new ECampagna($result[$i]['founder'],$result[$i]['name'], $result[$i]['description'], $result[$i]['category'], $result[$i]['country'],$result[$i]['startdate'], $result[$i]['enddate'], $result[$i]['bankcount'],$result[$i]['goal']);
                     $camps[$i]->setId($result[$i]['id']);
                     $camps[$i]->setFunds($result[$i]['funds']); //aggiorna l'informazione coerentemente con il db infatti il costruttore setterebbe  founds a zero e visibility a false
                     $camps[$i]->setRew(FReward::loadByIdCamp($camps[$i]->getId()));
@@ -110,53 +110,6 @@ class FCampagna
         else return false;
     }
 
-    static function cercaCampagnaByCategory() : string
-    {
-        return "SELECT campagne.* , utenti.username
-                FROM campagne , utenti
-                WHERE LOCATE( :category , category) > 0 AND campagne.founder = utenti.id;";
-    }
-    
-    static function cercaCampagnaByName() : string
-    {
-        return "SELECT campagne.*, utenti.username
-                FROM campagne, utenti
-                WHERE LOCATE( :name , name) > 0 AND campagne.founder = utenti.id;";
-    }
-    
-    static function createObjectFromRow($row) 
-    {
-        $founder = new EUtente();
-        $founder->setUsername($row['username']);
-        $camp = new ECampagna();
-        $camp->setId($row['id']);
-        $camp->setFounder($founder);
-        $camp->setName($row['name']);
-        $camp->setDescription($row['description']);
-        $camp->setCategory($row['category']);
-        //$camp->setMedia($row['media']);
-        $camp->setCountry($row['country']);
-        $camp->setStartDate($row['startdate']);
-        $camp->setEndDate($row['enddate']);
-        $camp->setBankCount($row['bankcount']);
-        $camp->setGoal($row['goal']);
-        $camp->setFunds($row['funds']);
-        $camp->setVis($row['visibility']);   
-
-        return $camp;
-    }
-
-    /*static function getUsername($row) : string
-    {
-        $prova= FCampagna::prova($row);
-        return "SELECT utenti.username
-                FROM utenti
-                WHERE id==$prova;";
-    }
-    private function prova($row) : string
-    {
-        return $row['founder'];
-    }*/
     
 }
 
