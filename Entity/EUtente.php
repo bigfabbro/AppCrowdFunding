@@ -16,7 +16,7 @@ class EUtente
     private $bio;
     private $activate;
     
-    public function __construct($un,$pass,$name,$surname,$se,$dt,$em,$tel,$b){
+    public function __construct($un=null,$pass=null,$name=null,$surname=null,$se=null,$dt=null,$em=null,$tel=null,$b=null){
         $this->username=$un;
         $this->password=$pass;
         $this->name=$name;
