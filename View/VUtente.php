@@ -35,6 +35,7 @@ require_once 'include.php';
 
     public function showFormLogin($badlogin=null){
          if(isset($badlogin)) $this->smarty->assign('badlogin',$badlogin);
+         $this->smarty->assign('info', false);
          $this->smarty->display('login.tpl');
      }
 
@@ -46,18 +47,21 @@ require_once 'include.php';
              $this->smarty->assign('errors',$errors);
              $this->smarty->assign('values',$values);
          }
+         $this->smarty->assign('info', false);
          $this->smarty->display('registration.tpl');
      }
 
      /**Metodo per mostrare la pagina di benvenuto quando la registrazion va a buon fine. */
 
     public function showWelcome(){
+        $this->smarty->assign('info', false);
          $this->smarty->display('welcome.tpl');
      }
 
      /**Metodo per mostrare la pagina di attivazione dell'account.*/
      function showActivation(){
          $this->navbar();
+         $this->smarty->assign('info', false);
          $this->smarty->display('activation.tpl');
      }
 
@@ -73,6 +77,7 @@ require_once 'include.php';
         $this->smarty->assign('numcamps',0);
         $this->smarty->assign('address',$address);
         $this->smarty->assign('user',$user);
+        $this->smarty->assign('info', false);
         $this->smarty->display('profile.tpl');
     }
 
