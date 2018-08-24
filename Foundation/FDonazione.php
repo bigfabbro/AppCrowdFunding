@@ -79,7 +79,6 @@ class FDonazione
             for($i=0; $i<count($result); $i++){
                 $dons[]=new EDonazione($result[$i]['amount'], $result[$i]['date'], $result[$i]['reward'], $result[$i]['idutente'],$result[$i]['idcamp'],$result[$i]['idcc']);
                 $dons[$i]->setId($result[$i]['id']);
-                $dons[$i]->setDonEffettuata($result[$i]['donationoccured']);
             }
             return $dons;
         }
