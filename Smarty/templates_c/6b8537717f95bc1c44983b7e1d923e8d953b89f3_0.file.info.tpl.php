@@ -1,6 +1,10 @@
 <?php
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* Smarty version 3.1.32, created on 2018-08-22 17:56:33
+=======
+/* Smarty version 3.1.32, created on 2018-07-24 13:40:27
+>>>>>>> c4f7afa54932edc9a754f5b502f0bd1f48a79c4d
 =======
 /* Smarty version 3.1.32, created on 2018-07-24 13:40:27
 >>>>>>> c4f7afa54932edc9a754f5b502f0bd1f48a79c4d
@@ -10,7 +14,11 @@
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
 <<<<<<< HEAD
+<<<<<<< HEAD
   'unifunc' => 'content_5b7d87b1cca521_58708268',
+=======
+  'unifunc' => 'content_5b57102b4497a4_22366807',
+>>>>>>> c4f7afa54932edc9a754f5b502f0bd1f48a79c4d
 =======
   'unifunc' => 'content_5b57102b4497a4_22366807',
 >>>>>>> c4f7afa54932edc9a754f5b502f0bd1f48a79c4d
@@ -21,7 +29,11 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     array (
       0 => 'C:\\xampp\\htdocs\\AppCrowdFunding\\Smarty\\templates\\info.tpl',
 <<<<<<< HEAD
+<<<<<<< HEAD
       1 => 1534953319,
+=======
+      1 => 1532432384,
+>>>>>>> c4f7afa54932edc9a754f5b502f0bd1f48a79c4d
 =======
       1 => 1532432384,
 >>>>>>> c4f7afa54932edc9a754f5b502f0bd1f48a79c4d
@@ -34,7 +46,11 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   ),
 ),false)) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 function content_5b7d87b1cca521_58708268 (Smarty_Internal_Template $_smarty_tpl) {
+=======
+function content_5b57102b4497a4_22366807 (Smarty_Internal_Template $_smarty_tpl) {
+>>>>>>> c4f7afa54932edc9a754f5b502f0bd1f48a79c4d
 =======
 function content_5b57102b4497a4_22366807 (Smarty_Internal_Template $_smarty_tpl) {
 >>>>>>> c4f7afa54932edc9a754f5b502f0bd1f48a79c4d
