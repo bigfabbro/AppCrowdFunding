@@ -12,9 +12,10 @@
 <body style="background-image: url('/AppCrowdFunding/Smarty/img/login.jpg'); background-size:cover;">
   <div class="py-5 w-100 h-100">
     <div class="container">
+      <div class="row">
         <div class="align-self-center col-md-6 text-white">
           <h1 class="text-md-left display-3 text-light">
-            <b>Support:{$NomeCampagna}</b>
+            <b>Support: {$NomeCampagna}</b>
           </h1>
           <p>“No one is useless in this world who lightens the burdens of another.”&nbsp;
             <br>― Charles Dickens</p>
@@ -30,13 +31,13 @@
                   
                   <div class="form-group bg-light">
                       <label class="text-primary">Owner Name</label>
-                      <input type="text" class="form-control" placeholder="Enter Owner Surname" name="ownername"> </div>
+                      <input type="text" class="form-control" placeholder="Enter Owner Name" name="ownername"> </div>
                     <div class="form-group bg-light">
                       <label class="text-primary">Owner Surname</label>
-                      <input type="text" class="form-control" placeholder="Enter Owner Name" name="ownersurname"> </div>
+                      <input type="text" class="form-control" placeholder="Enter Owner Surname" name="ownersurname"> </div>
                     <div class="form-group bg-light">
                       <label class="text-primary">Credit Card Number</label>
-                      <input type="text" class="form-control" placeholder="Enter credit Card Number" name="ccnumber"> </div>
+                      <input type="text" class="form-control" placeholder="Enter Credit Card Number" name="ccnumber"> </div>
                     <div class="form-group bg-light">
                       <label class="text-primary">Expiration Date</label>
                       <input type="date" class="form-control" placeholder="Enter username" name="expirationdate"> </div>
