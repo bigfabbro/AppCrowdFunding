@@ -143,7 +143,106 @@ class FDatabase
     public function closeDbConnection(){
         static::$instance=null;
     }
+ /******************************************RICERCA***************************************************/
+    /**
+     * Effettua una ricerca sul database secondo vari parametri. Tale metodo e' scaturito a seguito
+     * di una ricerca da parte dell'utente.
+     * @param string $key la table da cui prelevare i dati
+     * @param string $value il valore per cui cercare i valori
+     * @param string $str il dato richiesto dall'utente
+     * @return array|NULL i risultati ottenuti dalla ricerca. Se la richiesta non ha match, ritorna NULL.
+     */
+    function cercaAv(string $key, string $value, string $str) 
+    {
+        $sql = '';
+        $className = 'F'.$key;
+        
+        if(class_exists($className))
+        {
+            $method = 'cerca'.$key.'By'.$value;
+            if(method_exists($className, $method))
+                $sql = $className::$method();
+        }
+        
+        
+        if($sql)
+            return $this->exeCerca('F'.$key, $value, $str, $sql);
+        else return NULL;
+    }
+    
+    private function exeCerca(string $className, string $value, string $str, string $sql)
+    {
+        try
+        {
+            $stmt = $this->db->prepare($sql); // creo PDOStatement
+            $stmt->bindValue(":".lcfirst($value), $str, PDO::PARAM_STR); //si associa l'id al campo della query
+            $stmt->execute();   //viene eseguita la query
+            $stmt->setFetchMode(PDO::FETCH_ASSOC); // i risultati del db verranno salvati in un array con indici le colonne della table
+           
+            $obj = NULL; // l'oggetto di ritorno viene definito come NULL
+            
+            while($row = $stmt->fetch())
+            { // per ogni tupla restituita dal db...
+                $obj[] = FDatabase::createObjectFromRow($className, $row); //...istanzio l'oggetto
+                //var_dump($obj);
 
+            }
+            //var_dump($obj);
+            
+            return $obj;
+        }
+        catch (PDOException $e)
+        {
+           
+            return null; // ritorna null se ci sono errori
+        }
+    }
+    
+
+    /**
+     * Da una tupla ricevuta da una query istanzia l'oggetto corrispondente
+     * @param string $class il nome della classe 
+     * @param $row array la tupla restituita dal dbms
+     * @return mixed l'oggetto risultato dell'elaborazione
+     */
+    private function createObjectFromRow(string $class, $row)
+    {
+        $obj = NULL; //oggetto che conterra' l'istanza dell'elaborazione
+        
+        if ( class_exists( $class ) ) 
+        {
+            $obj = $class::createObjectFromRow($row);         
+        }
+        
+        return $obj;
+    }
+
+    function cerca($cont, string $str) 
+    {
+        $sql = '';
+        if($cont == 0){
+            $method= 'cercaUtenteByUsername';
+            $sql = FUtente::$method();
+            $className='Utente';
+            $value='Username';
+        }
+        else if($cont == 1){
+            $method= 'cercaCampagnaByCategory';
+            $sql = FCampagna::$method(); 
+            $className='Campagna';
+            $value='Category';
+        }
+        else if($cont == 2){
+            $method= 'cercaCampagnaByName';
+            $sql = FCampagna::$method(); 
+            $className='Campagna';
+            $value='Name';
+        }
+
+        if($sql)
+            return $this->exeCerca('F'.$className, $value, $str, $sql);
+        else return NULL;
+    }
 
 
 }

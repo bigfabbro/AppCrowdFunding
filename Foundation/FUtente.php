@@ -145,6 +145,34 @@ class FUtente
         if($result!=null) return true;
         else return false;
     }
+	
+	/**
+     * Query che restituisce gli utenti in base al nome
+     * @return string la query sql
+     */
+    static function cercaUtenteByUsername() : string
+    {
+        return "SELECT *
+                FROM utenti
+                WHERE LOCATE( :username , username) > 0;";
+    }
+
+    static function createObjectFromRow($row) 
+    {
+        $utente = new EUtente(); //costruisce la classe da dove istanziare l'oggetto
+        $utente->setId($row['id']);
+        $utente->setUserName($row['username']);
+        $utente->setPass($row['password']);
+        $utente->setName($row['name']);
+        $utente->setSurname($row['surname']);
+        //$utente->setSex($row['sex']);
+        $utente->setDatan($row['datan']);
+        $utente->setEmail($row['email']);
+        $utente->setTel($row['telnumber']);
+        $utente->setBio($row['description']);
+        
+        return $utente;
+    }
     
     
 }

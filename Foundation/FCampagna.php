@@ -109,7 +109,48 @@ class FCampagna
         if($result!=null) return true;
         else return false;
     }
-
+	
+	static function cercaCampagnaByCategory() : string
+    {
+        return "SELECT campagne.* , utenti.username
+                FROM campagne , utenti
+                WHERE LOCATE( :category , category) > 0 AND campagne.founder = utenti.id;";
+    }
     
+    static function cercaCampagnaByName() : string
+    {
+        return "SELECT campagne.*, utenti.username
+                FROM campagne, utenti
+                WHERE LOCATE( :name , campagne.name) > 0 AND campagne.founder = utenti.id;";
+    }
+
+    static function cercaCampagnaByUsername() : string
+    {
+        return "SELECT campagne.*, utenti.username
+                FROM campagne JOIN utenti ON utenti.id=campagne.founder
+                WHERE LOCATE( :username , utenti.username) > 0;";
+    }
+    
+    static function createObjectFromRow($row) 
+    {
+        $founder = new EUtente();
+        $founder->setUsername($row['username']);
+        $camp = new ECampagna();
+        $camp->setId($row['id']);
+        $camp->setFounder($founder);
+        $camp->setName($row['name']);
+        $camp->setDescription($row['description']);
+        $camp->setCategory($row['category']);
+        //$camp->setMedia($row['media']);
+        $camp->setCountry($row['country']);
+        $camp->setStartDate($row['startdate']);
+        $camp->setEndDate($row['enddate']);
+        $camp->setBankCount($row['bankcount']);
+        $camp->setGoal($row['goal']);
+        $camp->setFunds($row['funds']);
+        $camp->setVis($row['visibility']);   
+
+        return $camp;
+    } 
 }
 
