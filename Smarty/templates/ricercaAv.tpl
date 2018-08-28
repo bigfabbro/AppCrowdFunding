@@ -27,13 +27,13 @@
 						<input type="text" class="form-control" id="search" name="str" placeholder="Cerca..">
 					</div>
 					<div class="form-group col-md-3">
-						<select id="inputKey" class="form-control" name="key">
+						<select id="inputKey1" class="form-control" name="key">
 							<option value="campagna" selected>Campagna</option>
 							<option value="utente">Utente</option>
 						</select>
 					</div>
 					<div class="form-group col-md-3">
-						<select cerca="cerca" id="inputKey" class="form-control" name="value">
+						<select cerca="cerca" id="inputKey2" class="form-control" name="value">
 							<option value="category" selected>Category</option>
 							<option id="opt-name" value="name">Name</option>
 							<option value="username">Username</option>
