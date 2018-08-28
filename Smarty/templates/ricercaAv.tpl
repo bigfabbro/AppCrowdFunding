@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <title>Ricerca avanzata</title>
-<link rel="stylesheet" href="css/theme.css">
+<link rel="stylesheet" href="/AppCrowdFunding/Smarty/templates/css/theme.css">
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 
 <script src="/AppCrowdFunding/Smarty/templates/js/ricercaAv.js">

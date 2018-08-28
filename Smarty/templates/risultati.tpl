@@ -9,7 +9,7 @@
 
 <head>
   <title> Ricerca </title>
-  <link rel="stylesheet" href="css/theme.css"> 
+  <link rel="stylesheet" href="/AppCrowdFunding/Smarty/templates/css/theme.css"> 
   </head>
 
 <body> {include file="navbar.tpl"}

@@ -34,6 +34,8 @@
    require_once 'View/VInfo.php';
    require_once 'View/VInfo.php';
    require_once 'Controller/CInfo.php';
+   require_once 'View/VRicerca.php';
+   require_once 'Controller/CRicerca.php';
   
    
    //in alternativa si puo' utilizzare include autoload

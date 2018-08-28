@@ -61,7 +61,7 @@ class VRicerca
         if(CUtente::isLogged()) $this->smarty->assign('userlogged',$_SESSION['username']);
   
         $this->smarty->assign('array', $array);
-        
+        $this->smarty->assign('info', true);
         //mostro il contenuto della pagine
         $this->smarty->display('risultati.tpl');
     }
@@ -69,7 +69,7 @@ class VRicerca
     function showAdvancedSearch()
     {
         if(CUtente::isLogged()) $this->smarty->assign('userlogged',$_SESSION['username']);
-        
+        $this->smarty->assign('info', true);
         //mostro il contenuto della pagine
         $this->smarty->display('ricercaAv.tpl');
     }
@@ -96,7 +96,7 @@ class VRicerca
         $this->smarty->assign('array1', $array1);
         $this->smarty->assign('array2', $array2);
         $this->smarty->assign('array3', $array3);
-        
+        $this->smarty->assign('info', true);
         //mostro il contenuto della pagine
         $this->smarty->display('ricerca.tpl');
     }
@@ -106,7 +106,7 @@ class VRicerca
         if(CUtente::isLogged()) $this->smarty->assign('userlogged',$_SESSION['username']);
 
         $this->smarty->assign('messaggio', $str);
-        
+        $this->smarty->assign('info', true);
         //mostro il contenuto della pagine
         $this->smarty->display('errore.tpl');
     }

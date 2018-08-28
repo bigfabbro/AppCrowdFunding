@@ -26,9 +26,10 @@
           </li>
         </ul>
       <form class="form-inline my-2 my-lg-0" {if $userlogged!='nouser'}style="margin-left:121px" {else} style="margin-left:81px"{/if} action="/AppCrowdFunding/Ricerca/ricerca" method="get">
-        <input class="form-control py-1 d-inline-flex flex-row justify-content-center align-items-center align-self-center box-campaign form-control-sm" style="border-radius:20px 0 0 20px" type="search"
-          placeholder="Cerca..." {if $userlogged!='nouser'}style="margin-left:-15px"size="8" {else} style="margin-left:-15px"size="40" {/if} name="str">
+        <div class="input-group">
+        <input class="form-control  form-control-sm  " style="border-radius:20px 0 0 20px" type="search" placeholder="Cerca..." {if $userlogged!='nouser'}style="margin-left:-15px" size="8" {else} style="margin-left:-15px" size="14" {/if} name="str">
         <button type="submit" class="btn navbar-btn text-primary btn-light" style="border-radius:0 20px 20px 0;height: 35px;line-height: 1;"><span class="fa fa-search"></span></button>
+        </div>
       </form>
        {if $userlogged!='nouser'}<a class="nav-link " id="ricAv" style=" font-size:9px; padding: 0 0.9rem; color: rgba(255, 255, 255, 0.5);" href="/AppCrowdFunding/Ricerca/ricercaAv"> Ricerca <br>Avanzata </a>{/if}
   

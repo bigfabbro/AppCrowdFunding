@@ -97,7 +97,7 @@ class ECampagna
     }
     
     public function setStartDate ($stad){
-        $this->startdate=$endd;
+        $this->startdate=$stad;
     }
     
     public function getEndDate () {
