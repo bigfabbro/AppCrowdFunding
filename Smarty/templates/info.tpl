@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 
 <head>
@@ -58,7 +58,7 @@
             <br>
             <br>Oscar Guerra
             <br>oscar.guerra@student.univaq.it
-            <br>1234567890
+            <br>3775036078
             <br>
             <br>Sede Legale:
             <br>Università degli Studi dell'Aquila
