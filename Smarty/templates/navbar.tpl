@@ -16,13 +16,13 @@
 
       <ul class="navbar-nav">
           <li class="nav-item text-light" >
-            <a class="nav-link" {if !$info} href="/AppCrowdFunding/Info/info#scelta" {else} href="#scelta" {/if}> Perché sceglierci</a>
+            <a class="nav-link" {if !$info} href="/AppCrowdFunding/Info/info#scelta" {else} href="/AppCrowdFunding/Info/info#scelta" {/if}> Perché sceglierci</a>
           </li>
         </ul>
 
       <ul class="navbar-nav">
           <li class="nav-item text-light" >
-            <a class="nav-link" {if !$info}  href="/AppCrowdFunding/Info/info#contatti" {else} href="#contatti"  {/if}> Contatti</a>
+            <a class="nav-link" {if !$info}  href="/AppCrowdFunding/Info/info#contatti" {else} href="/AppCrowdFunding/Info/info#contatti"  {/if}> Contatti</a>
           </li>
         </ul>
       <form class="form-inline my-2 my-lg-0" {if $userlogged!='nouser'}style="margin-left:121px" {else} style="margin-left:81px"{/if} action="/AppCrowdFunding/Ricerca/ricerca" method="get">
