@@ -31,7 +31,7 @@ require_once 'include.php';
     //** Metodo che consente di visualizzare la form della donazione (fa uso di smarty) */
 
        function showFormDonazione($campagna){
-        if(CUtente::isLogged()) $this->smarty->assign('userlogged',$_SESSION['username']); 
+        if(CUtente::isLogged()) $this->smarty->assign('userlogged',$_SESSION['username']);
         $this->smarty->assign('NomeCampagna',$campagna->getName());
         $this->smarty->assign('idcamp',$campagna->getId());
         $this->smarty->assign('info', false);
@@ -39,30 +39,7 @@ require_once 'include.php';
     }
 
 
-    function createDonation(){
-        if(isset($_POST['amount']) && isset($_POST['ownername']) && isset($_POST['ownersurname']) && isset($_POST['ccnumber'])&& isset($_POST['expirationdate'])&& isset($_POST['cvv'])) {
-            $donazione = new EDonazione ();
-            $donazione->setAmount($_POST['amount']);
-            $donazione->setOwnerName($_POST['ownername']);
-            $donazione->setOwnerSurname($_POST['ownersurname']);
-            $donazione->setCcNumber($_POST['ccnumber']);
-            $donazione->setExpirationDate($_POST['expirationdate']);
-            $donazione->setCvv($_POST['cvv']);
-
-
-
-            $donazione->setIdUtente($_SESSION['id']);
-            return $donazione;
-        }
-
-        
-        
-        else
-        
-        return null;
-    }
-
-    /** Funzione che verifica la correttezza del form di registrazione.
+    /** Funzione che verifica la correttezza del form di donazione
      * Prima si verifica se la relativa componente  dell'array $_POST è settato 
      * ed in tal caso si richiama il metodo statico presente in EDonazione  per 
      * verificare la correttezza. La funzione

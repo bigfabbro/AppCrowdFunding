@@ -29,14 +29,20 @@ class EDonazione
     private $idutente;
     /** id della campagna per la quale si vuole effettuare la donazione */
     private $idcamp; 
+    /** booleano posto a true nel caso in cui la donazione è andata a buon fine */
+    private $donationoccurred;
     /** id della carta di credito con la quale si effettua la donazione */
     private $idcc;
 
 
 
-    public function __construct()
+    public function __construct($amount, $date, $reward, $donationoccurred)
     {
-
+        $this->amount=$amount;
+        $this->date=$date;
+        $this->reward=$reward;
+        $this->donationoccurred=false; //donation occurred e' posto a true soltanto quando la donazione viene effettivamente pubblicata
+        
     }
     
 
@@ -173,6 +179,31 @@ class EDonazione
     public function setCreditCard($creditcard){
         $this->idcc= $creditcard;
     }
+
+    /**
+     * 
+     * @param bool $donationccourred 
+     */
+
+
+
+    public function setDonationOccurred($donationoccurred){
+        $this->donationoccurred= $donationoccurred;
+    }
+
+
+    /**
+     * 
+     * @return bool  
+     */
+
+
+    public function getDonationOccurred()
+    {
+        return $this->donationoccurred;
+    }
+
+
 
     /**
      *  torna un booleano se la form è valida, i paramateri vengono passati per riferimento

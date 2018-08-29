@@ -29,15 +29,27 @@ class FDonazione
             $stmt->bindValue(':date', $don->getDate(), PDO::PARAM_STR);
             $stmt->bindValue(':idutente', $don->getIdUtente(), PDO::PARAM_INT);
             $stmt->bindValue(':idcamp', $don->getIdCamp(), PDO::PARAM_INT);
+            $stmt->bindValue(':reward', $don->getReward(), PDO::PARAM_INT);
+            $stmt->bindValue(':donationoccurred', $don->getDonationOccurred(), PDO::PARAM_INT);
         
         }
+
+   /**
+     * 
+     * questo metodo restituisce il nome della tabella sul DB per la costruzione delle Query
+     * @return string $tables nome della tabella
+     */
 
     public static function getTables(){
         return static::$tables;
     }
+    
+    /**
+     *  
+     * questo metodo restituisce la stringa dei useri della tabella sul DB per la costruzione delle Query
+     * @return string $values user della tabella
+    */ 
 
- 
-        
     public static function getValues(){
         return static::$values;
     }
