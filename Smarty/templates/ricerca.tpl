@@ -12,14 +12,14 @@
   <link rel="stylesheet" href="/AppCrowdFunding/Smarty/templates/css/theme.css"> 
   </head>
 
-<body> {include file="navbar.tpl"}
-
+<body style="background-image: url('/AppCrowdFunding/Smarty/img/wallpaperRazzo.jpg'); background-size:cover;"> {include file="navbar.tpl"}
+<font color="white">
 
   <div class="container text-center">
     <div class="ric">
-      <h4>Risultati ricerca per: "{$string}" </h4><BR>
+      <h2><b>Risultati ricerca per: "{$string}"</b> </h2><BR>
       {if $array1}
-      <h4>UTENTI</h4>
+      <h4><b>UTENTI</b></h4>
       <table class="table table-ric">
         <thead>
           <tr>
@@ -29,48 +29,49 @@
           <tbody><!-- Tabella che mostra gli username -->{foreach $array1 as $utenti}
             <tr>
               <td>
-                  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;  <a href="/AppCrowdFunding/Utente/profile/{$utenti->getID()}"> {$utenti->getUserName()}</a>
+                  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;  <a href="/AppCrowdFunding/Utente/profile/{$utenti->getID()}"> <b> {$utenti->getUserName()}</b></a>
               </td>
-              <td> &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{$utenti->getName()}</td>
-              <td> &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; {$utenti->getEmail()} </td>
+              <td> &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<b>{$utenti->getName()}</b></td>
+              <td> &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; <b>{$utenti->getEmail()} </b></td>
             </tr>
           </tbody>{/foreach}
         </table> {else} 
       <p>Non sono presenti utenti con tale username</p> {/if}
 
-    <h4>NOME CAMPAGNA </h4>
+    <h4><b>NOME CAMPAGNA</b></h4>
     {if $array3}
     <table class="table table-ric">
 	    <thead>
         <tr><th>Categoria</th><th>Nome Campagna</th><th>Founder</th></tr>
         <tbody><!-- Tabella che mostra le campagne -->{foreach $array3 as $campagna}
           <tr>
-            <td>{$campagna->getCategory()}</td>
+            <td><b>{$campagna->getCategory()}</b></td>
             <td> 
-              <a href="/AppCrowdFunding/Campagna/profile/{$campagna->getID()}"> {$campagna->getName()} </a> </td>
-            <td> {$campagna->getFounder()->getUserName()} </td>
+              <a href="/AppCrowdFunding/Campagna/profile/{$campagna->getID()}"> <b>{$campagna->getName()} </b></a> </td>
+            <td> <b>{$campagna->getFounder()->getUserName()}</b> </td>
           </tr>
         </tbody>{/foreach}
       </table> {else} 
       <p>Non sono presenti campagne con quel nome</p> {/if}
 
-    <h4>CATEGORIA CAMPAGNA </h4>
+    <h4><b>CATEGORIA CAMPAGNA </b></h4>
     {if $array2}
     <table class="table table-ric">
 	    <thead>
         <tr><th>Categoria</th><th>Nome Campagna</th><th>Founder</th></tr>
         <tbody><!-- Tabella che mostra le campagne -->{foreach $array2 as $campagna}
           <tr>
-            <td>{$campagna->getCategory()}</td>
+            <td><b>{$campagna->getCategory()}</b></td>
             <td> 
-              <a href="/AppCrowdFunding/Campagna/profile/{$campagna->getID()}"> {$campagna->getName()} </a> </td>
-            <td> {$campagna->getFounder()->getUserName()} </td>
+              <a href="/AppCrowdFunding/Campagna/profile/{$campagna->getID()}"> <b>{$campagna->getName()}</b> </a> </td>
+            <td> <b>{$campagna->getFounder()->getUserName()} </b></td>
           </tr>
         </tbody>{/foreach}
       </table> {else} 
       <p>Non sono presenti campagne di quella categoria</p> {/if}
           </div>
       </div>
+	</font>
 </body>
 
 </html>

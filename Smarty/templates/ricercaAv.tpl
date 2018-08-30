@@ -10,7 +10,7 @@
 </script>
   
 </head>
-<body> {include file="navbar.tpl"}
+<body style="background-image: url('/AppCrowdFunding/Smarty/img/wallpaperRazzo.jpg'); background-size:cover;"> {include file="navbar.tpl"}
 <br>
 <br>
 <br>
