@@ -9,7 +9,7 @@
 <font color="white">
   <table class="table table-ric">
 	<thead>
-		<tr><th>Categoria</th><th>Nome Campagna</th><th>Founder</th></tr>
+		<tr><th>Categoria</th><th>Nome Campagna</th><th>Founder</th> <th>Country</th> <th>End Date</th></tr>
     <tbody><!-- Tabella che mostra le campagne -->{foreach $array as $campagna}
       <tr>
         <td><b>{$campagna->getCategory()}</b></td>
