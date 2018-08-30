@@ -30,7 +30,7 @@ require_once 'include.php';
             $this->smarty->assign('values',$values);
         }
         $this->smarty->assign('today',date('Y-m-d'));
-        $this->smarty->assign('info', false);
+    
         $this->smarty->display('CampaignCreation.tpl');
      }
 
@@ -116,7 +116,7 @@ require_once 'include.php';
         $this->smarty->assign('authors',$authors);
         $this->smarty->assign('camppic',$camppic);
         if(CUtente::isLogged()) $this->smarty->assign('userlogged',$_SESSION['username']);
-        $this->smarty->assign('info', false);
+    
         $this->smarty->display('camppage.tpl');
     }
 

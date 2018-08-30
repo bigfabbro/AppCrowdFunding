@@ -34,7 +34,6 @@ require_once 'include.php';
         if(CUtente::isLogged()) $this->smarty->assign('userlogged',$_SESSION['username']);
         $this->smarty->assign('NomeCampagna',$campagna->getName());
         $this->smarty->assign('idcamp',$campagna->getId());
-        $this->smarty->assign('info', false);
         $this->smarty->display('donation.tpl');
     }
 
