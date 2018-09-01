@@ -144,12 +144,13 @@ class FDatabase
         static::$instance=null;
     }
  /******************************************RICERCA***************************************************/
-    /**
-     * Effettua una ricerca sul database secondo vari parametri. Tale metodo e' scaturito a seguito
-     * di una ricerca da parte dell'utente.
-     * @param string $key la table da cui prelevare i dati
-     * @param string $value il valore per cui cercare i valori
-     * @param string $str il dato richiesto dall'utente
+    
+ /**
+     * Effettua una ricerca sul database secondo i parametri selezionati. 
+     * Tale metodo e' scaturito a seguito della ricerca avanzata da parte dell'utente.
+     * @param key la table da cui prelevare i dati
+     * @param value il valore per cui cercare i valori
+     * @param str il dato richiesto dall'utente
      * @return array|NULL i risultati ottenuti dalla ricerca. Se la richiesta non ha match, ritorna NULL.
      */
     function cercaAv(string $key, string $value, string $str) 
@@ -163,13 +164,16 @@ class FDatabase
             if(method_exists($className, $method))
                 $sql = $className::$method();
         }
-        
-        
+
         if($sql)
             return $this->exeCerca('F'.$key, $value, $str, $sql);
         else return NULL;
     }
     
+    /**
+     * Funzione privata che prepara ed esegue la query.
+     * @return obj torna l'oggetto (Utente o Campagna) ricercato
+     */
     private function exeCerca(string $className, string $value, string $str, string $sql)
     {
         try
@@ -184,26 +188,22 @@ class FDatabase
             while($row = $stmt->fetch())
             { // per ogni tupla restituita dal db...
                 $obj[] = FDatabase::createObjectFromRow($className, $row); //...istanzio l'oggetto
-                //var_dump($obj);
-
             }
-            //var_dump($obj);
-            
+   
             return $obj;
         }
         catch (PDOException $e)
         {
-           
             return null; // ritorna null se ci sono errori
         }
     }
     
 
     /**
-     * Da una tupla ricevuta da una query istanzia l'oggetto corrispondente
-     * @param string $class il nome della classe 
-     * @param $row array la tupla restituita dal dbms
-     * @return mixed l'oggetto risultato dell'elaborazione
+     * Da una tupla ricevuta di una query istanzia l'oggetto corrispondente
+     * @param class il nome della classe 
+     * @param row array la tupla restituita dal dbms
+     * @return obj l'oggetto risultato dell'elaborazione
      */
     private function createObjectFromRow(string $class, $row)
     {
@@ -217,6 +217,13 @@ class FDatabase
         return $obj;
     }
 
+    /**
+     * Effettua una ricerca sul database secondo i parametri selezionati. 
+     * Tale metodo e' scaturito a seguito della ricerca base da parte dell'utente.
+     * @param cont parametro che indica quale gruppo di istruzioni eseguire
+     * @param str il dato richiesto dall'utente
+     * @return array|NULL i risultati ottenuti dalla ricerca. Se la richiesta non ha match, ritorna NULL.
+     */
     function cerca($cont, string $str) 
     {
         $sql = '';

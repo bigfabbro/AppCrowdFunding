@@ -8,6 +8,9 @@ require_once 'include.php';
  */
 class VRicerca 
 {
+    /**
+     * Funzione che inizializza e configura smarty.
+     */
     function __construct()
     {
         $this->smarty=ConfSmarty::configuration();
@@ -31,8 +34,7 @@ class VRicerca
     
     
     /**
-     * Mostra i risultati della ricerca
-     * @param EUser $user l'utente della sessione
+     * Mostra i risultati della ricerca avanzata.
      * @param array $array contenente i risultati della ricerca | NULL se nessun oggetto e' stato costruito
      * @param string $key la chiave di ricerca adoperata
      * @param string $value il valore di ricerca adoperato
@@ -51,7 +53,10 @@ class VRicerca
         //mostro il contenuto della pagine
         $this->smarty->display('risultati.tpl');
     }
-     
+    
+    /**
+     * Mostra la schermata di ricerca avanzata nel caso in cui l'utente non inserisce nessuna stringa.
+     */
     function showAdvancedSearch()
     {
         if(CUtente::isLogged()) $this->smarty->assign('userlogged',$_SESSION['username']);
@@ -60,6 +65,10 @@ class VRicerca
         $this->smarty->display('ricercaAv.tpl');
     }
 
+    /**
+     * Restituisce il valore per il quale cercare e la tabella sulla quale cercare.
+     * @return array contenente il valore e la chiave inserito dall'utente.
+     */
     function getKeyAndValue() : array
     {
         $key="";
@@ -73,6 +82,13 @@ class VRicerca
         return array($key, $value);
     }
 
+   /**
+     * Mostra i risultati della ricerca base.
+     * @param array1 contiene i risultati della ricerca sul utente per username
+     * @param array2 contiene i risultati della ricerca sulla campagna per nome
+     * @param array3 contiene i risultati della ricerca sulla campagna per categoria
+     * @param string $string il dato ricercato dall'utente
+    */ 
     function showResult($array1, $array2, $array3, string $string)
     {
         $this->smarty->assign('string', $string);
@@ -87,6 +103,10 @@ class VRicerca
         $this->smarty->display('ricerca.tpl');
     }
 
+    /**
+     * Pagina di errore richiamata nel caso in cui si accede alla ricerca avanzata senza essere loggato.
+     * @param str stringa contenente il messaggio di errore.
+     */
     function showErrorPage(string $str){
 
         if(CUtente::isLogged()) $this->smarty->assign('userlogged',$_SESSION['username']);

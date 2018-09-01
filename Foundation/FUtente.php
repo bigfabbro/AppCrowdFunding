@@ -157,6 +157,11 @@ class FUtente
                 WHERE LOCATE( :username , username) > 0;";
     }
 
+    /**
+     * Istanzia l'oggetto utente dai risultati della query.
+     * @param row tupla restituita dal dbms
+     * @return l'oggetto utente 
+     */
     static function createObjectFromRow($row) 
     {
         $utente = new EUtente(); //costruisce la classe da dove istanziare l'oggetto

@@ -109,7 +109,11 @@ class FCampagna
         if($result!=null) return true;
         else return false;
     }
-	
+    
+    /**
+     * Query che restituisce le campagne in base alla categoria.
+     * @return string la query sql
+     */
 	static function cercaCampagnaByCategory() : string
     {
         return "SELECT campagne.* , utenti.username
@@ -117,6 +121,10 @@ class FCampagna
                 WHERE LOCATE( :category , category) > 0 AND campagne.founder = utenti.id;";
     }
     
+    /**
+     * Query che restituisce le campagne in base al nome.
+     * @return string la query sql
+     */
     static function cercaCampagnaByName() : string
     {
         return "SELECT campagne.*, utenti.username
@@ -124,20 +132,33 @@ class FCampagna
                 WHERE LOCATE( :name , campagne.name) > 0 AND campagne.founder = utenti.id;";
     }
 
+    /**
+     * Query che restituisce le campagne in base al founder.
+     * @return string la query sql
+     */
     static function cercaCampagnaByUsername() : string
     {
         return "SELECT campagne.*, utenti.username
                 FROM campagne JOIN utenti ON utenti.id=campagne.founder
                 WHERE LOCATE( :username , utenti.username) > 0;";
     }
-	
+    
+    /**
+     * Query che restituisce le campagne in base al country.
+     * @return string la query sql
+     */
 	static function cercaCampagnaByCountry() : string
     {
         return "SELECT campagne.* , utenti.username
                 FROM campagne , utenti
                 WHERE LOCATE( :country , country) > 0 AND campagne.founder = utenti.id;";
     }
-    
+
+    /**
+     * Istanzia l'oggetto campagna dai risultati della query.
+     * @param row tupla restituita dal dbms
+     * @return camp ritorna l'oggetto campagna 
+     */
     static function createObjectFromRow($row) 
     {
         $founder = new EUtente();

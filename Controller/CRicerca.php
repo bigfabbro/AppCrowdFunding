@@ -10,7 +10,6 @@ require_once 'include.php';
  */
 class CRicerca
 {
-
     /**
      * Metodo di 'Ricerca base' e fornisce una ricerca delle
      * campagne rispetto alla categoria e nome, e una ricerca degli utenti rispetto all'username.
@@ -41,8 +40,8 @@ class CRicerca
     }
 
     /**
-     * Metodo di'Ricerca Avanzata' e fornisce una ricerca delle campagne per categoria, per nome o per founder
-     * e una ricerca degli utenti tramite username. La differenza rispetto a quella base si ha che i risultati sono
+     * Metodo di'Ricerca Avanzata' fornisce una ricerca delle campagne per categoria, per nome, per country o per 
+     * founder e una ricerca degli utenti tramite username. La differenza rispetto a quella base si ha che i risultati sono
      * divisi in base ai parametri di ricerca. Tale funzione può essere effettuata solo dagli utenti registrati.
      */
     static function ricercaAv()
