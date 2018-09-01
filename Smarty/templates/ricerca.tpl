@@ -42,13 +42,15 @@
     {if $array3}
     <table class="table table-ric">
 	    <thead>
-        <tr><th>Categoria</th><th>Nome Campagna</th><th>Founder</th></tr>
+        <tr><th>Categoria</th><th>Nome Campagna</th><th>Founder</th> <th>Country</th> <th>End Date</th></tr>
         <tbody><!-- Tabella che mostra le campagne -->{foreach $array3 as $campagna}
           <tr>
             <td><b>{$campagna->getCategory()}</b></td>
             <td> 
               <a href="/AppCrowdFunding/Campagna/profile/{$campagna->getID()}"> <b>{$campagna->getName()} </b></a> </td>
             <td> <b>{$campagna->getFounder()->getUserName()}</b> </td>
+			<td> <b>{$campagna->getCountry()}</b> </td>
+            <td> <b> {$campagna->getEndDate()}</b> </td>
           </tr>
         </tbody>{/foreach}
       </table> {else} 
@@ -58,13 +60,15 @@
     {if $array2}
     <table class="table table-ric">
 	    <thead>
-        <tr><th>Categoria</th><th>Nome Campagna</th><th>Founder</th></tr>
+        <tr><th>Categoria</th><th>Nome Campagna</th><th>Founder</th> <th>Country</th> <th>End Date</th></tr>
         <tbody><!-- Tabella che mostra le campagne -->{foreach $array2 as $campagna}
           <tr>
             <td><b>{$campagna->getCategory()}</b></td>
             <td> 
               <a href="/AppCrowdFunding/Campagna/profile/{$campagna->getID()}"> <b>{$campagna->getName()}</b> </a> </td>
             <td> <b>{$campagna->getFounder()->getUserName()} </b></td>
+			<td> <b>{$campagna->getCountry()}</b> </td>
+            <td> <b> {$campagna->getEndDate()}</b> </td>
           </tr>
         </tbody>{/foreach}
       </table> {else} 
