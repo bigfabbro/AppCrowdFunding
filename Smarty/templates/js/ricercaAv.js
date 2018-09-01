@@ -7,13 +7,15 @@ $(document).ready(function() {
     $("#inputKey1").change(function() {
         if ($("#inputKey1 option:nth(1)").is(":selected")){
 		//inputKey2 è il secondo select; 
+			$("#inputKey2 option:nth(2)").attr('disabled', '');
             $("#inputKey2 option:nth(1)").attr('disabled', '');
             $("#inputKey2 option:nth(0)").attr('disabled', '');
-			      $("#inputKey2").val($("#inputKey2 option:nth(2)" ).val())
+			      $("#inputKey2").val($("#inputKey2 option:nth(3)" ).val())
 		}
 		else{
 			$("#inputKey2 option:nth(0)").removeAttr('disabled');
 			$("#inputKey2 option:nth(1)").removeAttr('disabled');
+			$("#inputKey2 option:nth(2)").removeAttr('disabled');
 		}
     });
 });

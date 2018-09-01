@@ -10,16 +10,6 @@ require_once 'include.php';
  */
 class CRicerca
 {
-    /** Chiave: Ricerca di campagne */
-    const KEY1 = 'Campagna';
-    /** Chia */
-    const KEY2 = 'Utente';
-    /** Valore: Ricerca per categoria */
-    const VALUE1 = 'Category';
-    /** Valore: Ricerca per name */
-    const VALUE2 = 'Name';
-    /** Valore: Ricerca per username/founder */
-    const VALUE3 = 'Username';
 
     /**
      * Metodo di 'Ricerca base' e fornisce una ricerca delle

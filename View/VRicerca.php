@@ -29,20 +29,6 @@ class VRicerca
         return $string;
     }
     
-    /**
-     * Ritorna la coppia chiave-valore scelta dall'utente nella ricerca avanzata. Tale coppia 
-     * e' contenuta nell'array globale $_GET.
-     * @return array avente come valori la chiave e il valore
-     */
-    function getValueType() : string
-    {
-        $value="";
-        
-        if($_GET['value'] == 'category' || $_GET['value'] == 'name')
-            $value = ucfirst($_GET['value']);
-                
-        return $value;
-    }
     
     /**
      * Mostra i risultati della ricerca
@@ -79,7 +65,7 @@ class VRicerca
         $key="";
         $value="";
         
-        if($_GET['value'] == 'name' || $_GET['value'] == 'category' || $_GET['value'] == 'username')
+        if($_GET['value'] == 'name' || $_GET['value'] == 'category' || $_GET['value'] == 'username' || $_GET['value'] == 'country')
             $value = ucfirst($_GET['value']);
         if($_GET['key'] == 'utente' || $_GET['key'] == 'campagna')
             $key = ucfirst($_GET['key']);

@@ -130,6 +130,13 @@ class FCampagna
                 FROM campagne JOIN utenti ON utenti.id=campagne.founder
                 WHERE LOCATE( :username , utenti.username) > 0;";
     }
+	
+	static function cercaCampagnaByCountry() : string
+    {
+        return "SELECT campagne.* , utenti.username
+                FROM campagne , utenti
+                WHERE LOCATE( :country , country) > 0 AND campagne.founder = utenti.id;";
+    }
     
     static function createObjectFromRow($row) 
     {

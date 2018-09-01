@@ -36,6 +36,7 @@
 						<select cerca="cerca" id="inputKey2" class="form-control" name="value">
 							<option value="category" selected>Category</option>
 							<option id="opt-name" value="name">Name</option>
+							<option value="country">Country</option>
 							<option value="username">Username</option>
 						</select>
 					</div>

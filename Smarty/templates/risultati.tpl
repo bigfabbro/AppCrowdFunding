@@ -21,7 +21,7 @@
     <div class="ric">
       <h2><b>Risultati ricerca per: "{$string}" </b></h2> 
       {if $key eq "Utente" && $value eq "Username"} {include file="utente.tpl"}
-      {else if $key eq "Campagna" && ($value eq "Category" || $value eq "Name" || $value eq "Username")} 
+      {else if $key eq "Campagna" && ($value eq "Category" || $value eq "Name" || $value eq "Username" || $value eq "Country")} 
         {include file="Campagna.tpl"} {/if}
       </div>
   </div>
