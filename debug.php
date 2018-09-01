@@ -2,8 +2,8 @@
 
 require_once "include.php";
 
-$user=new EUtente("bigfabbro","fd22041993","Fabrizio","D'Ascenzo","M","1993-04-22","bigfabbro@hotmail.it","3312934943","Ciao sono Fabrizio");
-echo FUtente::store($user);
+$camp=FCampagna::Top5ByFundsPerCategory('Tecnology');
+var_dump($camp);
 
 /*If(FUtente::delete(92)) echo "SI";
 else echo "NO";*/

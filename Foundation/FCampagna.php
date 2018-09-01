@@ -109,6 +109,26 @@ class FCampagna
         if($result!=null) return true;
         else return false;
     }
+
+    public function Top5byFundsPerCategory($category){
+        $sql="SELECT * FROM ".static::getTables()." WHERE category='".$category."' ORDER BY funds DESC LIMIT 5;";
+        $db=FDatabase::getInstance();
+        $result=$db->loadMultiple($sql);
+        if($result!=null){
+            $camps=array();
+            for($i=0; $i<count($result); $i++){
+                $camps[]=new ECampagna($result[$i]['founder'],$result[$i]['name'], $result[$i]['description'], $result[$i]['category'], $result[$i]['country'],$result[$i]['startdate'], $result[$i]['enddate'], $result[$i]['bankcount'],$result[$i]['goal']);
+                $camps[$i]->setId($result[$i]['id']);
+                $camps[$i]->setFunds($result[$i]['funds']); //aggiorna l'informazione coerentemente con il db infatti il costruttore setterebbe  founds a zero e visibility a false
+                $camps[$i]->setRew(FReward::loadByIdCamp($camps[$i]->getId()));
+                $camps[$i]->setComm(FCommento::loadByIdCamp($camps[$i]->getId()));
+                $camps[$i]->setMedia(FMediaCamp::loadByIdCamp($camps[$i]->getId()));
+                if($result[$i]['visibility']) $camps[$i]->setVis(); 
+            }
+            return $camps;
+        }
+        else return null;
+    }
 	
 	static function cercaCampagnaByCategory() : string
     {
