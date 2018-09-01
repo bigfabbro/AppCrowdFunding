@@ -120,6 +120,17 @@ require_once 'include.php';
         $this->smarty->display('camppage.tpl');
     }
 
+    public function showCategoryPage($camps){
+        if(CUtente::isLogged()) $this->smarty->assign('userlogged',$_SESSION['username']);
+        $this->smarty->assign('tecno',$camps['Tecnology']);
+        $this->smarty->assign('art',$camps['Art']);
+        $this->smarty->assign('charities',$camps['Charities']);
+        $this->smarty->assign('music',$camps['Music']);
+        $this->smarty->assign('food',$camps['Food']);
+        $this->smarty->assign('fashion',$camps['Fashion']);
+        $this->smarty->assign('filmvid',$camps['Film & Video']);
+        $this->smarty->display('categorypage.tpl');
+    }
 
     public function getNotVal(){
         return $this->notval;

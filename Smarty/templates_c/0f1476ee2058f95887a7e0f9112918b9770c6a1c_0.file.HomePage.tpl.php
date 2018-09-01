@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-08-22 17:56:30
+/* Smarty version 3.1.32, created on 2018-09-01 16:23:13
   from 'C:\xampp\htdocs\AppCrowdFunding\Smarty\templates\HomePage.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b7d87ae076307_52555992',
+  'unifunc' => 'content_5b8aa0d16e25f5_46572569',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '0f1476ee2058f95887a7e0f9112918b9770c6a1c' => 
     array (
       0 => 'C:\\xampp\\htdocs\\AppCrowdFunding\\Smarty\\templates\\HomePage.tpl',
-      1 => 1534939319,
+      1 => 1535811568,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:navbar.tpl' => 1,
   ),
 ),false)) {
-function content_5b7d87ae076307_52555992 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b8aa0d16e25f5_46572569 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html>
 
@@ -43,7 +43,7 @@ function content_5b7d87ae076307_52555992 (Smarty_Internal_Template $_smarty_tpl)
             <h1 class="display-3 mb-4 text-primary">rocket!</h1>
           </span>
           <a href="/AppCrowdFunding/Campagna/StartProject" class="btn btn-lg mx-1 btn-primary">Start a Project!</a>
-          <a href="#" class="btn btn-lg btn-primary mx-1">Back a Project!</a>
+          <a href="/AppCrowdFunding/Campagna/CategoryPage" class="btn btn-lg btn-primary mx-1">Back a Project!</a>
         </div>
       </div>
     </div>

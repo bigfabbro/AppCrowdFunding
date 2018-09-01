@@ -26,6 +26,18 @@ class CCampagna{
     }
 }
 
+  static function CategoryPage(){
+      if($_SERVER['REQUEST_METHOD']=="GET"){
+        $category=array("Tecnology", "Art", "Charities", "Music","Food","Fashion","Film & Video");
+        $camps=array();
+        foreach($category as $cat){
+            $camps[$cat]=FCampagna::Top5ByFundsPerCategory($cat);
+        }
+        $view=new VCampagna();
+          $view->showCategoryPage($camps);
+      }
+  }
+
   static function Creation(){
     $view=new VCampagna();
     if($view->valFormCreaCampagna()){
