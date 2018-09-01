@@ -18,8 +18,8 @@
   <div class="container text-center">
     <div class="ric">
       <h2><b>Risultati ricerca per: "{$string}"</b> </h2><BR>
-      {if $array1}
       <h4><b>UTENTI</b></h4>
+	  {if $array1}
       <table class="table table-ric">
         <thead>
           <tr>
