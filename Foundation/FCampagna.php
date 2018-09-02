@@ -109,13 +109,6 @@ class FCampagna
         if($result!=null) return true;
         else return false;
     }
-<<<<<<< HEAD
-    
-    /**
-     * Query che restituisce le campagne in base alla categoria.
-     * @return string la query sql
-     */
-=======
 
     public function Top5byFundsPerCategory($category){
         $sql="SELECT * FROM ".static::getTables()." WHERE category='".$category."' ORDER BY funds DESC LIMIT 5;";
@@ -137,7 +130,6 @@ class FCampagna
         else return null;
     }
 	
->>>>>>> 8ce38d7cf4d0978d98c61ffd593909a9913d04b4
 	static function cercaCampagnaByCategory() : string
     {
         return "SELECT campagne.* , utenti.username
