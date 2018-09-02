@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-09-01 18:59:46
+/* Smarty version 3.1.32, created on 2018-09-02 16:18:29
   from 'C:\xampp\htdocs\AppCrowdFunding\Smarty\templates\categorypage.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b8ac582616977_91259461',
+  'unifunc' => 'content_5b8bf135410475_55314159',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '1963ee93930837c54e1875c4abc87ff6e7ab0eb7' => 
     array (
       0 => 'C:\\xampp\\htdocs\\AppCrowdFunding\\Smarty\\templates\\categorypage.tpl',
-      1 => 1535821183,
+      1 => 1535897900,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:navbar.tpl' => 1,
   ),
 ),false)) {
-function content_5b8ac582616977_91259461 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b8bf135410475_55314159 (Smarty_Internal_Template $_smarty_tpl) {
 if ($_smarty_tpl->tpl_vars['tecno']->value != null) {
 $_smarty_tpl->_assignInScope('teccount', count($_smarty_tpl->tpl_vars['tecno']->value));
 }
@@ -42,6 +42,15 @@ $_smarty_tpl->_assignInScope('fashioncount', count($_smarty_tpl->tpl_vars['fashi
 }
 if ($_smarty_tpl->tpl_vars['filmvid']->value != null) {
 $_smarty_tpl->_assignInScope('filmcount', count($_smarty_tpl->tpl_vars['filmvid']->value));
+}
+if ($_smarty_tpl->tpl_vars['best']->value != null) {
+$_smarty_tpl->_assignInScope('bestcount', count($_smarty_tpl->tpl_vars['best']->value));
+}
+if ($_smarty_tpl->tpl_vars['last']->value != null) {
+$_smarty_tpl->_assignInScope('lastcount', count($_smarty_tpl->tpl_vars['last']->value));
+}
+if ($_smarty_tpl->tpl_vars['exp']->value != null) {
+$_smarty_tpl->_assignInScope('expcount', count($_smarty_tpl->tpl_vars['exp']->value));
 }?>
 <!DOCTYPE html>
 <html>
@@ -321,7 +330,7 @@ for ($_smarty_tpl->tpl_vars['i']->value = 0, $_smarty_tpl->tpl_vars['i']->iterat
 $_smarty_tpl->tpl_vars['i']->first = $_smarty_tpl->tpl_vars['i']->iteration === 1;$_smarty_tpl->tpl_vars['i']->last = $_smarty_tpl->tpl_vars['i']->iteration === $_smarty_tpl->tpl_vars['i']->total;?>
               <div class="row">
                 <div class="col-md-2">
-                  <p class="lead m-1 text-center"><?php echo 'i'+1;?>
+                  <p class="lead m-1 text-center"><?php echo $_smarty_tpl->tpl_vars['i']->value+1;?>
 </p>
                 </div>
                 <div class="col-md-6 p-0">
@@ -487,6 +496,40 @@ $_smarty_tpl->tpl_vars['i']->first = $_smarty_tpl->tpl_vars['i']->iteration === 
                   <p class="lead m-1 text-center">funds</p>
                 </div>
               </div>
+               <?php if (isset($_smarty_tpl->tpl_vars['lastcount']->value)) {?>
+              <?php
+$_smarty_tpl->tpl_vars['i'] = new Smarty_Variable(null, $_smarty_tpl->isRenderingCache);$_smarty_tpl->tpl_vars['i']->step = 1;$_smarty_tpl->tpl_vars['i']->total = (int) ceil(($_smarty_tpl->tpl_vars['i']->step > 0 ? $_smarty_tpl->tpl_vars['lastcount']->value-1+1 - (0) : 0-($_smarty_tpl->tpl_vars['lastcount']->value-1)+1)/abs($_smarty_tpl->tpl_vars['i']->step));
+if ($_smarty_tpl->tpl_vars['i']->total > 0) {
+for ($_smarty_tpl->tpl_vars['i']->value = 0, $_smarty_tpl->tpl_vars['i']->iteration = 1;$_smarty_tpl->tpl_vars['i']->iteration <= $_smarty_tpl->tpl_vars['i']->total;$_smarty_tpl->tpl_vars['i']->value += $_smarty_tpl->tpl_vars['i']->step, $_smarty_tpl->tpl_vars['i']->iteration++) {
+$_smarty_tpl->tpl_vars['i']->first = $_smarty_tpl->tpl_vars['i']->iteration === 1;$_smarty_tpl->tpl_vars['i']->last = $_smarty_tpl->tpl_vars['i']->iteration === $_smarty_tpl->tpl_vars['i']->total;?>
+              <div class="row">
+                <div class="col-md-2">
+                  <p class="lead m-1 text-center"><?php echo $_smarty_tpl->tpl_vars['i']->value+1;?>
+</p>
+                </div>
+                <div class="col-md-6 p-0">
+                  <p class="lead m-1 text-center"><a href="/AppCrowdFunding/Campagna/profile/<?php echo $_smarty_tpl->tpl_vars['last']->value[$_smarty_tpl->tpl_vars['i']->value]->getId();?>
+"><?php echo $_smarty_tpl->tpl_vars['last']->value[$_smarty_tpl->tpl_vars['i']->value]->getName();?>
+</a></p>
+                </div>
+                <div class="col-md-4 align-items-center align-self-center text-center">
+                  <div class="progress">
+                    <div class="progress-bar progress-bar-striped" role="progressbar" style="width: <?php echo (100*$_smarty_tpl->tpl_vars['last']->value[$_smarty_tpl->tpl_vars['i']->value]->getFunds())/$_smarty_tpl->tpl_vars['last']->value[$_smarty_tpl->tpl_vars['i']->value]->getGoal();?>
+%"><?php echo (100*$_smarty_tpl->tpl_vars['last']->value[$_smarty_tpl->tpl_vars['i']->value]->getFunds())/$_smarty_tpl->tpl_vars['last']->value[$_smarty_tpl->tpl_vars['i']->value]->getGoal();?>
+%</div>
+                  </div>
+                </div>
+              </div>
+              <?php }
+}
+?>
+              <?php } else { ?>
+              <div class="row">
+                <div class="col-md-12">
+                  <p class="lead m-1 text-center">Non ci sono campagne</p>
+                </div>
+              </div>
+              <?php }?>
             </div>
           </div>
         </div>
@@ -499,7 +542,7 @@ $_smarty_tpl->tpl_vars['i']->first = $_smarty_tpl->tpl_vars['i']->iteration === 
         <div class="bg-light box-input1 p-0 col-md-5 mx-auto">
           <div class="row">
             <div class="col-md-12">
-              <h1 class="text-center">Expiring</h1>
+              <h1 class="text-center">Expiring in this month</h1>
             </div>
           </div>
           <div class="row h-25 px-1">
@@ -515,19 +558,40 @@ $_smarty_tpl->tpl_vars['i']->first = $_smarty_tpl->tpl_vars['i']->iteration === 
                   <p class="lead m-1 text-center">funds</p>
                 </div>
               </div>
+              <?php if (isset($_smarty_tpl->tpl_vars['expcount']->value)) {?>
+              <?php
+$_smarty_tpl->tpl_vars['i'] = new Smarty_Variable(null, $_smarty_tpl->isRenderingCache);$_smarty_tpl->tpl_vars['i']->step = 1;$_smarty_tpl->tpl_vars['i']->total = (int) ceil(($_smarty_tpl->tpl_vars['i']->step > 0 ? $_smarty_tpl->tpl_vars['expcount']->value-1+1 - (0) : 0-($_smarty_tpl->tpl_vars['expcount']->value-1)+1)/abs($_smarty_tpl->tpl_vars['i']->step));
+if ($_smarty_tpl->tpl_vars['i']->total > 0) {
+for ($_smarty_tpl->tpl_vars['i']->value = 0, $_smarty_tpl->tpl_vars['i']->iteration = 1;$_smarty_tpl->tpl_vars['i']->iteration <= $_smarty_tpl->tpl_vars['i']->total;$_smarty_tpl->tpl_vars['i']->value += $_smarty_tpl->tpl_vars['i']->step, $_smarty_tpl->tpl_vars['i']->iteration++) {
+$_smarty_tpl->tpl_vars['i']->first = $_smarty_tpl->tpl_vars['i']->iteration === 1;$_smarty_tpl->tpl_vars['i']->last = $_smarty_tpl->tpl_vars['i']->iteration === $_smarty_tpl->tpl_vars['i']->total;?>
               <div class="row">
                 <div class="col-md-2">
-                  <p class="lead m-1 text-center">pos</p>
+                  <p class="lead m-1 text-center"><?php echo $_smarty_tpl->tpl_vars['i']->value+1;?>
+</p>
                 </div>
                 <div class="col-md-6 p-0">
-                  <p class="lead m-1 text-center">Nome campagna</p>
+                  <p class="lead m-1 text-center"><a href="/AppCrowdFunding/Campagna/profile/<?php echo $_smarty_tpl->tpl_vars['exp']->value[$_smarty_tpl->tpl_vars['i']->value]->getId();?>
+"><?php echo $_smarty_tpl->tpl_vars['exp']->value[$_smarty_tpl->tpl_vars['i']->value]->getName();?>
+</a></p>
                 </div>
                 <div class="col-md-4 align-items-center align-self-center text-center">
                   <div class="progress">
-                    <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 50%">50%</div>
+                    <div class="progress-bar progress-bar-striped" role="progressbar" style="width: <?php echo (100*$_smarty_tpl->tpl_vars['exp']->value[$_smarty_tpl->tpl_vars['i']->value]->getFunds())/$_smarty_tpl->tpl_vars['exp']->value[$_smarty_tpl->tpl_vars['i']->value]->getGoal();?>
+%"><?php echo (100*$_smarty_tpl->tpl_vars['exp']->value[$_smarty_tpl->tpl_vars['i']->value]->getFunds())/$_smarty_tpl->tpl_vars['exp']->value[$_smarty_tpl->tpl_vars['i']->value]->getGoal();?>
+%</div>
                   </div>
                 </div>
               </div>
+              <?php }
+}
+?>
+              <?php } else { ?>
+                   <div class="row">
+                <div class="col-md-12">
+                  <p class="lead m-1 text-center">Non ci sono campagne</p>
+                </div>
+              </div>
+              <?php }?>
             </div>
           </div>
         </div>
@@ -550,6 +614,40 @@ $_smarty_tpl->tpl_vars['i']->first = $_smarty_tpl->tpl_vars['i']->iteration === 
                   <p class="lead m-1 text-center">funds</p>
                 </div>
               </div>
+               <?php if (isset($_smarty_tpl->tpl_vars['bestcount']->value)) {?>
+              <?php
+$_smarty_tpl->tpl_vars['i'] = new Smarty_Variable(null, $_smarty_tpl->isRenderingCache);$_smarty_tpl->tpl_vars['i']->step = 1;$_smarty_tpl->tpl_vars['i']->total = (int) ceil(($_smarty_tpl->tpl_vars['i']->step > 0 ? $_smarty_tpl->tpl_vars['bestcount']->value-1+1 - (0) : 0-($_smarty_tpl->tpl_vars['bestcount']->value-1)+1)/abs($_smarty_tpl->tpl_vars['i']->step));
+if ($_smarty_tpl->tpl_vars['i']->total > 0) {
+for ($_smarty_tpl->tpl_vars['i']->value = 0, $_smarty_tpl->tpl_vars['i']->iteration = 1;$_smarty_tpl->tpl_vars['i']->iteration <= $_smarty_tpl->tpl_vars['i']->total;$_smarty_tpl->tpl_vars['i']->value += $_smarty_tpl->tpl_vars['i']->step, $_smarty_tpl->tpl_vars['i']->iteration++) {
+$_smarty_tpl->tpl_vars['i']->first = $_smarty_tpl->tpl_vars['i']->iteration === 1;$_smarty_tpl->tpl_vars['i']->last = $_smarty_tpl->tpl_vars['i']->iteration === $_smarty_tpl->tpl_vars['i']->total;?>
+              <div class="row">
+                <div class="col-md-2">
+                  <p class="lead m-1 text-center"><?php echo $_smarty_tpl->tpl_vars['i']->value+1;?>
+</p>
+                </div>
+                <div class="col-md-6 p-0">
+                  <p class="lead m-1 text-center"><a href="/AppCrowdFunding/Campagna/profile/<?php echo $_smarty_tpl->tpl_vars['best']->value[$_smarty_tpl->tpl_vars['i']->value]->getId();?>
+"><?php echo $_smarty_tpl->tpl_vars['best']->value[$_smarty_tpl->tpl_vars['i']->value]->getName();?>
+</a></p>
+                </div>
+                <div class="col-md-4 align-items-center align-self-center text-center">
+                  <div class="progress">
+                    <div class="progress-bar progress-bar-striped" role="progressbar" style="width: <?php echo (100*$_smarty_tpl->tpl_vars['best']->value[$_smarty_tpl->tpl_vars['i']->value]->getFunds())/$_smarty_tpl->tpl_vars['best']->value[$_smarty_tpl->tpl_vars['i']->value]->getGoal();?>
+%"><?php echo (100*$_smarty_tpl->tpl_vars['best']->value[$_smarty_tpl->tpl_vars['i']->value]->getFunds())/$_smarty_tpl->tpl_vars['best']->value[$_smarty_tpl->tpl_vars['i']->value]->getGoal();?>
+%</div>
+                  </div>
+                </div>
+              </div>
+              <?php }
+}
+?>
+              <?php } else { ?>
+              <div class="row">
+                <div class="col-md-12">
+                  <p class="lead m-1 text-center">Non ci sono campagne</p>
+                </div>
+              </div>
+              <?php }?>
             </div>
           </div>
         </div>

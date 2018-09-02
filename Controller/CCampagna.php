@@ -33,8 +33,11 @@ class CCampagna{
         foreach($category as $cat){
             $camps[$cat]=FCampagna::Top5ByFundsPerCategory($cat);
         }
+        $best=FCampagna::Best5ofToday();
+        $last=FCampagna::Last5Insert();
+        $exp=FCampagna::Expiring5Month();
         $view=new VCampagna();
-          $view->showCategoryPage($camps);
+          $view->showCategoryPage($camps,$best,$last,$exp);
       }
   }
 

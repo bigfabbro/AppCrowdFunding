@@ -120,7 +120,7 @@ require_once 'include.php';
         $this->smarty->display('camppage.tpl');
     }
 
-    public function showCategoryPage($camps){
+    public function showCategoryPage($camps,$best,$last,$exp){
         if(CUtente::isLogged()) $this->smarty->assign('userlogged',$_SESSION['username']);
         $this->smarty->assign('tecno',$camps['Tecnology']);
         $this->smarty->assign('art',$camps['Art']);
@@ -129,6 +129,9 @@ require_once 'include.php';
         $this->smarty->assign('food',$camps['Food']);
         $this->smarty->assign('fashion',$camps['Fashion']);
         $this->smarty->assign('filmvid',$camps['Film & Video']);
+        $this->smarty->assign('best',$best);
+        $this->smarty->assign('last',$last);
+        $this->smarty->assign('exp',$exp);
         $this->smarty->display('categorypage.tpl');
     }
 

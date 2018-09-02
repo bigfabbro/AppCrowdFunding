@@ -110,8 +110,74 @@ class FCampagna
         else return false;
     }
 
-    public function Top5byFundsPerCategory($category){
+    public static function Top5byFundsPerCategory($category){
         $sql="SELECT * FROM ".static::getTables()." WHERE category='".$category."' ORDER BY funds DESC LIMIT 5;";
+        $db=FDatabase::getInstance();
+        $result=$db->loadMultiple($sql);
+        if($result!=null){
+            $camps=array();
+            for($i=0; $i<count($result); $i++){
+                $camps[]=new ECampagna($result[$i]['founder'],$result[$i]['name'], $result[$i]['description'], $result[$i]['category'], $result[$i]['country'],$result[$i]['startdate'], $result[$i]['enddate'], $result[$i]['bankcount'],$result[$i]['goal']);
+                $camps[$i]->setId($result[$i]['id']);
+                $camps[$i]->setFunds($result[$i]['funds']); //aggiorna l'informazione coerentemente con il db infatti il costruttore setterebbe  founds a zero e visibility a false
+                $camps[$i]->setRew(FReward::loadByIdCamp($camps[$i]->getId()));
+                $camps[$i]->setComm(FCommento::loadByIdCamp($camps[$i]->getId()));
+                $camps[$i]->setMedia(FMediaCamp::loadByIdCamp($camps[$i]->getId()));
+                if($result[$i]['visibility']) $camps[$i]->setVis(); 
+            }
+            return $camps;
+        }
+        else return null;
+    }
+
+    public static function Best5ofToday(){
+        $sql="SELECT * FROM ".static::getTables()." as c INNER JOIN 
+                (SELECT idcamp 
+                 FROM donazioni 
+                 WHERE date='".date('Y-m-d')."' 
+                 GROUP BY idcamp 
+                 ORDER BY SUM(amount) DESC LIMIT 5) as b 
+                 ON c.id=b.idcamp;";
+        $db=FDatabase::getInstance();
+        $result=$db->loadMultiple($sql);
+        if($result!=null){
+            $camps=array();
+            for($i=0; $i<count($result); $i++){
+                $camps[]=new ECampagna($result[$i]['founder'],$result[$i]['name'], $result[$i]['description'], $result[$i]['category'], $result[$i]['country'],$result[$i]['startdate'], $result[$i]['enddate'], $result[$i]['bankcount'],$result[$i]['goal']);
+                $camps[$i]->setId($result[$i]['id']);
+                $camps[$i]->setFunds($result[$i]['funds']); //aggiorna l'informazione coerentemente con il db infatti il costruttore setterebbe  founds a zero e visibility a false
+                $camps[$i]->setRew(FReward::loadByIdCamp($camps[$i]->getId()));
+                $camps[$i]->setComm(FCommento::loadByIdCamp($camps[$i]->getId()));
+                $camps[$i]->setMedia(FMediaCamp::loadByIdCamp($camps[$i]->getId()));
+                if($result[$i]['visibility']) $camps[$i]->setVis(); 
+            }
+            return $camps;
+        }
+        else return null;
+    }
+
+    static function Last5Insert(){
+        $sql="SELECT * FROM ".static::getTables()." ORDER BY startdate DESC, id DESC LIMIT 5;";
+        $db=FDatabase::getInstance();
+        $result=$db->loadMultiple($sql);
+        if($result!=null){
+            $camps=array();
+            for($i=0; $i<count($result); $i++){
+                $camps[]=new ECampagna($result[$i]['founder'],$result[$i]['name'], $result[$i]['description'], $result[$i]['category'], $result[$i]['country'],$result[$i]['startdate'], $result[$i]['enddate'], $result[$i]['bankcount'],$result[$i]['goal']);
+                $camps[$i]->setId($result[$i]['id']);
+                $camps[$i]->setFunds($result[$i]['funds']); //aggiorna l'informazione coerentemente con il db infatti il costruttore setterebbe  founds a zero e visibility a false
+                $camps[$i]->setRew(FReward::loadByIdCamp($camps[$i]->getId()));
+                $camps[$i]->setComm(FCommento::loadByIdCamp($camps[$i]->getId()));
+                $camps[$i]->setMedia(FMediaCamp::loadByIdCamp($camps[$i]->getId()));
+                if($result[$i]['visibility']) $camps[$i]->setVis(); 
+            }
+            return $camps;
+        }
+        else return null;
+    }
+
+    static function Expiring5Month(){
+        $sql="SELECT * FROM ".static::getTables()." WHERE MONTH(enddate)='".date('m')."' AND YEAR(enddate)='".date('Y')."' ORDER BY enddate LIMIT 5;";
         $db=FDatabase::getInstance();
         $result=$db->loadMultiple($sql);
         if($result!=null){

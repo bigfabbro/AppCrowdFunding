@@ -5,6 +5,9 @@
 {if $food neq null}{assign var=foodcount value=$food|@count}{/if}
 {if $fashion neq null}{assign var=fashioncount value=$fashion|@count}{/if}
 {if $filmvid neq null}{assign var=filmcount value=$filmvid|@count}{/if}
+{if $best neq null}{assign var=bestcount value=$best|@count}{/if}
+{if $last neq null}{assign var=lastcount value=$last|@count}{/if}
+{if $exp neq null}{assign var=expcount value=$exp|@count}{/if}
 <!DOCTYPE html>
 <html>
 
@@ -234,7 +237,7 @@
               {for $i=0 to $foodcount-1}
               <div class="row">
                 <div class="col-md-2">
-                  <p class="lead m-1 text-center">{i+1}</p>
+                  <p class="lead m-1 text-center">{$i+1}</p>
                 </div>
                 <div class="col-md-6 p-0">
                   <p class="lead m-1 text-center"><a href="/AppCrowdFunding/Campagna/profile/{$food[$i]->getId()}">{$food[$i]->getName()}</a></p>
@@ -371,6 +374,29 @@
                   <p class="lead m-1 text-center">funds</p>
                 </div>
               </div>
+               {if isset($lastcount)}
+              {for $i=0 to $lastcount-1}
+              <div class="row">
+                <div class="col-md-2">
+                  <p class="lead m-1 text-center">{$i+1}</p>
+                </div>
+                <div class="col-md-6 p-0">
+                  <p class="lead m-1 text-center"><a href="/AppCrowdFunding/Campagna/profile/{$last[$i]->getId()}">{$last[$i]->getName()}</a></p>
+                </div>
+                <div class="col-md-4 align-items-center align-self-center text-center">
+                  <div class="progress">
+                    <div class="progress-bar progress-bar-striped" role="progressbar" style="width: {(100*$last[$i]->getFunds())/$last[$i]->getGoal()}%">{(100*$last[$i]->getFunds())/$last[$i]->getGoal()}%</div>
+                  </div>
+                </div>
+              </div>
+              {/for}
+              {else}
+              <div class="row">
+                <div class="col-md-12">
+                  <p class="lead m-1 text-center">Non ci sono campagne</p>
+                </div>
+              </div>
+              {/if}
             </div>
           </div>
         </div>
@@ -383,7 +409,7 @@
         <div class="bg-light box-input1 p-0 col-md-5 mx-auto">
           <div class="row">
             <div class="col-md-12">
-              <h1 class="text-center">Expiring</h1>
+              <h1 class="text-center">Expiring in this month</h1>
             </div>
           </div>
           <div class="row h-25 px-1">
@@ -399,19 +425,29 @@
                   <p class="lead m-1 text-center">funds</p>
                 </div>
               </div>
+              {if isset($expcount)}
+              {for $i=0 to $expcount-1}
               <div class="row">
                 <div class="col-md-2">
-                  <p class="lead m-1 text-center">pos</p>
+                  <p class="lead m-1 text-center">{$i+1}</p>
                 </div>
                 <div class="col-md-6 p-0">
-                  <p class="lead m-1 text-center">Nome campagna</p>
+                  <p class="lead m-1 text-center"><a href="/AppCrowdFunding/Campagna/profile/{$exp[$i]->getId()}">{$exp[$i]->getName()}</a></p>
                 </div>
                 <div class="col-md-4 align-items-center align-self-center text-center">
                   <div class="progress">
-                    <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 50%">50%</div>
+                    <div class="progress-bar progress-bar-striped" role="progressbar" style="width: {(100*$exp[$i]->getFunds())/$exp[$i]->getGoal()}%">{(100*$exp[$i]->getFunds())/$exp[$i]->getGoal()}%</div>
                   </div>
                 </div>
               </div>
+              {/for}
+              {else}
+                   <div class="row">
+                <div class="col-md-12">
+                  <p class="lead m-1 text-center">Non ci sono campagne</p>
+                </div>
+              </div>
+              {/if}
             </div>
           </div>
         </div>
@@ -434,6 +470,29 @@
                   <p class="lead m-1 text-center">funds</p>
                 </div>
               </div>
+               {if isset($bestcount)}
+              {for $i=0 to $bestcount-1}
+              <div class="row">
+                <div class="col-md-2">
+                  <p class="lead m-1 text-center">{$i+1}</p>
+                </div>
+                <div class="col-md-6 p-0">
+                  <p class="lead m-1 text-center"><a href="/AppCrowdFunding/Campagna/profile/{$best[$i]->getId()}">{$best[$i]->getName()}</a></p>
+                </div>
+                <div class="col-md-4 align-items-center align-self-center text-center">
+                  <div class="progress">
+                    <div class="progress-bar progress-bar-striped" role="progressbar" style="width: {(100*$best[$i]->getFunds())/$best[$i]->getGoal()}%">{(100*$best[$i]->getFunds())/$best[$i]->getGoal()}%</div>
+                  </div>
+                </div>
+              </div>
+              {/for}
+              {else}
+              <div class="row">
+                <div class="col-md-12">
+                  <p class="lead m-1 text-center">Non ci sono campagne</p>
+                </div>
+              </div>
+              {/if}
             </div>
           </div>
         </div>

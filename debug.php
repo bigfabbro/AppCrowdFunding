@@ -2,8 +2,8 @@
 
 require_once "include.php";
 
-$camp=FCampagna::Top5ByFundsPerCategory('Tecnology');
-var_dump($camp);
+$camp=FCampagna::Best5ofToday();
+echo date('Y');
 
 /*If(FUtente::delete(92)) echo "SI";
 else echo "NO";*/
