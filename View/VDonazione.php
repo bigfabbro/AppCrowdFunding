@@ -50,27 +50,27 @@ require_once 'include.php';
     function valFormDonation(){
 
         if(isset($_POST['ownername'])){
-            $this->notval['ownername']=!EDonazione::valOwnerName($_POST['ownername']); 
+            $this->notval['ownername']=!ECartaDiCredito::valOwnerName($_POST['ownername']); 
         }
         else   $this->notval['ownername']=true;
 
         if(isset($_POST['ownersurname'])){
-            $this->notval['ownersurname']=!EDonazione::valOwnerSurname($_POST['ownersurname']); 
+            $this->notval['ownersurname']=!ECartaDiCredito::valOwnerSurname($_POST['ownersurname']); 
         }
         else   $this->notval['ownersurname']=true;
 
         if(isset($_POST['ccnumber'])){
-            $this->notval['ccnumber']=!EDonazione::valCcNumber($_POST['ccnumber']); 
+            $this->notval['ccnumber']=!ECartaDiCredito::valCcNumber($_POST['ccnumber']); 
         }
         else   $this->notval['ccnumber']=true;
 
         if(isset($_POST['expirationdate'])){
-            $this->notval['expirationdate']=!EDonazione::valExpirationDate($_POST['expirationdate']); 
+            $this->notval['expirationdate']=!ECartaDiCredito::valExpirationDate($_POST['expirationdate']); 
         }
         else  $notval['expirationdate']=true;
 
         if(isset($_POST['cvv'])){
-            $this->notval['cvv']=!EDonazione::valCvv($_POST['cvv']); 
+            $this->notval['cvv']=!ECartaDiCredito::valCvv($_POST['cvv']); 
         }
         else   $this->notval['cvv']=true;
 
