@@ -102,10 +102,10 @@ require_once 'include.php';
         if($donations){
             foreach($donations as $don){
                 $user=FUtente::loadById($don->getIdUtente());
-                if($user){
+                if($user!=null){
                     $donators[]=$user->getUsername();
                 }
-                else $authors[]="anonymous";
+                else $donators[]="anonymous";
             }
         }
         $rewards=$camp->getRew();

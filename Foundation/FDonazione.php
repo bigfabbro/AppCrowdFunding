@@ -89,8 +89,11 @@ class FDonazione
         if($result!=null){
             $dons=array();
             for($i=0; $i<count($result); $i++){
-                $dons[]=new EDonazione($result[$i]['amount'], $result[$i]['date'], $result[$i]['reward'], $result[$i]['idutente'],$result[$i]['idcamp'],$result[$i]['idcc']);
+                $dons[]=new EDonazione($result[$i]['amount'], $result[$i]['date'], $result[$i]['reward'],$result[$i]['idcamp']);
                 $dons[$i]->setId($result[$i]['id']);
+                $dons[$i]->setIdUtente($result[$i]['idutente']);
+                $dons[$i]->setIdCamp($result[$i]['idcamp']);
+                $dons[$i]->setCreditCard($result[$i]['idcc']);
             }
             return $dons;
         }

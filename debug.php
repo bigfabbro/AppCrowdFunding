@@ -2,8 +2,9 @@
 
 require_once "include.php";
 
-$camp=FCampagna::Best5ofToday();
-echo date('Y');
+$camp=FDonazione::loadByIdCamp(2);
+var_dump($camp);
+echo $camp[1]->getIdUtente();
 
 /*If(FUtente::delete(92)) echo "SI";
 else echo "NO";*/

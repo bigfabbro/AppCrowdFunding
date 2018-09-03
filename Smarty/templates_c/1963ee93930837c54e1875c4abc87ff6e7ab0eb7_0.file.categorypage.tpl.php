@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-09-02 16:18:29
+/* Smarty version 3.1.32, created on 2018-09-02 17:48:30
   from 'C:\xampp\htdocs\AppCrowdFunding\Smarty\templates\categorypage.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b8bf135410475_55314159',
+  'unifunc' => 'content_5b8c064e1b3d27_21256396',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '1963ee93930837c54e1875c4abc87ff6e7ab0eb7' => 
     array (
       0 => 'C:\\xampp\\htdocs\\AppCrowdFunding\\Smarty\\templates\\categorypage.tpl',
-      1 => 1535897900,
+      1 => 1535903303,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:navbar.tpl' => 1,
   ),
 ),false)) {
-function content_5b8bf135410475_55314159 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b8c064e1b3d27_21256396 (Smarty_Internal_Template $_smarty_tpl) {
 if ($_smarty_tpl->tpl_vars['tecno']->value != null) {
 $_smarty_tpl->_assignInScope('teccount', count($_smarty_tpl->tpl_vars['tecno']->value));
 }

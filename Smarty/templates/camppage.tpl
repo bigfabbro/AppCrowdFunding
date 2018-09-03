@@ -1,4 +1,7 @@
-{assign var=piccount value=$camppic|@count} {assign var=commcount value=$comments|@count} {assign var=doncount value=$donations|@count}
+{assign var=piccount value=$camppic|@count} 
+{assign var=commcount value=$comments|@count} 
+{assign var=doncount value=$donations|@count} 
+{assign var=rewcount value=$rewards|@count}
 <!DOCTYPE html>
 <html>
 
@@ -97,15 +100,15 @@
           </div>
           <div class="row">
             <div class="col-md-12" style="height:520px;overflow-x: hidden; overflow-y: auto">
-              {foreach $rewards as $rew}
+              {for $i=0 to $rewcount-1}
               <div class="card">
-                <div class="card-header"> {$rew->getName()}</div>
+                <div class="card-header"> {$rewards[$i]->getName()}</div>
                 <div class="card-body">
-                  <h4>{$rew->getPledged()}€</h4>
-                  <p>{$rew->getDescriptionRe()}</p>
+                  <h4>{$rewards[$i]->getPledged()}€</h4>
+                  <p>{$rewards[$i]->getDescriptionRe()}</p>
                 </div>
               </div>
-              {/foreach}
+              {/for}
             </div>
           </div>
         </div>

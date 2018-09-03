@@ -144,6 +144,7 @@ sub {
 sup {
   top: -.5em; }
 
+  
 a {
   color: #12bbad;
   text-decoration: none;
@@ -503,6 +504,18 @@ pre {
   bottom: 50%;
   left: 0;
 }
+
+.tooltiptext {
+  visibility: hidden;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -60px;
+  transition: opacity 0.3s;
+}
+
 .row {
   display: flex;
   flex-wrap: wrap;
