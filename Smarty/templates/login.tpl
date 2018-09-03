@@ -19,20 +19,46 @@
             <b>Do you have any idea?</b>
           </p>
         </div>
-        <div class="col-md-6">
+        {if isset($user)}
+        <div class="col-md-6" style="display:none" id="loginstand">
+        {else}
+        <div class="col-md-6" style="display:block" id="loginstand">
+        {/if}
           <div class="row">
             <div class="col-md-12">
               <div class="card text-white p-5 bg-light">
                 <div class="card-body">
                   <h1 class="mb-4 bg-light text-primary">Login</h1>
-                  <form action="login" method="POST">
+                  <form action="/AppCrowdFunding/Utente/Login" method="POST">
                     <div class="form-group bg-light">
                       <label class="text-primary">Username</label>
                       <input type="text" class="form-control" placeholder="Enter username" name="username" required="required"> </div>
                     <div class="form-group bg-light">
                       <label class="text-primary">Password</label>
                       <input type="password" class="form-control" placeholder="Enter password" name="password" required="required"> </div>
+                      <div class="form-group" >
+                      <label class="text-primary">Remind me later</label>
+                      <input type="checkbox" name="remindme" id="remindme" value="yes"> </div>
                     <button type="submit" class="btn btn-primary">Login</button>
+                  </form>
+                </div>
+                <div class="card-header text-primary text-center border border-light bg-light">{if isset($badlogin) && $badlogin eq "true"}Attenzione! Username e/o password errati!{/if}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {if isset($user)}
+        <div class="col-md-6" style="display:block" id="loginremind">
+        {else}
+        <div class="col-md-6" style="display:none" id="loginremind">
+        {/if}
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card text-white p-5 bg-light">
+                <div class="card-body">
+                  <p class="text-center text-dark" style="display:inline"> Vuoi accedere come </p><p class="text-center text-primary" style="display:inline"> {$user->getUsername()}</p><p class="text-center text-dark" style="display:inline">?</p>
+                  <form action="/AppCrowdFunding/Utente/LoginRemind" method="POST">
+                    <button type="submit" class="btn btn-primary">Si</button>  <a class="btn btn-primary" onclick="change()">Cambia Utente</a>
                   </form>
                 </div>
                 <div class="card-header text-primary text-center border border-light bg-light">{if isset($badlogin) && $badlogin eq "true"}Attenzione! Username e/o password errati!{/if}</div>
@@ -54,6 +80,7 @@
       </div>
     </div>
   </nav>
+  <script src="/AppCrowdFunding/Smarty/templates/js/changeprofile.js"></script>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

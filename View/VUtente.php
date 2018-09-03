@@ -35,7 +35,11 @@ require_once 'include.php';
 
     public function showFormLogin($badlogin=null){
          if(isset($badlogin)) $this->smarty->assign('badlogin',$badlogin);
-         
+         $this->smarty->display('login.tpl');
+     }
+
+     public function showFormLoginRemind($user){
+         $this->smarty->assign('user',$user);
          $this->smarty->display('login.tpl');
      }
 

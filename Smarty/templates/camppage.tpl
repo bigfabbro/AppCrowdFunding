@@ -1,7 +1,7 @@
-{assign var=piccount value=$camppic|@count} 
-{assign var=commcount value=$comments|@count} 
-{assign var=doncount value=$donations|@count} 
-{assign var=rewcount value=$rewards|@count}
+{if $camppic neq null} {assign var=piccount value=$camppic|@count} {/if}
+{if $comments neq null}{assign var=commcount value=$comments|@count} {/if}
+{if $donations neq null}{assign var=doncount value=$donations|@count} {/if}
+{if $rewards neq null}{assign var=rewcount value=$rewards|@count} {/if}
 <!DOCTYPE html>
 <html>
 
@@ -100,6 +100,7 @@
           </div>
           <div class="row">
             <div class="col-md-12" style="height:520px;overflow-x: hidden; overflow-y: auto">
+            {if isset($rewcount)}
               {for $i=0 to $rewcount-1}
               <div class="card">
                 <div class="card-header"> {$rewards[$i]->getName()}</div>
@@ -109,6 +110,9 @@
                 </div>
               </div>
               {/for}
+            {else}
+            <p class="text-center"> There aren't rewards </p>
+            {/if}
             </div>
           </div>
         </div>
@@ -139,11 +143,12 @@
             <div class="col-md-12">
               <div class="row">
                 <div class="col-md-12">
-                  <p class="lead text-center">Comments ({$commcount})</p>
+                  <p class="lead text-center">Comments ({if isset($commcount)}{$commcount}{else}0{/if})</p>
                 </div>
               </div>
               <div class="row">
                <div class="col-md-12" style="height:500px;overflow-x:hidden;overflow-y:auto">
+              {if isset($commcount)}
               {for $i=0 to $commcount-1}
               <div class="card">
                 {if $authors[$i]!="anonymous"}
@@ -158,6 +163,9 @@
                 </div>
               </div>
               {/for}
+              {else}
+              <p class="text-center"> There aren't comments </p>
+              {/if}
               </div>
               </div>
               <div class="row">
@@ -196,6 +204,7 @@
           </div>
           <div class="row">
             <div class="col-md-12" style="height:600px;overflow-x:hidden; overflow-y:auto">
+            {if isset($doncount)}
               {for $i=0 to $doncount-1}
               <div class="card">
                 {if $donators[$i]!="anonymous"}
@@ -209,11 +218,18 @@
                 </div>
               </div>
               {/for}
+              {else}
+              <p class="text-center"> There aren't donations </p>
+              {/if}
             </div>
           </div>
           <div class="row">
             <div class="col-md-12 text-center">
+            {if isset($userlogged)}
               <a href="/AppCrowdFunding/Donazione/make/{$idcamp}" class="btn my-1 btn-outline-light">Make a donation!</a>
+            {else}
+              <a href="/AppCrowdFunding/Utente/login" class="btn my-1 btn-outline-light">Make a donation!</a>
+            {/if}
             </div>
           </div>
         </div>

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-09-03 16:18:14
+/* Smarty version 3.1.32, created on 2018-09-03 16:49:37
   from 'C:\xampp\htdocs\AppCrowdFunding\Smarty\templates\camppage.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b8d42a68761d6_93589701',
+  'unifunc' => 'content_5b8d4a017b4723_40614251',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '307f81076d87b845fc318afd68fd18224d66d76f' => 
     array (
       0 => 'C:\\xampp\\htdocs\\AppCrowdFunding\\Smarty\\templates\\camppage.tpl',
-      1 => 1535984291,
+      1 => 1535986166,
       2 => 'file',
     ),
   ),
@@ -21,11 +21,14 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:navbar.tpl' => 1,
   ),
 ),false)) {
-function content_5b8d42a68761d6_93589701 (Smarty_Internal_Template $_smarty_tpl) {
-$_smarty_tpl->_assignInScope('piccount', count($_smarty_tpl->tpl_vars['camppic']->value));?> 
-<?php $_smarty_tpl->_assignInScope('commcount', count($_smarty_tpl->tpl_vars['comments']->value));?> 
-<?php $_smarty_tpl->_assignInScope('doncount', count($_smarty_tpl->tpl_vars['donations']->value));?> 
-<?php $_smarty_tpl->_assignInScope('rewcount', count($_smarty_tpl->tpl_vars['rewards']->value));?>
+function content_5b8d4a017b4723_40614251 (Smarty_Internal_Template $_smarty_tpl) {
+if ($_smarty_tpl->tpl_vars['camppic']->value != null) {?> <?php $_smarty_tpl->_assignInScope('piccount', count($_smarty_tpl->tpl_vars['camppic']->value));?> <?php }
+if ($_smarty_tpl->tpl_vars['comments']->value != null) {
+$_smarty_tpl->_assignInScope('commcount', count($_smarty_tpl->tpl_vars['comments']->value));?> <?php }
+if ($_smarty_tpl->tpl_vars['donations']->value != null) {
+$_smarty_tpl->_assignInScope('doncount', count($_smarty_tpl->tpl_vars['donations']->value));?> <?php }
+if ($_smarty_tpl->tpl_vars['rewards']->value != null) {
+$_smarty_tpl->_assignInScope('rewcount', count($_smarty_tpl->tpl_vars['rewards']->value));?> <?php }?>
 <!DOCTYPE html>
 <html>
 
@@ -143,6 +146,7 @@ $_smarty_tpl->tpl_vars['i']->first = $_smarty_tpl->tpl_vars['i']->iteration === 
           </div>
           <div class="row">
             <div class="col-md-12" style="height:520px;overflow-x: hidden; overflow-y: auto">
+            <?php if (isset($_smarty_tpl->tpl_vars['rewcount']->value)) {?>
               <?php
 $_smarty_tpl->tpl_vars['i'] = new Smarty_Variable(null, $_smarty_tpl->isRenderingCache);$_smarty_tpl->tpl_vars['i']->step = 1;$_smarty_tpl->tpl_vars['i']->total = (int) ceil(($_smarty_tpl->tpl_vars['i']->step > 0 ? $_smarty_tpl->tpl_vars['rewcount']->value-1+1 - (0) : 0-($_smarty_tpl->tpl_vars['rewcount']->value-1)+1)/abs($_smarty_tpl->tpl_vars['i']->step));
 if ($_smarty_tpl->tpl_vars['i']->total > 0) {
@@ -161,6 +165,9 @@ $_smarty_tpl->tpl_vars['i']->first = $_smarty_tpl->tpl_vars['i']->iteration === 
               <?php }
 }
 ?>
+            <?php } else { ?>
+            <p class="text-center"> There aren't rewards </p>
+            <?php }?>
             </div>
           </div>
         </div>
@@ -192,12 +199,14 @@ $_smarty_tpl->tpl_vars['i']->first = $_smarty_tpl->tpl_vars['i']->iteration === 
             <div class="col-md-12">
               <div class="row">
                 <div class="col-md-12">
-                  <p class="lead text-center">Comments (<?php echo $_smarty_tpl->tpl_vars['commcount']->value;?>
-)</p>
+                  <p class="lead text-center">Comments (<?php if (isset($_smarty_tpl->tpl_vars['commcount']->value)) {
+echo $_smarty_tpl->tpl_vars['commcount']->value;
+} else { ?>0<?php }?>)</p>
                 </div>
               </div>
               <div class="row">
                <div class="col-md-12" style="height:500px;overflow-x:hidden;overflow-y:auto">
+              <?php if (isset($_smarty_tpl->tpl_vars['commcount']->value)) {?>
               <?php
 $_smarty_tpl->tpl_vars['i'] = new Smarty_Variable(null, $_smarty_tpl->isRenderingCache);$_smarty_tpl->tpl_vars['i']->step = 1;$_smarty_tpl->tpl_vars['i']->total = (int) ceil(($_smarty_tpl->tpl_vars['i']->step > 0 ? $_smarty_tpl->tpl_vars['commcount']->value-1+1 - (0) : 0-($_smarty_tpl->tpl_vars['commcount']->value-1)+1)/abs($_smarty_tpl->tpl_vars['i']->step));
 if ($_smarty_tpl->tpl_vars['i']->total > 0) {
@@ -222,6 +231,9 @@ $_smarty_tpl->tpl_vars['i']->first = $_smarty_tpl->tpl_vars['i']->iteration === 
               <?php }
 }
 ?>
+              <?php } else { ?>
+              <p class="text-center"> There aren't comments </p>
+              <?php }?>
               </div>
               </div>
               <div class="row">
@@ -261,6 +273,7 @@ $_smarty_tpl->tpl_vars['i']->first = $_smarty_tpl->tpl_vars['i']->iteration === 
           </div>
           <div class="row">
             <div class="col-md-12" style="height:600px;overflow-x:hidden; overflow-y:auto">
+            <?php if (isset($_smarty_tpl->tpl_vars['doncount']->value)) {?>
               <?php
 $_smarty_tpl->tpl_vars['i'] = new Smarty_Variable(null, $_smarty_tpl->isRenderingCache);$_smarty_tpl->tpl_vars['i']->step = 1;$_smarty_tpl->tpl_vars['i']->total = (int) ceil(($_smarty_tpl->tpl_vars['i']->step > 0 ? $_smarty_tpl->tpl_vars['doncount']->value-1+1 - (0) : 0-($_smarty_tpl->tpl_vars['doncount']->value-1)+1)/abs($_smarty_tpl->tpl_vars['i']->step));
 if ($_smarty_tpl->tpl_vars['i']->total > 0) {
@@ -285,12 +298,19 @@ $_smarty_tpl->tpl_vars['i']->first = $_smarty_tpl->tpl_vars['i']->iteration === 
               <?php }
 }
 ?>
+              <?php } else { ?>
+              <p class="text-center"> There aren't donations </p>
+              <?php }?>
             </div>
           </div>
           <div class="row">
             <div class="col-md-12 text-center">
+            <?php if (isset($_smarty_tpl->tpl_vars['userlogged']->value)) {?>
               <a href="/AppCrowdFunding/Donazione/make/<?php echo $_smarty_tpl->tpl_vars['idcamp']->value;?>
 " class="btn my-1 btn-outline-light">Make a donation!</a>
+            <?php } else { ?>
+              <a href="/AppCrowdFunding/Utente/login" class="btn my-1 btn-outline-light">Make a donation!</a>
+            <?php }?>
             </div>
           </div>
         </div>

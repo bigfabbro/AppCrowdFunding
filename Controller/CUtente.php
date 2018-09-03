@@ -18,8 +18,10 @@ require_once 'include.php';
         if($_SERVER['REQUEST_METHOD']=="GET"){
             if(CUtente::isLogged()) header('Location: /AppCrowdFunding/HomePage');
             else{
+                $user=CUtente::Remindme();
                 $view=new VUtente();
-                $view->showFormLogin();
+                if($user!=null) $view->showFormLoginRemind($user);
+                else $view->showFormLogin();
             }
         }
         else if($_SERVER['REQUEST_METHOD']=="POST"){
@@ -31,8 +33,18 @@ require_once 'include.php';
         }
     }
 
+    static function LoginRemind(){
+        $user=CUtente::Remindme();
+        if($user) CUtente::EnterIn($user);
+        else{
+            setcookie("nome_utente", null);
+            $view=new VUtente();
+            $view->showFormLogin(true);
+        }
+    }
+
 /**Metodo che dopo aver verificato la correttezza del form di login, verifica, attraverso
- * il richiamo della metodo exist che esista la coppia (username, password) specificata.
+ * il richiamo del metodo exist che esista la coppia (username, password) specificata.
  * Si possono avere due situazioni:
  * 1) La coppia (username, password) esiste --> viene aperta la sessione con i dati dell'utente;
  *    1a) se l'account dell'utente è stato stato già attivato --> viene mostrata la homepage;
@@ -40,11 +52,15 @@ require_once 'include.php';
  * 2) La coppia (username,password) non esiste --> viene mostrata nuovamente la pagina di login con messaggio di errore.
  */
 
-  static function EnterIn(){
-        $view=new VUtente();
+  static function EnterIn($user=null){
+      if(!isset($user)){
+         $view=new VUtente();
          if($view->ValFormLogin()){
            $user=FUtente::ExistUserPass($_POST['username'],$_POST['password']);
            if($user!=null){
+               if(isset($_POST['remindme']) && $_POST['remindme']=="yes"){
+                   setcookie("remindme",$_POST['username'].hash("md5","{\?/}").hash("md5",$_POST['username'].$_POST['password']));
+               }
             if (session_status() == PHP_SESSION_NONE) session_start();
                $_SESSION['id']= $user->getId();
                $_SESSION['username']=$user->getUserName();
@@ -55,13 +71,22 @@ require_once 'include.php';
                }
                else $view->showActivation();
             } 
-           else{
-            $view->showFormLogin(true); //il true sta per "login errato! Ci sono errori"
-           }
         }
         else{   
-            $view->showFormLogin(false); //il fase sta per "login corretto! Non ci sono errori"
+            $view->showFormLogin(true);
         }
+    }
+    else{
+        if (session_status() == PHP_SESSION_NONE) session_start();
+               $_SESSION['id']= $user->getId();
+               $_SESSION['username']=$user->getUserName();
+               $_SESSION['activate']=$user->getActivate();
+               if($user->getActivate()){
+                   if(isset($_SESSION['redirect'])) header('Location: '.$_SESSION['redirect']);
+                   else header('Location: /AppCrowdFunding/HomePage');
+               }
+               else $view->showActivation();
+    }
     }
 
     /*********************************************ACTIVATION************************************************************** */
@@ -346,6 +371,16 @@ require_once 'include.php';
       }
     }
 
+    static function Remindme(){
+        if(isset($_COOKIE['remindme'])){
+            $data=explode(hash("md5","{\?/}"),$_COOKIE['remindme']);
+            $user=FUtente::loadByUsername($data[0]);
+            if($user){
+                if(hash("md5",$user->getUsername().$user->getPass())==$data[1]) return $user;
+            }
+        }
+        else return null;
+    }
 
     
   }
