@@ -311,6 +311,17 @@ require_once 'include.php';
         }
     }
 
+    static function UpdateImg(){
+        if(($_SERVER['REQUEST_METHOD']=="POST")){
+            if(CUtente::isLogged()){
+                $up=new Upload();
+                $picture=$up->myphoto($_FILES['inputimage'],$_SESSION['id']);
+                FMediaUser::deleteByIdUser($_SESSION['id']);
+                FMediaUser::store($picture);
+            }
+        }
+    }
+
 /** Metodo che viene utilizzato per verificare se l'input inserito dall'utente nel form di modifica del profilo utente è corretto o meno.
  *  Più precisamente viene effettuata una richiesta AJAX al server e dalla risposta si capisce se l'input e corretto o meno.
 */

@@ -16,7 +16,10 @@
         <div class="p-4" style="transition: all 0.25s;">
           <div class="card text-white p-5 m-0 box-input1" style="width:390px;height:650px">
             <div class="card-block my-3">
-              <img class="d-block rounded-circle img-fluid" src="data:image/jpeg;base64,{$pic64}" width=200 height=200>
+              <img class="d-block rounded-circle img-fluid" src="data:image/jpeg;base64,{$pic64}" {if $myProf eq true}onmouseover="changeimg()" onmouseout="closechangeimg()"{/if} width=200 height=200>
+              {if $myProf eq true}<a class="btn btn-primary text-light" style="position:absolute;top:28%;left:21%;visibility:hidden" id="btnchangeimg" onmouseover="changeimg()" onmouseout="closechangeimg()" onclick="imageselect()"> Change profile's image </a>
+              <input type="file" name="inputimage" id="inputimage" style="display:none" onchange="uploadimg()"accept="image/*"/>
+              {/if}
               <hr>
               <p class="text-left">Username: {$user->getUsername()}</p>
               <hr>

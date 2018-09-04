@@ -55,12 +55,7 @@ function closemodifypanel() {
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {  //readyState==4 --> request finished and response is ready status==200 --> OK
-                for (i = 0; i < inp.length; i++) {
-                    if (inp[i].value != document.getElementById("ci" + inp[i].getAttribute('id')).innerHTML) {
-                        document.getElementById("ci" + inp[i].getAttribute('id')).innerHTML = inp[i].value
-                        inp[i].defaultValue = inp[i].value
-                    }
-                }
+                location.reload();
             }
         }
         xmlhttp.open("POST", request, true)
@@ -144,4 +139,36 @@ function cancelmodify() {
     document.getElementById("modalmodify").style.visibility = "hidden"
     document.getElementById("endbutton").disabled = false
     document.getElementById("formmodify").reset()
+}
+
+function changeimg(){
+    document.getElementById("btnchangeimg").style.visibility="visible"
+}
+
+function closechangeimg(){
+    document.getElementById("btnchangeimg").style.visibility="hidden"
+}
+
+function imageselect(){
+    document.getElementById("inputimage").click();
+}
+
+function uploadimg(){
+    var request="/AppCrowdFunding/Utente/UpdateImg"
+    var file=document.getElementById("inputimage").files
+    if(file[0].type.match('image.*')){
+        var formData= new FormData()
+        formData.append("inputimage",file[0],file[0].name)
+        var xmlhttp=new XMLHttpRequest()
+        xmlhttp.onload = function () {
+            if (this.readyState == 4 && this.status == 200) {  //readyState==4 --> request finished and response is ready status==200 --> OK
+                location.reload()
+            }
+        }
+        xmlhttp.open("POST", request, true)
+        xmlhttp.send(formData)
+    }
+    else{
+        alert("Il file caricato non è un'immagine!")
+    }
 }

@@ -84,7 +84,5 @@ class FMediaUser
         if($db->delete($sql)) return true;
         else return false;
     }
-
-
 }
 
