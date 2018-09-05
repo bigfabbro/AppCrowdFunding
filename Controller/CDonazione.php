@@ -52,8 +52,7 @@ class CDonazione{
      
          $don=new EDonazione($_POST['amount'],date('Y-m-d'), $reward, $_SESSION['id'],$idcamp,$idcc);
          FDonazione::store($don); 
- 
-         
+         FCampagna::UpdateFunds($idcamp,$Campagna->getFunds()+$_POST['amount']);
         }
       }
     else{

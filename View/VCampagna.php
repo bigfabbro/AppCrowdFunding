@@ -75,7 +75,7 @@ require_once 'include.php';
     }
 
 
-    public function showCampaignProfile(ECampagna $camp, EUtente $founder,EMediaUser $founderpic){
+    public function showCampaignProfile(ECampagna $camp, EUtente $founder,EMediaUser $founderpic,$donations){
         $this->smarty->assign('camp',$camp);
         $this->smarty->assign('founder',$founder);
         $this->smarty->assign('idcamp', $camp->getId());
@@ -97,7 +97,6 @@ require_once 'include.php';
                 else $authors[]="anonymous";
             }
         }
-        $donations=FDonazione::loadByIdCamp($camp->getId());
         $donators=array();
         if($donations){
             foreach($donations as $don){

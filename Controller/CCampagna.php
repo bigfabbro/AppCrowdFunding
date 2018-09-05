@@ -66,9 +66,10 @@ class CCampagna{
         $camp=FCampagna::loadById($id);
         $user=FUtente::loadById($camp->getFounder());
         $userpic=FMediaUser::loadByIdUser($camp->getFounder());
+        $donations=FDonazione::loadByIdCamp($id);
         if($camp && $user && $userpic){
             $view=new VCampagna();
-            $view->showCampaignProfile($camp,$user,$userpic);
+            $view->showCampaignProfile($camp,$user,$userpic,$donations);
         } 
         else header('Location: /AppCrowdFunding/HomePage');
     }

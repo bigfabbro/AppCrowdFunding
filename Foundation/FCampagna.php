@@ -262,5 +262,18 @@ class FCampagna
 
         return $camp;
     } 
+
+    static function UpdateFunds($id,$funds){
+        $field="funds";
+        if(FCampagna::update($id,$field,$funds)) return true;
+        else return false;
+    }
+
+    static function Update($id,$field,$newvalue){
+        $sql="UPDATE ".static::getTables()." SET ".$field."='".$newvalue."' WHERE id=".$id.";";
+        $db=FDatabase::getInstance();
+        if($db->update($sql)) return true;
+        else return false;
+    }
 }
 
