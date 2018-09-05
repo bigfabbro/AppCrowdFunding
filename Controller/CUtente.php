@@ -16,7 +16,7 @@ require_once 'include.php';
  */
    static function Login(){
         if($_SERVER['REQUEST_METHOD']=="GET"){
-            if(CUtente::isLogged()) header('Location: /AppCrowdFunding/HomePage');
+            if(CUtente::isLogged()) header('Location: /AppCrowdFunding/Homepage');
             else{
                 $user=CUtente::Remindme();
                 $view=new VUtente();
@@ -67,7 +67,7 @@ require_once 'include.php';
                $_SESSION['activate']=$user->getActivate();
                if($user->getActivate()){
                    if(isset($_SESSION['redirect'])) header('Location: '.$_SESSION['redirect']);
-                   else header('Location: /AppCrowdFunding/HomePage');
+                   else header('Location: /AppCrowdFunding/Homepage');
                }
                else $view->showActivation();
             } 
@@ -83,7 +83,7 @@ require_once 'include.php';
                $_SESSION['activate']=$user->getActivate();
                if($user->getActivate()){
                    if(isset($_SESSION['redirect'])) header('Location: '.$_SESSION['redirect']);
-                   else header('Location: /AppCrowdFunding/HomePage');
+                   else header('Location: /AppCrowdFunding/Homepage');
                }
                else $view->showActivation();
     }
@@ -104,7 +104,7 @@ require_once 'include.php';
              $view=new VUtente();
               $view->showActivation();
             }
-            else header('Location: /AppCrowdFunding/HomePage');
+            else header('Location: /AppCrowdFunding/Homepage');
         }
         else if($_SERVER['REQUEST_METHOD']=="POST"){
             CUtente::activate();
@@ -131,7 +131,7 @@ require_once 'include.php';
         $mc=FMailCheck::loadByIdUser($iduser);
         if($mc->getPin()==$pinsert){
             if(FUtente::UpdateActivate($iduser,true)){
-                if(FMailCheck::deleteByIdUser($iduser)) header('Location: /AppCrowdFunding/HomePage');
+                if(FMailCheck::deleteByIdUser($iduser)) header('Location: /AppCrowdFunding/Homepage');
                 else $view->showActivation();
             }
             else $view->showActivation();
@@ -152,7 +152,7 @@ require_once 'include.php';
 
     static function Registration(){
         if($_SERVER['REQUEST_METHOD']=="GET"){
-           if(CUtente::isLogged()) header('Location: /AppCrowdFunding/HomePage');
+           if(CUtente::isLogged()) header('Location: /AppCrowdFunding/Homepage');
            else{
                $view=new VUtente();
                $view->showFormRegistration();
@@ -231,7 +231,7 @@ require_once 'include.php';
             $id=$_SESSION['id'];
             $user=FUtente::loadById($id);
         }
-        else header('Location: /AppCrowdFunding/HomePage');
+        else header('Location: /AppCrowdFunding/Homepage');
         if($id){
             $photos=array();
             $camppledged=array();
@@ -275,15 +275,15 @@ require_once 'include.php';
             if($_SESSION['username']==$username){
                 if(FUtente::delete($_SESSION['id'])){
                     CUtente::logout();
-                    header('Location: /AppCrowdFunding/HomePage');
+                    header('Location: /AppCrowdFunding/Homepage');
                 }
                 else header('Location: /AppCrowdFunding/Utente/profile');
             }
-            else header('Location: /AppCrowdFunding/HomePage');
+            else header('Location: /AppCrowdFunding/Homepage');
         }
         else header('Location: /AppCrowdFunding/Utente/login');
     }
-    else header('Location: /AppCrowdFunding/HomePage');
+    else header('Location: /AppCrowdFunding/Homepage');
     }
 
     /**Metodo per l'update di alcune informazioni dell'account. Di norma il metodo è richiamato
@@ -363,7 +363,7 @@ require_once 'include.php';
         session_start();
         session_unset();
         session_destroy();
-        header('Location: /AppCrowdFunding/HomePage');
+        header('Location: /AppCrowdFunding/Homepage');
     }
 
     /**Metodo che verifica l'attivazione dell'account dell'utente loggato */

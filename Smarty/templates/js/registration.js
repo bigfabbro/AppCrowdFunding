@@ -18,7 +18,7 @@ function inputVerifyRegistration(id){
     }
     var inp=document.getElementById(id)
     var param=id+"="+inp.value
-    var request="/AppCrowdFUnding/Utente/VerifyRegistration"
+    var request="http://societyoffunding.000webhostapp.com/AppCrowdFUnding/Utente/VerifyRegistration"
     var xmlhttp = new XMLHttpRequest()
     xmlhttp.onreadystatechange= function(){
         if(this.readyState == 4 && this.status == 200){ //readyState==4 --> request finished and response is ready status==200 --> OK

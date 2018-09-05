@@ -27,7 +27,7 @@ class FrontController{
                 else{
                 $smarty->assign('userlogged',$_SESSION['username']);
                 $smarty->assign('info', false);
-                $smarty->display('HomePage.tpl');
+                $smarty->display('Homepage.tpl');
                 }
             }
         }
@@ -37,7 +37,7 @@ class FrontController{
          else{
          $smarty->assign('userlogged',$_SESSION['username']);
          $smarty->assign('info', false);
-         $smarty->display('HomePage.tpl');
+         $smarty->display('Homepage.tpl');
          }
         }
     }
