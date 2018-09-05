@@ -71,14 +71,15 @@ require_once 'include.php';
 
      /**Metodo per mostrare la pagina del profilo di un utente*/
 
-    public function showProfile(EUtente $user,EMediaUser $pic,$camps,$photos,EIndirizzo $address,$myProf){
+    public function showProfile(EUtente $user,EMediaUser $pic,$camps,$donations,$camppledged,$photos,EIndirizzo $address,$myProf){
         $this->navbar();
         $pic64=base64_encode($pic->getData());
         $this->smarty->assign('myProf',$myProf);
         $this->smarty->assign('photos',$photos);
         $this->smarty->assign('pic64',$pic64);
         $this->smarty->assign('camps',$camps);
-        $this->smarty->assign('numcamps',0);
+        $this->smarty->assign('donations',$donations);
+        $this->smarty->assign('camppledged',$camppledged);
         $this->smarty->assign('address',$address);
         $this->smarty->assign('user',$user);
         

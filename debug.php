@@ -2,7 +2,7 @@
 
 require_once "include.php";
 
-$camp=FCampagna::UpdateFunds(2,0);
+$camp=FDonazione::loadByIdUser(99);
 var_dump($camp);
 
 /*If(FUtente::delete(92)) echo "SI";

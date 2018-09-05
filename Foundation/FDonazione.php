@@ -91,7 +91,22 @@ class FDonazione
             return $dons;
         }
         else return null;
-    } 
+    }
+
+    public static function loadByIdUser($id){
+        $sql="SELECT * FROM ".static::getTables()." WHERE idutente=".$id.";";
+        $db=FDatabase::getInstance();
+        $result=$db->loadMultiple($sql);
+        if($result!=null){
+            $dons=array();
+            for($i=0; $i<count($result); $i++){
+                $dons[]=new EDonazione($result[$i]['amount'],$result[$i]['date'], $result[$i]['reward'], $result[$i]['idutente'],$result[$i]['idcamp'],$result[$i]['idcc']);
+                $dons[$i]->setId($result[$i]['id']);
+            }
+            return $dons;
+        }
+        else return null;
+    }
    
     
    

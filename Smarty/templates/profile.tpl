@@ -1,3 +1,5 @@
+{if $donations neq null}{assign var=doncount value=$donations|@count}{/if}
+{if $camps neq null}{assign var=campcount value=$camps|@count}{/if}
 <!DOCTYPE html>
 <html>
 
@@ -48,13 +50,24 @@
               {include file='profileinfo.tpl'  username=$user->getUserName() description=$user->getBio() city=$address->getCity() street=$address->getStreet() number=$address->getNum() zipcode=$address->getZipcode() country=$address->getCountry() sex=$user->getSex() datan=$user->getDatan() telnum=$user->getTel() }
             </div>
             <div class="tab-pane fade" id="tabtwo" role="tabpanel">
-              {foreach $camps as $camp}
-              {include file='campprofile.tpl' myProf=$myProf id=$camp->getId() name=$camp->getName() description=$camp->getDescription() goal=$camp->getGoal() funds=$camp->getFunds() photo=$photos[$camp->getId()]}
+            {if isset($campcount)}
+              {for $i=0 to $campcount-1}
+              {include file='campprofile.tpl' myProf=$myProf id=$camps[$i]->getId() name=$camps[$i]->getName() description=$camps[$i]->getDescription() goal=$camps[$i]->getGoal() funds=$camps[$i]->getFunds() photo=$photos[$camps[$i]->getId()]}
               <hr>
-              {/foreach}
+              {/for}
+            {else}
+            <p class="text-center">There aren't Campaigns</p>
+            {/if}
             </div>
             <div class="tab-pane fade" id="tabthree" role="tabpanel">
-              <p class="">TAB PLEDGED</p>
+            {if isset($doncount)}
+              {for $i=0 to $doncount-1}
+              {include file='donprofile.tpl' myProf=$myProf id=$donations[$i]->getId() date=$donations[$i]->getDate() reward=$donations[$i]->getReward() amount=$donations[$i]->getAmount() campaign=$camppledged[$i]}
+              <hr>
+              {/for}
+            {else}
+            <p class="text-center">There aren't donations</p>
+            {/if}
             </div>
           </div>
         </div>

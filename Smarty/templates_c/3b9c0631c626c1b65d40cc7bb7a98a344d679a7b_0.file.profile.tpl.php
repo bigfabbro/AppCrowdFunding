@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-09-04 18:18:27
+/* Smarty version 3.1.32, created on 2018-09-05 15:42:36
   from 'C:\xampp\htdocs\AppCrowdFunding\Smarty\templates\profile.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b8eb053450343_13150834',
+  'unifunc' => 'content_5b8fdd4cac6329_92633189',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '3b9c0631c626c1b65d40cc7bb7a98a344d679a7b' => 
     array (
       0 => 'C:\\xampp\\htdocs\\AppCrowdFunding\\Smarty\\templates\\profile.tpl',
-      1 => 1536077888,
+      1 => 1536154953,
       2 => 'file',
     ),
   ),
@@ -22,10 +22,17 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:modifyprof.tpl' => 1,
     'file:profileinfo.tpl' => 1,
     'file:campprofile.tpl' => 1,
+    'file:donprofile.tpl' => 1,
   ),
 ),false)) {
-function content_5b8eb053450343_13150834 (Smarty_Internal_Template $_smarty_tpl) {
-?><!DOCTYPE html>
+function content_5b8fdd4cac6329_92633189 (Smarty_Internal_Template $_smarty_tpl) {
+if ($_smarty_tpl->tpl_vars['donations']->value != null) {
+$_smarty_tpl->_assignInScope('doncount', count($_smarty_tpl->tpl_vars['donations']->value));
+}
+if ($_smarty_tpl->tpl_vars['camps']->value != null) {
+$_smarty_tpl->_assignInScope('campcount', count($_smarty_tpl->tpl_vars['camps']->value));
+}?>
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -82,21 +89,38 @@ $_smarty_tpl->_subTemplateRender('file:modifyprof.tpl', $_smarty_tpl->cache_id, 
 ?>
             </div>
             <div class="tab-pane fade" id="tabtwo" role="tabpanel">
+            <?php if (isset($_smarty_tpl->tpl_vars['campcount']->value)) {?>
               <?php
-$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['camps']->value, 'camp');
-if ($_from !== null) {
-foreach ($_from as $_smarty_tpl->tpl_vars['camp']->value) {
-?>
-              <?php $_smarty_tpl->_subTemplateRender('file:campprofile.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('myProf'=>$_smarty_tpl->tpl_vars['myProf']->value,'id'=>$_smarty_tpl->tpl_vars['camp']->value->getId(),'name'=>$_smarty_tpl->tpl_vars['camp']->value->getName(),'description'=>$_smarty_tpl->tpl_vars['camp']->value->getDescription(),'goal'=>$_smarty_tpl->tpl_vars['camp']->value->getGoal(),'funds'=>$_smarty_tpl->tpl_vars['camp']->value->getFunds(),'photo'=>$_smarty_tpl->tpl_vars['photos']->value[$_smarty_tpl->tpl_vars['camp']->value->getId()]), 0, true);
+$_smarty_tpl->tpl_vars['i'] = new Smarty_Variable(null, $_smarty_tpl->isRenderingCache);$_smarty_tpl->tpl_vars['i']->step = 1;$_smarty_tpl->tpl_vars['i']->total = (int) ceil(($_smarty_tpl->tpl_vars['i']->step > 0 ? $_smarty_tpl->tpl_vars['campcount']->value-1+1 - (0) : 0-($_smarty_tpl->tpl_vars['campcount']->value-1)+1)/abs($_smarty_tpl->tpl_vars['i']->step));
+if ($_smarty_tpl->tpl_vars['i']->total > 0) {
+for ($_smarty_tpl->tpl_vars['i']->value = 0, $_smarty_tpl->tpl_vars['i']->iteration = 1;$_smarty_tpl->tpl_vars['i']->iteration <= $_smarty_tpl->tpl_vars['i']->total;$_smarty_tpl->tpl_vars['i']->value += $_smarty_tpl->tpl_vars['i']->step, $_smarty_tpl->tpl_vars['i']->iteration++) {
+$_smarty_tpl->tpl_vars['i']->first = $_smarty_tpl->tpl_vars['i']->iteration === 1;$_smarty_tpl->tpl_vars['i']->last = $_smarty_tpl->tpl_vars['i']->iteration === $_smarty_tpl->tpl_vars['i']->total;?>
+              <?php $_smarty_tpl->_subTemplateRender('file:campprofile.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('myProf'=>$_smarty_tpl->tpl_vars['myProf']->value,'id'=>$_smarty_tpl->tpl_vars['camps']->value[$_smarty_tpl->tpl_vars['i']->value]->getId(),'name'=>$_smarty_tpl->tpl_vars['camps']->value[$_smarty_tpl->tpl_vars['i']->value]->getName(),'description'=>$_smarty_tpl->tpl_vars['camps']->value[$_smarty_tpl->tpl_vars['i']->value]->getDescription(),'goal'=>$_smarty_tpl->tpl_vars['camps']->value[$_smarty_tpl->tpl_vars['i']->value]->getGoal(),'funds'=>$_smarty_tpl->tpl_vars['camps']->value[$_smarty_tpl->tpl_vars['i']->value]->getFunds(),'photo'=>$_smarty_tpl->tpl_vars['photos']->value[$_smarty_tpl->tpl_vars['camps']->value[$_smarty_tpl->tpl_vars['i']->value]->getId()]), 0, true);
 ?>
               <hr>
-              <?php
+              <?php }
 }
-}
-$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+?>
+            <?php } else { ?>
+            <p class="text-center">There aren't Campaigns</p>
+            <?php }?>
             </div>
             <div class="tab-pane fade" id="tabthree" role="tabpanel">
-              <p class="">TAB PLEDGED</p>
+            <?php if (isset($_smarty_tpl->tpl_vars['doncount']->value)) {?>
+              <?php
+$_smarty_tpl->tpl_vars['i'] = new Smarty_Variable(null, $_smarty_tpl->isRenderingCache);$_smarty_tpl->tpl_vars['i']->step = 1;$_smarty_tpl->tpl_vars['i']->total = (int) ceil(($_smarty_tpl->tpl_vars['i']->step > 0 ? $_smarty_tpl->tpl_vars['doncount']->value-1+1 - (0) : 0-($_smarty_tpl->tpl_vars['doncount']->value-1)+1)/abs($_smarty_tpl->tpl_vars['i']->step));
+if ($_smarty_tpl->tpl_vars['i']->total > 0) {
+for ($_smarty_tpl->tpl_vars['i']->value = 0, $_smarty_tpl->tpl_vars['i']->iteration = 1;$_smarty_tpl->tpl_vars['i']->iteration <= $_smarty_tpl->tpl_vars['i']->total;$_smarty_tpl->tpl_vars['i']->value += $_smarty_tpl->tpl_vars['i']->step, $_smarty_tpl->tpl_vars['i']->iteration++) {
+$_smarty_tpl->tpl_vars['i']->first = $_smarty_tpl->tpl_vars['i']->iteration === 1;$_smarty_tpl->tpl_vars['i']->last = $_smarty_tpl->tpl_vars['i']->iteration === $_smarty_tpl->tpl_vars['i']->total;?>
+              <?php $_smarty_tpl->_subTemplateRender('file:donprofile.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('myProf'=>$_smarty_tpl->tpl_vars['myProf']->value,'id'=>$_smarty_tpl->tpl_vars['donations']->value[$_smarty_tpl->tpl_vars['i']->value]->getId(),'date'=>$_smarty_tpl->tpl_vars['donations']->value[$_smarty_tpl->tpl_vars['i']->value]->getDate(),'reward'=>$_smarty_tpl->tpl_vars['donations']->value[$_smarty_tpl->tpl_vars['i']->value]->getReward(),'amount'=>$_smarty_tpl->tpl_vars['donations']->value[$_smarty_tpl->tpl_vars['i']->value]->getAmount(),'campaign'=>$_smarty_tpl->tpl_vars['camppledged']->value[$_smarty_tpl->tpl_vars['i']->value]), 0, true);
+?>
+              <hr>
+              <?php }
+}
+?>
+            <?php } else { ?>
+            <p class="text-center">There aren't donations</p>
+            <?php }?>
             </div>
           </div>
         </div>

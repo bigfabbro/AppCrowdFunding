@@ -234,9 +234,11 @@ require_once 'include.php';
         else header('Location: /AppCrowdFunding/HomePage');
         if($id){
             $photos=array();
+            $camppledged=array();
             $pic1=FMediaUser::loadByIdUser($id);
             $camps=FCampagna::loadByFounder($id);
             $address=FIndirizzo::loadByIdUser($id);
+            $donations=FDonazione::loadByIdUser($id);
             if($camps!=null){
                 foreach($camps as $camp){
                     $pics=$camp->getMedia();
@@ -246,10 +248,15 @@ require_once 'include.php';
                     else $photos[$camp->getId()]=null;
                 }
             }
+            if($donations!=null){
+                foreach($donations as $don){
+                    $camppledged[]=FCampagna::loadById($don->getIdCamp());
+                }
+            }
             CUtente::isLogged();
             if($_SESSION['id']==$id) $myProf=true; //booleano che serve a riconoscere se il profilo è il proprio per abilitare funzionalità di management dell'account (Es. Cancellazione dell'account)
             $view=new VUtente();                   
-            $view->showProfile($user,$pic1,$camps,$photos,$address,$myProf);
+            $view->showProfile($user,$pic1,$camps,$donations,$camppledged,$photos,$address,$myProf);
         }
     }
 
