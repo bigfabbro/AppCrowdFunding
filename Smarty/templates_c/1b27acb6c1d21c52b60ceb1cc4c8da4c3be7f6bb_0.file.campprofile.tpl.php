@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-08-21 11:45:13
+/* Smarty version 3.1.32, created on 2018-09-05 11:54:26
   from 'C:\xampp\htdocs\AppCrowdFunding\Smarty\templates\campprofile.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b7bdf293f9661_83117744',
+  'unifunc' => 'content_5b8fa7d2170545_01828128',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '1b27acb6c1d21c52b60ceb1cc4c8da4c3be7f6bb' => 
     array (
       0 => 'C:\\xampp\\htdocs\\AppCrowdFunding\\Smarty\\templates\\campprofile.tpl',
-      1 => 1534407772,
+      1 => 1536141259,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5b7bdf293f9661_83117744 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b8fa7d2170545_01828128 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html>
 
@@ -58,7 +58,7 @@ function content_5b7bdf293f9661_83117744 (Smarty_Internal_Template $_smarty_tpl)
             <div class="col-md-6">
               <div class="row">
                 <div class="col-md-12">
-                  <p class="lead text-left">Goal:<?php echo $_smarty_tpl->tpl_vars['goal']->value;?>
+                  <p class="lead text-left">Goal: <?php echo $_smarty_tpl->tpl_vars['goal']->value;?>
 </p>
                 </div>
               </div>
@@ -66,7 +66,7 @@ function content_5b7bdf293f9661_83117744 (Smarty_Internal_Template $_smarty_tpl)
                 <div class="col-md-12">
                   <div class="row">
                     <div class="col-md-12">
-                      <p class="lead text-left">Funds collected:<?php echo $_smarty_tpl->tpl_vars['funds']->value;?>
+                      <p class="lead text-left">Funds collected: <?php echo $_smarty_tpl->tpl_vars['funds']->value;?>
 </p>
                     </div>
                   </div>
@@ -76,7 +76,7 @@ function content_5b7bdf293f9661_83117744 (Smarty_Internal_Template $_smarty_tpl)
           </div>
           <div class="row">
             <div class="col-md-12">
-              <p class="lead text-justify">Description:<?php echo $_smarty_tpl->tpl_vars['description']->value;?>
+              <p class="lead text-justify">Description: <?php echo $_smarty_tpl->tpl_vars['description']->value;?>
 </p>
             </div>
           </div>
