@@ -30,3 +30,17 @@ function comment(idcamp){
     }
     else inp.classList.add("border-danger")
 }
+
+function deletecomment(id){
+    var request="/AppCrowdFunding/Campagna/DeleteComment"
+    var xmlhttp= new XMLHttpRequest()
+    var param="id="+id
+    xmlhttp.onreadystatechange = function(){
+        if (this.readyState==4 && this.status==200){
+            location.reload()
+        }
+    }
+    xmlhttp.open("POST",request,true)
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
+    xmlhttp.send(param)
+}

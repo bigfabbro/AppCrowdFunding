@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-09-03 16:49:37
+/* Smarty version 3.1.32, created on 2018-09-05 16:59:07
   from 'C:\xampp\htdocs\AppCrowdFunding\Smarty\templates\camppage.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b8d4a017b4723_40614251',
+  'unifunc' => 'content_5b8fef3bce8323_25890197',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '307f81076d87b845fc318afd68fd18224d66d76f' => 
     array (
       0 => 'C:\\xampp\\htdocs\\AppCrowdFunding\\Smarty\\templates\\camppage.tpl',
-      1 => 1535986166,
+      1 => 1536159532,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:navbar.tpl' => 1,
   ),
 ),false)) {
-function content_5b8d4a017b4723_40614251 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b8fef3bce8323_25890197 (Smarty_Internal_Template $_smarty_tpl) {
 if ($_smarty_tpl->tpl_vars['camppic']->value != null) {?> <?php $_smarty_tpl->_assignInScope('piccount', count($_smarty_tpl->tpl_vars['camppic']->value));?> <?php }
 if ($_smarty_tpl->tpl_vars['comments']->value != null) {
 $_smarty_tpl->_assignInScope('commcount', count($_smarty_tpl->tpl_vars['comments']->value));?> <?php }
@@ -218,6 +218,10 @@ $_smarty_tpl->tpl_vars['i']->first = $_smarty_tpl->tpl_vars['i']->iteration === 
                     <a href="/AppCrowdFunding/Utente/profile/<?php echo $_smarty_tpl->tpl_vars['authors']->value[$_smarty_tpl->tpl_vars['i']->value];?>
 "><?php echo $_smarty_tpl->tpl_vars['authors']->value[$_smarty_tpl->tpl_vars['i']->value];?>
 </a>
+                    <?php if (isset($_smarty_tpl->tpl_vars['userlogged']->value) && ($_smarty_tpl->tpl_vars['authors']->value[$_smarty_tpl->tpl_vars['i']->value] == $_smarty_tpl->tpl_vars['userlogged']->value)) {?>
+                    <button class="btn btn-outline-primary my-1" style="position:absolute;left:90%;top:0%" onclick="deletecomment(<?php echo $_smarty_tpl->tpl_vars['comments']->value[$_smarty_tpl->tpl_vars['i']->value]->getId();?>
+)">Delete</button>
+                    <?php }?>
                  </div>
                  <?php } else { ?>
                 <div class="card-header"><?php echo $_smarty_tpl->tpl_vars['authors']->value[$_smarty_tpl->tpl_vars['i']->value];?>

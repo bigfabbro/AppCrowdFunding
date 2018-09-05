@@ -41,6 +41,18 @@ class FCommento
         else return null;
     }
 
+    public static function loadById($id){
+        $sql="SELECT * FROM ".static::getTables()." WHERE id=".$id.";";
+        $db=FDatabase::getInstance();
+        $result=$db->loadSingle($sql);
+        if($result!=null){
+            $comm=new ECommento($result['iduser'],$result['text'], $result['date'], $result['idcamp']);
+            $comm->setId($result['id']);
+            return $comm;
+        }
+        else return null;
+    }
+
     public static function loadByIdCamp($id){
         $sql="SELECT * FROM ".static::getTables()." WHERE idcamp=".$id.";";
         $db=FDatabase::getInstance();
@@ -54,6 +66,13 @@ class FCommento
             return $comms;
         }
         return null;
+    }
+
+    public static function delete($id){
+        $sql="DELETE FROM ".static::getTables()." WHERE id=".$id.";";
+        $db=FDatabase::getInstance();
+        if($db->delete($sql)) return true;
+        else return false;
     }
 }
 

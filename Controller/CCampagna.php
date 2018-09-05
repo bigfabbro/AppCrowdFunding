@@ -92,7 +92,10 @@ class CCampagna{
   static function DeleteComment(){
       if(($_SERVER['REQUEST_METHOD']=="POST")){
           if(CUtente::isLogged()){
-              
+              $comm=FCommento::loadById($_POST['id']);
+              if($comm->getUser()==$_SESSION['id']){
+                FCommento::delete($_POST['id']);
+              }
           }
       }
   }

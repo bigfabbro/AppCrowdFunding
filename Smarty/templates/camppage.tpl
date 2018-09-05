@@ -154,6 +154,9 @@
                 {if $authors[$i]!="anonymous"}
                 <div class="card-header">
                     <a href="/AppCrowdFunding/Utente/profile/{$authors[$i]}">{$authors[$i]}</a>
+                    {if isset($userlogged) && ($authors[$i]==$userlogged)}
+                    <button class="btn btn-outline-primary my-1" style="position:absolute;left:90%;top:0%" onclick="deletecomment({$comments[$i]->getId()})">Delete</button>
+                    {/if}
                  </div>
                  {else}
                 <div class="card-header">{$authors[$i]}</div>
