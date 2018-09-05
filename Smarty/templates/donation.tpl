@@ -42,12 +42,12 @@
                       <label class="text-primary">Expiration Date</label>
                       <input type="date" class="form-control" placeholder="Enter username" name="expirationdate"> </div>
                     <div class="form-group bg-light">
-                      <label class="text-primary">CVV</label>
-                      <input type="text" class="form-control" placeholder="Enter CVV" name="cvv"> </div>
+                      <label class="text-primary">CCV</label>
+                      <input type="text" class="form-control" placeholder="Enter CCV" name="ccv"> </div>
                     <div class="form-group bg-light">
                       <label class="text-primary">Amount</label>
-                      <input type="number" class="form-control" placeholder="How much you would like to donate?" name="amount"> </div>
-                    <button type="submit" class="btn btn-primary">Donate</button>
+                      <input type="number" class="form-control" placeholder="How much would you like to donate?" name="amount"> </div>
+                    <button type="submit" class="btn btn-primary" onclick="Submit()">Donate</button>
                   </form>
                 </div>
               </div>
@@ -65,6 +65,7 @@
       <div class="collapse navbar-collapse text-center justify-content-center" id="navbar3SupportedContent"> </div>
     </div>
   </nav>
+  <script src="/AppCrowdFunding/Smarty/templates/js/donation.js"></script>
 
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

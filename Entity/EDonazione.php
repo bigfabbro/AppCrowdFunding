@@ -36,15 +36,19 @@ class EDonazione
 
 
 
-    public function __construct($amount=null, $date=null, $reward=null)
+    public function __construct($amount, $date, $reward=null, $idutente, $idcamp, $idcc)
     {
         $this->amount=$amount;
         $this->date=$date;
         $this->reward=$reward;
-        $this->donationoccurred=false; //donation occurred e' posto a true soltanto quando la donazione viene effettivamente pubblicata
-        
+        $this->idutente=$idutente;
+        $this->idcamp=$idcamp;
+        $this->donationoccurred=true; //donation occurred e' posto a true soltanto quando la donazione viene effettivamente pubblicata
+        $this->idcc=$idcc;
+
     }
     
+//******************************************METODI GET**************************************************************** */
 
 
      /**
@@ -88,26 +92,48 @@ class EDonazione
      * @return int id dell'utente
      */
 
-
+    
     public function getIdUtente()
     {
         return $this->idutente;
     }
     
     
-     /**
+    /**
      * 
      * @return int id della campagna
      */
-
-
+    
     public function getIdCamp()
     {
         return $this->idcamp;
     }
+    
+    
+    /**
+     * 
+     * @return bool  
+     */
+    
+    
+     public function getDonationOccurred()
+    {
+        return $this->donationoccurred;
+     }
 
- 
+    /**
+     * 
+     * @return int id della carta di credito
+     */
 
+
+    public function getIdCc()
+    {
+        return $this->idcc;
+    }
+    
+ //******************************************METODI SET**************************************************************** */
+   
     /**
      * 
      * @param int $id della donazione
@@ -167,6 +193,7 @@ class EDonazione
     {
         $this->idcamp = $idcamp;
     }
+    
 
 
     /**
@@ -176,8 +203,8 @@ class EDonazione
 
 
 
-    public function setCreditCard($creditcard){
-        $this->idcc= $creditcard;
+    public function setIdCc($idcc){
+        $this->idcc= $idcc;
     }
 
     /**
@@ -192,24 +219,12 @@ class EDonazione
     }
 
 
-    /**
-     * 
-     * @return bool  
-     */
-
-
-    public function getDonationOccurred()
-    {
-        return $this->donationoccurred;
-    }
-
-
+//******************************************VALIDATE**************************************************************** */
 
     /**
      *  torna un booleano se la form è valida, i paramateri vengono passati per riferimento
 
      */
-    //validate
     
 
 

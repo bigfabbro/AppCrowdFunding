@@ -4,10 +4,12 @@ require_once 'include.php';
 
 class FCartaDiCredito
 {   
-    private static $tables="cartedicredito";
-    private static $values="(:ownername,:ownersurname,:expirationdate,:ccnumber,:cvv)";
+    private static $tables="creditcard";
+    private static $values="(:id,:ownername,:ownersurname,:expirationdate,:ccnumber,:ccv)";
   
-    public function __construct(){}
+    public function __construct(){
+        
+    }
     
         /**
          * Questo metodo lega gli attributi della carta di credito  da inserire con i parametri della INSERT
@@ -17,12 +19,12 @@ class FCartaDiCredito
     
     
      public static function bind($stmt, ECartaDiCredito $cc){
-        $stmt->bindValue(':id',NULL, PDO::PARAM_INT); //l'id � posto a NULL poich� viene dato automaticamente dal DBMS (AUTOINCREMENT_ID)
+        $stmt->bindValue(':id', NULL, PDO::PARAM_INT); //l'id � posto a NULL poich� viene dato automaticamente dal DBMS (AUTOINCREMENT_ID)
         $stmt->bindValue(':ownername', $cc->getOwnerName(), PDO::PARAM_STR); 
         $stmt->bindValue(':ownersurname', $cc->getOwnerSurname(), PDO::PARAM_STR);
         $stmt->bindValue(':expirationdate', $cc->getExpirationDate(), PDO::PARAM_STR); 
         $stmt->bindValue(':ccnumber', $cc->getCcNumber(), PDO::PARAM_STR); 
-        $stmt->bindValue(':cvv', $cc->getCvv(), PDO::PARAM_STR); 
+        $stmt->bindValue(':ccv', $cc->getCcv(), PDO::PARAM_STR); 
      }
 
      /**
@@ -59,7 +61,7 @@ class FCartaDiCredito
         $db=FDatabase::getInstance();
         $result=$db->loadSingle($sql);
         if($result!=null){
-            $cc=new ECartaDiCredito($result['ownername'],$result['ownersurname'], $result['epirationdate'], $result['ccnumber'],$result['cvv']);
+            $cc=new ECartaDiCredito($result['ownername'],$result['ownersurname'], $result['epirationdate'], $result['ccnumber'],$result['ccv']);
             $cc->setId($result['id']);
             return $cc;
         }

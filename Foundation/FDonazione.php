@@ -11,10 +11,9 @@ require_once 'include.php';
 class FDonazione
 {
     private static $tables="donazioni";
-    private static $values="(:amount,:date,:idutente, :idcamp);";
-
-    public function __construct()
-    {
+    private static $values="(:id,:amount,:date,:reward,:idutente, :idcamp, :donationoccurred, :idcc)";
+   
+    public function __construct(){
         
     }
 
@@ -23,18 +22,29 @@ class FDonazione
      * @param PDOStatement $stmt 
      * @param EDonazione $don donazione i cui dati devono essere inseriti nel DB
      */
-
-        public static function bind(&$stmt, EDonazione $don){
-            $stmt->bindValue(':amount', $don->getAmount(), PDO::PARAM_INT);
-            $stmt->bindValue(':date', $don->getDate(), PDO::PARAM_STR);
-            $stmt->bindValue(':idutente', $don->getIdUtente(), PDO::PARAM_INT);
-            $stmt->bindValue(':idcamp', $don->getIdCamp(), PDO::PARAM_INT);
-            $stmt->bindValue(':reward', $don->getReward(), PDO::PARAM_INT);
-            $stmt->bindValue(':donationoccurred', $don->getDonationOccurred(), PDO::PARAM_INT);
+    
+    public static function bind($stmt, EDonazione $don){
+        $stmt->bindValue(':id', NULL, PDO::PARAM_INT); //l'id � posto a NULL poich� viene dato automaticamente dal DBMS (AUTOINCREMENT_ID)
+        $stmt->bindValue(':amount', $don->getAmount(), PDO::PARAM_STR);
+        $stmt->bindValue(':date', $don->getDate(), PDO::PARAM_STR);
+        $stmt->bindValue(':reward', $don->getReward(), PDO::PARAM_STR);
+        $stmt->bindValue(':idutente', $don->getIdUtente(), PDO::PARAM_INT);
+        $stmt->bindValue(':idcamp', $don->getIdCamp(), PDO::PARAM_INT);
+        $stmt->bindValue(':donationoccurred', $don->getDonationOccurred(), PDO::PARAM_INT);
+        $stmt->bindValue(':idcc', $don->getIdCc(), PDO::PARAM_INT);}
         
-        }
-
-   /**
+    
+    
+    
+    public static function store($don){
+        $sql="INSERT INTO ".static::getTables()." VALUES ".static::getValues();
+        $db=FDatabase::getInstance();
+        $id=$db->store($sql,"FDonazione",$don);
+        if($id) return $id;
+        else return null;
+      }
+        
+    /**
      * 
      * questo metodo restituisce il nome della tabella sul DB per la costruzione delle Query
      * @return string $tables nome della tabella
@@ -60,24 +70,10 @@ class FDonazione
         $db=FDatabase::getInstance();
         $result=$db->loadSingle($sql);
         if($result!=null){
-            $don=new EDonazione($result['amount'],$result['date'], $result['reward'], $result['idutente'], $result['idcamp'], $result['idcc']);
-            $don->setId($result['id']); 
+            $don=new EDonazione($result['amount'],$result['date'], $result['reward'], $result['idutente'],$result['idcamp'],$result['idcc']);
+            $don->setId($result['id']);
+            $don->setDonationOccurred($result['donationoccurred']);
             return $don;
-        }
-        else return null;
-    }
-
-    public static function loadByIdUser($id){
-        $sql="SELECT * FROM ".static::getTables()." WHERE idutente=".$id.";";
-        $db=FDatabase::getInstance();
-        $result=$db->loadMultiple($sql);
-        if($result!=null){
-            $dons=array();
-            for($i=0; $i<count($result); $i++){
-                $dons[]=new EDonazione($result[$i]['amount'], $result[$i]['date'], $result[$i]['reward'], $result[$i]['idutente'],$result[$i]['idcamp'],$result[$i]['idcc']);
-                $dons[$i]->setId($result[$i]['id']);
-            }
-            return $dons;
         }
         else return null;
     }
@@ -89,16 +85,16 @@ class FDonazione
         if($result!=null){
             $dons=array();
             for($i=0; $i<count($result); $i++){
-                $dons[]=new EDonazione($result[$i]['amount'], $result[$i]['date'], $result[$i]['reward'],$result[$i]['idcamp']);
+                $dons[]=new EDonazione($result[$i]['amount'],$result[$i]['date'], $result[$i]['reward'], $result[$i]['idutente'],$result[$i]['idcamp'],$result[$i]['idcc']);
                 $dons[$i]->setId($result[$i]['id']);
-                $dons[$i]->setIdUtente($result[$i]['idutente']);
-                $dons[$i]->setIdCamp($result[$i]['idcamp']);
-                $dons[$i]->setCreditCard($result[$i]['idcc']);
-            }
-            return $dons;
+         
         }
-        else return null;
+        return null;
     }
+   
+    
+   
+    
 
     public static function delete($id){
         $sql="DELETE FROM ".static::getTables()." WHERE id=".$id.";";
@@ -107,13 +103,5 @@ class FDonazione
         else return false;
     }
 
-      /** Metodo che genera la query per l'insert di una donazione all'interno del database e richiama l'instanza di FDatabase per la store */
 
-      public static function store($don){
-        $sql="INSERT INTO donazioni VALUES ".static::getValues();
-        
-        $db=FDatabase::getInstance();
-        $db->store($sql,"FDonazione",$don);
-        
-    }
 }

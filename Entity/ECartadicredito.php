@@ -1,6 +1,6 @@
 <?php
   
-  class ECartadicredito{
+  class ECartaDiCredito{
     /** id della carta di credito  */
     private $id;
 
@@ -16,15 +16,15 @@
     /** numero della carta di credito */
     private $ccnumber;
 
-    /** cvv */
-    private $cvv;
+    /** ccv */
+    private $ccv;
 
-    public function __constructor($ownername,$ownersurname,$expirationdate,$ccnumber,$cvv){
+    public function __construct($ownername,$ownersurname,$expirationdate,$ccnumber,$ccv){
          $this->ownername=$ownername;
          $this->ownersurname=$ownersurname;
          $this->expirationdate=$expirationdate;
          $this->ccnumber=$ccnumber;
-         $this->cvv=$cvv;
+         $this->ccv=$ccv;
     }
 
 
@@ -70,12 +70,12 @@
 
      /**
      * 
-     * @return int cvv della carta di credito
+     * @return string ccv della carta di credito
      */
 
 
-    public function getCvv(){
-        return $this->cvv;
+    public function getCcv(){
+        return $this->ccv;
     }
 
      /**
@@ -87,7 +87,7 @@
         return $this->id;
     }
 
-
+//************************************************SET************************************************************** */
     /**
      * 
      * @param string $ownername nome del proprietario della carta di credito
@@ -128,11 +128,11 @@
 
     /**
      * 
-     * @param int $cvv della carta di credito
+     * @param int $ccv della carta di credito
      */
 
 
-    public function setCvv($cvv){
+    public function setCcv($ccv){
         $this->ccv=$ccv;
     }
 
@@ -149,8 +149,7 @@
 
       
  
-    //validate
-
+//****************************************************VALIDATE****************************************************** */
     
      /**
      *  @return bool controlla se il nome  ha un numero di caratteri compreso tra 3 e 30
@@ -184,7 +183,7 @@
     
     static function valCcNumber($val):bool{
         $replace=array(" ","'");
-        if(!preg_match("/^([0-9]{16})$/",str_replace($replace,'',$val))){
+        if(!preg_match("/^([0-9]{11})$/",str_replace($replace,'',$val))){
             return false;
         }
         else return true;
@@ -199,11 +198,11 @@
     } 
     
      /**
-     * @return bool  controlla se il cvv ha esattamente 3 caratteri
+     * @return bool  controlla se il ccv ha esattamente 3 caratteri
 
      */
 
-    static function valCvv($val):bool{
+    static function valCcv($val):bool{
         $replace=array(" ","'");
         if(!preg_match("/^([0-9]{3})$/",str_replace($replace,'',$val))){
             return false;
