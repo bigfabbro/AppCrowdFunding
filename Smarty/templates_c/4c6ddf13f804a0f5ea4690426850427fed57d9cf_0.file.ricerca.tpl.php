@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-09-01 16:27:45
+/* Smarty version 3.1.32, created on 2018-09-05 17:57:01
   from 'C:\xampp\htdocs\AppCrowdFunding\Smarty\templates\ricerca.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b8aa1e1b57961_99869395',
+  'unifunc' => 'content_5b8ffccd9f31c0_97079368',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '4c6ddf13f804a0f5ea4690426850427fed57d9cf' => 
     array (
       0 => 'C:\\xampp\\htdocs\\AppCrowdFunding\\Smarty\\templates\\ricerca.tpl',
-      1 => 1535810124,
+      1 => 1536163018,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:navbar.tpl' => 1,
   ),
 ),false)) {
-function content_5b8aa1e1b57961_99869395 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b8ffccd9f31c0_97079368 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html>
 <br>
@@ -59,7 +59,7 @@ foreach ($_from as $_smarty_tpl->tpl_vars['utenti']->value) {
 ?>
             <tr>
               <td>
-                  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;  <a href="/AppCrowdFunding/Utente/profile/<?php echo $_smarty_tpl->tpl_vars['utenti']->value->getID();?>
+                  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;  <a href="/AppCrowdFunding/Utente/profile/<?php echo $_smarty_tpl->tpl_vars['utenti']->value->getUserName();?>
 "> <b> <?php echo $_smarty_tpl->tpl_vars['utenti']->value->getUserName();?>
 </b></a>
               </td>
@@ -92,8 +92,9 @@ foreach ($_from as $_smarty_tpl->tpl_vars['campagna']->value) {
               <a href="/AppCrowdFunding/Campagna/profile/<?php echo $_smarty_tpl->tpl_vars['campagna']->value->getID();?>
 "> <b><?php echo $_smarty_tpl->tpl_vars['campagna']->value->getName();?>
  </b></a> </td>
-            <td> <b><?php echo $_smarty_tpl->tpl_vars['campagna']->value->getFounder()->getUserName();?>
-</b> </td>
+            <td> <a href="/AppCrowdFunding/Utente/profile/<?php echo $_smarty_tpl->tpl_vars['campagna']->value->getFounder()->getUserName();?>
+"><b><?php echo $_smarty_tpl->tpl_vars['campagna']->value->getFounder()->getUserName();?>
+</b></a> </td>
 			<td> <b><?php echo $_smarty_tpl->tpl_vars['campagna']->value->getCountry();?>
 </b> </td>
             <td> <b> <?php echo $_smarty_tpl->tpl_vars['campagna']->value->getEndDate();?>

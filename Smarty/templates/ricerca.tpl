@@ -29,7 +29,7 @@
           <tbody><!-- Tabella che mostra gli username -->{foreach $array1 as $utenti}
             <tr>
               <td>
-                  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;  <a href="/AppCrowdFunding/Utente/profile/{$utenti->getID()}"> <b> {$utenti->getUserName()}</b></a>
+                  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;  <a href="/AppCrowdFunding/Utente/profile/{$utenti->getUserName()}"> <b> {$utenti->getUserName()}</b></a>
               </td>
               <td> &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<b>{$utenti->getName()}</b></td>
               <td> &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; <b>{$utenti->getEmail()} </b></td>
@@ -48,7 +48,7 @@
             <td><b>{$campagna->getCategory()}</b></td>
             <td> 
               <a href="/AppCrowdFunding/Campagna/profile/{$campagna->getID()}"> <b>{$campagna->getName()} </b></a> </td>
-            <td> <b>{$campagna->getFounder()->getUserName()}</b> </td>
+            <td> <a href="/AppCrowdFunding/Utente/profile/{$campagna->getFounder()->getUserName()}"><b>{$campagna->getFounder()->getUserName()}</b></a> </td>
 			<td> <b>{$campagna->getCountry()}</b> </td>
             <td> <b> {$campagna->getEndDate()}</b> </td>
           </tr>
