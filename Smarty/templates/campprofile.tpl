@@ -30,14 +30,14 @@
             <div class="col-md-6">
               <div class="row">
                 <div class="col-md-12">
-                  <p class="lead text-left">Goal:{$goal}</p>
+                  <p class="lead text-left">Goal: {$goal}</p>
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-12">
                   <div class="row">
                     <div class="col-md-12">
-                      <p class="lead text-left">Funds collected:{$funds}</p>
+                      <p class="lead text-left">Funds collected: {$funds}</p>
                     </div>
                   </div>
                 </div>
@@ -46,7 +46,7 @@
           </div>
           <div class="row">
             <div class="col-md-12">
-              <p class="lead text-justify">Description:{$description}</p>
+              <p class="lead text-justify">Description: {$description}</p>
             </div>
           </div>
         </div>
