@@ -146,12 +146,12 @@ sup {
 
   
 a {
-  color: #12bbad;
+  color: #ff4566;
   text-decoration: none;
   background-color: transparent;
   -webkit-text-decoration-skip: objects; }
   a:hover {
-    color: #0b756c;
+    color: #ff4500;
     text-decoration: underline; }
 
 a:not([href]):not([tabindex]) {
@@ -1087,12 +1087,12 @@ pre {
   .table td {
     padding: 0.75rem;
     vertical-align: top;
-    border-top: 1px solid #dee2e6; }
+    border-top: 1px solid #88c4ff; }
   .table thead th {
     vertical-align: bottom;
-    border-bottom: 2px solid #dee2e6; }
+    border-bottom: 2px solid #88c4ff; }
   .table tbody + tbody {
-    border-top: 2px solid #dee2e6; }
+    border-top: 2px solid #88c4ff; }
   .table .table {
     background-color: white; }
 
@@ -6231,6 +6231,7 @@ html, body {
   padding-left: 15px; }
   
 .table-ric {
+  background-color: #0000005f;
   margin: 20px 0;
   width: 100%;
   overflow-x: auto;
