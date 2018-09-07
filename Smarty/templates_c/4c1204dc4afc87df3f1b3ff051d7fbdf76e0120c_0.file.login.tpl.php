@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-09-03 20:47:14
+/* Smarty version 3.1.32, created on 2018-09-07 20:37:44
   from 'C:\xampp\htdocs\AppCrowdFunding\Smarty\templates\login.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b8d81b280fb08_09173918',
+  'unifunc' => 'content_5b92c5785a6475_63759304',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '4c1204dc4afc87df3f1b3ff051d7fbdf76e0120c' => 
     array (
       0 => 'C:\\xampp\\htdocs\\AppCrowdFunding\\Smarty\\templates\\login.tpl',
-      1 => 1536000426,
+      1 => 1536333778,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5b8d81b280fb08_09173918 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b92c5785a6475_63759304 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html>
 
@@ -104,6 +104,9 @@ function content_5b8d81b280fb08_09173918 (Smarty_Internal_Template $_smarty_tpl)
       </div>
     </div>
   </nav>
+  <noscript>
+  <meta http-equiv=refresh content='0; url=/AppCrowdFunding/Errore/NoJavascript'>
+  </noscript>
   <?php echo '<script'; ?>
  src="/AppCrowdFunding/Smarty/templates/js/changeprofile.js"><?php echo '</script'; ?>
 >

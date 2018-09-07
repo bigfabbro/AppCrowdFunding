@@ -2,7 +2,7 @@
 
 require_once "include.php";
 
-var_dump(ECampagna::valBankcount("IT66C01005033821"));
+echo (hash('md5','bigfabbro93'.hash('md5',"fd22041993")));
 /*If(FUtente::delete(92)) echo "SI";
 else echo "NO";*/
 

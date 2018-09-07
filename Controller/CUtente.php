@@ -6,26 +6,29 @@ require_once 'include.php';
 
 /*********************************************LOGIN**************************************************** */
 
-/**Metodo che in base al metodo di richiesta HTTP provvede:
- * 1) nel caso in cui il metodo di richiesta sia GET:
- *   1a) se l'utente non è loggato a mostrare la pagina di login;
- *   1b) se l'utente è già loggato a mostrare la homepage (non può loggarsi nuovamente!);
- * 2) nel caso in cui il metodo di richiesta sia POST ad effettuare tutti i controlli necessari
- *   al fine del login.
- * 3) se il metodo di richiesta è diverso da GET e POST restituisce un errore di metodo non permesso.
+/**
+ * Funzione che consente il login di un utente registrato. Si possono avere diversi casi:
+ * 1) se il metodo della richiesta HTTP è GET:
+ *   - se l'utente è già loggato viene reindirizzato alla homepage;
+ *   - se l'utente non è loggato si richiama la funzione Remindme() per verificare se l'utente ha selezionato l'opzione "ricordami"
+ *     nel qual caso si visualizza un form di login nel quale gli è possibile accedere direttamente senza reinserire i suoi dati; 
+ *     viceversa viene visualizzato il form di login e l'utente deve inserire i propri dati.
+ * 2) se il metodo della richiesta HTTP è POST viene richiamata la funzione EnterIn().
+ * 3) se il metodo è diverso da quelli sopra -->errore.
  */
+
    static function Login(){
         if($_SERVER['REQUEST_METHOD']=="GET"){
-            if(CUtente::isLogged()) header('Location: /AppCrowdFunding/Homepage');
+            if(static::isLogged()) header('Location: /AppCrowdFunding/Homepage');
             else{
-                $user=CUtente::Remindme();
+                $user=static::Remindme();
                 $view=new VUtente();
-                if($user!=null) $view->showFormLoginRemind($user);
+                if($user) $view->showFormLoginRemind($user);
                 else $view->showFormLogin();
             }
         }
         else if($_SERVER['REQUEST_METHOD']=="POST"){
-            CUtente::EnterIn();
+            static::EnterIn();
         }
         else {
             header('HTTP/1.1 405 Method Not Allowed');
@@ -33,23 +36,46 @@ require_once 'include.php';
         }
     }
 
+    /**
+     * Funzione che viene utilizzata per l'accesso con l'opzione ricordami. Si possono avere diverse situazioni:
+     * 1) se i dati del cookie sono corretti richiama EnterIn() e passa l'utente;
+     * 2) se i dati del cookie non sono corretti provvede ad eliminarlo e mostra nuovamente la pagina di login.
+     */
     static function LoginRemind(){
-        $user=CUtente::Remindme();
-        if($user) CUtente::EnterIn($user);
+        $user=static::Remindme();
+        if($user) static::EnterIn($user);
         else{
-            setcookie("nome_utente", null);
+            setcookie("remindme", null);
             $view=new VUtente();
             $view->showFormLogin(true);
         }
     }
 
-/**Metodo che dopo aver verificato la correttezza del form di login, verifica, attraverso
- * il richiamo del metodo exist che esista la coppia (username, password) specificata.
- * Si possono avere due situazioni:
- * 1) La coppia (username, password) esiste --> viene aperta la sessione con i dati dell'utente;
- *    1a) se l'account dell'utente è stato stato già attivato --> viene mostrata la homepage;
- *    1b) se l'account dell'utente non è stato ancora attivato --> viene mostrata la pagina di attivazione;
- * 2) La coppia (username,password) non esiste --> viene mostrata nuovamente la pagina di login con messaggio di errore.
+    /**
+     * Funzione che verifica la presenza del cookie contente i dati dell'utente. Si possono avere diverse situazioni:
+     * 1) se è presente si vefica la correttezza dei dati del cookie e nel caso siano corretti viene restituito l'utente;
+     * 2) se il cookie non è presente si restituisce null.
+     *  
+     */
+
+    static function Remindme(){
+        if(isset($_COOKIE['remindme'])){
+            $data=explode(hash("md5","{\?/}"),$_COOKIE['remindme']);
+            $user=FUtente::loadByUsername($data[0]);
+            if($user){
+                if(hash("md5",$user->getUsername().$user->getPass())==$data[1]) return $user;
+            }
+        }
+        else return null;
+    }
+
+/**
+ * Funzione che si occupa di verifica l'esistenza di un utente con username e password inseriti nel form di login. Si possono avere diverse situazioni:
+ * 1) se viene passato $user allora vuol dire che l'utente ha sfruttato l'opzione remind me e si può avviare la sessione.
+ * 2) se non viene passato $user si verifica prima che i dati inseriti nel form rispettino i criteri richiesti e se sono corretti 
+ *    si verifica l'esistenza di un utente con username e password inseriti.
+ *   - nel caso in cui esiste si avvia la sessione utente;
+ *   - nel caso contrario si restituisce la pagina di login con la segnalazione di username o password errati.
  */
 
   static function EnterIn($user=null){
@@ -59,7 +85,7 @@ require_once 'include.php';
            $user=FUtente::ExistUserPass($_POST['username'],hash('md5',$_POST['password']));
            if($user!=null){
                if(isset($_POST['remindme']) && $_POST['remindme']=="yes"){
-                   setcookie("remindme",$_POST['username'].hash("md5","{\?/}").hash("md5",$_POST['username'].$_POST['password']));
+                   setcookie("remindme",$_POST['username'].hash("md5","{\?/}").hash('md5',$_POST['username'].hash('md5',$_POST['password'])));
                }
             if (session_status() == PHP_SESSION_NONE) session_start();
                $_SESSION['id']= $user->getId();
@@ -321,6 +347,9 @@ require_once 'include.php';
         }
     }
 
+    /**
+     * Funzione che consente ad un utente di modificare l'immagine del proprio profilo.
+     */
     static function UpdateImg(){
         if(($_SERVER['REQUEST_METHOD']=="POST")){
             if(CUtente::isLogged()){
@@ -348,6 +377,10 @@ require_once 'include.php';
         }
     }
 
+/**
+ * Metodo che viene utilizzato per verificare se l'input inserito nel form di registrazione rispetta i criteri previsti.
+ * L'interrogazione viene effettuata mediante richiesta AJAX ogni qualvolta c'è un cambiamento della input box.
+ */
     static function VerifyRegistration(){
         if($_SERVER['REQUEST_METHOD']=="POST"){
             $view=new VUtente();
@@ -391,17 +424,4 @@ require_once 'include.php';
           return false;
       }
     }
-
-    static function Remindme(){
-        if(isset($_COOKIE['remindme'])){
-            $data=explode(hash("md5","{\?/}"),$_COOKIE['remindme']);
-            $user=FUtente::loadByUsername($data[0]);
-            if($user){
-                if(hash("md5",$user->getUsername().$user->getPass())==$data[1]) return $user;
-            }
-        }
-        else return null;
-    }
-
-    
   }
