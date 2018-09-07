@@ -52,6 +52,7 @@
    require_once 'View/VInfo.php';
    require_once 'View/VRicerca.php';
    require_once 'View/VUtente.php';
+   require_once 'View/VErrore.php';
 
     
    /**
@@ -69,6 +70,7 @@
    require_once 'Controller/CInfo.php';
    require_once 'Controller/CRicerca.php';
    require_once 'Controller/CUtente.php';
+   require_once 'Controller/CErrore.php';
    require_once 'Controller/FrontController.php';
 
    

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-09-07 15:22:29
+/* Smarty version 3.1.32, created on 2018-09-07 17:17:53
   from 'C:\xampp\htdocs\AppCrowdFunding\Smarty\templates\CampaignCreation.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b927b95658628_73015584',
+  'unifunc' => 'content_5b9296a1acb943_50742875',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '1e27dde1f5e723b2a27fde4a0e436ec27808c9f5' => 
     array (
       0 => 'C:\\xampp\\htdocs\\AppCrowdFunding\\Smarty\\templates\\CampaignCreation.tpl',
-      1 => 1536326118,
+      1 => 1536333468,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:navbar.tpl' => 1,
   ),
 ),false)) {
-function content_5b927b95658628_73015584 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b9296a1acb943_50742875 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html>
 
@@ -226,6 +226,9 @@ function content_5b927b95658628_73015584 (Smarty_Internal_Template $_smarty_tpl)
         </div>
       </div>
     </div>
+    <noscript>
+    <meta http-equiv=refresh content='0; url=/AppCrowdFunding/Errore/NoJavascript'>
+    </noscript>
     <?php echo '<script'; ?>
  src="/AppCrowdFunding/Smarty/templates/js/creation.js"><?php echo '</script'; ?>
 >

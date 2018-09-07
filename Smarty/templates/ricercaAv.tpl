@@ -50,4 +50,7 @@
 		</div>
 	</div>
 </body>
+<noscript>
+<meta http-equiv=refresh content='0; url=/AppCrowdFunding/Errore/NoJavascript'>
+</noscript>
 </html>

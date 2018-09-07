@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-08-22 17:56:33
+/* Smarty version 3.1.32, created on 2018-09-07 17:24:40
   from 'C:\xampp\htdocs\AppCrowdFunding\Smarty\templates\info.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b7d87b1cca521_58708268',
+  'unifunc' => 'content_5b9298382106b6_18785584',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '6b8537717f95bc1c44983b7e1d923e8d953b89f3' => 
     array (
       0 => 'C:\\xampp\\htdocs\\AppCrowdFunding\\Smarty\\templates\\info.tpl',
-      1 => 1534953319,
+      1 => 1536333778,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:navbar.tpl' => 1,
   ),
 ),false)) {
-function content_5b7d87b1cca521_58708268 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b9298382106b6_18785584 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html>
 
@@ -39,9 +39,12 @@ function content_5b7d87b1cca521_58708268 (Smarty_Internal_Template $_smarty_tpl)
 >
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
   <link rel="stylesheet" href="/AppCrowdFunding/Smarty/templates/css/theme.css" type="text/css"> 
-   <?php echo '<script'; ?>
+  <?php echo '<script'; ?>
  src="/AppCrowdFunding/Smarty/templates/js/scroll.js"><?php echo '</script'; ?>
 >
+  <noscript>
+  <meta http-equiv=refresh content='0; url=/AppCrowdFunding/Errore/NoJavascript'>
+  </noscript>
   
 </head>
 
@@ -91,7 +94,7 @@ function content_5b7d87b1cca521_58708268 (Smarty_Internal_Template $_smarty_tpl)
             <br>
             <br>Oscar Guerra
             <br>oscar.guerra@student.univaq.it
-            <br>1234567890
+            <br>3775036078
             <br>
             <br>Sede Legale:
             <br>Università degli Studi dell'Aquila

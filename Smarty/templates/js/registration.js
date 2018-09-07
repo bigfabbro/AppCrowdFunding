@@ -68,7 +68,6 @@ function SubmitOrNot()
             document.getElementById("number"),
             document.getElementById("zipcode"),
             document.getElementById("country"),
-            document.getElementById("telnumber"),
             document.getElementById("date"),
             document.getElementById("username"),
             document.getElementById("email"),
@@ -77,16 +76,16 @@ function SubmitOrNot()
         ]
         var cansubmit=true
         for(i=0; i<inps.length; i++){
-            if(inps[i].classList.contains("border-danger")){
+            if(!inps[i].classList.contains("border-success")){
                 cansubmit=false
             }
         }
-
+        if(document.getElementById("telnumber").classList.contains("border-danger")) {cansumbit=false}
         if(document.getElementById("upicture").files.length!=0){
             if(document.getElementById("upicture").classList.contains("border-danger")) {cansubmit=false}
         }
         if(cansubmit) {
-            document.getElementById("modalwait").visibility = "visible"
+            document.getElementById("modalwait").style.visibility = "visible"
             document.getElementById("registrationform").submit()
         }
 }
