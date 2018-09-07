@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-09-07 12:33:56
+/* Smarty version 3.1.32, created on 2018-09-07 17:28:14
   from 'C:\xampp\htdocs\AppCrowdFunding\Smarty\templates\camppage.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b925414574145_40879051',
+  'unifunc' => 'content_5b92990e8bdaf6_06001295',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '307f81076d87b845fc318afd68fd18224d66d76f' => 
     array (
       0 => 'C:\\xampp\\htdocs\\AppCrowdFunding\\Smarty\\templates\\camppage.tpl',
-      1 => 1536316430,
+      1 => 1536333778,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:navbar.tpl' => 1,
   ),
 ),false)) {
-function content_5b925414574145_40879051 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b92990e8bdaf6_06001295 (Smarty_Internal_Template $_smarty_tpl) {
 if ($_smarty_tpl->tpl_vars['camppic']->value != null) {?> <?php $_smarty_tpl->_assignInScope('piccount', count($_smarty_tpl->tpl_vars['camppic']->value));?> <?php }
 if ($_smarty_tpl->tpl_vars['comments']->value != null) {
 $_smarty_tpl->_assignInScope('commcount', count($_smarty_tpl->tpl_vars['comments']->value));?> <?php }
@@ -322,6 +322,9 @@ $_smarty_tpl->tpl_vars['i']->first = $_smarty_tpl->tpl_vars['i']->iteration === 
       </div>
     </div>
   </div>
+  <noscript>
+  <meta http-equiv=refresh content='0; url=/AppCrowdFunding/Errore/NoJavascript'>
+  </noscript>
   <?php echo '<script'; ?>
  src="/AppCrowdFunding/Smarty/templates/js/comment.js"><?php echo '</script'; ?>
 >

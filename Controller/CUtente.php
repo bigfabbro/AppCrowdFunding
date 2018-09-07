@@ -245,7 +245,7 @@ require_once 'include.php';
             if($camps!=null){
                 foreach($camps as $camp){
                     $pics=$camp->getMedia();
-                    if(count($pics)){
+                    if($pics){
                         $photos[$camp->getId()]=base64_encode($pics[0]->getData());
                     }
                     else $photos[$camp->getId()]=null;
