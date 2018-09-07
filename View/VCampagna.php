@@ -15,7 +15,6 @@ require_once 'include.php';
             'name' => false,
             'category'=> false,
             'country'=> false,
-            'stardate'=> false,
             'enddate'=> false,
             'goal'=>false,
             'bankcount'=>false,
@@ -34,44 +33,50 @@ require_once 'include.php';
         $this->smarty->display('CampaignCreation.tpl');
      }
 
-    public function valFormCreaCampagna() :bool {
-         if(isset($_POST['name'])&& isset($_POST['country']) && isset($_POST['enddate']) && isset($_POST['bankcount']) && isset($_POST['goal']))
-         {
-            $replace=array(" ","'");
-            $enddate=explode('-',$_POST['enddate']);
-            if(!checkdate($enddate[1],$enddate[2],$enddate[0])){
-             $this->notval['enddate']=true;
+    public function valFormCreaCampagna(){
+        if(isset($_POST['name'])){
+            if(!ECampagna::valName($_POST['name'])){
+                $this->notval['name']=true;
             }
-            if(preg_match('/^[a-zA-Z0-9]{3,50}$/',str_replace($replace,'',$_POST['name']))){
-                if(FCampagna::ExistName($_POST['name'])){
-                    $this->notval['name']=true;
-                }
+        }
+        else $this->notval['name']=true;
+
+        if(isset($_POST['category'])){
+            if(!ECampagna::valCategory($_POST['category'])){
+                $this->notval['category']=true;
             }
-            else $this->notval['name']=true;
-            if(!preg_match('/^[a-zA-Z]{0,30}$/',str_replace($replace,'',$_POST['country']))){
+        }
+        else $this->notval['category']=true;
+
+        if(isset($_POST['country'])){
+            if(!ECampagna::valCountry($_POST['country'])){
                 $this->notval['country']=true;
             }
-            if(!preg_match('/^[0-9]{1,10}$/',$_POST['goal'])){
+        }
+        else $this->notval['country']=true;
+
+        if(isset($_POST['goal'])){
+            if(!ECampagna::valGoal($_POST['goal'])){
                 $this->notval['goal']=true;
-            } 
-            if(!preg_match('/^[a-zA-Z]{2}[0-9]{2}[a-zA-Z0-9]{4}[0-9]{7}([a-zA-Z0-9]?){0,16}$/i',str_replace($replace,'',$_POST['bankcount']))){
+            }
+        }
+        else $this->notval['goal']=true;
+
+        if(isset($_POST['bankcount'])){
+            if(!ECampagna::valBankcount($_POST['bankcount'])){
                 $this->notval['bankcount']=true;
             }
-         }
-         else
-         {
-             if(!isset($_POST['name'])) $this->notval['name']=true;
-             if(!isset($_POST['category'])) $this->notval['category']=true;
-             if(!isset($_POST['country'])) $this->notval['country']=true;
-             if(!isset($_POST['enddate'])) $this->notval['enddate']=true;
-             if(!isset($_POST['goal'])) $this->notval['goal']=true;
-             if(!isset($_POST['bankcount'])) $this->notval['bankcount']=true;
-         }
-        if($this->notval['name']==true || $this->notval['category']==true || $this->notval['country']==true || $this->notval['enddate']==true || $this->notval['goal']==true || $this->notval['bankcount']==true) 
-        {
-           return false;
         }
-        else return true;
+        else $this->notval['bankcount']=true;
+        if(isset($_POST['enddate'])){
+            var_dump($_POST['enddate']);
+            if(!ECampagna::valDate($_POST['enddate'])){
+                $this->notval['enddate']=true;
+            }
+        }
+        else $this->notval['enddate']=true;
+
+        return $this->notval;
     }
 
 
@@ -137,6 +142,16 @@ require_once 'include.php';
     public function showEndCreation($idcamp){
         $this->smarty->assign('idcamp',$idcamp);
         $this->smarty->display('endcreateproject.tpl');
+    }
+
+    public function ValCreation(){
+        $val=key($_POST);
+        if($val=="name") return ECampagna::valName($_POST['name']);
+        else if($val=="category") return ECampagna::valCategory($_POST['category']);
+        else if($val=="country") return ECampagna::valCountry($_POST['country']);
+        else if($val=="enddate") return ECampagna::valDate($_POST['enddate']);
+        else if($val=="bankcount") return ECampagna::valBankcount($_POST['bankcount']);
+        else if($val=="goal") return ECampagna::valGoal($_POST['goal']);
     }
 
     public function getNotVal(){

@@ -160,6 +160,69 @@ class ECampagna
         return $this->comments;
     }
 
+    static function valName($val):bool{
+        $replace=array(" ","'");
+        if(preg_match('/^[a-zA-Z0-9]{3,50}$/',str_replace($replace,'',$val)) && !FCampagna::ExistName($val)){
+            return true;
+        }
+        else return false;
+    }
+
+    static function valCountry($val):bool{
+        $replace=array(" "."'");
+        if(preg_match('/^[a-zA-Z]{0,30}$/',str_replace($replace,'',$val))){
+            return true;
+        }
+        else return false;
+    }
+
+    static function valGoal($val):bool{
+        if(preg_match('/^[0-9]{1,10}$/',$val)){
+            return true;
+        } 
+        else return false;
+    }
+
+    static function valDate($val):bool{
+        $correct=false;
+        $date=explode('-',$val);
+        if(checkdate($date[1],$date[2],$date[0])){
+          if($date[0]>=date('Y')){
+              if($date[0]>date('Y')){
+                  $correct=true;
+              }
+              else{
+                  if($date[1]>=date('m')){
+                      if($date[1]>date('m')){
+                          $correct=true;
+                      }
+                      else{
+                          if($date[2]>date('d')){
+                              $correct=true;
+                          }
+                      }
+                  }
+              }
+          }
+        }
+        return $correct;
+    }
+
+    static function valBankcount($val):bool{
+        $replace=array(" ","'");
+        if(preg_match('/^[a-zA-Z]{2}[0-9]{2}[a-zA-Z0-9]{4}[0-9]{7}([a-zA-Z0-9]?){0,16}$/i',str_replace($replace,'',$val))){
+            return true;
+        }
+        else return false;
+    }
+
+    static function valCategory($val):bool{
+        if($val=="Tecnology" || $val=="Art" || $val=="Charities" || $val=="Music" || $val=="Food" || $val=="Fashion" || $val=="Film & Video"){
+            return true;
+        }
+        else return false;
+    }
+
     public function __toString(){
         $st="Founder: ".$this->getFounder()." ID: ".$this->getId()." Name: ".$this->getName()." Description: ".$this->getDescription()." Goal: ".$this->getGoal()." Bank account: ".$this->bankcount." Start Date: ".$this->startdate." End Date: ".$this->enddate." Funds: ".$this->getFunds()."\n";
         foreach($this->getRew() as $rew){

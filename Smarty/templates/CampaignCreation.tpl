@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="/AppCrowdFunding/Smarty/templates/css/theme.css" type="text/css"> 
 <body style="background-image: url('/AppCrowdFunding/Smarty/img/wallpaperRazzo.jpg');background-size:cover;background-repeat:no-repeat;">
 {include file='navbar.tpl'}
-  <form action="/AppCrowdFunding/Campagna/StartProject" method="POST" enctype="multipart/form-data">
+  <form action="/AppCrowdFunding/Campagna/StartProject" method="POST" enctype="multipart/form-data" id="creationform">
   <div class="py-5">
     <div class="container" style="position:absolute;top:20%;left:10%;visibility:visible" id="c0">
       <div class="row">
@@ -20,9 +20,9 @@
             <div class="card-body p-5" style="height:500px">
                 <div class="form-group">
                 {if isset($errors)}
-                  <label for="exampleInputEmail1" style="position:absolute; top:120px; left:190px">Ops! There are some errors :( &nbsp;</label>
+                  <label style="position:absolute; top:120px; left:190px">Ops! There are some errors :( &nbsp;</label>
                 {else}
-                  <label for="exampleInputEmail1" style="position:absolute; top:120px; left:190px">Press "Start" to begin!&nbsp;</label>
+                  <label style="position:absolute; top:120px; left:190px">Press "Start" to begin!&nbsp;</label>
                 {/if}
                 </div>
                 <button type="button" class="btn btn-primary w-75" style="position:absolute; top:200px; left:65px" id="s0" onclick="Next(this.id)">Start</button>
@@ -43,18 +43,18 @@
                 <div class="form-group">
                   <label>Campaign name</label>
                   {if isset($errors) && $errors.name eq "true"}
-                  <input class="form-control border border-danger" required="required" name="name" > 
+                  <input class="form-control border border-danger" required="required" name="name" id="name" onchange="inputVerifyCreation(this.id)"> 
                   {else if isset($errors)}
-                  <input class="form-control" value="{$values.name}" required="required" name="name" > 
+                  <input class="form-control" value="{$values.name}" required="required" name="name" id="name" onchange="inputVerifyCreation(this.id)" > 
                   {else}
-                  <input class="form-control" required="required" name="name" >
+                  <input class="form-control" required="required" name="name" id="name" onchange="inputVerifyCreation(this.id)" >
                   {/if}
                 </div>
                 <div class="form-group">
                   <label>Category</label>
                   <select name="category">
                     {if isset($errors)}
-                    <option value="{$values.category}" selected="selected">{$values.category}</option>
+                    <option value="{$values.category}" selected="selected" name="category">{$values.category}</option>
                     {/if}
                     <option value="Tecnology">Tecnology</option>
                     <option value="Art">Art</option>
@@ -68,11 +68,11 @@
                   <div class="form-group">
                     <label>Country</label>
                     {if isset($errors) && $errors.country eq "true"}
-                    <input type="text" class="form-control border border-danger" required="required" name="country"> 
+                    <input type="text" class="form-control border border-danger" required="required" name="country" id="country" onchange="inputVerifyCreation(this.id)"> 
                     {else if isset($errors)}
-                    <input type="text" class="form-control" required="required" name="country" value="{$values.country}"> 
+                    <input type="text" class="form-control" required="required" name="country" id="country" value="{$values.country}" onchange="inputVerifyCreation(this.id)"> 
                     {else}
-                    <input type="text" class="form-control" required="required" name="country"> 
+                    <input type="text" class="form-control" required="required" name="country" id="country" onchange="inputVerifyCreation(this.id)"> 
                     {/if}
                   </div>
 
@@ -95,9 +95,9 @@
                 <div class="form-group">
                 <label for="exampleInputEmail1">Description</label>
                 {if isset($errors)}
-                  <textarea class="form-control w-100 h-75" id="exampleTextarea" rows="3"  name="description">{$values.description}</textarea>
+                  <textarea class="form-control w-100 h-75" id="exampleTextarea" rows="3"  name="description" >{$values.description}</textarea>
                 {else}
-                  <textarea class="form-control w-100 h-75" id="exampleTextarea" rows="3" name="description"></textarea>
+                  <textarea class="form-control w-100 h-75" id="exampleTextarea" rows="3" name="description" ></textarea>
                 {/if}
                 </div>
                 <button type="button" class="btn mt-2 btn-outline-primary" style="float:right" id="n2" onclick="Next(this.id)">Next</button>
@@ -121,30 +121,30 @@
                 <div class="form-group">
                   <label>End date</label>
                 {if isset($errors) && $errors.enddate eq "true"}
-                  <input class="form-control border border-danger" type="date" required="required" min="{$today}" name="enddate"> </div>
+                  <input class="form-control border border-danger" type="date" required="required" min="{$today}" name="enddate" id="enddate" onchange="inputVerifyCreation(this.id)"> </div>
                 {else if isset($serrors)}
-                  <input class="form-control border border-danger" type="date" required="required" value="{$values.enddate}" min="{$today}" name="enddate"> </div
+                  <input class="form-control border border-danger" type="date" required="required" value="{$values.enddate}" min="{$today}" name="enddate" id="enddate" onchange="inputVerifyCreation(this.id)"> </div
                 {else}
-                  <input class="form-control" type="date" required="required" min="{$today}" name="enddate"> </div>
+                  <input class="form-control" type="date" required="required" min="{$today}" name="enddate" id="enddate" onchange="inputVerifyCreation(this.id)"> </div>
                 {/if}
                 <div class="form-group">
                   <label>Bank account</label>
                 {if isset($errors) && $errors.bankcount eq "true"}
-                  <input class="form-control border border-danger" type="text" required="required" name="bankcount"> </div>
+                  <input class="form-control border border-danger" type="text" required="required" name="bankcount" id="bankcount" onchange="inputVerifyCreation(this.id)"> </div>
                 {else if isset($errors)}
-                  <input class="form-control" type="text" required="required" value="{$values.bankcount}" name="bankcount"> </div>
+                  <input class="form-control" type="text" required="required" value="{$values.bankcount}" name="bankcount" id="bankcount" onchange="inputVerifyCreation(this.id)"> </div>
                 {else}
-                  <input class="form-control" type="text" required="required" name="bankcount"> </div>
+                  <input class="form-control" type="text" required="required" name="bankcount" id="bankcount" onchange="inputVerifyCreation(this.id)"> </div>
                 {/if}  
                 <div class="form-group">
                   <div class="form-group">
                     <label>Goal (in €)</label>
                   {if isset($errors) && $errors.goal eq "true"}
-                    <input type="number" class="form-control border border-danger" max="5000000" min="0" step="1" required="required" name="goal"> </div>
+                    <input type="number" class="form-control border border-danger" max="5000000" min="0" step="1" required="required" name="goal" id="goal" onchange="inputVerifyCreation(this.id)"> </div>
                   {else if isset($errors)}
-                    <input type="number" class="form-control" max="5000000" min="0" step="1" required="required" value="{$values.goal}" name="goal"> </div>
+                    <input type="number" class="form-control" max="5000000" min="0" step="1" required="required" value="{$values.goal}" name="goal" id="goal" onchange="inputVerifyCreation(this.id)"> </div>
                   {else}
-                    <input type="number" class="form-control" max="5000000" min="0" step="1" required="required" name="goal"> </div>
+                    <input type="number" class="form-control" max="5000000" min="0" step="1" required="required" name="goal" id="goal" onchange="inputVerifyCreation(this.id)"> </div>
                   {/if}
                   <button  type="button" class="btn mt-2 btn-outline-primary" style="float:right" id="n3" onclick="Next(this.id)">Next</button>
                   <button  type="button" class="btn mt-2 btn-outline-primary" style="float:right" id="b3" onclick="Back(this.id)">Back</button>
@@ -183,7 +183,7 @@
           <div class="card">
             <div class="card-body p-5" style="height:500px">
                 <button type="button" class="btn mt-2 btn-outline-primary" style="float:right" onclick="Back(this.id)" id="b5">Back</button>
-                <button type="submit" class="btn btn-primary w-75" style="position:absolute; top:200px; left:65px">Submit</button>
+                <button typte class="btn btn-primary w-75" style="position:absolute; top:200px; left:65px" onclick="SubmitOrNot()">Submit</button>
             </div>
           </div>
         </div>

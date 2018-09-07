@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-08-21 11:37:47
+/* Smarty version 3.1.32, created on 2018-09-07 15:22:29
   from 'C:\xampp\htdocs\AppCrowdFunding\Smarty\templates\CampaignCreation.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b7bdd6bcf9a86_37213415',
+  'unifunc' => 'content_5b927b95658628_73015584',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '1e27dde1f5e723b2a27fde4a0e436ec27808c9f5' => 
     array (
       0 => 'C:\\xampp\\htdocs\\AppCrowdFunding\\Smarty\\templates\\CampaignCreation.tpl',
-      1 => 1532594338,
+      1 => 1536326118,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:navbar.tpl' => 1,
   ),
 ),false)) {
-function content_5b7bdd6bcf9a86_37213415 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b927b95658628_73015584 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html>
 
@@ -33,7 +33,7 @@ function content_5b7bdd6bcf9a86_37213415 (Smarty_Internal_Template $_smarty_tpl)
 <body style="background-image: url('/AppCrowdFunding/Smarty/img/wallpaperRazzo.jpg');background-size:cover;background-repeat:no-repeat;">
 <?php $_smarty_tpl->_subTemplateRender('file:navbar.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
-  <form action="/AppCrowdFunding/Campagna/StartProject" method="POST" enctype="multipart/form-data">
+  <form action="/AppCrowdFunding/Campagna/StartProject" method="POST" enctype="multipart/form-data" id="creationform">
   <div class="py-5">
     <div class="container" style="position:absolute;top:20%;left:10%;visibility:visible" id="c0">
       <div class="row">
@@ -45,9 +45,9 @@ function content_5b7bdd6bcf9a86_37213415 (Smarty_Internal_Template $_smarty_tpl)
             <div class="card-body p-5" style="height:500px">
                 <div class="form-group">
                 <?php if (isset($_smarty_tpl->tpl_vars['errors']->value)) {?>
-                  <label for="exampleInputEmail1" style="position:absolute; top:120px; left:190px">Ops! There are some errors :( &nbsp;</label>
+                  <label style="position:absolute; top:120px; left:190px">Ops! There are some errors :( &nbsp;</label>
                 <?php } else { ?>
-                  <label for="exampleInputEmail1" style="position:absolute; top:120px; left:190px">Press "Start" to begin!&nbsp;</label>
+                  <label style="position:absolute; top:120px; left:190px">Press "Start" to begin!&nbsp;</label>
                 <?php }?>
                 </div>
                 <button type="button" class="btn btn-primary w-75" style="position:absolute; top:200px; left:65px" id="s0" onclick="Next(this.id)">Start</button>
@@ -68,12 +68,12 @@ function content_5b7bdd6bcf9a86_37213415 (Smarty_Internal_Template $_smarty_tpl)
                 <div class="form-group">
                   <label>Campaign name</label>
                   <?php if (isset($_smarty_tpl->tpl_vars['errors']->value) && $_smarty_tpl->tpl_vars['errors']->value['name'] == "true") {?>
-                  <input class="form-control border border-danger" required="required" name="name" > 
+                  <input class="form-control border border-danger" required="required" name="name" id="name" onchange="inputVerifyCreation(this.id)"> 
                   <?php } elseif (isset($_smarty_tpl->tpl_vars['errors']->value)) {?>
                   <input class="form-control" value="<?php echo $_smarty_tpl->tpl_vars['values']->value['name'];?>
-" required="required" name="name" > 
+" required="required" name="name" id="name" onchange="inputVerifyCreation(this.id)" > 
                   <?php } else { ?>
-                  <input class="form-control" required="required" name="name" >
+                  <input class="form-control" required="required" name="name" id="name" onchange="inputVerifyCreation(this.id)" >
                   <?php }?>
                 </div>
                 <div class="form-group">
@@ -81,7 +81,7 @@ function content_5b7bdd6bcf9a86_37213415 (Smarty_Internal_Template $_smarty_tpl)
                   <select name="category">
                     <?php if (isset($_smarty_tpl->tpl_vars['errors']->value)) {?>
                     <option value="<?php echo $_smarty_tpl->tpl_vars['values']->value['category'];?>
-" selected="selected"><?php echo $_smarty_tpl->tpl_vars['values']->value['category'];?>
+" selected="selected" name="category"><?php echo $_smarty_tpl->tpl_vars['values']->value['category'];?>
 </option>
                     <?php }?>
                     <option value="Tecnology">Tecnology</option>
@@ -96,12 +96,12 @@ function content_5b7bdd6bcf9a86_37213415 (Smarty_Internal_Template $_smarty_tpl)
                   <div class="form-group">
                     <label>Country</label>
                     <?php if (isset($_smarty_tpl->tpl_vars['errors']->value) && $_smarty_tpl->tpl_vars['errors']->value['country'] == "true") {?>
-                    <input type="text" class="form-control border border-danger" required="required" name="country"> 
+                    <input type="text" class="form-control border border-danger" required="required" name="country" id="country" onchange="inputVerifyCreation(this.id)"> 
                     <?php } elseif (isset($_smarty_tpl->tpl_vars['errors']->value)) {?>
-                    <input type="text" class="form-control" required="required" name="country" value="<?php echo $_smarty_tpl->tpl_vars['values']->value['country'];?>
-"> 
+                    <input type="text" class="form-control" required="required" name="country" id="country" value="<?php echo $_smarty_tpl->tpl_vars['values']->value['country'];?>
+" onchange="inputVerifyCreation(this.id)"> 
                     <?php } else { ?>
-                    <input type="text" class="form-control" required="required" name="country"> 
+                    <input type="text" class="form-control" required="required" name="country" id="country" onchange="inputVerifyCreation(this.id)"> 
                     <?php }?>
                   </div>
 
@@ -124,10 +124,10 @@ function content_5b7bdd6bcf9a86_37213415 (Smarty_Internal_Template $_smarty_tpl)
                 <div class="form-group">
                 <label for="exampleInputEmail1">Description</label>
                 <?php if (isset($_smarty_tpl->tpl_vars['errors']->value)) {?>
-                  <textarea class="form-control w-100 h-75" id="exampleTextarea" rows="3"  name="description"><?php echo $_smarty_tpl->tpl_vars['values']->value['description'];?>
+                  <textarea class="form-control w-100 h-75" id="exampleTextarea" rows="3"  name="description" ><?php echo $_smarty_tpl->tpl_vars['values']->value['description'];?>
 </textarea>
                 <?php } else { ?>
-                  <textarea class="form-control w-100 h-75" id="exampleTextarea" rows="3" name="description"></textarea>
+                  <textarea class="form-control w-100 h-75" id="exampleTextarea" rows="3" name="description" ></textarea>
                 <?php }?>
                 </div>
                 <button type="button" class="btn mt-2 btn-outline-primary" style="float:right" id="n2" onclick="Next(this.id)">Next</button>
@@ -153,35 +153,35 @@ function content_5b7bdd6bcf9a86_37213415 (Smarty_Internal_Template $_smarty_tpl)
                   <label>End date</label>
                 <?php if (isset($_smarty_tpl->tpl_vars['errors']->value) && $_smarty_tpl->tpl_vars['errors']->value['enddate'] == "true") {?>
                   <input class="form-control border border-danger" type="date" required="required" min="<?php echo $_smarty_tpl->tpl_vars['today']->value;?>
-" name="enddate"> </div>
+" name="enddate" id="enddate" onchange="inputVerifyCreation(this.id)"> </div>
                 <?php } elseif (isset($_smarty_tpl->tpl_vars['serrors']->value)) {?>
                   <input class="form-control border border-danger" type="date" required="required" value="<?php echo $_smarty_tpl->tpl_vars['values']->value['enddate'];?>
 " min="<?php echo $_smarty_tpl->tpl_vars['today']->value;?>
-" name="enddate"> </div
+" name="enddate" id="enddate" onchange="inputVerifyCreation(this.id)"> </div
                 <?php } else { ?>
                   <input class="form-control" type="date" required="required" min="<?php echo $_smarty_tpl->tpl_vars['today']->value;?>
-" name="enddate"> </div>
+" name="enddate" id="enddate" onchange="inputVerifyCreation(this.id)"> </div>
                 <?php }?>
                 <div class="form-group">
                   <label>Bank account</label>
                 <?php if (isset($_smarty_tpl->tpl_vars['errors']->value) && $_smarty_tpl->tpl_vars['errors']->value['bankcount'] == "true") {?>
-                  <input class="form-control border border-danger" type="text" required="required" name="bankcount"> </div>
+                  <input class="form-control border border-danger" type="text" required="required" name="bankcount" id="bankcount" onchange="inputVerifyCreation(this.id)"> </div>
                 <?php } elseif (isset($_smarty_tpl->tpl_vars['errors']->value)) {?>
                   <input class="form-control" type="text" required="required" value="<?php echo $_smarty_tpl->tpl_vars['values']->value['bankcount'];?>
-" name="bankcount"> </div>
+" name="bankcount" id="bankcount" onchange="inputVerifyCreation(this.id)"> </div>
                 <?php } else { ?>
-                  <input class="form-control" type="text" required="required" name="bankcount"> </div>
+                  <input class="form-control" type="text" required="required" name="bankcount" id="bankcount" onchange="inputVerifyCreation(this.id)"> </div>
                 <?php }?>  
                 <div class="form-group">
                   <div class="form-group">
                     <label>Goal (in €)</label>
                   <?php if (isset($_smarty_tpl->tpl_vars['errors']->value) && $_smarty_tpl->tpl_vars['errors']->value['goal'] == "true") {?>
-                    <input type="number" class="form-control border border-danger" max="5000000" min="0" step="1" required="required" name="goal"> </div>
+                    <input type="number" class="form-control border border-danger" max="5000000" min="0" step="1" required="required" name="goal" id="goal" onchange="inputVerifyCreation(this.id)"> </div>
                   <?php } elseif (isset($_smarty_tpl->tpl_vars['errors']->value)) {?>
                     <input type="number" class="form-control" max="5000000" min="0" step="1" required="required" value="<?php echo $_smarty_tpl->tpl_vars['values']->value['goal'];?>
-" name="goal"> </div>
+" name="goal" id="goal" onchange="inputVerifyCreation(this.id)"> </div>
                   <?php } else { ?>
-                    <input type="number" class="form-control" max="5000000" min="0" step="1" required="required" name="goal"> </div>
+                    <input type="number" class="form-control" max="5000000" min="0" step="1" required="required" name="goal" id="goal" onchange="inputVerifyCreation(this.id)"> </div>
                   <?php }?>
                   <button  type="button" class="btn mt-2 btn-outline-primary" style="float:right" id="n3" onclick="Next(this.id)">Next</button>
                   <button  type="button" class="btn mt-2 btn-outline-primary" style="float:right" id="b3" onclick="Back(this.id)">Back</button>
@@ -220,7 +220,7 @@ function content_5b7bdd6bcf9a86_37213415 (Smarty_Internal_Template $_smarty_tpl)
           <div class="card">
             <div class="card-body p-5" style="height:500px">
                 <button type="button" class="btn mt-2 btn-outline-primary" style="float:right" onclick="Back(this.id)" id="b5">Back</button>
-                <button type="submit" class="btn btn-primary w-75" style="position:absolute; top:200px; left:65px">Submit</button>
+                <button typte class="btn btn-primary w-75" style="position:absolute; top:200px; left:65px" onclick="SubmitOrNot()">Submit</button>
             </div>
           </div>
         </div>

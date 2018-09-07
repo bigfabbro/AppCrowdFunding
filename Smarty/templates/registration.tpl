@@ -28,7 +28,7 @@
         </div>
       </div>
     </div>
-    <form action="registration" method="POST" enctype="multipart/form-data" id="registrationform">
+    <form action="/AppCrowdFunding/Utente/registration" method="POST" enctype="multipart/form-data" id="registrationform">
      <div class="container">
       <div class="row">
         <div class="col-md-6">

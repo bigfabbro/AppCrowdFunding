@@ -43,7 +43,16 @@ class CCampagna{
 
   static function Creation(){
     $view=new VCampagna();
-    if($view->valFormCreaCampagna()){
+    $val=true;
+    $notval=$view->valFormCreaCampagna();
+    var_dump($notval);
+    foreach($notval as $errore => $valore){
+        if ($valore==true) {
+            $val=false; 
+            break;
+        }
+    }
+    if($val){
         if(CUtente::isLogged()){
             $camp= new ECampagna($_SESSION['id'],$_POST['name'],$_POST['description'],$_POST['category'],$_POST['country'],date('Y-m-d'),$_POST['enddate'],$_POST['bankcount'],$_POST['goal']);
             $idcamp=FCampagna::store($camp);
@@ -100,6 +109,18 @@ class CCampagna{
           }
       }
   }
+
+  static function VerifyCreation(){
+    if($_SERVER['REQUEST_METHOD']=="POST"){
+        $view=new VCampagna();
+        if($view->ValCreation()) echo "true";
+        else echo "false";
+    }
+    else{
+        header('HTTP/1.1 405 Method Not Allowed');
+        header('Allow: POST');
+    }
+}
 }
 
 
