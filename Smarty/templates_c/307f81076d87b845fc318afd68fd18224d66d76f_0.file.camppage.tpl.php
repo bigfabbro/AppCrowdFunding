@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-09-05 16:59:07
+/* Smarty version 3.1.32, created on 2018-09-07 12:33:56
   from 'C:\xampp\htdocs\AppCrowdFunding\Smarty\templates\camppage.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b8fef3bce8323_25890197',
+  'unifunc' => 'content_5b925414574145_40879051',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '307f81076d87b845fc318afd68fd18224d66d76f' => 
     array (
       0 => 'C:\\xampp\\htdocs\\AppCrowdFunding\\Smarty\\templates\\camppage.tpl',
-      1 => 1536159532,
+      1 => 1536316430,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:navbar.tpl' => 1,
   ),
 ),false)) {
-function content_5b8fef3bce8323_25890197 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b925414574145_40879051 (Smarty_Internal_Template $_smarty_tpl) {
 if ($_smarty_tpl->tpl_vars['camppic']->value != null) {?> <?php $_smarty_tpl->_assignInScope('piccount', count($_smarty_tpl->tpl_vars['camppic']->value));?> <?php }
 if ($_smarty_tpl->tpl_vars['comments']->value != null) {
 $_smarty_tpl->_assignInScope('commcount', count($_smarty_tpl->tpl_vars['comments']->value));?> <?php }
@@ -124,7 +124,8 @@ $_smarty_tpl->tpl_vars['i']->first = $_smarty_tpl->tpl_vars['i']->iteration === 
 }
 ?> <?php }?>
                 </div>
-                <?php if ($_smarty_tpl->tpl_vars['piccount']->value > 1) {?>
+
+                <?php if (isset($_smarty_tpl->tpl_vars['piccount']->value) && $_smarty_tpl->tpl_vars['piccount']->value > 1) {?>
                 <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
                   <span class="carousel-control-prev-icon"></span>
                   <span class="sr-only">Previous</span>

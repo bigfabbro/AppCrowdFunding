@@ -56,7 +56,7 @@ require_once 'include.php';
       if(!isset($user)){
          $view=new VUtente();
          if($view->ValFormLogin()){
-           $user=FUtente::ExistUserPass($_POST['username'],$_POST['password']);
+           $user=FUtente::ExistUserPass($_POST['username'],hash('md5',$_POST['password']));
            if($user!=null){
                if(isset($_POST['remindme']) && $_POST['remindme']=="yes"){
                    setcookie("remindme",$_POST['username'].hash("md5","{\?/}").hash("md5",$_POST['username'].$_POST['password']));
@@ -70,6 +70,9 @@ require_once 'include.php';
                    else header('Location: /AppCrowdFunding/Homepage');
                }
                else $view->showActivation();
+            }
+            else{
+                $view->showFormLogin(true);
             } 
         }
         else{   
@@ -188,7 +191,7 @@ require_once 'include.php';
             $view->showFormRegistration($notval,$_POST);
         }
         else{
-            $user=new EUtente($_POST['username'],$_POST['password1'],$_POST['name'],$_POST['surname'],$_POST['sex'],$_POST['date'],$_POST['email'],$_POST['telnumber'],$_POST['description']);
+            $user=new EUtente($_POST['username'],hash('md5',$_POST['password1']),$_POST['name'],$_POST['surname'],$_POST['sex'],$_POST['date'],$_POST['email'],$_POST['telnumber'],$_POST['description']);
             $iduser=FUtente::store($user);
             $address=new EIndirizzo($_POST['city'],$_POST['street'],$_POST['number'],$_POST['zipcode'],$_POST['country'],$iduser);
             FIndirizzo::store($address);

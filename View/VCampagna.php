@@ -134,6 +134,11 @@ require_once 'include.php';
         $this->smarty->display('categorypage.tpl');
     }
 
+    public function showEndCreation($idcamp){
+        $this->smarty->assign('idcamp',$idcamp);
+        $this->smarty->display('endcreateproject.tpl');
+    }
+
     public function getNotVal(){
         return $this->notval;
     }

@@ -78,7 +78,8 @@
                    </div>
                    {/if} {/for} {/if}
                 </div>
-                {if $piccount>1}
+
+                {if isset($piccount) && $piccount>1}
                 <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
                   <span class="carousel-control-prev-icon"></span>
                   <span class="sr-only">Previous</span>

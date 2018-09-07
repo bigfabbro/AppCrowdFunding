@@ -2,8 +2,7 @@
 
 require_once "include.php";
 
-$camp=FDonazione::loadByIdUser(99);
-var_dump($camp);
+echo hash('md5','fd22041993');
 
 /*If(FUtente::delete(92)) echo "SI";
 else echo "NO";*/

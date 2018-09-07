@@ -52,6 +52,7 @@ class CCampagna{
             foreach($photos as $photo){
                 FMediaCamp::store($photo);
             }
+            $view->showEndCreation($idcamp);
         }
     }
     else{
