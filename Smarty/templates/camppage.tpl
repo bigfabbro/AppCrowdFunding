@@ -14,6 +14,7 @@
 
 <body style="background-image: url('/AppCrowdFunding/Smarty/img/wallpaperRazzo.jpg');background-size:cover;background-repeat:repeat">
   {include file='navbar.tpl'}
+  {include file='AddReward.tpl' idcamp=$camp->getId()}
   <div class="p-4 my-4">
     <div class="container">
       <div class="row">
@@ -95,8 +96,11 @@
         </div>
         <div class="col-md-3 box-input1">
           <div class="row">
-            <div class="col-md-12 align-items-center align-self-center">
+            <div class="col-md-12 align-items-center align-self-center text-center">
               <p class="lead text-center">Rewards</p>
+              {if isset($userlogged) && $userlogged==$founder->getUsername()}
+              <button class="btn btn-outline-primary my-1" onclick="openrewardmodal()" id="addrewbtn">AddReward</button>
+              {/if}
             </div>
           </div>
           <div class="row">
@@ -104,7 +108,11 @@
             {if isset($rewcount)}
               {for $i=0 to $rewcount-1}
               <div class="card">
-                <div class="card-header"> {$rewards[$i]->getName()}</div>
+                <div class="card-header"> {$rewards[$i]->getName()}
+                {if isset($userlogged) && $userlogged==$founder->getUsername()}
+                <button class="btn btn-outline-primary my-1" style="position:absolute;left:70%;top:0%" onclick="deletereward({$rewards[$i]->getId()})">delete</button>
+                {/if}
+                </div>
                 <div class="card-body">
                   <h4>{$rewards[$i]->getPledged()}€</h4>
                   <p>{$rewards[$i]->getDescriptionRe()}</p>
@@ -112,7 +120,7 @@
               </div>
               {/for}
             {else}
-            <p class="text-center"> There aren't rewards </p>
+              <p class="text-center"> There aren't rewards </p>
             {/if}
             </div>
           </div>
@@ -243,7 +251,7 @@
   <noscript>
   <meta http-equiv=refresh content='0; url=/AppCrowdFunding/Errore/NoJavascript'>
   </noscript>
-  <script src="/AppCrowdFunding/Smarty/templates/js/comment.js"></script>
+  <script src="/AppCrowdFunding/Smarty/templates/js/campaignpage.js"></script>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

@@ -1,27 +1,28 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-09-07 17:28:14
+/* Smarty version 3.1.32, created on 2018-09-08 13:00:56
   from 'C:\xampp\htdocs\AppCrowdFunding\Smarty\templates\camppage.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b92990e8bdaf6_06001295',
+  'unifunc' => 'content_5b93abe834e581_77613461',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '307f81076d87b845fc318afd68fd18224d66d76f' => 
     array (
       0 => 'C:\\xampp\\htdocs\\AppCrowdFunding\\Smarty\\templates\\camppage.tpl',
-      1 => 1536333778,
+      1 => 1536403768,
       2 => 'file',
     ),
   ),
   'includes' => 
   array (
     'file:navbar.tpl' => 1,
+    'file:AddReward.tpl' => 1,
   ),
 ),false)) {
-function content_5b92990e8bdaf6_06001295 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b93abe834e581_77613461 (Smarty_Internal_Template $_smarty_tpl) {
 if ($_smarty_tpl->tpl_vars['camppic']->value != null) {?> <?php $_smarty_tpl->_assignInScope('piccount', count($_smarty_tpl->tpl_vars['camppic']->value));?> <?php }
 if ($_smarty_tpl->tpl_vars['comments']->value != null) {
 $_smarty_tpl->_assignInScope('commcount', count($_smarty_tpl->tpl_vars['comments']->value));?> <?php }
@@ -41,6 +42,8 @@ $_smarty_tpl->_assignInScope('rewcount', count($_smarty_tpl->tpl_vars['rewards']
 
 <body style="background-image: url('/AppCrowdFunding/Smarty/img/wallpaperRazzo.jpg');background-size:cover;background-repeat:repeat">
   <?php $_smarty_tpl->_subTemplateRender('file:navbar.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+  <?php $_smarty_tpl->_subTemplateRender('file:AddReward.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('idcamp'=>$_smarty_tpl->tpl_vars['camp']->value->getId()), 0, false);
 ?>
   <div class="p-4 my-4">
     <div class="container">
@@ -141,8 +144,11 @@ $_smarty_tpl->tpl_vars['i']->first = $_smarty_tpl->tpl_vars['i']->iteration === 
         </div>
         <div class="col-md-3 box-input1">
           <div class="row">
-            <div class="col-md-12 align-items-center align-self-center">
+            <div class="col-md-12 align-items-center align-self-center text-center">
               <p class="lead text-center">Rewards</p>
+              <?php if (isset($_smarty_tpl->tpl_vars['userlogged']->value) && $_smarty_tpl->tpl_vars['userlogged']->value == $_smarty_tpl->tpl_vars['founder']->value->getUsername()) {?>
+              <button class="btn btn-outline-primary my-1" onclick="openrewardmodal()" id="addrewbtn">AddReward</button>
+              <?php }?>
             </div>
           </div>
           <div class="row">
@@ -155,7 +161,12 @@ for ($_smarty_tpl->tpl_vars['i']->value = 0, $_smarty_tpl->tpl_vars['i']->iterat
 $_smarty_tpl->tpl_vars['i']->first = $_smarty_tpl->tpl_vars['i']->iteration === 1;$_smarty_tpl->tpl_vars['i']->last = $_smarty_tpl->tpl_vars['i']->iteration === $_smarty_tpl->tpl_vars['i']->total;?>
               <div class="card">
                 <div class="card-header"> <?php echo $_smarty_tpl->tpl_vars['rewards']->value[$_smarty_tpl->tpl_vars['i']->value]->getName();?>
-</div>
+
+                <?php if (isset($_smarty_tpl->tpl_vars['userlogged']->value) && $_smarty_tpl->tpl_vars['userlogged']->value == $_smarty_tpl->tpl_vars['founder']->value->getUsername()) {?>
+                <button class="btn btn-outline-primary my-1" style="position:absolute;left:70%;top:0%" onclick="deletereward(<?php echo $_smarty_tpl->tpl_vars['rewards']->value[$_smarty_tpl->tpl_vars['i']->value]->getId();?>
+)">delete</button>
+                <?php }?>
+                </div>
                 <div class="card-body">
                   <h4><?php echo $_smarty_tpl->tpl_vars['rewards']->value[$_smarty_tpl->tpl_vars['i']->value]->getPledged();?>
 €</h4>
@@ -167,7 +178,7 @@ $_smarty_tpl->tpl_vars['i']->first = $_smarty_tpl->tpl_vars['i']->iteration === 
 }
 ?>
             <?php } else { ?>
-            <p class="text-center"> There aren't rewards </p>
+              <p class="text-center"> There aren't rewards </p>
             <?php }?>
             </div>
           </div>
@@ -326,7 +337,7 @@ $_smarty_tpl->tpl_vars['i']->first = $_smarty_tpl->tpl_vars['i']->iteration === 
   <meta http-equiv=refresh content='0; url=/AppCrowdFunding/Errore/NoJavascript'>
   </noscript>
   <?php echo '<script'; ?>
- src="/AppCrowdFunding/Smarty/templates/js/comment.js"><?php echo '</script'; ?>
+ src="/AppCrowdFunding/Smarty/templates/js/campaignpage.js"><?php echo '</script'; ?>
 >
   <?php echo '<script'; ?>
  src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"><?php echo '</script'; ?>

@@ -155,6 +155,28 @@ class CCampagna{
       }
   }
 
+  static function AddReward($idcamp){
+      if(($_SERVER['REQUEST_METHOD'])=="POST"){
+          $camp=FCampagna::loadById($idcamp);
+          if(CUtente::islogged() && $_SESSION['id']==$camp->getFounder()){
+              $rew= new EReward($_POST['name'],$_POST['amount'],$_POST['description'],$idcamp);
+              FReward::store($rew);
+          }
+      }
+  }
+
+  static function DeleteReward(){
+    if(($_SERVER['REQUEST_METHOD']=="POST")){
+        if(CUtente::isLogged()){
+            $rew=FReward::loadById($_POST['id']);
+            $camp=FCampagna::loadById($rew->getIdCamp());
+            if($camp->getFounder()==$_SESSION['id']){
+              FReward::delete($_POST['id']);
+            }
+        }
+    }
+}
+
   static function VerifyCreation(){
     if($_SERVER['REQUEST_METHOD']=="POST"){
         $view=new VCampagna();

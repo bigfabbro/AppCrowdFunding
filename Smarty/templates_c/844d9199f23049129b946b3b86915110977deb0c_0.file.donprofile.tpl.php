@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-09-05 15:44:26
+/* Smarty version 3.1.32, created on 2018-09-08 10:48:26
   from 'C:\xampp\htdocs\AppCrowdFunding\Smarty\templates\donprofile.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b8fddbace0aa7_77361941',
+  'unifunc' => 'content_5b938cda056793_43048030',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '844d9199f23049129b946b3b86915110977deb0c' => 
     array (
       0 => 'C:\\xampp\\htdocs\\AppCrowdFunding\\Smarty\\templates\\donprofile.tpl',
-      1 => 1536155063,
+      1 => 1536333778,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5b8fddbace0aa7_77361941 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b938cda056793_43048030 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html>
 
@@ -71,6 +71,9 @@ function content_5b8fddbace0aa7_77361941 (Smarty_Internal_Template $_smarty_tpl)
       </div>
     </div>
   </div>
+  <noscript>
+  <meta http-equiv=refresh content='0; url=/AppCrowdFunding/Errore/NoJavascript'>
+  </noscript>
   <?php echo '<script'; ?>
  src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"><?php echo '</script'; ?>
 >

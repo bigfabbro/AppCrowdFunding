@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-09-05 12:05:14
+/* Smarty version 3.1.32, created on 2018-09-08 10:47:35
   from 'C:\xampp\htdocs\AppCrowdFunding\Smarty\templates\donation.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b8faa5a367a52_71371713',
+  'unifunc' => 'content_5b938ca7c4d2c7_70963382',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'c8964710516b5399d1884ebb9332a56e5bc5e89d' => 
     array (
       0 => 'C:\\xampp\\htdocs\\AppCrowdFunding\\Smarty\\templates\\donation.tpl',
-      1 => 1536141911,
+      1 => 1536333778,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:navbar.tpl' => 1,
   ),
 ),false)) {
-function content_5b8faa5a367a52_71371713 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b938ca7c4d2c7_70963382 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html>
 
@@ -92,10 +92,12 @@ function content_5b8faa5a367a52_71371713 (Smarty_Internal_Template $_smarty_tpl)
       <div class="collapse navbar-collapse text-center justify-content-center" id="navbar3SupportedContent"> </div>
     </div>
   </nav>
+  <noscript>
+  <meta http-equiv=refresh content='0; url=/AppCrowdFunding/Errore/NoJavascript'>
+  </noscript>
   <?php echo '<script'; ?>
  src="/AppCrowdFunding/Smarty/templates/js/donation.js"><?php echo '</script'; ?>
 >
-
   <?php echo '<script'; ?>
  src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"><?php echo '</script'; ?>
 >
