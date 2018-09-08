@@ -45,7 +45,8 @@ require_once 'include.php';
         $user=static::Remindme();
         if($user) static::EnterIn($user);
         else{
-            setcookie("remindme", null);
+            unset($_COOKIE['remindme']);
+            setcookie("remindme",'', time() - 3600);
             $view=new VUtente();
             $view->showFormLogin(true);
         }

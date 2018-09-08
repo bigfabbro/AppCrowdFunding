@@ -1,5 +1,11 @@
 <?php
   require_once 'include.php';
-  $url = $_SERVER['REQUEST_URI'];
-  $fcontroller=new FrontController();
-  $fcontroller->dispatch($url);
+  
+
+  if(Installation::VerifyInstallation()){
+    $fcontroller=new FrontController();
+    $fcontroller->dispatch($_SERVER['REQUEST_URI']);
+  }
+  else{
+    Installation::Begin();
+  }

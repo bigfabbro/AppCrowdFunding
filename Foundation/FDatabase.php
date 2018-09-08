@@ -1,6 +1,6 @@
 <?php
 require_once 'include.php';
-require_once 'conf.inc.php';
+require_once 'config.inc.php';
 /*  Singleton: rappresenta un tipo particolare di classe che garantisce
  *  che soltanto un'unica istanza della classe stessa possa essere creata 
  *  all'interno di un programma

@@ -60,6 +60,7 @@
     */
    require_once 'Utility/upload.php';
    require_once 'Utility/mailcheck.php';
+   require_once 'Utility/Installation.php';
 
     
    /**
