@@ -4,7 +4,7 @@ require_once 'include.php';
 
 /**
  * La classe VDonazione si occupa di creare e far visualizzare la form riguardante la donazione
- * @author Sof
+ * @author Gruppo 3
  * @package View
  */
  
@@ -38,13 +38,38 @@ require_once 'include.php';
         $this->smarty->display('donation.tpl');
     }
 
-    function showGrazie(){
+    //** Metodo che consente di visualizzare la form della donazione (fa uso di smarty) */
+
+    function showGrazie(EDonazione $donazione, ECampagna $campagna, EReward $reward, EUtente $user){
         $this->smarty=ConfSmarty::configuration();
         if(CUtente::isLogged()) $this->smarty->assign('userlogged',$_SESSION['username']);
         $this->smarty->assign('Helper',$_SESSION['username']);
+        $this->smarty->assign('Campaign',$campagna->getName());
+        $this->smarty->assign('Dreamer',$user->getUserName());
+        $this->smarty->assign('Amount',$donazione->getAmount());
+        $this->smarty->assign('Date',$donazione->getDate());
+        $this->smarty->assign('Reward',$reward->getName());
+        $this->smarty->assign('Description',$reward-> getDescriptionRe ());
+        $this->smarty->display('grazie.tpl');
+    }
+    function showGrazie1(EDonazione $donazione, ECampagna $campagna, EUtente $user){
+        $this->smarty=ConfSmarty::configuration();
+        if(CUtente::isLogged()) $this->smarty->assign('userlogged',$_SESSION['username']);
+        $this->smarty->assign('Helper',$_SESSION['username']);
+        $this->smarty->assign('Campaign',$campagna->getName());
+        $this->smarty->assign('Dreamer',$user->getUserName());
+        $this->smarty->assign('Amount',$donazione->getAmount());
+        $this->smarty->assign('Date',$donazione->getDate());
+        $this->smarty->assign('Reward', "Sorry :" );
+        $this->smarty->assign('Description', "( there isn't any reward for you" );
         $this->smarty->display('grazie.tpl');
     }
 
+    function showErrore(){
+        $this->smarty=ConfSmarty::configuration();
+        if(CUtente::isLogged()) $this->smarty->assign('userlogged',$_SESSION['username']);
+        $this->smarty->display('erroredon.tpl');
+    }
 
     /** Funzione che verifica la correttezza del form di donazione
      * Prima si verifica se la relativa componente  dell'array $_POST è settato 

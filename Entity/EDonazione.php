@@ -23,7 +23,7 @@ class EDonazione
     private $amount; 
     /** data relativa alla donazione */
     private $date; 
-
+    /** id associata alla reward */
     private $reward; 
     /** id dell'utente che effettua la donazione */
     private $idutente;
@@ -43,7 +43,7 @@ class EDonazione
         $this->reward=$reward;
         $this->idutente=$idutente;
         $this->idcamp=$idcamp;
-        $this->donationoccurred=true; //donation occurred e' posto a true soltanto quando la donazione viene effettivamente pubblicata
+        $this->donationoccurred=true;
         $this->idcc=$idcc;
 
     }
@@ -80,6 +80,12 @@ class EDonazione
     {
         return $this->date;
     }
+
+
+       /**
+     * 
+     * @return int id della reward
+     */
 
 
     public function getReward()
@@ -165,6 +171,12 @@ class EDonazione
     {
         $this->date = $date;
     }
+
+     /**
+     * 
+     * @param int $id della reward
+     */
+     
 
     public function setReward($reward)
     {

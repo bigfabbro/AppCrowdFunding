@@ -27,7 +27,7 @@ class FDonazione
         $stmt->bindValue(':id', NULL, PDO::PARAM_INT); //l'id � posto a NULL poich� viene dato automaticamente dal DBMS (AUTOINCREMENT_ID)
         $stmt->bindValue(':amount', $don->getAmount(), PDO::PARAM_STR);
         $stmt->bindValue(':date', $don->getDate(), PDO::PARAM_STR);
-        $stmt->bindValue(':reward', $don->getReward(), PDO::PARAM_STR);
+        $stmt->bindValue(':reward', $don->getReward(), PDO::PARAM_INT);
         $stmt->bindValue(':idutente', $don->getIdUtente(), PDO::PARAM_INT);
         $stmt->bindValue(':idcamp', $don->getIdCamp(), PDO::PARAM_INT);
         $stmt->bindValue(':donationoccurred', $don->getDonationOccurred(), PDO::PARAM_INT);

@@ -1,4 +1,20 @@
 <?php
+
+require_once 'include.php';
+
+
+/**
+ * La classe ECartaDiCredito contiene tutti gli attributi e metodi base riguardanti la carta di credito. 
+ *  Contiene i seguenti attributi (e i relativi metodi):
+ * - id: è un identificativo autoincrement, relativo alla carta di credito;
+ * - ownername: nome del proprietario della carta di credito;
+ * - ownersurname: cognome del proprietario della carta di credito;
+ * - expirationdate: data di scadenza della carta di credito;
+ * - ccnumber: numero della carta di credito (sono 11 cifre);
+ * - ccv: Card Security Code, ultime tre cifre scritte nel retro della carta di credito.
+ * @author Gruppo 3
+ * @package Entity
+ */
   
   class ECartaDiCredito{
     /** id della carta di credito  */
@@ -87,7 +103,6 @@
         return $this->id;
     }
 
-//************************************************SET************************************************************** */
     /**
      * 
      * @param string $ownername nome del proprietario della carta di credito
@@ -118,7 +133,7 @@
 
     /**
      * 
-     * @param sting $ccnumber numero della carta di credito 
+     * @param string $ccnumber numero della carta di credito 
      */
 
     public function setCcNumber($ccnumber){
@@ -138,18 +153,29 @@
 
     /**
      * 
-     * @param string $id della carta di credito
+     * @param int $id della carta di credito
      */
 
 
     public function setId($id){
         $this->id=$id;
     }
+    
 
+   public function CheckScadenza($expirationdate)
+   {
+    $oggi = date("Y-m-d");
+    $dateoggi=explode("-", $oggi);
+    $datescad=explode("-", $expirationdate);
+    if ($dateoggi < $datescad) $valido=true;
+    else $valido=false;
+    
+    return $valido;
+   }
 
       
  
-//****************************************************VALIDATE****************************************************** */
+    //Validate
     
      /**
      *  @return bool controlla se il nome  ha un numero di caratteri compreso tra 3 e 30

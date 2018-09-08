@@ -25,6 +25,8 @@ function Submit()
 
         if(cansubmit) {
             document.getElementById("modalwait").visibility = "visible"
-            document.getElementById("registrationform").submit()
+            document.getElementById("donationform").submit()
         }
 }
+
+
