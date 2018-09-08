@@ -237,10 +237,12 @@
           </div>
           <div class="row">
             <div class="col-md-12 text-center">
+            {if !($end)}
             {if isset($userlogged)}
               <a href="/AppCrowdFunding/Donazione/make/{$idcamp}" class="btn my-1 btn-outline-light">Make a donation!</a>
             {else}
               <a href="/AppCrowdFunding/Utente/login" class="btn my-1 btn-outline-light">Make a donation!</a>
+            {/if}
             {/if}
             </div>
           </div>

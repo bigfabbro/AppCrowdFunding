@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-09-08 13:00:56
+/* Smarty version 3.1.32, created on 2018-09-08 13:10:51
   from 'C:\xampp\htdocs\AppCrowdFunding\Smarty\templates\camppage.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b93abe834e581_77613461',
+  'unifunc' => 'content_5b93ae3b0bd755_60249394',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '307f81076d87b845fc318afd68fd18224d66d76f' => 
     array (
       0 => 'C:\\xampp\\htdocs\\AppCrowdFunding\\Smarty\\templates\\camppage.tpl',
-      1 => 1536403768,
+      1 => 1536405045,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:AddReward.tpl' => 1,
   ),
 ),false)) {
-function content_5b93abe834e581_77613461 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b93ae3b0bd755_60249394 (Smarty_Internal_Template $_smarty_tpl) {
 if ($_smarty_tpl->tpl_vars['camppic']->value != null) {?> <?php $_smarty_tpl->_assignInScope('piccount', count($_smarty_tpl->tpl_vars['camppic']->value));?> <?php }
 if ($_smarty_tpl->tpl_vars['comments']->value != null) {
 $_smarty_tpl->_assignInScope('commcount', count($_smarty_tpl->tpl_vars['comments']->value));?> <?php }
@@ -321,11 +321,13 @@ $_smarty_tpl->tpl_vars['i']->first = $_smarty_tpl->tpl_vars['i']->iteration === 
           </div>
           <div class="row">
             <div class="col-md-12 text-center">
+            <?php if (!($_smarty_tpl->tpl_vars['end']->value)) {?>
             <?php if (isset($_smarty_tpl->tpl_vars['userlogged']->value)) {?>
               <a href="/AppCrowdFunding/Donazione/make/<?php echo $_smarty_tpl->tpl_vars['idcamp']->value;?>
 " class="btn my-1 btn-outline-light">Make a donation!</a>
             <?php } else { ?>
               <a href="/AppCrowdFunding/Utente/login" class="btn my-1 btn-outline-light">Make a donation!</a>
+            <?php }?>
             <?php }?>
             </div>
           </div>

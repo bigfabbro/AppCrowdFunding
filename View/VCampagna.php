@@ -80,11 +80,12 @@ require_once 'include.php';
     }
 
 
-    public function showCampaignProfile(ECampagna $camp, EUtente $founder,EMediaUser $founderpic,$donations){
+    public function showCampaignProfile(ECampagna $camp, EUtente $founder,EMediaUser $founderpic,$donations,$end){
         $this->smarty->assign('camp',$camp);
         $this->smarty->assign('founder',$founder);
         $this->smarty->assign('idcamp', $camp->getId());
         $this->smarty->assign('founderpic',base64_encode($founderpic->getData()));
+        $this->smarty->assign('end',$end);
         $camppic=$camp->getMedia();
         if($camppic){
             for($i=0; $i<count($camppic); $i++){
