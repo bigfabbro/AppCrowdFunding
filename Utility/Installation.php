@@ -71,7 +71,7 @@ class Installation{
     static function populate(){
         try{
             $db = new PDO("mysql:host=localhost; dbname=".$_POST['nomedb'], $_POST['nomeutente'], $_POST['password']); 
-            $insert = file_get_contents('insert.sql');
+            $insert = file_get_contents('Insert.sql');
             $db->beginTransaction();
             $db->exec($insert);
             $db->commit();
