@@ -1,12 +1,19 @@
 <?php
 
 class EIndirizzo{
+    /** id relativo all'indirizzo */
     private $id;
+    /** città relativa all'indirizzo */
     private $city;
+    /**via relativa all'indirizzo */
     private $street;
+    /**numero civico */
     private $number;
+    /**codice di avviamento postale */
     private $zipcode;
+    /**nazione relativa all'indirizzo */
     private $country;
+    /** id dell'user che possiede quell'indirizzo */
     private $iduser;
 
     public function __construct($ci,$str,$num,$zc,$co,$idu=null){

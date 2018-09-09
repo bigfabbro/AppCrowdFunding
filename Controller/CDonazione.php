@@ -97,7 +97,7 @@ class CDonazione{
     }
  }
  
- //** Funzione che permette la visualizzazione della pagina che ringrazia l'utente per aver effettuato la donazione */
+ /** Funzione che permette la visualizzazione della pagina che ringrazia l'utente per aver effettuato la donazione */
 
  static function thanks($Campagna, $don){
   $view=new VDonazione();
@@ -112,7 +112,11 @@ class CDonazione{
    
   
   }
-  
+  /*
+  * Funzione che permette di verificare la donazione.
+  * se il server riceve una richiesta di tipo POST viene richiamata la funzione presente in VDonazione.
+  * */
+
   static function VerifyDonation(){
     if($_SERVER['REQUEST_METHOD']=="POST"){
         $view=new VDonazione();

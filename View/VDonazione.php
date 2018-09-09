@@ -120,6 +120,12 @@ require_once 'include.php';
         return $this->notval;
     }
 
+    /**
+     * Funzione che viene richiamata all'interno di CDonazione e che controlla la validità dei campi 
+     * della form della donazione. In particolare vengono richiamati i metodi presenti nella classe
+     * ECartadicredito
+     */
+
 
     public function ValDonation() :bool {
         $val=key($_POST);

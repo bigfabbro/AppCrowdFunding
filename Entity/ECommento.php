@@ -2,10 +2,15 @@
 require_once 'include.php';
 class ECommento
 {
+    /**id relativo al commento */
     private $id;
+
     private $user;
+    /**testo del commento */
     private $text;
+    /**data in cui si effettua il commento */
     private $date;
+    /**id della campagna per la quale si effettua il commento */
     private $idcamp;
 
     public function __construct($user,$text,$date,$idcamp){
