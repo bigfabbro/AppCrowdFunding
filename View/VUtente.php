@@ -162,7 +162,7 @@ require_once 'include.php';
         }
         else  $this->notval['password']=true;
 
-        if($_FILES['upicture']['errors']!=0){
+        if(isset($_FILES['upicture']['errors']) && $_FILES['upicture']['errors']!=0){
             $this->notval['upicture']=!EMediaUser::valPic($_FILES['upicture']['type']);
         }
 
