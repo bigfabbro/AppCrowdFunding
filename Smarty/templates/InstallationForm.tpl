@@ -29,6 +29,9 @@
                 <div class="form-group">
                   <label>Password</label>
                   <input type="password" class="form-control" name="password"> </div>
+                <div class="form-group">
+                  <label>Populate</label>
+                  <input type="checkbox" class="form-control" name="populate" value="yes"> </div>
                 <button type="submit" class="btn mt-2 btn-outline-primary" onclick="setcookie()">Installa</button>
               </form>
             </div>

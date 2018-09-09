@@ -44,6 +44,7 @@ function inputVerifyCreation(id){
         }
     }
     else{   
+        xmlhttp.setRequestHeader('X-Requested-With', 'XMLHttpRequest')
         xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded")
         xmlhttp.send(param)
     }

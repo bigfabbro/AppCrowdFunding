@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-09-08 19:32:34
+/* Smarty version 3.1.32, created on 2018-09-09 11:32:13
   from 'C:\xampp\htdocs\AppCrowdFunding\Smarty\templates\InstallationForm.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b9407b230f985_19112587',
+  'unifunc' => 'content_5b94e89db38d96_60709176',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '041e1ff0d9b034864682e3d6a1db974e01c6ff8d' => 
     array (
       0 => 'C:\\xampp\\htdocs\\AppCrowdFunding\\Smarty\\templates\\InstallationForm.tpl',
-      1 => 1536427855,
+      1 => 1536485436,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5b9407b230f985_19112587 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b94e89db38d96_60709176 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html>
 
@@ -52,6 +52,9 @@ function content_5b9407b230f985_19112587 (Smarty_Internal_Template $_smarty_tpl)
                 <div class="form-group">
                   <label>Password</label>
                   <input type="password" class="form-control" name="password"> </div>
+                <div class="form-group">
+                  <label>Populate</label>
+                  <input type="checkbox" class="form-control" name="populate" value="yes"> </div>
                 <button type="submit" class="btn mt-2 btn-outline-primary" onclick="setcookie()">Installa</button>
               </form>
             </div>

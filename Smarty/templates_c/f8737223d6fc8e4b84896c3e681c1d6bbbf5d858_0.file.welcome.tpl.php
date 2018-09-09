@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-09-06 18:20:37
+/* Smarty version 3.1.32, created on 2018-09-09 10:25:36
   from 'C:\xampp\htdocs\AppCrowdFunding\Smarty\templates\welcome.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b9153d5658252_03990509',
+  'unifunc' => 'content_5b94d9004f5075_67023309',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'f8737223d6fc8e4b84896c3e681c1d6bbbf5d858' => 
     array (
       0 => 'C:\\xampp\\htdocs\\AppCrowdFunding\\Smarty\\templates\\welcome.tpl',
-      1 => 1535127477,
+      1 => 1536333859,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:navbar.tpl' => 1,
   ),
 ),false)) {
-function content_5b9153d5658252_03990509 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b94d9004f5075_67023309 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html>
 
@@ -59,6 +59,8 @@ function content_5b9153d5658252_03990509 (Smarty_Internal_Template $_smarty_tpl)
  src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"><?php echo '</script'; ?>
 >
 </body>
-
+<noscript>
+<meta http-equiv=refresh content='0; url=/AppCrowdFunding/Errore/NoJavascript'>
+</noscript>
 </html><?php }
 }

@@ -4,11 +4,6 @@ require_once 'include.php';
 
 class Installation{
 
-    static function VerifyInstallation():bool{
-        if(isset($_COOKIE['installation'])) return true;
-        else return false;
-    }
-
     static function Begin(){
         $smarty=ConfSmarty::configuration();
         if($_SERVER['REQUEST_METHOD']=="GET"){
@@ -43,14 +38,17 @@ class Installation{
             $db = new PDO("mysql:host=localhost; dbname=".$_POST['nomedb'], $_POST['nomeutente'], $_POST['password']); 
             $db->beginTransaction();
             $query = 'DROP DATABASE IF EXISTS ' .$_POST['nomedb']. '; CREATE DATABASE ' . $_POST['nomedb'] . ' ; USE ' . $_POST['nomedb'] . ';';
-            $query = $query . file_get_contents('tables.sql');
-            $file1= fopen('sql.txt','w');
-            fwrite($file1,$query);
-            fclose($file1);
+            $query = $query . file_get_contents('tables.sql');;
             $db->exec($query);
             $db->commit();
             $file = fopen('config.inc.php', 'w');
-            $script = '<?php $host= \'localhost\'; $dbname= \'' . $_POST['nomedb'] . '\'; $username= \'' . $_POST['nomeutente'] . '\'; $password= \'' . $_POST['password'] . '\';?>';
+            if($_POST['populate']=="yes") {
+                $insert = file_get_contents('insert.sql');
+                $db->beginTransaction();
+                $db->exec($insert);
+                $db->commit();
+            }
+            $script = '<?php $host= \'localhost\'; $database= \'' . $_POST['nomedb'] . '\'; $username= \'' . $_POST['nomeutente'] . '\'; $password= \'' . $_POST['password'] . '\';?>';
             fwrite($file, $script);
             fclose($file);
             $db=null;
@@ -64,4 +62,11 @@ class Installation{
             return false;
         }
     }
+
+
+    static function VerifyInstallation():bool{
+        if(isset($_COOKIE['installation'])) return true;
+        else return false;
+    }
+
 }

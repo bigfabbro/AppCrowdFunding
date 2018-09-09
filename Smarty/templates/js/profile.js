@@ -59,6 +59,7 @@ function closemodifypanel() {
             }
         }
         xmlhttp.open("POST", request, true)
+        xmlhttp.setRequestHeader('X-Requested-With', 'XMLHttpRequest')
         xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
         xmlhttp.send(param)
     }
@@ -111,6 +112,7 @@ function inputVerifyModify(id) {
         }
     }
     xmlhttp.open("POST", request, true)
+    xmlhttp.setRequestHeader('X-Requested-With', 'XMLHttpRequest')
     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
     xmlhttp.send(param)
 }
@@ -166,6 +168,7 @@ function uploadimg(){
             }
         }
         xmlhttp.open("POST", request, true)
+        xmlhttp.setRequestHeader('X-Requested-With', 'XMLHttpRequest')
         xmlhttp.send(formData)
     }
     else{

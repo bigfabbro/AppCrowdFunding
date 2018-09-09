@@ -18,7 +18,7 @@ function inputVerifyRegistration(id){
     }
     var inp=document.getElementById(id)
     var param=id+"="+inp.value
-    var request="/AppCrowdFUnding/Utente/VerifyRegistration"
+    var request="/AppCrowdFUnding/Utente/VerifyRegistration?ajax"
     var xmlhttp = new XMLHttpRequest()
     xmlhttp.onreadystatechange= function(){
         if(this.readyState == 4 && this.status == 200){ //readyState==4 --> request finished and response is ready status==200 --> OK
@@ -37,6 +37,7 @@ function inputVerifyRegistration(id){
         if(inp.files.length!=0){
             var formData= new FormData()
             formData.append("upicture",inp.files[0])
+            xmlhttp.setRequestHeader('X-Requested-With', 'XMLHttpRequest')
             xmlhttp.send(formData)
         }
         else{
@@ -45,6 +46,7 @@ function inputVerifyRegistration(id){
         }
     }
     else{   
+        xmlhttp.setRequestHeader('X-Requested-With', 'XMLHttpRequest')
         xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded")
         xmlhttp.send(param)
     }

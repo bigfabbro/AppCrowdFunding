@@ -34,6 +34,7 @@ function comment(idcamp){
             }
         }
         xmlhttp.open("POST",request,true)
+        xmlhttp.setRequestHeader('X-Requested-With', 'XMLHttpRequest')
         xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
         xmlhttp.send(param)
     }
@@ -50,6 +51,7 @@ function deletecomment(id){
         }
     }
     xmlhttp.open("POST",request,true)
+    xmlhttp.setRequestHeader('X-Requested-With', 'XMLHttpRequest')
     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
     xmlhttp.send(param)
 }
@@ -71,6 +73,7 @@ function AddReward(idcamp){
         }
     }
     xmlhttp.open("POST", request, true)
+    xmlhttp.setRequestHeader('X-Requested-With', 'XMLHttpRequest')
     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
     xmlhttp.send(param)
 }
@@ -85,6 +88,7 @@ function deletereward(id){
         }
     }
     xmlhttp.open("POST",request,true)
+    xmlhttp.setRequestHeader('X-Requested-With', 'XMLHttpRequest')
     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
     xmlhttp.send(param)
 }

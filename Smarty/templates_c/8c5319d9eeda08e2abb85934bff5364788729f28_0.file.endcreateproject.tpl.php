@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-09-07 12:22:37
+/* Smarty version 3.1.32, created on 2018-09-09 11:47:14
   from 'C:\xampp\htdocs\AppCrowdFunding\Smarty\templates\endcreateproject.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b92516d9e9ea8_34659367',
+  'unifunc' => 'content_5b94ec227a1a72_47150735',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '8c5319d9eeda08e2abb85934bff5364788729f28' => 
     array (
       0 => 'C:\\xampp\\htdocs\\AppCrowdFunding\\Smarty\\templates\\endcreateproject.tpl',
-      1 => 1536315550,
+      1 => 1536333778,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:navbar.tpl' => 1,
   ),
 ),false)) {
-function content_5b92516d9e9ea8_34659367 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b94ec227a1a72_47150735 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html>
 
@@ -39,8 +39,8 @@ function content_5b92516d9e9ea8_34659367 (Smarty_Internal_Template $_smarty_tpl)
     <div class="container py-5">
       <div class="row">
         <div class="col-md-12">
-          <h1 class="display-3 mb-4 text-primary">Benvenuto!</h1>
-          <p class="lead mb-5 text-white">Grande! Hai creato la tua nuova campagna!
+          <h1 class="display-3 mb-4 text-primary">Grande!</h1>
+          <p class="lead mb-5 text-white">Hai creato la tua nuova campagna!
             <br>Clicca sul bottone a sinistra per vedere la pagina della tua campagna, oppure sul bottone a destra per tornare alla home!
             <br>
           </p>
@@ -51,6 +51,9 @@ function content_5b92516d9e9ea8_34659367 (Smarty_Internal_Template $_smarty_tpl)
       </div>
     </div>
   </div>
+  <noscript>
+  <meta http-equiv=refresh content='0; url=/AppCrowdFunding/Errore/NoJavascript'>
+  </noscript>
   <?php echo '<script'; ?>
  src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"><?php echo '</script'; ?>
 >

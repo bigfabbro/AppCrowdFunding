@@ -78,11 +78,10 @@ class CDonazione{
          */
          foreach ($rewards as $rew) { 
            
-           if($amount>=$rew->getPledged() && $rew->getPledged()>$max )
+           if($amount>=$rew->getPledged() && $rew->getPledged()>$max ){
            $max=$rew->getPledged();
-          
            $reward=$rew->getId(); 
-        
+           }
         }
 
 

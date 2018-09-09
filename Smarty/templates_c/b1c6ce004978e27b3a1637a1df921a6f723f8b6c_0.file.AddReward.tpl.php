@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-09-08 12:28:47
+/* Smarty version 3.1.32, created on 2018-09-09 11:47:17
   from 'C:\xampp\htdocs\AppCrowdFunding\Smarty\templates\AddReward.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b93a45f2c4898_48110328',
+  'unifunc' => 'content_5b94ec2519d9b5_32399077',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'b1c6ce004978e27b3a1637a1df921a6f723f8b6c' => 
     array (
       0 => 'C:\\xampp\\htdocs\\AppCrowdFunding\\Smarty\\templates\\AddReward.tpl',
-      1 => 1536402522,
+      1 => 1536409595,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5b93a45f2c4898_48110328 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b94ec2519d9b5_32399077 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html>
 
@@ -46,7 +46,7 @@ function content_5b93a45f2c4898_48110328 (Smarty_Internal_Template $_smarty_tpl)
                   <input type="text" class="form-control" name="name" id="name"> </div>
                 <div class="form-group">
                   <label class="text-primary">Amount</label>
-                  <input type="number" class="form-control" name="amount" id="amount"> </div>
+                  <input type="number" class="form-control" name="amount" id="amount" min="0"> </div>
                 <div class="form-group">
                   <label class="text-primary">Description</label>
                   <input type="text" class="form-control" name="description" id="description"> </div>

@@ -146,7 +146,7 @@ CREATE TABLE `utenti` (
   `datan` date NOT NULL,
   `email` varchar(50) NOT NULL,
   `telnumber` varchar(12) NOT NULL,
-  `description` varchar(200) NOT NULL,
+  `description` varchar(200) DEFAULT NULL,
   `activate` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
