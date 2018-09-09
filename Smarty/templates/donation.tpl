@@ -42,7 +42,7 @@
                       <input type="number" min="1" max="999" class="form-control" placeholder="Enter CCV" name="ccv"> </div>
                     <div class="form-group bg-light">
                       <label class="text-primary">Amount</label>
-                      <input type="number" min="1" max="500000" class="form-control" placeholder="How much would you like to donate?" name="amount" value="71"> </div>
+                      <input type="number" min="1" max="500000" class="form-control" placeholder="How much would you like to donate?" name="amount" > </div>
                     <button type="submit" class="btn btn-primary" onclick="Submit()">Donate</button>
                   </form>
                 </div>
