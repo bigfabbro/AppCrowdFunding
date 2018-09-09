@@ -28,6 +28,9 @@ class mailcheck {
         return $this->pin;
     }
 
+    /**
+     * Funzione che si occupa di generare il template della mail di attivazione con i dati dell'utente nonché di inviarla.
+     */
     public function sendActivEmail($email,$user,$iduser){
       $smarty=ConfSmarty::configuration();
       $mailobject="Mail di attivazione account Society of Funding";
@@ -37,21 +40,21 @@ class mailcheck {
       $this->smarty->assign('path',static::$path);
       $this->smarty->assign('pin',$this->$pin);
       $message=$this->smarty->fetch('mail.tpl');
+      //viene settato l'header
       $header = "From: ".static::$systemMail.">\n";
       $header .= "CC: ".$email.">\n";
       $header .= "X-Mailer: Il nostro Php\n";
       $header .= "MIME-Version: 1.0\n";
       $header .= "Content-Type: text/html; charset=\"iso-8859-1\"\n";
       $header .= "Content-Transfer-Encoding: 7bit\n\n";
+      //si memorizza nel database il codice di attivazione legato all'utente
       $db=FDatabase::getInstance();
       $db->store($this);
+      //viene inviata la mail
       mail($email, $mailobject, $message, $header);
     }
 
-    public function VerifyCode(){
-        
-    }
-
+    //Funzione per la generazione del pin di attivazione random
     public function generate5PIN(){
         $pin="";
         for($i=0; $i<5; $i++){
