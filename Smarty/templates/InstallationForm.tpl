@@ -14,11 +14,12 @@
       <div class="row">
         <div class="align-self-center col-md-6 text-white">
           <h1 class="text-center text-md-left display-3 text-primary">Installazione</h1>
+          <h3 class="text-center text-md-left text-danger">{if isset($nophpv)} La tua versione di php non è compatibile! {/if} {if isset($nocoockie)} L'app necessita dei cookie abilitati! {/if} <br> {if isset($nojs)} L'app necessita di javascript! {/if} </h3>
         </div>
         <div class="col-md-6">
           <div class="card">
             <div class="card-body p-5">
-              <h3 class="pb-3">Profilo Database {if isset($nophpv)} php:NO {/if} {if isset($nocoockie)} coockie:NO {/if} {if isset($nojs)} js:NO {/if}</h3>
+              <h3 class="pb-3">Profilo Database</h3>
               <form action="/AppCrowdFunding/" method="POST">
                 <div class="form-group">
                   <label>Nome del database</label>

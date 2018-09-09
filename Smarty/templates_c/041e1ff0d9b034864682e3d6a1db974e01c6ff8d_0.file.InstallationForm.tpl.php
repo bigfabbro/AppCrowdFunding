@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-09-09 11:32:13
+/* Smarty version 3.1.32, created on 2018-09-09 14:53:13
   from 'C:\xampp\htdocs\AppCrowdFunding\Smarty\templates\InstallationForm.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b94e89db38d96_60709176',
+  'unifunc' => 'content_5b9517b970f775_52740830',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '041e1ff0d9b034864682e3d6a1db974e01c6ff8d' => 
     array (
       0 => 'C:\\xampp\\htdocs\\AppCrowdFunding\\Smarty\\templates\\InstallationForm.tpl',
-      1 => 1536485436,
+      1 => 1536497589,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5b94e89db38d96_60709176 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b9517b970f775_52740830 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html>
 
@@ -37,11 +37,12 @@ function content_5b94e89db38d96_60709176 (Smarty_Internal_Template $_smarty_tpl)
       <div class="row">
         <div class="align-self-center col-md-6 text-white">
           <h1 class="text-center text-md-left display-3 text-primary">Installazione</h1>
+          <h3 class="text-center text-md-left text-danger"><?php if (isset($_smarty_tpl->tpl_vars['nophpv']->value)) {?> La tua versione di php non è compatibile! <?php }?> <?php if (isset($_smarty_tpl->tpl_vars['nocoockie']->value)) {?> L'app necessita dei cookie abilitati! <?php }?> <br> <?php if (isset($_smarty_tpl->tpl_vars['nojs']->value)) {?> L'app necessita di javascript! <?php }?> </h3>
         </div>
         <div class="col-md-6">
           <div class="card">
             <div class="card-body p-5">
-              <h3 class="pb-3">Profilo Database <?php if (isset($_smarty_tpl->tpl_vars['nophpv']->value)) {?> php:NO <?php }?> <?php if (isset($_smarty_tpl->tpl_vars['nocoockie']->value)) {?> coockie:NO <?php }?> <?php if (isset($_smarty_tpl->tpl_vars['nojs']->value)) {?> js:NO <?php }?></h3>
+              <h3 class="pb-3">Profilo Database</h3>
               <form action="/AppCrowdFunding/" method="POST">
                 <div class="form-group">
                   <label>Nome del database</label>
