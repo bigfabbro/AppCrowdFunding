@@ -6,7 +6,31 @@
  *    non corrette circondandole con un bordo rosso.
  */
 
-function Submit() 
+
+function inputVerifyDonation(id){
+    var inp=document.getElementById(id)
+    var param=id+"="+inp.value
+    var request="/AppCrowdFunding/Donazione/VerifyDonation"
+    var xmlhttp = new XMLHttpRequest()
+    xmlhttp.onreadystatechange= function(){
+        if(this.readyState == 4 && this.status == 200){ //readyState==4 --> request finished and response is ready status==200 --> OK
+            if(this.responseText.toString()==="true") {
+                inp.classList.add("border-success")
+                if(inp.classList.contains("border-danger")) inp.classList.remove("border-danger")
+            }
+            else{
+                inp.classList.add("border-danger")
+                if(inp.classList.contains("border-success")) inp.classList.remove("border-success")
+            }
+        }
+    }
+    xmlhttp.open("POST",request,true)   
+    xmlhttp.setRequestHeader('X-Requested-With', 'XMLHttpRequest')
+    xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded")
+    xmlhttp.send(param)
+}
+
+function SubmitOrNot() 
     {
         var inps=[
             document.getElementById("ownername"),
@@ -18,27 +42,13 @@ function Submit()
         ]
         var cansubmit=true
         for(i=0; i<inps.length; i++){
-            if(inps[i].classList.contains("border-danger")){
+            if(!inps[i].classList.contains("border-success")){
                 cansubmit=false
             }
         }
-
         if(cansubmit) {
-            document.getElementById("modalwait").visibility = "visible"
             document.getElementById("donationform").submit()
         }
-
-        data = expirationdate.split("/")
-        var intro = new Date(data[2], data[1]-1, data[0]);
-        var oggi = new Date();
-        oggi.setHours(0,0,0,0);
-        if (oggi>intro)	
-        alert("Data inferiore")
-        else 
-        alert("Data uguale o maggiore");
-        
-
-
 }
 
     

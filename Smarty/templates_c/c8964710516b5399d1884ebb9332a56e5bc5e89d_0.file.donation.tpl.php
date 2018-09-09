@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-09-09 11:52:02
+/* Smarty version 3.1.32, created on 2018-09-09 19:05:12
   from 'C:\xampp\htdocs\AppCrowdFunding\Smarty\templates\donation.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b94ed42d23070_84020357',
+  'unifunc' => 'content_5b9552c87fde45_57934023',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'c8964710516b5399d1884ebb9332a56e5bc5e89d' => 
     array (
       0 => 'C:\\xampp\\htdocs\\AppCrowdFunding\\Smarty\\templates\\donation.tpl',
-      1 => 1536409476,
+      1 => 1536512703,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:navbar.tpl' => 1,
   ),
 ),false)) {
-function content_5b94ed42d23070_84020357 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b9552c87fde45_57934023 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html>
 
@@ -29,25 +29,10 @@ function content_5b94ed42d23070_84020357 (Smarty_Internal_Template $_smarty_tpl)
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
-  <link rel="stylesheet" href="/AppCrowdFunding/Smarty/templates/css/theme.css" type="text/css"> 
-</head>
+  <link rel="stylesheet" href="/AppCrowdFunding/Smarty/templates/css/theme.css" type="text/css"> </head>
 
-<?php $_smarty_tpl->_subTemplateRender('file:navbar.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+<body style="background-image: url('/AppCrowdFunding/Smarty/img/login.jpg'); background-size:cover;"><?php $_smarty_tpl->_subTemplateRender('file:navbar.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
-<body style="background-image: url('/AppCrowdFunding/Smarty/img/login.jpg'); background-size:cover;">
-
- <div class="row wait" id="modalwait" style="visibility:hidden">
-        <div class="col-md-3"> </div>
-        <div class="col-md-6">
-          <div class="card text-white p-5 bg-primary ">
-            <div class="card-body">
-              <h4 class="card-title">Attendi qualche secondo, stiamo elaborando la tua richiesta.</h4>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      
   <div class="py-5 w-100 h-100">
     <div class="container">
       <div class="row">
@@ -65,29 +50,28 @@ function content_5b94ed42d23070_84020357 (Smarty_Internal_Template $_smarty_tpl)
               <div class="card text-white p-5 bg-light">
                 <div class="card-body">
                   <h1 class="mb-4 bg-light text-primary">Donate</h1>
-                  
                   <form action="/AppCrowdFunding/Donazione/make/<?php echo $_smarty_tpl->tpl_vars['idcamp']->value;?>
 " method="POST" id="donationform">
-                  
-                  <div class="form-group bg-light">
+                    <div class="form-group bg-light">
                       <label class="text-primary">Owner Name</label>
-                      <input type="text" class="form-control" placeholder="Enter Owner Name" name="ownername" required="required"> </div>
+                      <input type="text" class="form-control" placeholder="Enter Owner Name" name="ownername" id="ownername" onchange="inputVerifyDonation(this.id)"> </div>
                     <div class="form-group bg-light">
                       <label class="text-primary">Owner Surname</label>
-                      <input type="text" class="form-control" placeholder="Enter Owner Surname" name="ownersurname" required="required"> </div>
+                      <input type="text" class="form-control" placeholder="Enter Owner Surname" name="ownersurname" id="ownersurname" onchange="inputVerifyDonation(this.id)"> </div>
                     <div class="form-group bg-light">
                       <label class="text-primary">Credit Card Number</label>
-                      <input type="text" class="form-control" placeholder="Enter Credit Card Number" name="ccnumber" required="required"> </div>
+                      <input type="number" min="1" max="9999999999999999" class="form-control" placeholder="Enter Credit Card Number" name="ccnumber" id="ccnumber" onchange="inputVerifyDonation(this.id)"> </div>
                     <div class="form-group bg-light">
                       <label class="text-primary">Expiration Date</label>
-                      <input type="date" class="form-control" placeholder="Enter username" name="expirationdate" required="required"> </div>
+                      <input type="date" class="form-control" placeholder="Enter expiration date" min="<?php echo $_smarty_tpl->tpl_vars['today']->value;?>
+" name="expirationdate" id="expirationdate" onchange="inputVerifyDonation(this.id)"> </div>
                     <div class="form-group bg-light">
                       <label class="text-primary">CCV</label>
-                      <input type="text" class="form-control" placeholder="Enter CCV" name="ccv" required="required"> </div>
+                      <input type="number" min="1" max="999" class="form-control" placeholder="Enter CCV" name="ccv" id="ccv" onchange="inputVerifyDonation(this.id)"> </div>
                     <div class="form-group bg-light">
                       <label class="text-primary">Amount</label>
-                      <input type="float" class="form-control" placeholder="How much would you like to donate?" name="amount" required="required"> </div>
-                    <button type="submit" class="btn btn-primary" onclick="Submit()">Donate</button>
+                      <input type="number" min="1" max="500000" class="form-control" placeholder="How much would you like to donate?" name="amount" id="amount" onchange="inputVerifyDonation(this.id)"> </div>
+                    <button type="button" class="btn btn-primary" onclick="SubmitOrNot()">Donate</button>
                   </form>
                 </div>
               </div>
@@ -97,18 +81,15 @@ function content_5b94ed42d23070_84020357 (Smarty_Internal_Template $_smarty_tpl)
       </div>
     </div>
   </div>
-
-    <div class="container">
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar3SupportedContent">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse text-center justify-content-center" id="navbar3SupportedContent"> </div>
-    </div>
-  </nav>
+  <div class="container">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar3SupportedContent">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse text-center justify-content-center" id="navbar3SupportedContent"> </div>
+  </div>
   <?php echo '<script'; ?>
  src="/AppCrowdFunding/Smarty/templates/js/donation.js"><?php echo '</script'; ?>
 >
-
   <?php echo '<script'; ?>
  src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"><?php echo '</script'; ?>
 >

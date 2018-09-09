@@ -24,26 +24,26 @@
               <div class="card text-white p-5 bg-light">
                 <div class="card-body">
                   <h1 class="mb-4 bg-light text-primary">Donate</h1>
-                  <form action="/AppCrowdFunding/Donazione/make/{$idcamp}" method="POST">
+                  <form action="/AppCrowdFunding/Donazione/make/{$idcamp}" method="POST" id="donationform">
                     <div class="form-group bg-light">
                       <label class="text-primary">Owner Name</label>
-                      <input type="text" class="form-control" placeholder="Enter Owner Name" name="ownername"> </div>
+                      <input type="text" class="form-control" placeholder="Enter Owner Name" name="ownername" id="ownername" onchange="inputVerifyDonation(this.id)"> </div>
                     <div class="form-group bg-light">
                       <label class="text-primary">Owner Surname</label>
-                      <input type="text" class="form-control" placeholder="Enter Owner Surname" name="ownersurname"> </div>
+                      <input type="text" class="form-control" placeholder="Enter Owner Surname" name="ownersurname" id="ownersurname" onchange="inputVerifyDonation(this.id)"> </div>
                     <div class="form-group bg-light">
                       <label class="text-primary">Credit Card Number</label>
-                      <input type="number" min="1" max="9999999999999999" class="form-control" placeholder="Enter Credit Card Number" name="ccnumber" > </div>
+                      <input type="number" min="1" max="9999999999999999" class="form-control" placeholder="Enter Credit Card Number" name="ccnumber" id="ccnumber" onchange="inputVerifyDonation(this.id)"> </div>
                     <div class="form-group bg-light">
                       <label class="text-primary">Expiration Date</label>
-                      <input type="date" class="form-control" placeholder="Enter expiration date" min="{$today}" name="expirationdate"> </div>
+                      <input type="date" class="form-control" placeholder="Enter expiration date" min="{$today}" name="expirationdate" id="expirationdate" onchange="inputVerifyDonation(this.id)"> </div>
                     <div class="form-group bg-light">
                       <label class="text-primary">CCV</label>
-                      <input type="number" min="1" max="999" class="form-control" placeholder="Enter CCV" name="ccv"> </div>
+                      <input type="number" min="1" max="999" class="form-control" placeholder="Enter CCV" name="ccv" id="ccv" onchange="inputVerifyDonation(this.id)"> </div>
                     <div class="form-group bg-light">
                       <label class="text-primary">Amount</label>
-                      <input type="number" min="1" max="500000" class="form-control" placeholder="How much would you like to donate?" name="amount" > </div>
-                    <button type="submit" class="btn btn-primary" onclick="Submit()">Donate</button>
+                      <input type="number" min="1" max="500000" class="form-control" placeholder="How much would you like to donate?" name="amount" id="amount" onchange="inputVerifyDonation(this.id)"> </div>
+                    <button type="button" class="btn btn-primary" onclick="SubmitOrNot()">Donate</button>
                   </form>
                 </div>
               </div>

@@ -227,10 +227,10 @@ require_once 'include.php';
         $dateoggi=explode("-", $oggi);
      
 
-        if(!checkdate($date[1],$date[2],$date[0]) && $dateoggi > $date){
-            return false;
+        if(checkdate($date[1],$date[2],$date[0]) && $val>$oggi){
+            return true;
         }
-        else return true;
+        else return false;
     } 
     
      /**

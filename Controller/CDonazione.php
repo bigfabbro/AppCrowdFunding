@@ -113,6 +113,17 @@ class CDonazione{
   
   }
   
+  static function VerifyDonation(){
+    if($_SERVER['REQUEST_METHOD']=="POST"){
+        $view=new VDonazione();
+        if($view->ValDonation()) echo "true";
+        else echo "false";
+    }
+    else{
+        header('HTTP/1.1 405 Method Not Allowed');
+        header('Allow: POST');
+    }
+}
   
 
 }
