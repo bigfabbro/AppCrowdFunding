@@ -36,7 +36,7 @@
           </div>
           <div class="row">
             <div class="col-md-12">
-              <p class="lead text-justify">Reward: {$reward}</p>
+              <p class="lead text-justify">Reward: {if $reward neq null}{$reward}{else} niente {/if}</p>
             </div>
           </div>
         </div>

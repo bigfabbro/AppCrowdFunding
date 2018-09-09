@@ -32,7 +32,7 @@ class Installation{
                 setcookie('checkcoockie','',time()-3600);
                 if(static::install()){ // si procede con l'installazione vera e propria
                     setcookie('installation','YES'); // se va a buon fine si setta il cookie per la verifica dell'installazione
-                    if($_POST['populate']=="yes") Installation::populate(); //se è stata selezionata la voce populate si popola il database.
+                    if($_POST['populate']=="yes") static::populate(); //se è stata selezionata la voce populate si popola il database.
                 }
                 header('Location: /AppCrowdFunding'); 
             }
@@ -47,7 +47,7 @@ class Installation{
         {
             $db = new PDO("mysql:host=localhost; dbname=".$_POST['nomedb'], $_POST['nomeutente'], $_POST['password']); 
             $db->beginTransaction();
-            $query = 'DROP DATABASE IF EXISTS ' .$_POST['nomedb']. '; CREATE DATABASE ' . $_POST['nomedb'] . ' ; USE ' . $_POST['nomedb'] . ';';
+            $query = 'DROP DATABASE IF EXISTS ' .$_POST['nomedb']. '; CREATE DATABASE ' . $_POST['nomedb'] . ' ; USE ' . $_POST['nomedb'] . ';' . 'SET GLOBAL max_allowed_packet=16777216;';
             $query = $query . file_get_contents('tables.sql');
             $db->exec($query);
             $db->commit();
@@ -71,9 +71,8 @@ class Installation{
     static function populate(){
         try{
             $db = new PDO("mysql:host=localhost; dbname=".$_POST['nomedb'], $_POST['nomeutente'], $_POST['password']); 
-            $insert = file_get_contents('Insert.sql');
             $db->beginTransaction();
-            $db->exec($insert);
+            $db->exec(file_get_contents('insert.sql'));
             $db->commit();
             $db=null;
         }

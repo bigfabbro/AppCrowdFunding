@@ -7,5 +7,4 @@ RewriteEngine on
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule . /AppCrowdFunding/index.php [L]
 
-
 </IfModule>

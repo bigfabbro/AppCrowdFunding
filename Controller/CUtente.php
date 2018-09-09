@@ -283,7 +283,8 @@ require_once 'include.php';
                 foreach($donations as $don){
                     $camppledged[]=FCampagna::loadById($don->getIdCamp());
                     $rew=FReward::loadById($don->getReward());
-                    $rewards[]=$rew->getName()." - ".$rew->getDescriptionRe();
+                    if($rew) $rewards[]=$rew->getName()." - ".$rew->getDescriptionRe();
+                    else $rewards[]=null;
                 }
             }
             CUtente::isLogged();
