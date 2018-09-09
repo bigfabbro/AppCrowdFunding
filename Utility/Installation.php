@@ -42,15 +42,15 @@ class Installation{
             $db->exec($query);
             $db->commit();
             $file = fopen('config.inc.php', 'w');
+            $script = '<?php $host= \'localhost\'; $database= \'' . $_POST['nomedb'] . '\'; $username= \'' . $_POST['nomeutente'] . '\'; $password= \'' . $_POST['password'] . '\';?>';
+            fwrite($file, $script);
+            fclose($file);
             if($_POST['populate']=="yes") {
                 $insert = file_get_contents('insert.sql');
                 $db->beginTransaction();
                 $db->exec($insert);
                 $db->commit();
             }
-            $script = '<?php $host= \'localhost\'; $database= \'' . $_POST['nomedb'] . '\'; $username= \'' . $_POST['nomeutente'] . '\'; $password= \'' . $_POST['password'] . '\';?>';
-            fwrite($file, $script);
-            fclose($file);
             $db=null;
             return true;
         }
