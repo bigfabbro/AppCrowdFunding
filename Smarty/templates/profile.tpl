@@ -62,7 +62,7 @@
             <div class="tab-pane fade" id="tabthree" role="tabpanel">
             {if isset($doncount)}
               {for $i=0 to $doncount-1}
-              {include file='donprofile.tpl' myProf=$myProf id=$donations[$i]->getId() date=$donations[$i]->getDate() reward=$donations[$i]->getReward() amount=$donations[$i]->getAmount() campaign=$camppledged[$i]}
+              {include file='donprofile.tpl' myProf=$myProf id=$donations[$i]->getId() date=$donations[$i]->getDate() amount=$donations[$i]->getAmount() campaign=$camppledged[$i] reward=$rewards[$i]}
               <hr>
               {/for}
             {else}

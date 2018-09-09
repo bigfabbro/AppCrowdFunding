@@ -71,7 +71,7 @@ require_once 'include.php';
 
      /**Metodo per mostrare la pagina del profilo di un utente*/
 
-    public function showProfile(EUtente $user,EMediaUser $pic,$camps,$donations,$camppledged,$photos,EIndirizzo $address,$myProf){
+    public function showProfile(EUtente $user,EMediaUser $pic,$camps,$donations,$camppledged,$rewards,$photos,EIndirizzo $address,$myProf){
         $this->navbar();
         $pic64=base64_encode($pic->getData());
         $this->smarty->assign('myProf',$myProf);
@@ -81,8 +81,8 @@ require_once 'include.php';
         $this->smarty->assign('donations',$donations);
         $this->smarty->assign('camppledged',$camppledged);
         $this->smarty->assign('address',$address);
+        $this->smarty->assign('rewards',$rewards);
         $this->smarty->assign('user',$user);
-        
         $this->smarty->display('profile.tpl');
     }
 
