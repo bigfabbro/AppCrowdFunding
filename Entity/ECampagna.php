@@ -169,7 +169,7 @@ class ECampagna
     }
 
     static function valCountry($val):bool{
-        $replace=array(" "."'");
+        $replace=array(" ","'");
         if(preg_match('/^[a-zA-Z]{0,30}$/',str_replace($replace,'',$val))){
             return true;
         }
