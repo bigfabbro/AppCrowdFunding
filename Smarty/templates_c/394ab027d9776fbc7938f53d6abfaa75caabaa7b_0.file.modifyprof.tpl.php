@@ -60,7 +60,7 @@ function content_5b929899c45f46_37664089 (Smarty_Internal_Template $_smarty_tpl)
         <div class="col-md-6">
           <div class="card-body p-5">
               <div class="form-group">
-                <label>Telephon number</label>
+                <label>Telephone number</label>
                 <input class="form-control" placeholder="Tel. number" value="<?php echo $_smarty_tpl->tpl_vars['telnum']->value;?>
 " id="telnumber" name="telnumber"  onchange="inputVerifyModify(this.id)"> 
               </div>

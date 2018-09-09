@@ -4,7 +4,7 @@ require_once 'include.php';
 
 /**
  * La classe FDonazione fornisce query per gli oggetti EDonazione
- * @author Sof
+ * @author Gruppo 3
  * @package Foundation
  */
 

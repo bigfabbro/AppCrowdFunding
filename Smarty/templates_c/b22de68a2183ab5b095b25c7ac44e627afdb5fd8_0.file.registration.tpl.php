@@ -140,12 +140,12 @@ function content_5b94cea5c33878_69541074 (Smarty_Internal_Template $_smarty_tpl)
                   <?php }?>
                   <label>Telephon number</label>
                   <?php if (isset($_smarty_tpl->tpl_vars['errors']->value) && $_smarty_tpl->tpl_vars['errors']->value['telnumber'] == "true") {?>
-                  <input type="text" class="form-control border border-danger" placeholder="Your telephon number, please" name="telnumber" id="telnumber" onchange="inputVerifyRegistration(this.id)"> </div>
+                  <input type="text" class="form-control border border-danger" placeholder="Your telephone number, please" name="telnumber" id="telnumber" onchange="inputVerifyRegistration(this.id)"> </div>
                   <?php } elseif (isset($_smarty_tpl->tpl_vars['errors']->value)) {?>
                   <input type="text" class="form-control" value="<?php echo $_smarty_tpl->tpl_vars['values']->value['telnumber'];?>
 " name="telnumber" onchange="inputVerifyRegistration(this.id)" id="telnumber" > </div>
                   <?php } else { ?>
-                  <input type="text" class="form-control" placeholder="Your telephon number, please" name="telnumber" onchange="inputVerifyRegistration(this.id)" id="telnumber"> </div>
+                  <input type="text" class="form-control" placeholder="Your telephone number, please" name="telnumber" onchange="inputVerifyRegistration(this.id)" id="telnumber"> </div>
                   <?php }?>
                 <div class="form-group">
               </form>

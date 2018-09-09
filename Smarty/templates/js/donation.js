@@ -27,6 +27,19 @@ function Submit()
             document.getElementById("modalwait").visibility = "visible"
             document.getElementById("donationform").submit()
         }
+
+        data = expirationdate.split("/")
+        var intro = new Date(data[2], data[1]-1, data[0]);
+        var oggi = new Date();
+        oggi.setHours(0,0,0,0);
+        if (oggi>intro)	
+        alert("Data inferiore")
+        else 
+        alert("Data uguale o maggiore");
+        
+
+
 }
 
-
+    
+      

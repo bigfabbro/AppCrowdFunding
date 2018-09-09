@@ -35,6 +35,7 @@ require_once 'include.php';
         $this->smarty->assign('NomeCampagna',$campagna->getName());
         $this->smarty->assign('idcamp',$campagna->getId());
         $this->smarty->assign('Founder',$campagna->getFounder());
+        $this->smarty->assign('today',date('Y-m-d'));
         $this->smarty->display('donation.tpl');
     }
 
@@ -65,7 +66,7 @@ require_once 'include.php';
         $this->smarty->display('grazie.tpl');
     }
 
-    function showErrore(){
+    function showErroreDon(){
         $this->smarty=ConfSmarty::configuration();
         if(CUtente::isLogged()) $this->smarty->assign('userlogged',$_SESSION['username']);
         $this->smarty->display('erroredon.tpl');
@@ -83,27 +84,27 @@ require_once 'include.php';
     function valFormDonation(){
 
         if(isset($_POST['ownername'])){
-            $this->notval['ownername']=!ECartaDiCRedito::valOwnerName($_POST['ownername']); 
+            $this->notval['ownername']=!ECartadicredito::valOwnerName($_POST['ownername']); 
         }
         else   $this->notval['ownername']=true;
 
         if(isset($_POST['ownersurname'])){
-            $this->notval['ownersurname']=!ECartaDiCRedito::valOwnerSurname($_POST['ownersurname']); 
+            $this->notval['ownersurname']=!ECartadicredito::valOwnerSurname($_POST['ownersurname']); 
         }
         else   $this->notval['ownersurname']=true;
 
         if(isset($_POST['ccnumber'])){
-            $this->notval['ccnumber']=!ECartaDiCRedito::valCcNumber($_POST['ccnumber']); 
+            $this->notval['ccnumber']=!ECartadicredito::valCcNumber($_POST['ccnumber']); 
         }
         else   $this->notval['ccnumber']=true;
 
         if(isset($_POST['expirationdate'])){
-            $this->notval['expirationdate']=!ECartaDiCRedito::valExpirationDate($_POST['expirationdate']); 
+            $this->notval['expirationdate']=!ECartadicredito::valExpirationDate($_POST['expirationdate']); 
         }
         else  $notval['expirationdate']=true;
 
         if(isset($_POST['ccv'])){
-            $this->notval['ccv']=!ECartaDiCRedito::valCcv($_POST['ccv']); 
+            $this->notval['ccv']=!ECartadicredito::valCcv($_POST['ccv']); 
         }
         else   $this->notval['ccv']=true;
 
@@ -122,11 +123,11 @@ require_once 'include.php';
 
     public function ValDonation() :bool {
         $val=key($_POST);
-        if($val=="ownername") return ECartaDiCredito::valOwnerName($_POST['ownername']);
-        else if($val=="ownersurname") return ECartaDiCredito::valOwnerSurname($_POST['ownersurname']);
-        else if($val=="ccnumber") return ECartaDiCredito::valCcNumber($_POST['ccnumber']);
-        else if($val=="ccv") return ECartaDiCredito::valCcv($_POST['ccv']);
-        else if($val=="expirationdate") return ECartaDiCredito::valExpirationDate($_POST['expirationdate']);
+        if($val=="ownername") return ECartadicredito::valOwnerName($_POST['ownername']);
+        else if($val=="ownersurname") return ECartadicredito::valOwnerSurname($_POST['ownersurname']);
+        else if($val=="ccnumber") return ECartadicredito::valCcNumber($_POST['ccnumber']);
+        else if($val=="ccv") return ECartadicredito::valCcv($_POST['ccv']);
+        else if($val=="expirationdate") return ECartadicredito::valExpirationDate($_POST['expirationdate']);
         else if($val=="amount") return EDonazione::valAmount($_POST['amount']);
     }
         

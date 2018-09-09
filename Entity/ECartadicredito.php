@@ -4,7 +4,7 @@ require_once 'include.php';
 
 
 /**
- * La classe ECartaDiCredito contiene tutti gli attributi e metodi base riguardanti la carta di credito. 
+ * La classe ECartadicredito contiene tutti gli attributi e metodi base riguardanti la carta di credito. 
  *  Contiene i seguenti attributi (e i relativi metodi):
  * - id: è un identificativo autoincrement, relativo alla carta di credito;
  * - ownername: nome del proprietario della carta di credito;
@@ -16,7 +16,7 @@ require_once 'include.php';
  * @package Entity
  */
   
-  class ECartaDiCredito{
+  class ECartadicredito{
     /** id della carta di credito  */
     private $id;
 
@@ -161,6 +161,12 @@ require_once 'include.php';
         $this->id=$id;
     }
     
+    
+    /**
+     * 
+     * @param date $expirationdate data di scadenza della carta di credito
+     * @return bool controlla se la carta di credito è scaduta
+     */
 
    public function CheckScadenza($expirationdate)
    {
@@ -209,7 +215,7 @@ require_once 'include.php';
     
     static function valCcNumber($val):bool{
         $replace=array(" ","'");
-        if(!preg_match("/^([0-9]{11})$/",str_replace($replace,'',$val))){
+        if(!preg_match("/^([0-9]{16})$/",str_replace($replace,'',$val))){
             return false;
         }
         else return true;
@@ -217,7 +223,11 @@ require_once 'include.php';
 
     static function valExpirationDate($val):bool{
         $date=explode('-',$val);
-        if(!checkdate($date[1],$date[2],$date[0])){
+        $oggi = date("Y-m-d");
+        $dateoggi=explode("-", $oggi);
+     
+
+        if(!checkdate($date[1],$date[2],$date[0]) && $dateoggi > $date){
             return false;
         }
         else return true;

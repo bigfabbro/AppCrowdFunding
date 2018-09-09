@@ -2,6 +2,11 @@
 
 require_once 'include.php';
 
+/**
+ * La classe VInfo si occupa di creare e far visualizzare la pagina delle info
+ * @author Gruppo 3
+ * @package View
+ */
  
  class VInfo{
 

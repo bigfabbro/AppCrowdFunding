@@ -105,13 +105,13 @@
                   {else}
                   <input type="text" class="form-control" placeholder="Country" name="country" id="country" onchange="inputVerifyRegistration(this.id)"> </div>
                   {/if}
-                  <label>Telephon number</label>
+                  <label>Telephone number</label>
                   {if isset($errors) && $errors.telnumber eq "true"}
-                  <input type="text" class="form-control border border-danger" placeholder="Your telephon number, please" name="telnumber" id="telnumber" onchange="inputVerifyRegistration(this.id)"> </div>
+                  <input type="text" class="form-control border border-danger" placeholder="Your telephone number, please" name="telnumber" id="telnumber" onchange="inputVerifyRegistration(this.id)"> </div>
                   {else if isset($errors)}
                   <input type="text" class="form-control" value="{$values.telnumber}" name="telnumber" onchange="inputVerifyRegistration(this.id)" id="telnumber" > </div>
                   {else}
-                  <input type="text" class="form-control" placeholder="Your telephon number, please" name="telnumber" onchange="inputVerifyRegistration(this.id)" id="telnumber"> </div>
+                  <input type="text" class="form-control" placeholder="Your telephone number, please" name="telnumber" onchange="inputVerifyRegistration(this.id)" id="telnumber"> </div>
                   {/if}
                 <div class="form-group">
               </form>

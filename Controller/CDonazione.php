@@ -49,7 +49,7 @@ class CDonazione{
         header('HTTP/1.1 405 Method Not Allowed');
         header('Allow: GET, POST');
         $view=new VDonazione();
-        $view->showErrore($Campagna);
+        $view->showErroreDon();
     }
  }
 
@@ -62,9 +62,9 @@ class CDonazione{
   static function Donation($Campagna) {
    $view=new VDonazione();
    if($view->valFormDonation()){
-       if(CUtente::isLogged()){
-         $cc=new ECartaDiCredito($_POST['ownername'],$_POST['ownersurname'],$_POST['expirationdate'],$_POST['ccnumber'],$_POST['ccv']);
-         $idcc=FCartaDiCredito::store($cc);
+       if(CUtente::isLogged()&& ECartadicredito::CheckScadenza($_POST['expirationdate'])){
+         $cc=new ECartadicredito($_POST['ownername'],$_POST['ownersurname'],$_POST['expirationdate'],$_POST['ccnumber'],$_POST['ccv']);
+         $idcc=FCartadicredito::store($cc);
          
          $idcamp=$Campagna->getId();
          $donationoccurred=true;

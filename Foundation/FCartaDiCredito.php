@@ -1,8 +1,14 @@
 <?php
 
 require_once 'include.php';
+/**
+ * La classe FCartadicredito fornisce query per gli oggetti ECartadicreditp
+ * @author Gruppo 3
+ * @package Foundation
+ */
 
-class FCartaDiCredito
+
+class FCartadicredito
 {   
     private static $tables="creditcard";
     private static $values="(:id,:ownername,:ownersurname,:expirationdate,:ccnumber,:ccv)";
@@ -14,11 +20,11 @@ class FCartaDiCredito
         /**
          * Questo metodo lega gli attributi della carta di credito  da inserire con i parametri della INSERT
          * @param PDOStatement $stmt 
-         * @param ECartaDiCredito $cc carta di credito i cui dati devono essere inseriti nel DB
+         * @param ECartadicredito $cc carta di credito i cui dati devono essere inseriti nel DB
          */
     
     
-     public static function bind($stmt, ECartaDiCredito $cc){
+     public static function bind($stmt, ECartadicredito $cc){
         $stmt->bindValue(':id', NULL, PDO::PARAM_INT); //l'id � posto a NULL poich� viene dato automaticamente dal DBMS (AUTOINCREMENT_ID)
         $stmt->bindValue(':ownername', $cc->getOwnerName(), PDO::PARAM_STR); 
         $stmt->bindValue(':ownersurname', $cc->getOwnerSurname(), PDO::PARAM_STR);
@@ -47,13 +53,25 @@ class FCartaDiCredito
         return static::$values;
     }
 
+    /**
+     * Permette la store sul db
+     * @return int $id dell'oggetto salvato
+     */
     public static function store($cc){
         $sql="INSERT INTO ".static::getTables()." VALUES ".static::getValues();
         $db=FDatabase::getInstance();
-        $id=$db->store($sql,"FCartaDiCredito",$cc);
+        $id=$db->store($sql,"FCartadicredito",$cc);
         if($id) return $id;
         else return null;
     }
+
+
+    /**
+     * Permette la load sul db 
+     * @param int l'id dell'oggetto carta di credito
+     * @return object $cc l'oggetto carta di credito 
+     */
+
 
     
     public static function loadById($id){
@@ -61,12 +79,19 @@ class FCartaDiCredito
         $db=FDatabase::getInstance();
         $result=$db->loadSingle($sql);
         if($result!=null){
-            $cc=new ECartaDiCredito($result['ownername'],$result['ownersurname'], $result['epirationdate'], $result['ccnumber'],$result['ccv']);
+            $cc=new ECartadicredito($result['ownername'],$result['ownersurname'], $result['epirationdate'], $result['ccnumber'],$result['ccv']);
             $cc->setId($result['id']);
             return $cc;
         }
         else return null;
     }
+
+
+     /**
+     * Permette la delete sul db in base all'id
+     * @param int l'id dell'oggetto da eliminare dal db
+     * @return bool 
+     */
 
     public static function delete($id){
         $sql="DELETE FROM ".static::getTables()." WHERE id=".$id.";";

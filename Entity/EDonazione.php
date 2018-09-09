@@ -48,8 +48,6 @@ class EDonazione
 
     }
     
-//******************************************METODI GET**************************************************************** */
-
 
      /**
      * 
@@ -138,8 +136,7 @@ class EDonazione
         return $this->idcc;
     }
     
- //******************************************METODI SET**************************************************************** */
-   
+ 
     /**
      * 
      * @param int $id della donazione
@@ -231,11 +228,9 @@ class EDonazione
     }
 
 
-//******************************************VALIDATE**************************************************************** */
 
     /**
-     *  torna un booleano se la form è valida, i paramateri vengono passati per riferimento
-
+     * @return bool  torna un booleano se la form è valida, i paramateri vengono passati per riferimento
      */
     
 

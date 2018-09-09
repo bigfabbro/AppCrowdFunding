@@ -32,7 +32,7 @@
         <div class="col-md-6">
           <div class="card-body p-5">
               <div class="form-group">
-                <label>Telephon number</label>
+                <label>Telephone number</label>
                 <input class="form-control" placeholder="Tel. number" value="{$telnum}" id="telnumber" name="telnumber"  onchange="inputVerifyModify(this.id)"> 
               </div>
               <div class="form-group">
