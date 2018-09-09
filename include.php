@@ -16,7 +16,7 @@
     * Inclusione dei file contenuti nella cartella Entity
     */
    require_once 'Entity/ECampagna.php';
-   require_once 'Entity/ECartaDiCredito.php';
+   require_once 'Entity/ECartadicredito.php';
    require_once 'Entity/ECommento.php';
    require_once 'Entity/EDonazione.php';
    require_once 'Entity/EIndirizzo.php';
@@ -32,7 +32,7 @@
     * Inclusione dei file contenuti nella cartella Foundation
     */
    require_once 'Foundation/FCampagna.php';
-   require_once 'Foundation/FCartaDiCredito.php';
+   require_once 'Foundation/FCartadicredito.php';
    require_once 'Foundation/FCommento.php';
    require_once 'Foundation/FDatabase.php';
    require_once 'Foundation/FDonazione.php';
