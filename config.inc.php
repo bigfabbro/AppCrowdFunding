@@ -1,0 +1,1 @@
+<?php $host= 'localhost'; $dbname= 'appcrowdfunding'; $username= 'root'; $password= '';?>
