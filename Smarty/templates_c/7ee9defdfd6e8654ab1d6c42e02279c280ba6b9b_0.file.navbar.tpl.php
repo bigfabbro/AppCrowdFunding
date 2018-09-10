@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-09-01 15:23:43
+/* Smarty version 3.1.32, created on 2018-09-10 12:10:02
   from 'C:\xampp\htdocs\AppCrowdFunding\Smarty\templates\navbar.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b8a92df3bbda0_93232071',
+  'unifunc' => 'content_5b9642fada9b69_67464823',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '7ee9defdfd6e8654ab1d6c42e02279c280ba6b9b' => 
     array (
       0 => 'C:\\xampp\\htdocs\\AppCrowdFunding\\Smarty\\templates\\navbar.tpl',
-      1 => 1535808215,
+      1 => 1536573880,
       2 => 'file',
     ),
   ),
@@ -20,14 +20,14 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5b8a92df3bbda0_93232071 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b9642fada9b69_67464823 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_assignInScope('userlogged', (($tmp = @$_smarty_tpl->tpl_vars['userlogged']->value)===null||$tmp==='' ? 'nouser' : $tmp));?>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
 
   <nav class="navbar navbar-expand-md navbar-dark bg-primary">
     <div class="container">
       <a class="navbar-brand" href="/AppCrowdFunding/HomePage">
-        <i class="fa d-inline fa-lg fa-cloud"></i>
+        <i class="fa fa-rocket"></i>
         <b>&nbsp;Society Of Funding</b>
       </a>
 
