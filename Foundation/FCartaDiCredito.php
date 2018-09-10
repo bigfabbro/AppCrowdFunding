@@ -33,7 +33,7 @@ class FCartadicredito
         $stmt->bindValue(':ccv', $cc->getCcv(), PDO::PARAM_STR); 
      }
 
-     /**
+    /**
      * 
      * questo metodo restituisce il nome della tabella sul DB per la costruzione delle Query
      * @return string $tables nome della tabella
@@ -42,13 +42,13 @@ class FCartadicredito
     public static function getTables(){
         return static::$tables;
     }
-    
-    /**
-     *  
-     * questo metodo restituisce la stringa dei useri della tabella sul DB per la costruzione delle Query
-     * @return string $values user della tabella
-    */ 
 
+     /**
+     * 
+     * questo metodo restituisce la stringa dei valori della tabella sul DB per la costruzione delle Query
+     * @return string $values valori della tabella
+     */
+    
     public static function getValues(){
         return static::$values;
     }

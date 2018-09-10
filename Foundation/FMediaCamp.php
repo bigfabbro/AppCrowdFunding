@@ -29,14 +29,25 @@ class FMediaCamp
         unlink($path);
     }
 
+   /**
+     * 
+     * questo metodo restituisce il nome della tabella sul DB per la costruzione delle Query
+     * @return string $tables nome della tabella
+     */
+
     public static function getTables(){
         return static::$tables;
     }
+
+     /**
+     * 
+     * questo metodo restituisce la stringa dei valori della tabella sul DB per la costruzione delle Query
+     * @return string $values valori della tabella
+     */
     
     public static function getValues(){
         return static::$values;
     }
-
     public static function store($media){
         $sql="INSERT INTO ".static::getTables()." VALUES ".static::getValues();
         $db=FDatabase::getInstance();
