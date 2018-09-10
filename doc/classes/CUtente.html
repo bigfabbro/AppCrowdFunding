@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>API Documentation</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+    <link href="../css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+    <!--[if lt IE 9]>
+    <script src="../js/html5.js"></script>
+    <![endif]-->
+    <script src="../js/jquery-1.11.0.min.js"></script>
+    <script src="../js/ui/1.10.4/jquery-ui.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.smooth-scroll.js"></script>
+    <script src="../js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+    <script type="text/javascript">
+    function loadExternalCodeSnippets() {
+        Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
+            var src = pre.getAttribute('data-src');
+            var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+            var language = 'php';
+
+            var code = document.createElement('code');
+            code.className = 'language-' + language;
+
+            pre.textContent = '';
+
+            code.textContent = 'Loading…';
+
+            pre.appendChild(code);
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', src, true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+
+                    if (xhr.status < 400 && xhr.responseText) {
+                        code.textContent = xhr.responseText;
+
+                        Prism.highlightElement(code);
+                    }
+                    else if (xhr.status >= 400) {
+                        code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                    }
+                    else {
+                        code.textContent = '✖ Error: File does not exist or is empty';
+                    }
+                }
+            };
+
+            xhr.send(null);
+        });
+    }
+
+    $(document).ready(function(){
+        loadExternalCodeSnippets();
+    });
+    $('#source-view').on('shown', function () {
+        loadExternalCodeSnippets();
+    })
+</script>
+
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a class="brand" href="../index.html">API Documentation</a>
+
+            <div class="nav-collapse">
+                <ul class="nav pull-right">
+                                        <li class="dropdown" id="charts-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graphs/class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../reports/errors.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">409</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/markers.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/deprecated.html">
+                                                                                                            <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
+</div>
+
+<div id="___" class="container-fluid">
+        <section class="row-fluid">
+        <div class="span2 sidebar">
+                                <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-1433259966"></a>
+                                <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
+            </div>
+            <div id="namespace-1433259966" class="accordion-body collapse in">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/CCampagna.html">CCampagna</a></li>
+                                                    <li class="class"><a href="../classes/CDonazione.html">CDonazione</a></li>
+                                                    <li class="class"><a href="../classes/CErrore.html">CErrore</a></li>
+                                                    <li class="class"><a href="../classes/CInfo.html">CInfo</a></li>
+                                                    <li class="class"><a href="../classes/ConfSmarty.html">ConfSmarty</a></li>
+                                                    <li class="class"><a href="../classes/CRicerca.html">CRicerca</a></li>
+                                                    <li class="class"><a href="../classes/CUtente.html">CUtente</a></li>
+                                                    <li class="class"><a href="../classes/ECampagna.html">ECampagna</a></li>
+                                                    <li class="class"><a href="../classes/ECartadicredito.html">ECartadicredito</a></li>
+                                                    <li class="class"><a href="../classes/ECommento.html">ECommento</a></li>
+                                                    <li class="class"><a href="../classes/EDonazione.html">EDonazione</a></li>
+                                                    <li class="class"><a href="../classes/EIndirizzo.html">EIndirizzo</a></li>
+                                                    <li class="class"><a href="../classes/EMailCheck.html">EMailCheck</a></li>
+                                                    <li class="class"><a href="../classes/EMedia.html">EMedia</a></li>
+                                                    <li class="class"><a href="../classes/EMediaCamp.html">EMediaCamp</a></li>
+                                                    <li class="class"><a href="../classes/EMediaUser.html">EMediaUser</a></li>
+                                                    <li class="class"><a href="../classes/EReward.html">EReward</a></li>
+                                                    <li class="class"><a href="../classes/EUtente.html">EUtente</a></li>
+                                                    <li class="class"><a href="../classes/FCampagna.html">FCampagna</a></li>
+                                                    <li class="class"><a href="../classes/FCartadicredito.html">FCartadicredito</a></li>
+                                                    <li class="class"><a href="../classes/FCommento.html">FCommento</a></li>
+                                                    <li class="class"><a href="../classes/FDatabase.html">FDatabase</a></li>
+                                                    <li class="class"><a href="../classes/FDonazione.html">FDonazione</a></li>
+                                                    <li class="class"><a href="../classes/FIndirizzo.html">FIndirizzo</a></li>
+                                                    <li class="class"><a href="../classes/FMailCheck.html">FMailCheck</a></li>
+                                                    <li class="class"><a href="../classes/FMediaCamp.html">FMediaCamp</a></li>
+                                                    <li class="class"><a href="../classes/FMediaUser.html">FMediaUser</a></li>
+                                                    <li class="class"><a href="../classes/FReward.html">FReward</a></li>
+                                                    <li class="class"><a href="../classes/FrontController.html">FrontController</a></li>
+                                                    <li class="class"><a href="../classes/FUtente.html">FUtente</a></li>
+                                                    <li class="class"><a href="../classes/Installation.html">Installation</a></li>
+                                                    <li class="class"><a href="../classes/mailcheck.html">mailcheck</a></li>
+                                                    <li class="class"><a href="../classes/Upload.html">Upload</a></li>
+                                                    <li class="class"><a href="../classes/VCampagna.html">VCampagna</a></li>
+                                                    <li class="class"><a href="../classes/VDonazione.html">VDonazione</a></li>
+                                                    <li class="class"><a href="../classes/VErrore.html">VErrore</a></li>
+                                                    <li class="class"><a href="../classes/VInfo.html">VInfo</a></li>
+                                                    <li class="class"><a href="../classes/VRicerca.html">VRicerca</a></li>
+                                                    <li class="class"><a href="../classes/VUtente.html">VUtente</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </section>
+    <section class="row-fluid">
+        <div class="span10 offset2">
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <nav>
+                                                <a href="../namespaces/default.html">\</a> <i class="icon-level-up"></i>
+                                            </nav>
+                    <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal"><i class="icon-code"></i></a>
+
+                    <h1><small>\</small>CUtente</h1>
+                    <p><em></em></p>
+                    
+                    
+                                        
+                    <section id="summary">
+                        <h2>Summary</h2>
+                        <section class="row-fluid heading">
+                            <section class="span4">
+                                <a href="#methods">Methods</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#properties">Properties</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#constants">Constants</a>
+                            </section>
+                        </section>
+                        <section class="row-fluid public">
+                            <section class="span4">
+                                                                    <a href="../classes/CUtente.html#method_Login" class="">Login()</a><br />
+                                                                    <a href="../classes/CUtente.html#method_LoginRemind" class="">LoginRemind()</a><br />
+                                                                    <a href="../classes/CUtente.html#method_Remindme" class="">Remindme()</a><br />
+                                                                    <a href="../classes/CUtente.html#method_EnterIn" class="">EnterIn()</a><br />
+                                                                    <a href="../classes/CUtente.html#method_activation" class="">activation()</a><br />
+                                                                    <a href="../classes/CUtente.html#method_activate" class="">activate()</a><br />
+                                                                    <a href="../classes/CUtente.html#method_Registration" class="">Registration()</a><br />
+                                                                    <a href="../classes/CUtente.html#method_SignIn" class="">SignIn()</a><br />
+                                                                    <a href="../classes/CUtente.html#method_profile" class="">profile()</a><br />
+                                                                    <a href="../classes/CUtente.html#method_removeUser" class="">removeUser()</a><br />
+                                                                    <a href="../classes/CUtente.html#method_UpdateProfile" class="">UpdateProfile()</a><br />
+                                                                    <a href="../classes/CUtente.html#method_UpdateImg" class="">UpdateImg()</a><br />
+                                                                    <a href="../classes/CUtente.html#method_DeleteImg" class="">DeleteImg()</a><br />
+                                                                    <a href="../classes/CUtente.html#method_VerifyModify" class="">VerifyModify()</a><br />
+                                                                    <a href="../classes/CUtente.html#method_VerifyRegistration" class="">VerifyRegistration()</a><br />
+                                                                    <a href="../classes/CUtente.html#method_logout" class="">logout()</a><br />
+                                                                    <a href="../classes/CUtente.html#method_NotActivated" class="">NotActivated()</a><br />
+                                                                    <a href="../classes/CUtente.html#method_isLogged" class="">isLogged()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No public properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No constants found</em>
+                                                            </section>
+                        </section>
+                        <section class="row-fluid protected">
+                            <section class="span4">
+                                                                    <em>No protected methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No protected properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                        <section class="row-fluid private">
+                            <section class="span4">
+                                                                    <em>No private methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No private properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                    </section>
+                </div>
+                <aside class="span4 detailsbar">
+                                        
+                    
+                    <dl>
+                        <dt>File</dt>
+                            <dd><a href="../files/Controller.CUtente.html"><div class="path-wrapper">Controller\CUtente.php</div></a></dd>
+                                                <dt>Package</dt>
+                            <dd><div class="namespace-wrapper">Default</div></dd>
+                                                <dt>Class hierarchy</dt>
+                            <dd class="hierarchy">
+                                                                                                                                                                    <div class="namespace-wrapper">\CUtente</div>
+                            </dd>
+
+                        
+                        
+                        
+                        
+                                                                        </dl>
+                    <h2>Tags</h2>
+                    <table class="table table-condensed">
+                                            <tr><td colspan="2"><em>None found</em></td></tr>
+                                        </table>
+                </aside>
+            </div>
+
+                        
+                        
+                                    <a id="methods" name="methods"></a>
+            <div class="row-fluid">
+                <div class="span8 content class"><h2>Methods</h2></div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_Login" name="method_Login" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">Login()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">Login() </pre>
+                <p><em>Funzione che consente il login di un utente registrato. Si possono avere diversi casi:
+1) se il metodo della richiesta HTTP è GET:
+  - se l&#039;utente è già loggato viene reindirizzato alla homepage;
+  - se l&#039;utente non è loggato si richiama la funzione Remindme() per verificare se l&#039;utente ha selezionato l&#039;opzione &quot;ricordami&quot;
+    nel qual caso si visualizza un form di login nel quale gli è possibile accedere direttamente senza reinserire i suoi dati;
+    viceversa viene visualizzato il form di login e l&#039;utente deve inserire i propri dati.</em></p>
+                <p>2) se il metodo della richiesta HTTP è POST viene richiamata la funzione EnterIn().
+3) se il metodo è diverso da quelli sopra --&gt;errore.</p>
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_LoginRemind" name="method_LoginRemind" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">LoginRemind()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">LoginRemind() </pre>
+                <p><em>Funzione che viene utilizzata per l&#039;accesso con l&#039;opzione ricordami. Si possono avere diverse situazioni:
+1) se i dati del cookie sono corretti richiama EnterIn() e passa l&#039;utente;
+2) se i dati del cookie non sono corretti provvede ad eliminarlo e mostra nuovamente la pagina di login.</em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_Remindme" name="method_Remindme" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">Remindme()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">Remindme() </pre>
+                <p><em>Funzione che verifica la presenza del cookie contente i dati dell&#039;utente. Si possono avere diverse situazioni:
+1) se è presente si vefica la correttezza dei dati del cookie e nel caso siano corretti viene restituito l&#039;utente;
+2) se il cookie non è presente si restituisce null.</em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_EnterIn" name="method_EnterIn" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">EnterIn()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">EnterIn(  <span class="argument">$user = null</span>) </pre>
+                <p><em>Funzione che si occupa di verifica l&#039;esistenza di un utente con username e password inseriti nel form di login. Si possono avere diverse situazioni:
+1) se viene passato $user allora vuol dire che l&#039;utente ha sfruttato l&#039;opzione remind me e si può avviare la sessione.</em></p>
+                <p>2) se non viene passato $user si verifica prima che i dati inseriti nel form rispettino i criteri richiesti e se sono corretti
+si verifica l'esistenza di un utente con username e password inseriti.</p>
+<ul>
+<li>nel caso in cui esiste si avvia la sessione utente;</li>
+<li>nel caso contrario si restituisce la pagina di login con la segnalazione di username o password errati.</li>
+</ul>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$user </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_activation" name="method_activation" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">activation()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">activation() </pre>
+                <p><em></em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_activate" name="method_activate" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">activate()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">activate() </pre>
+                <p><em>Metodo che provvede a verificare che il pin di attivazione inserito dall&#039;utente nell&#039;apposito form
+corrisponde a quello inviato tramite mail e:
+1) nel caso in cui il metodo VerifyCode() (che provvede a verificare tramite DB se il pin corrisponde ed eventualmente a contrassegnare
+   come attivato l&#039;account) restituisca &quot;true&quot; mostra la homepage;
+&quot;) nel caso in cui il metodo VerifyCode() restituisca &quot;false&quot; mostra nuovamente la pagina di attivazione.</em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_Registration" name="method_Registration" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">Registration()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">Registration() </pre>
+                <p><em></em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_SignIn" name="method_SignIn" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">SignIn()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">SignIn() </pre>
+                <p><em></em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_profile" name="method_profile" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">profile()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">profile(  <span class="argument">$param = null</span>) </pre>
+                <p><em>Metodo che mostra il profilo dell&#039;utente loggato o il profilo di un altro utente a seconda del tipo di URL:
+1) URL: /AppCrowdFunding/Utente/profile?username=nomeutente --&gt; mostra il profilo dell&#039;utente corrispondente all&#039;username (se esiste);
+2) URL: /AppCrowdFunding/Utente/profile --&gt; mostra il profilo dell&#039;utente loggato (se è loggato)
+3) in tutti gli altri casi (utente non loggato o username inesistente) mostra la homepage.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$param </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_removeUser" name="method_removeUser" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">removeUser()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">removeUser(  <span class="argument">$username = null</span>) </pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$username </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_UpdateProfile" name="method_UpdateProfile" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">UpdateProfile()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">UpdateProfile() </pre>
+                <p><em></em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_UpdateImg" name="method_UpdateImg" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">UpdateImg()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">UpdateImg() </pre>
+                <p><em>Funzione che consente ad un utente di modificare l&#039;immagine del proprio profilo.</em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_DeleteImg" name="method_DeleteImg" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">DeleteImg()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">DeleteImg() </pre>
+                <p><em></em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_VerifyModify" name="method_VerifyModify" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">VerifyModify()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">VerifyModify() </pre>
+                <p><em>Metodo che viene utilizzato per verificare se l&#039;input inserito dall&#039;utente nel form di modifica del profilo utente è corretto o meno.</em></p>
+                <p>Più precisamente viene effettuata una richiesta AJAX al server e dalla risposta si capisce se l'input è corretto o meno.</p>
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_VerifyRegistration" name="method_VerifyRegistration" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">VerifyRegistration()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">VerifyRegistration() </pre>
+                <p><em>Metodo che viene utilizzato per verificare se l&#039;input inserito nel form di registrazione rispetta i criteri previsti.</em></p>
+                <p>L'interrogazione viene effettuata mediante richiesta AJAX ogni qualvolta c'è un cambiamento della input box.</p>
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_logout" name="method_logout" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">logout()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">logout() </pre>
+                <p><em>Metodo che provvede alla rimozione delle variabili di sessione, alla sua distruzione e a rinviare alla homepage</em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_NotActivated" name="method_NotActivated" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">NotActivated()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">NotActivated() </pre>
+                <p><em></em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_isLogged" name="method_isLogged" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">isLogged()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">isLogged() </pre>
+                <p><em></em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                                    </div>
+    </section>
+
+    <div id="source-view" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="source-view-label">CUtente.php</h3>
+        </div>
+        <div class="modal-body">
+            <pre data-src="../files/Controller\CUtente.php.txt" class="language-php line-numbers"></pre>
+        </div>
+    </div>
+
+    <footer class="row-fluid">
+        <section class="span10 offset2">
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <section class="row-fluid footer-sections">
+                        <section class="span4">
+                                                        <h1><i class="icon-code"></i></h1>
+                            <div>
+                                <ul>
+                                                                    </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-bar-chart"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../graphs/class.html">Class Hierarchy Diagram</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-pushpin"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../reports/errors.html">Errors</a></li>
+                                    <li><a href="../reports/markers.html">Markers</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <hr />
+                    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
+                    on September 10th, 2018 at 18:09.
+                </section>
+            </section>
+        </section>
+    </footer>
+</div>
+
+</body>
+</html>

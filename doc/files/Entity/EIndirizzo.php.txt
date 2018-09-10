@@ -1,0 +1,259 @@
+<?php
+ /**
+ * La classe EIndirizzo contiene tutti gli attributi e metodi base riguardanti l'indirizzo. 
+ * Contiene i seguenti attributi (e i relativi metodi):
+ * -id: è un identificativo autoincrement, relativo al indirizzo;
+ * -city: città di residenza;
+ * -street: via;
+ * -number: numero civico;
+ * -zipcode: codice postale;
+ * -country: nazione;
+ * -iduser: id utente.
+ * @author Gruppo 3
+ * @package Entity
+ */
+
+class EIndirizzo{
+    /** id relativo all'indirizzo */
+    private $id;
+    /** città relativa all'indirizzo */
+    private $city;
+    /**via relativa all'indirizzo */
+    private $street;
+    /**numero civico */
+    private $number;
+    /**codice di avviamento postale */
+    private $zipcode;
+    /**nazione relativa all'indirizzo */
+    private $country;
+    /** id dell'user che possiede quell'indirizzo */
+    private $iduser;
+    /** costruttore */
+    public function __construct($ci,$str,$num,$zc,$co,$idu=null){
+        $this->city=$ci;
+        $this->street=$str;
+        $this->number=$num;
+        $this->zipcode=$zc;
+        $this->country=$co;
+        $this->iduser=$idu;
+    }
+
+
+
+    /**
+     * 
+     * @param int $id dell'indirizzo
+     */
+
+    public function setId($id){
+        $this->id=$id;
+    }
+
+
+
+    /**
+     * 
+     * @param string $ci città dell'indirizzo
+     */
+
+    public function setCity($ci){
+        $this->city=$ci;
+    }
+
+
+
+    /**
+     * 
+     * @param string $st via relativa all'indirizzo
+     */
+
+
+    public function setStreet($st){
+        $this->street=$st;
+    }
+
+
+
+    /**
+     * 
+     * @param int $num numero civico
+     */
+
+    public function setNum($num){
+        $this->number=$num;
+    }
+
+
+
+    /**
+     * 
+     * @param int $zc codice di avviamento postale
+     */
+
+    public function setZipcode($zc){
+        $this->zipcode=$zc;
+    }
+
+
+
+    /**
+     * 
+     * @param string $co paese relativo all'indirizzo
+     */
+
+    public function setCountry($co){
+        $this->country=$co;
+    }
+
+
+
+
+    /**
+     * 
+     * @param int $idu dell'utente che possiede quell'indirizzo
+     */
+
+    public function setIdu($idu){
+        $this->iduser=$idu;
+    }
+
+    /**
+     * 
+     * @return string la città relativa all'indirizzo
+     */
+
+
+
+    public function getCity(){
+        return $this->city;
+    }
+
+    /**
+     * 
+     * @return string la via relativa all'indirizzo
+     */
+
+
+    public function getStreet(){
+        return $this->street;
+    }
+
+    /**
+     * 
+     * @return int numero civico
+     */
+
+
+    public function getNum(){
+        return $this->number;
+    }
+
+    /**
+     * 
+     * @return int codice di avviamento postale
+     */
+
+
+    public function getZipcode(){
+        return $this->zipcode;
+    }
+
+    /**
+     * 
+     * @return string paese
+     */
+
+
+    public function getCountry(){
+        return $this->country;
+    }
+
+    /**
+     * 
+     * @return int id dell'user con quell'indirizzo
+     */
+
+
+    public function getIduser(){
+        return $this->iduser;
+    }
+
+
+    /**
+     * 
+     * @return int id dell'indirizzo
+     */
+    public function getId(){
+        return $this->id;
+    }
+    /** Stampa le informazioni riguardanti gli indirizzi */
+    public function __toString(){
+        $st="ID: ".$this->getId()." City: ".$this->getCity()." street: ".$this->getStreet()." number: ".$this->getNum();
+        return $st;
+    }
+
+    /***********validation**************/
+
+    /**
+     * Verificano la corrispondenza con il valore in input con i requisiti richiesti
+     * @param $val valore inserito
+     * @return bool
+     */
+    static function valCity($val){
+        $replace=array(" ","'");
+        if(!preg_match("/^([a-zA-Z]{4,50})$/",str_replace($replace,'',$val))){
+            return false;
+        }
+        else return true;
+    }
+
+    /**
+     * Verificano la corrispondenza con il valore in input con i requisiti richiesti
+     * @param $val valore inserito
+     * @return bool
+     */
+    static function valStreet($val){
+        $replace=array(" ","'");
+        if(!preg_match("/^([a-zA-Z]{4,100})$/",str_replace($replace,'',$val))){
+            return false;
+        }
+        else return true;
+    }
+
+    /**
+     * Verificano la corrispondenza con il valore in input con i requisiti richiesti
+     * @param $val valore inserito
+     * @return bool
+     */
+    static function valNumber($val){
+        if(!preg_match("/^([0-9]{1,4})$/",$val)){
+            return false;
+        }
+        else return true;
+    }
+
+    /**
+     * Verificano la corrispondenza con il valore in input con i requisiti richiesti
+     * @param $val valore inserito
+     * @return bool
+     */
+    static function valZipcode($val){
+        if(!preg_match("/^([0-9]{4,5})$/",$val)){
+            return false;
+        }
+        else return true;
+    }
+
+    /**
+     * Verificano la corrispondenza con il valore in input con i requisiti richiesti
+     * @param $val valore inserito
+     * @return bool
+     */
+    static function valCountry($val){
+        $replace=array(" ","'");
+        if(!preg_match("/^([a-zA-Z]{4,100})$/",str_replace($replace,'',$val))){
+            return false;
+        }
+        else return true;
+    }
+}

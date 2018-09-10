@@ -1,0 +1,103 @@
+<?php
+require 'include.php';
+
+/**
+ * La classe EReward contiene tutti gli attributi e metodi base riguardanti i reward. 
+ * Contiene i seguenti attributi (e i relativi metodi):
+ * -id: è un identificativo autoincrement, relativo ai reward;
+ * -namereward: nome del reward;
+ * -pledged: importo necessario per acquisire il reward;
+ * -description: descrizione reward;
+ * -idcamp: id campagna.
+ *  @author Gruppo 3
+ *  @package Entity
+ */ 
+class EReward
+{   
+    /**id relativa alla reward */
+    private $id;
+    /**nome della reward */
+    private $namereward;
+    /**donazione minima affinche si riceva un reward*/
+    private $pledged; 
+    /** descrizione del reward*/
+    private $descriptionrew; 
+    /**id della campagna alla quale è associata la reward */
+    private $idcamp;
+    /** costruttore */
+    public function __construct($nare, $ple, $der,$idcamp){
+        $this->namereward=$nare;
+        $this->pledged=$ple;
+        $this->descriptionrew=$der;
+        $this->idcamp=$idcamp;
+    }
+    /**
+     * @return int id reward
+     */
+    public function getId(){
+        return $this->id;
+    }
+    /**
+     * @param int $id reward
+     */
+    public function setId($id){
+        $this->id=$id;
+    }
+    /**
+     * @return int id campagna
+     */
+    public function getIdCamp(){
+        return $this->idcamp;
+    }
+    /**
+     * @param int $id campagna
+     */
+    public function setIdCamp($id){
+        $this->idcamp=$id;
+    }
+    /**
+     * @return string nome reward
+     */
+    public function getName () {
+        return $this->namereward;
+    }
+    /**
+     * @param string $nare nome reward
+     */
+    public function setName ($nare){
+        $this->namereward=$nare;
+    }
+    /**
+     * @return float donazione minima
+     */
+    public function getPledged () {
+        return $this->pledged;
+    }
+    /**
+     * @param float $ple donazione minima
+     */
+    public function setPledged ($ple){
+        $this->pledged=$ple;
+    }
+    /**
+     * @return string descrizione reward
+     */
+    public function getDescriptionRe () {
+        return $this->descriptionrew;
+    }
+    /**
+     * @param string $der descrizione reward
+     */
+    public function setDescriptionRe ($der){
+        $this->descriptionre=$der;
+    }
+    /** 
+     * Stampa le informazioni del reward
+     */
+    public function __toString(){
+        $st="ID: ".$this->getId()." Name: ".$this->getName()." Description: ".$this->getDescriptionRe()." Pledged: ".$this->getPledged();
+        return $st;
+    }
+}
+
+
