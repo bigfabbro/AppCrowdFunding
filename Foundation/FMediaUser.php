@@ -2,7 +2,7 @@
 
 require_once 'include.php';
 /**
- * La classe FMediaUser fornisce query per gli oggetti EMediaUser
+ * La classe FMediaUser fornisce query per gli oggetti EMediaUser (foto riguardanti l'utente)
  * @author Gruppo 3
  * @package Foundation
  */

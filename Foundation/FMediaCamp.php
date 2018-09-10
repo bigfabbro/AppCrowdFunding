@@ -2,6 +2,12 @@
 
 require_once 'include.php';
 
+/**
+ * La classe FMediaCamp fornisce query per gli oggetti EMediaCamp (foto riguardanti la campagna)
+ * @author Gruppo 3
+ * @package Foundation
+ */
+
 class FMediaCamp
 {
 
@@ -48,6 +54,12 @@ class FMediaCamp
     public static function getValues(){
         return static::$values;
     }
+
+    /**
+     * Metodo che permette la store del media relativo alla campagna
+     * @param object $media
+     * @return int $id dell'oggetto salvato
+     */
     public static function store($media){
         $sql="INSERT INTO ".static::getTables()." VALUES ".static::getValues();
         $db=FDatabase::getInstance();
@@ -55,6 +67,12 @@ class FMediaCamp
         if($id) return $id;
         else return null;
     }
+
+    /**
+     * Metodo che permette la load del media della campagna in base al proprio id
+     * @param int $id del media
+     * @return object $media 
+     */
 
     public static function loadById($id){
         $sql="SELECT * FROM ".static::getTables()." WHERE id=".$id.";";
@@ -68,6 +86,11 @@ class FMediaCamp
         }
         else return null;
     }
+    /**
+     * Metodo che consente la load del media di una campagna in base all'id di quest'ultima
+     * @param int $id della campagna
+     * @return object $media associato a quella campagna 
+     */
 
     public static function loadByIdCamp($id){
         $sql="SELECT * FROM ".static::getTables()." WHERE idcamp=".$id.";";
@@ -92,7 +115,11 @@ class FMediaCamp
         }
         return null;
     }
-    
+    /**
+     * Metodo che permette la cancellazione del media di una campagna in base al proprio id
+     * @param int $id del media della campagna
+     * @return bool
+     */
     public static function delete($id){
         $sql="DELETE FROM ".static::getTables()." WHERE id=".$id.";";
         $db=FDatabase::getInstance();
