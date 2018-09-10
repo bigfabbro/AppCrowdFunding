@@ -8,7 +8,7 @@ require_once 'include.php';
  * - id: è un identificativo autoincrement, relativo alla donazione
  * - amount: quantità di denaro che si desidera donare
  * - date: data relativa alla donazione
- * - reward: 
+ * - reward: ricompense
  * - idutente: id dell'utente che effettua la donazione
  * - idcc: carta di credito con cui si effettua la donazione
  * @author Gruppo 3
@@ -35,7 +35,7 @@ class EDonazione
     private $idcc;
 
 
-
+    /** costruttore */
     public function __construct($amount, $date, $reward=null, $idutente, $idcamp, $idcc)
     {
         $this->amount=$amount;
@@ -235,7 +235,11 @@ class EDonazione
     
 
 
-
+    /**
+     * Verificano la corrispondenza con il valore in input con i requisiti richiesti
+     * @param $val valore inserito
+     * @return bool
+     */
     static function valAmount($val):bool{
         $replace=array(" ","'");
         if(!preg_match("/^([0-9]{1,10})$/",str_replace($replace,'',$val))){
@@ -244,7 +248,7 @@ class EDonazione
         else return true;
     }
     
-    
+    /** Stampa le informazioni sulla donazione */
     public function __toString(){
         $st="Id: ".$this->getId()." Amount: ".$this->getAmount()." Data: ".$this->getDate()." Reward: ".$this->getReward()."IdCamp:".$this->getIdCamp();
         return $st;

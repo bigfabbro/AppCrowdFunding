@@ -1,34 +1,60 @@
 <?php
 ini_set('max_execution_time', 300);
 require_once 'include.php';
+
+/**
+ * La classe EMailCheck contiene tutti gli attributi e metodi base riguardanti l'email. 
+ * Contiene i seguenti attributi (e i relativi metodi):
+ * -iduser: id dell'utente;
+ * -pin: codice di attivazione.
+ *  @author Gruppo 3
+ *  @package Entity
+ */ 
 class EMailCheck {
-
+    /** Email di systema */
     static $systemMail='societyofunding@gmail.com';
+    /** Percorso utente login */
     static $path='localhost/AppCrowdFunding/Utente/login';
+    /** id utente */
     private $iduser;
+    /** codice di attivazione */
     private $pin;
-
+    /** costruttore */
     public function __construct($id=null,$p=null){
        $this->iduser=$id;
        $this->pin=$p;
     }
-
+    /** 
+     * @param int $id user
+     */
     public function setIdUser($id){
         $this->iduser=$id;
     }
-
+    /**
+     * @param int $p pin
+     */
     public function setPin($p){
         $this->pin=$p;
     }
-
+    /**
+     * @return int id user
+     */
     public function getIdUser(){
         return $this->iduser;
     }
-
+    /**
+     * @return int codice pin
+     */
     public function getPin(){
         return $this->pin;
     }
 
+    /**
+     * Funzione che genere ed invia l'email per l'attivazione dell'account.
+     * @param string $email dell'utente
+     * @param int $user id dell'utente
+     * @return bool 
+     */
     public function sendActivEmail($email,$user):bool{
       $smarty=ConfSmarty::configuration();
       $mailobject="Mail di attivazione account Society of Funding";
@@ -46,7 +72,10 @@ class EMailCheck {
       if(mail($email, $mailobject, $message, $header)) return true;
       else return false;
     }
-
+    /**
+     * Funzione che genere un pin di 5 cifre casualmente
+     * @return int codice pin generato
+     */
     public function generate5PIN(){
         $pin="";
         for($i=0; $i<5; $i++){

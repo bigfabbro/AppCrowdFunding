@@ -1,7 +1,14 @@
 <?php
  /**
- * La classe EIndirizzo contiene tutti gli attributi e metodi 
- * base riguardanti l'indirizzo. 
+ * La classe EIndirizzo contiene tutti gli attributi e metodi base riguardanti l'indirizzo. 
+ * Contiene i seguenti attributi (e i relativi metodi):
+ * -id: è un identificativo autoincrement, relativo al indirizzo;
+ * -city: città di residenza;
+ * -street: via;
+ * -number: numero civico;
+ * -zipcode: codice postale;
+ * -country: nazione;
+ * -iduser: id utente.
  * @author Gruppo 3
  * @package Entity
  */
@@ -21,7 +28,7 @@ class EIndirizzo{
     private $country;
     /** id dell'user che possiede quell'indirizzo */
     private $iduser;
-
+    /** costruttore */
     public function __construct($ci,$str,$num,$zc,$co,$idu=null){
         $this->city=$ci;
         $this->street=$str;
@@ -176,19 +183,22 @@ class EIndirizzo{
      * 
      * @return int id dell'indirizzo
      */
-
-
     public function getId(){
         return $this->id;
     }
-
+    /** Stampa le informazioni riguardanti gli indirizzi */
     public function __toString(){
         $st="ID: ".$this->getId()." City: ".$this->getCity()." street: ".$this->getStreet()." number: ".$this->getNum();
         return $st;
     }
 
-    /**validation*/
+    /***********validation**************/
 
+    /**
+     * Verificano la corrispondenza con il valore in input con i requisiti richiesti
+     * @param $val valore inserito
+     * @return bool
+     */
     static function valCity($val){
         $replace=array(" ","'");
         if(!preg_match("/^([a-zA-Z]{4,50})$/",str_replace($replace,'',$val))){
@@ -197,6 +207,11 @@ class EIndirizzo{
         else return true;
     }
 
+    /**
+     * Verificano la corrispondenza con il valore in input con i requisiti richiesti
+     * @param $val valore inserito
+     * @return bool
+     */
     static function valStreet($val){
         $replace=array(" ","'");
         if(!preg_match("/^([a-zA-Z]{4,100})$/",str_replace($replace,'',$val))){
@@ -205,6 +220,11 @@ class EIndirizzo{
         else return true;
     }
 
+    /**
+     * Verificano la corrispondenza con il valore in input con i requisiti richiesti
+     * @param $val valore inserito
+     * @return bool
+     */
     static function valNumber($val){
         if(!preg_match("/^([0-9]{1,4})$/",$val)){
             return false;
@@ -212,6 +232,11 @@ class EIndirizzo{
         else return true;
     }
 
+    /**
+     * Verificano la corrispondenza con il valore in input con i requisiti richiesti
+     * @param $val valore inserito
+     * @return bool
+     */
     static function valZipcode($val){
         if(!preg_match("/^([0-9]{4,5})$/",$val)){
             return false;
@@ -219,6 +244,11 @@ class EIndirizzo{
         else return true;
     }
 
+    /**
+     * Verificano la corrispondenza con il valore in input con i requisiti richiesti
+     * @param $val valore inserito
+     * @return bool
+     */
     static function valCountry($val){
         $replace=array(" ","'");
         if(!preg_match("/^([a-zA-Z]{4,100})$/",str_replace($replace,'',$val))){

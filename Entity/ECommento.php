@@ -1,10 +1,22 @@
 <?php
 require_once 'include.php';
+
+/**
+ * La classe ECommento contiene tutti gli attributi e metodi base riguardanti i commenti. 
+ * Contiene i seguenti attributi (e i relativi metodi):
+ * -id: è un identificativo autoincrement, relativo al commento;
+ * -user: utente che ha inserito il commento;
+ * -text: contenuto del commento;
+ * -date: data del commento;
+ * -idcamp: id della campagna per la quale si effettua il commento.
+ * @author Gruppo 3
+ * @package Entity
+ */
 class ECommento
 {
     /**id relativo al commento */
     private $id;
-
+    /** utente che ha inserito il commento */
     private $user;
     /**testo del commento */
     private $text;
@@ -12,54 +24,76 @@ class ECommento
     private $date;
     /**id della campagna per la quale si effettua il commento */
     private $idcamp;
-
+    /** costruttore */
     public function __construct($user,$text,$date,$idcamp){
         $this->user=$user;
         $this->text=$text;
         $this->date=$date;
         $this->idcamp=$idcamp;
     }
-    
+    /**
+     * @return int id commento
+     */
     public function getId(){
         return $this->id;
     }
-    
+    /**
+     * @param int $id commento
+     */
     public function setId($id){
         $this->id=$id;
     }
-    
+    /**
+     * @return int id campagna
+     */
     public function getIdCamp(){
         return $this->idcamp;
     }
-    
+    /**
+     * @param int $id campagna
+     */
     public function setIdCamp($id){
         $this->idcamp=$id;
     }
-    
+    /**
+     * @return int id utente
+     */
     public function getUser () {
         return $this->user;
     }
-    
+    /**
+     * @param int $user id utente
+     */
     public function setUser ($user){
         $this->user=$user;
     }
-    
+    /**
+     * @return string testo messaggio
+     */
     public function getText () {
         return $this->text;
     }
-    
+    /**
+     * @param string $text testo messaggio
+     */
     public function setText($text){
         $this->text=$text;
     }
-    
+    /**
+     * @return date data commento
+     */
     public function getDate () {
         return $this->date;
     }
-    
+    /**
+     * @param date $date data commento
+     */
     public function setDate($date){
         $this->date=$date;
     }
-
+    /**
+     * Stampa le informazioni dei commenti
+     */
     public function __toString(){
         $st="ID: ".$this->getId()." User: ".$this->getUser()." Text: ".$this->getText()." Date: ".$this->getDate();
         return $st;

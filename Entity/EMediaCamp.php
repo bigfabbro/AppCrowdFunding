@@ -2,22 +2,36 @@
 
 require_once 'include.php';
 
+/**
+ * La classe EMediaCamp è un estensione della classe EMedia, e si occupa di associare il media alla campagna. 
+ * Contiene i seguenti attributi (e i relativi metodi):
+ * -idcamp: id della campagna.
+ *  @author Gruppo 3
+ *  @package Entity
+ */ 
 class EMediaCamp extends EMedia{
+    /** id campagna */
     private $idcamp;
-
+    /** costruttore */
     public function __construct($fname,$idcamp){
         parent::__construct($fname);
         $this->idcamp=$idcamp;
     }
-
+    /**
+     * @return int id campagna
+     */
     public function getIdCamp(){
         return $this->idcamp;
     }
-
+    /**
+     * @param int $id campagna
+     */
     public function setIdCamp($idcamp){
         $this->idcamp=$idcamp;
     }
-
+    /**
+     * Stampa le informazioni dei media della campagna
+     */
     public function __toString(){
         $st="Id: ".$this->getId()." filename: ".$this->getFname()." Data: ".$this->getData()." IdCamp: ".$this->getIdCamp();
         return $st;

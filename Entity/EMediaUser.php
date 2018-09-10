@@ -1,28 +1,48 @@
 <?php
 require_once 'include.php';
-class EMediaUser extends EMedia{
-    private $iduser;
 
+/**
+ * La classe EMediaUser è un estensione della classe EMedia, e si occupa di associare il media all'utente. 
+ * Contiene i seguenti attributi (e i relativi metodi):
+ * -iduser: id utente.
+ *  @author Gruppo 3
+ *  @package Entity
+ */
+class EMediaUser extends EMedia{
+    /** id utente */
+    private $iduser;
+    /** costruttore */
     public function __construct($fname,$iduser){
         parent::__construct($fname);
         $this->iduser=$iduser;
     }
-
+    /**
+     * @return int iduser
+     */
     public function getIdUser(){
         return $this->iduser;
     }
-
+    /**
+     * @param int id user
+     */
     public function setIdUser($iduser){
         $this->iduser=$iduser;
     }
-
+    /**
+     * Stampa le informazioni riguardati i media user
+     */
     public function __toString(){
         $st="Id: ".$this->getId()." filename: ".$this->getFname()." Data: ".$this->getData()." IdUser: ".$this->getiduser();
         return $st;
     }
 
-    //validation
+    /********************validation*******************/
 
+    /**
+     * Verificano la corrispondenza con il valore in input con i requisiti richiesti
+     * @param $val valore inserito
+     * @return bool
+     */
     static function valPic($pictype) :bool {
         if($pictype=="image/jpeg" || $pictype=="image/png") return true;
         else return false;
