@@ -2,6 +2,11 @@
 
 require_once 'include.php';
 
+/**
+ * La classe FUtente fornisce query per gli oggetti EUtente
+ * @author Gruppo 3
+ * @package Foundation
+ */
 
 class FUtente
 {
@@ -52,7 +57,12 @@ class FUtente
         if($id) return $id;
         else return null;
     }
-
+ 
+    /**
+     * Funzione ch permette la load dell'utente in base all'id
+     * @param int $id dell'user
+     * @return object $user 
+     */
     public static function loadById($id){
         $sql="SELECT * FROM ".static::getTables()." WHERE id=".$id.";";
         $db=FDatabase::getInstance();
@@ -65,6 +75,12 @@ class FUtente
         }
         else return null;
     }
+
+    /**
+     * Funzione ch permette la load dell'utente in base all'username
+     * @param string $username dell'user
+     * @return object $user 
+     */
 
     public static function loadByUsername($username){
         $sql="SELECT * FROM ".static::getTables()." WHERE username='".$username."';";
@@ -79,6 +95,12 @@ class FUtente
         else return null;
     }
 
+    /** 
+     * Funzione che permette la delete dell'utente in base all'id
+     * @param int $id dell'utente che si vuole eliminare
+     * @return bool 
+     */
+
     public static function delete($id){
         $sql="DELETE FROM ".static::getTables()." WHERE id=".$id.";";
         $db=FDatabase::getInstance();
@@ -86,11 +108,27 @@ class FUtente
         else return false;
     }
 
+     /** 
+     * Funzione che permette di modificare il numero di telefono 
+     * di un certo utente
+     * @param int $id dell'utente che vuole effettuare la modifica
+     * @param string $telnum numero di telefono
+     * @return bool 
+     */
+
     public static function UpdateTelNum($id,$telnum){
         $field="telnumber";
         if(FUtente::update($id,$field,$telnum)) return true;
         else return false;
     }
+     /** 
+     * Funzione che permette di modificare la data di nascita
+     * di un certo utente
+     * @param int $id dell'utente che vuole effettuare la modifica
+     * @param date $datan data di nascita "nuova"
+     * @return bool 
+     */
+
 
     public static function UpdateDatan($id,$datan){
         $field="datan";
@@ -98,11 +136,27 @@ class FUtente
         else return false;
     }
 
+     /** 
+     * Funzione che permette di modificare la descrizione
+     * di un certo utente
+     * @param int $id dell'utente che vuole effettuare la modifica
+     * @param string $description "nuova"
+     * @return bool 
+     */
+
     public static function UpdateDescription($id,$description){
         $field="description";
         if(FUtente::update($id,$field,$description)) return true;
         else return false;
     }
+
+     /** 
+     * Funzione che permette di modificare la variabile di 
+     * di un certo utente
+     * @param int $id dell'utente che vuole effettuare la modifica
+     * @param bool $activate 
+     * @return bool 
+     */
 
     public static function UpdateActivate($id,$activate){
         $field="activate";
@@ -110,12 +164,30 @@ class FUtente
         else return false;
     }
 
+    /** 
+     * Funzione che permette di modificare una generico attributo dell'utente
+     * @param int $id dell'utente che vuole effettuare la modifica
+     * @param string $field campo da modificare
+     * @param  string $newvalue nuovo valore
+     * @return bool 
+     */
+
+
     public static function Update($id,$field,$newvalue){
         $sql="UPDATE ".static::getTables()." SET ".$field."='".$newvalue."' WHERE id=".$id.";";
         $db=FDatabase::getInstance();
         if($db->update($sql)) return true;
         else return false;
     }
+
+     /** 
+     * Funzione che verifica l'esistenza di un utente con quell'username e password
+     * @param int $id dell'utente che vuole effettuare la modifica
+     * @param string $username 
+     * @param  string $password
+     * @return object $user
+     */
+
 
     public static function ExistUserPass($username,$password){
         $sql="SELECT * FROM ".static::getTables()." WHERE username='".$username."' AND "."password='".$password."';";
@@ -130,6 +202,13 @@ class FUtente
         else return null;
     }
 
+     /** 
+     * Funzione che permette di verificare se esiste un utente con quell'username
+     * @param int $id dell'utente che vuole effettuare la modifica
+     * @param string $username da cercare
+     * @return bool 
+     */
+
     public static function ExistUsername($username){
         $sql="SELECT * FROM ".static::getTables()." WHERE username='".$username."';";
         $db=FDatabase::getInstance();
@@ -137,6 +216,13 @@ class FUtente
         if($result!=null) return true;
         else return false;
     }
+
+     /** 
+     * Funzione che permette di verificare se esite un utente con quella mail
+     * @param string $mail da cercare
+     * @return bool 
+     */
+
 
     public static function ExistMail($mail){
         $sql="SELECT * FROM ".static::getTables()." WHERE email='".$mail."';";

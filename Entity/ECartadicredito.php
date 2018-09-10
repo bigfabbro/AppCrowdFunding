@@ -143,7 +143,7 @@ require_once 'include.php';
 
     /**
      * 
-     * @param int $ccv della carta di credito
+     * @param string $ccv della carta di credito
      */
 
 
