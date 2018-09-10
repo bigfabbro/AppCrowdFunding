@@ -3,11 +3,16 @@ require 'include.php';
 
 
 class EReward
-{
+{   
+    /**id relativa alla reward */
     private $id;
+    /**nome della reward */
     private $namereward;
-    private $pledged; //donazione minima affinche si riceva un reward
-    private $descriptionrew; //descrizione del reward
+    /**donazione minima affinche si riceva un reward*/
+    private $pledged; 
+    /** descrizione del reward*/
+    private $descriptionrew; 
+    /**id della campagna alla quale è associata la reward */
     private $idcamp;
     
     public function __construct($nare, $ple, $der,$idcamp){

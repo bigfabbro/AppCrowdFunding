@@ -28,7 +28,12 @@ require_once 'include.php';
        );
     }
 
-    //** Metodo che consente di visualizzare la form della donazione (fa uso di smarty) */
+    /**
+     *  Metodo che consente di visualizzare la form della donazione 
+     * (fa uso di smarty) 
+     * @param object Campagna, la campagna per la quale si vuole effettuare 
+     * la donazione.
+     * */
 
        function showFormDonazione($campagna){
         if(CUtente::isLogged()) $this->smarty->assign('userlogged',$_SESSION['username']);
@@ -39,7 +44,14 @@ require_once 'include.php';
         $this->smarty->display('donation.tpl');
     }
 
-    //** Metodo che consente di visualizzare la form della donazione (fa uso di smarty) */
+    /** Metodo che consente di visualizzare la pagina dei ringraziamenti
+     *  dopo che l'utente ha effettuato una donazione che prevede
+     *  la reward (fa uso di smarty)
+     *  @param object donazione
+     *  @param object campagna
+     *  @param object reward
+     *  @param object user
+     * */
 
     function showGrazie(EDonazione $donazione, ECampagna $campagna, EReward $reward, EUtente $user){
         $this->smarty=ConfSmarty::configuration();
@@ -53,6 +65,15 @@ require_once 'include.php';
         $this->smarty->assign('Description',$reward-> getDescriptionRe ());
         $this->smarty->display('grazie.tpl');
     }
+
+    /** Metodo che consente di visualizzare la pagina dei ringraziamenti
+     *  dopo che l'utente ha effettuato una donazione che non prevede
+     *  la reward (fa uso di smarty)
+     *  @param object donazione
+     *  @param object campagna
+     *  @param object user
+     * */
+
     function showGrazie1(EDonazione $donazione, ECampagna $campagna, EUtente $user){
         $this->smarty=ConfSmarty::configuration();
         if(CUtente::isLogged()) $this->smarty->assign('userlogged',$_SESSION['username']);
@@ -65,6 +86,8 @@ require_once 'include.php';
         $this->smarty->assign('Description', "( there isn't any reward for you" );
         $this->smarty->display('grazie.tpl');
     }
+
+    /** Metodo che consente la visualizzazione della pagina di errore */
 
     function showErroreDon(){
         $this->smarty=ConfSmarty::configuration();

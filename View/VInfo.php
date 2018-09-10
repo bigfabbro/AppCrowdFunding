@@ -12,6 +12,9 @@ require_once 'include.php';
 
     private $smarty;
 
+    /** Metodo che consente la visualizzazione della pagina relativa alle info.
+     * Fa uso di smarty e viene richiamata all'interno di CInfo.
+     */
     function showInfo(){
         $this->smarty=ConfSmarty::configuration();
         if(CUtente::isLogged()) $this->smarty->assign('userlogged',$_SESSION['username']);

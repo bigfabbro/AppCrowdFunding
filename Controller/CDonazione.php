@@ -12,7 +12,9 @@ require_once 'include.php';
 
 class CDonazione{
   /**
-   * Metodo che permette di effettuare la donazione
+   * Metodo che permette di effettuare la donazione.
+   * @param int $idcamp, l'id della campagna per la quale si vuole
+   * effettuare la donazione.
    */
      static function Make($idcamp){
      $Campagna=FCampagna::loadById($idcamp);
@@ -62,6 +64,9 @@ class CDonazione{
   static function Donation($Campagna) {
    $view=new VDonazione();
    if($view->valFormDonation()){
+       /** Se l'utente è loggato e la carta di credito non è scaduta, viene creato un 
+        * nuovo oggetto Carta di Credito, quindi viene salvato sul db.
+        */
        if(CUtente::isLogged()&& ECartadicredito::CheckScadenza($_POST['expirationdate'])){
          $cc=new ECartadicredito($_POST['ownername'],$_POST['ownersurname'],$_POST['expirationdate'],$_POST['ccnumber'],$_POST['ccv']);
          $idcc=FCartadicredito::store($cc);
@@ -69,9 +74,12 @@ class CDonazione{
          $idcamp=$Campagna->getId();
          $donationoccurred=true;
          $amount=$_POST['amount'];
-         $rewards=$Campagna->getRew(); //richiamo il metodo contenuto in ECampagna che restituisce l'array contente le reward
-         $reward=NULL; //è l'id della reward che viene effettivamente assegnata alla donazione
-         $max=0; //importo della massima reward trovata
+         /*richiamo il metodo contenuto in ECampagna che restituisce l'array contente le reward */
+         $rewards=$Campagna->getRew(); 
+         /*è l'id della reward che viene effettivamente assegnata alla donazione*/
+         $reward=NULL; 
+         /*importo della massima reward trovata*/
+         $max=0; 
          /*per ogni reward contenuta nell'array rewards, se la donazione è maggiore del pledge
          * e se il pledge è maggiore di $max (importo della massima reward trovata)
          * allora, il donatore avrà diritto a quella reward (ricompensa)
@@ -83,7 +91,8 @@ class CDonazione{
            $reward=$rew->getId(); 
            }
         }
-
+        
+        /**Viene creato un nuovo oggetto Donazione, quindi viene salvato sul db  */
 
          $don=new EDonazione($_POST['amount'],date('Y-m-d'), $reward, $_SESSION['id'],$idcamp,$idcc);
          FDonazione::store($don); 

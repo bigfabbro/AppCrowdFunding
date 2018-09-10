@@ -4,7 +4,7 @@ require_once 'include.php';
 
 
 /**
- * La classe CDonazione implementa la funzionalità riguardante la donazione
+ * La classe CErrore implementa la funzionalità riguardanti l'errore
  * @author Gruppo 3
  * @package Controller
  */

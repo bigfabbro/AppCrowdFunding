@@ -221,6 +221,11 @@ require_once 'include.php';
         else return true;
     }
 
+    /**
+     * @return bool controlla la data di scadenza della carta di credito e se è scaduta
+     */
+
+
     static function valExpirationDate($val):bool{
         $date=explode('-',$val);
         $oggi = date("Y-m-d");
