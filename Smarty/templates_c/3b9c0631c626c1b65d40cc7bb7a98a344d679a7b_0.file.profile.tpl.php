@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-09-09 21:22:31
+/* Smarty version 3.1.32, created on 2018-09-10 10:12:46
   from 'C:\xampp\htdocs\AppCrowdFunding\Smarty\templates\profile.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b9572f7050757_90974631',
+  'unifunc' => 'content_5b96277ea47be9_30830388',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '3b9c0631c626c1b65d40cc7bb7a98a344d679a7b' => 
     array (
       0 => 'C:\\xampp\\htdocs\\AppCrowdFunding\\Smarty\\templates\\profile.tpl',
-      1 => 1536520940,
+      1 => 1536567162,
       2 => 'file',
     ),
   ),
@@ -25,7 +25,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:donprofile.tpl' => 1,
   ),
 ),false)) {
-function content_5b9572f7050757_90974631 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b96277ea47be9_30830388 (Smarty_Internal_Template $_smarty_tpl) {
 if ($_smarty_tpl->tpl_vars['donations']->value != null) {
 $_smarty_tpl->_assignInScope('doncount', count($_smarty_tpl->tpl_vars['donations']->value));
 }

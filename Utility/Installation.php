@@ -24,14 +24,12 @@ class Installation{
             if(!isset($_COOKIE['checkcoockie'])){$nocoockie=true; $smarty->assign('nocoockie',$nocoockie);} //si controlla se il cookie è presente (=cookie abilitati)
             if(!isset($_COOKIE['checkjs'])){$nojs=true; $smarty->assign('nojs',$nojs);} //si controlal se il cookie settato da javascript è presente (=javascript abilitato)
             if($nophpv || $nojs || $nocoockie){ // se uno dei requisiti non è verificato
-                setcookie('checkcoockie','vivaicoockie',time()+3600); //si prova a risettare il cookie 
                 $smarty->display('InstallationForm.tpl'); // si mostra nuovamente il form di installazione con gli errori
             }
             else{ // ... ovvero requisti verificati
                 setcookie('checkjs','',time()-3600); //si eliminano i cookie 
                 setcookie('checkcoockie','',time()-3600);
                 if(static::install()){ // si procede con l'installazione vera e propria
-                    setcookie('installation','YES'); // se va a buon fine si setta il cookie per la verifica dell'installazione
                     if($_POST['populate']=="yes") static::populate(); //se è stata selezionata la voce populate si popola il database.
                 }
                 header('Location: /AppCrowdFunding'); 
@@ -87,7 +85,7 @@ class Installation{
 
 // Funzione che verifica la presenza del cookie di installazione e quindi se quest'ultima è stata effettuata.
     static function VerifyInstallation():bool{ 
-        if(isset($_COOKIE['installation'])) return true;
+        if(file_exists('config.inc.php')) return true;
         else return false;
     }
 

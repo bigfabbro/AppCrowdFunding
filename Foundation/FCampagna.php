@@ -275,5 +275,12 @@ class FCampagna
         if($db->update($sql)) return true;
         else return false;
     }
+
+    static function delete($id){
+        $sql="DELETE FROM ".static::getTables()." WHERE id=".$id.";";
+        $db=FDatabase::getInstance();
+        if($db->delete($sql)) return true;
+        else return false;
+    }
 }
 

@@ -179,6 +179,15 @@ class CCampagna{
     }
 }
 
+  static function DeleteCamp(){
+      if(($_SERVER['REQUEST_METHOD']=="POST")){
+          if(CUtente::isLogged()){
+              $camp=FCampagna::loadById($_POST['id']);
+              if($camp->getFounder()==$_SESSION['id']) FCampagna::delete($_POST['id']);
+            }
+        }
+    }
+
   static function VerifyCreation(){
     if($_SERVER['REQUEST_METHOD']=="POST"){
         $view=new VCampagna();
