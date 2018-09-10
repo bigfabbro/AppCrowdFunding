@@ -20,7 +20,7 @@ class FMediaCamp
      /**
      * Questo metodo lega gli attributi dell'oggetto multimediale da inserire con i parametri della INSERT
      * @param PDOStatement $stmt 
-     * @param EMedia $md media i cui dati devono essere inseriti nel DB
+     * @param EMediaCamp $md media i cui dati devono essere inseriti nel DB
      */
     
     

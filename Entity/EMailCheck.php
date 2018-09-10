@@ -11,7 +11,7 @@ require_once 'include.php';
  *  @package Entity
  */ 
 class EMailCheck {
-    /** Email di systema */
+    /** Email di sistema */
     static $systemMail='societyofunding@gmail.com';
     /** Percorso utente login */
     static $path='localhost/AppCrowdFunding/Utente/login';
