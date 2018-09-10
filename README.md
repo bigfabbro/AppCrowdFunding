@@ -89,6 +89,7 @@ A questo punto è sufficiente porre la cartella dell'applicativo all'interno di 
 - nome del database;
 - nome utente;
 - password.
+
 In più è possibile scegliere, mediante apposita checkbox, se popolare o meno il database.
 
 ### Scelte progettuali 
