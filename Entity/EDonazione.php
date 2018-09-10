@@ -80,7 +80,7 @@ class EDonazione
     }
 
 
-       /**
+    /**
      * 
      * @return int id della reward
      */
@@ -218,7 +218,7 @@ class EDonazione
 
     /**
      * 
-     * @param bool $donationccourred 
+     * @param bool $donationccourred posto a true in caso di donazione effettuata
      */
 
 

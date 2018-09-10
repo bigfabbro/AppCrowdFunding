@@ -1,4 +1,5 @@
-/** Funzione che va a controllare che il contenuto di tutte le input box del form di donazione obbligatorie sia corretto. Si possono avere
+/** Funzione che va a controllare che il contenuto di tutte le input box del form di donazione 
+ * obbligatorie sia corretto. Si possono avere
  *  due situazioni:
  * 1) il contenuto di tutte le input box obbligatorie è corretto (viene rilevato dall'appartenenza delle input box alla classe border-success)
  *    --> il click del tasto "submit" effettua il submit del form con tutto ciò che ne consegue;

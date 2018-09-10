@@ -31,7 +31,7 @@ require_once 'include.php';
     /**
      *  Metodo che consente di visualizzare la form della donazione 
      * (fa uso di smarty) 
-     * @param object Campagna, la campagna per la quale si vuole effettuare 
+     * @param object $campagna, la campagna per la quale si vuole effettuare 
      * la donazione.
      * */
 
@@ -47,10 +47,10 @@ require_once 'include.php';
     /** Metodo che consente di visualizzare la pagina dei ringraziamenti
      *  dopo che l'utente ha effettuato una donazione che prevede
      *  la reward (fa uso di smarty)
-     *  @param object donazione
-     *  @param object campagna
-     *  @param object reward
-     *  @param object user
+     *  @param object $donazione
+     *  @param object $campagna
+     *  @param object $reward
+     *  @param object $user
      * */
 
     function showGrazie(EDonazione $donazione, ECampagna $campagna, EReward $reward, EUtente $user){
@@ -69,9 +69,9 @@ require_once 'include.php';
     /** Metodo che consente di visualizzare la pagina dei ringraziamenti
      *  dopo che l'utente ha effettuato una donazione che non prevede
      *  la reward (fa uso di smarty)
-     *  @param object donazione
-     *  @param object campagna
-     *  @param object user
+     *  @param object $donazione
+     *  @param object $campagna
+     *  @param object $user
      * */
 
     function showGrazie1(EDonazione $donazione, ECampagna $campagna, EUtente $user){

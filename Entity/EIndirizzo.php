@@ -1,4 +1,10 @@
 <?php
+ /**
+ * La classe EIndirizzo contiene tutti gli attributi e metodi 
+ * base riguardanti l'indirizzo. 
+ * @author Gruppo 3
+ * @package Entity
+ */
 
 class EIndirizzo{
     /** id relativo all'indirizzo */
@@ -25,56 +31,153 @@ class EIndirizzo{
         $this->iduser=$idu;
     }
 
+
+
+    /**
+     * 
+     * @param int $id dell'indirizzo
+     */
+
     public function setId($id){
         $this->id=$id;
     }
+
+
+
+    /**
+     * 
+     * @param string $ci città dell'indirizzo
+     */
+
     public function setCity($ci){
         $this->city=$ci;
     }
+
+
+
+    /**
+     * 
+     * @param string $st via relativa all'indirizzo
+     */
+
 
     public function setStreet($st){
         $this->street=$st;
     }
 
+
+
+    /**
+     * 
+     * @param int $num numero civico
+     */
+
     public function setNum($num){
         $this->number=$num;
     }
+
+
+
+    /**
+     * 
+     * @param int $zc codice di avviamento postale
+     */
 
     public function setZipcode($zc){
         $this->zipcode=$zc;
     }
 
+
+
+    /**
+     * 
+     * @param string $co paese relativo all'indirizzo
+     */
+
     public function setCountry($co){
         $this->country=$co;
     }
+
+
+
+
+    /**
+     * 
+     * @param int $idu dell'utente che possiede quell'indirizzo
+     */
 
     public function setIdu($idu){
         $this->iduser=$idu;
     }
 
+    /**
+     * 
+     * @return string la città relativa all'indirizzo
+     */
+
+
+
     public function getCity(){
         return $this->city;
     }
+
+    /**
+     * 
+     * @return string la via relativa all'indirizzo
+     */
+
 
     public function getStreet(){
         return $this->street;
     }
 
+    /**
+     * 
+     * @return int numero civico
+     */
+
+
     public function getNum(){
         return $this->number;
     }
+
+    /**
+     * 
+     * @return int codice di avviamento postale
+     */
+
 
     public function getZipcode(){
         return $this->zipcode;
     }
 
+    /**
+     * 
+     * @return string paese
+     */
+
+
     public function getCountry(){
         return $this->country;
     }
 
+    /**
+     * 
+     * @return int id dell'user con quell'indirizzo
+     */
+
+
     public function getIduser(){
         return $this->iduser;
     }
+
+
+    /**
+     * 
+     * @return int id dell'indirizzo
+     */
+
+
     public function getId(){
         return $this->id;
     }
@@ -84,7 +187,7 @@ class EIndirizzo{
         return $st;
     }
 
-    //validation
+    /**validation*/
 
     static function valCity($val){
         $replace=array(" ","'");
