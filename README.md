@@ -127,7 +127,8 @@ Per separare la logica e il contenuto dell’applicazione, è stato usato Smarty
 #### Implementazione
 
 Per ogni entità coinvolta è stato scelto di associare a ciascuna, nonostante potessero esserci altri campi sfruttabili come chiave primaria, un identificativo numerico, autoincrement, gestito dal db.
-I controlli sulle form sono stati implementati sia lato client che lato server. In particolare, lato client, è stato usato  ```  JavaScript  ``` che effettua delle richieste ```  AJAX ```  a metodi che sono sul server. I controlli lato server avvengono quando quest’ultimo riceve il form tramite una richiesta HTTP di tipo POST.
+I controlli sulle form sono stati implementati sia lato client che lato server. In particolare, lato client, è stato usato  ```  JavaScript  ``` che effettua delle richieste ```  AJAX ```  a metodi che sono sul server. I controlli lato server avvengono quando quest’ultimo riceve il form tramite una richiesta HTTP di tipo POST. A livello Foundation è stata pensata una classe FDatabase che oltre alla connessione al db tramite PDO, prevede generiche funzioni di load, store e delete. 
+
 
 
 #### L’idea
