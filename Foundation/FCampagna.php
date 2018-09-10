@@ -2,12 +2,18 @@
 
 require_once 'include.php';
 
-
+/**
+ * La classe FCampagna fornisce query per gli oggetti ECampagna.
+ * @author Gruppo 3
+ * @package Foundation
+ */
 class FCampagna
 {
+    /** tabella con la quale opera */
     private static $tables="campagne";
+    /** valori della tabella */
     private static $values="(:id,:founder,:name,:description,:category,:country,:startdate,:enddate,:bankcount,:goal,:funds,:visibility)";
-    
+    /** costruttore*/ 
     public function __construct(){}
 
     /**
@@ -15,7 +21,6 @@ class FCampagna
      * @param PDOStatement $stmt 
      * @param ECampagna $camp campagna i cui dati devono essere inseriti nel DB
      */
-    
     public static function bind($stmt,ECampagna $camp){
         $stmt->bindValue(':id',NULL, PDO::PARAM_INT); //l'id � posto a NULL poich� viene dato automaticamente dal DBMS (AUTOINCREMENT_ID)
         $stmt->bindValue(':founder', $camp->getFounder(), PDO::PARAM_INT); 
@@ -31,13 +36,13 @@ class FCampagna
         $stmt->bindValue(':visibility', $camp->getVis(), PDO::PARAM_STR);
     }
     
-    //Metodo che restituisce il nome della tabella nel database
+    /**Metodo che restituisce il nome della tabella nel database*/
     
     public static function getTables(){
         return static::$tables;
     }
 
-    // Metodo che restitusice la struttura della tabella nel database
+    /**Metodo che restitusice la struttura della tabella nel database*/
 
     public static function getValues(){
         return static::$values;
@@ -110,6 +115,9 @@ class FCampagna
         else return false;
     }
 
+    /**
+     * Metodo che restituisce 5 campagne in base ai fondi.
+     */
     public static function Top5byFundsPerCategory($category){
         $sql="SELECT * FROM ".static::getTables()." WHERE category='".$category."' ORDER BY funds DESC LIMIT 5;";
         $db=FDatabase::getInstance();
@@ -130,6 +138,9 @@ class FCampagna
         else return null;
     }
 
+    /**
+     * Metodo che restituisce le 5 campagne che hanno ottenuto più donazioni in quel giorno.
+     */
     public static function Best5ofToday(){
         $sql="SELECT * FROM ".static::getTables()." as c INNER JOIN 
                 (SELECT idcamp 
@@ -155,7 +166,9 @@ class FCampagna
         }
         else return null;
     }
-
+    /**
+     * Metodo che restituisce le ultime 5 campagne create.
+     */
     static function Last5Insert(){
         $sql="SELECT * FROM ".static::getTables()." ORDER BY startdate DESC, id DESC LIMIT 5;";
         $db=FDatabase::getInstance();
@@ -175,7 +188,9 @@ class FCampagna
         }
         else return null;
     }
-
+    /**
+     * Metodo che restituisce 5 campagne in scadenza in questo mese.
+     */
     static function Expiring5Month(){
         $sql="SELECT * FROM ".static::getTables()." WHERE MONTH(enddate)='".date('m')."' AND YEAR(enddate)='".date('Y')."' ORDER BY enddate LIMIT 5;";
         $db=FDatabase::getInstance();
@@ -195,7 +210,11 @@ class FCampagna
         }
         else return null;
     }
-	
+    
+    /**
+     * Query che restituisce le campagne in base alla categoria.
+     * @return string la query sql 
+     */
 	static function cercaCampagnaByCategory() : string
     {
         return "SELECT campagne.* , utenti.username
@@ -262,20 +281,20 @@ class FCampagna
 
         return $camp;
     } 
-
+    /** Metodo che aggiorna i fondi di una campagna*/
     static function UpdateFunds($id,$funds){
         $field="funds";
         if(FCampagna::update($id,$field,$funds)) return true;
         else return false;
     }
-
+    /** Metodo che aggiorna la campagna*/
     static function Update($id,$field,$newvalue){
         $sql="UPDATE ".static::getTables()." SET ".$field."='".$newvalue."' WHERE id=".$id.";";
         $db=FDatabase::getInstance();
         if($db->update($sql)) return true;
         else return false;
     }
-
+    /** Metodo per eliminare una campagna */
     static function delete($id){
         $sql="DELETE FROM ".static::getTables()." WHERE id=".$id.";";
         $db=FDatabase::getInstance();

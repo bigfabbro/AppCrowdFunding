@@ -7,22 +7,20 @@ require_once 'include.php';
  * @author Gruppo 3
  * @package Foundation
  */
-
 class FDonazione
 {
+    /** tabella con la quale opera */
     private static $tables="donazioni";
+    /** valori della tabella */
     private static $values="(:id,:amount,:date,:reward,:idutente, :idcamp, :donationoccurred, :idcc)";
-   
-    public function __construct(){
-        
+    /** costruttore */
+    public function __construct(){  
     }
-
      /**
      * Questo metodo lega gli attributi della donazione da inserire con i parametri della INSERT
      * @param PDOStatement $stmt 
      * @param EDonazione $don donazione i cui dati devono essere inseriti nel DB
      */
-    
     public static function bind($stmt, EDonazione $don){
         $stmt->bindValue(':id', NULL, PDO::PARAM_INT); //l'id � posto a NULL poich� viene dato automaticamente dal DBMS (AUTOINCREMENT_ID)
         $stmt->bindValue(':amount', $don->getAmount(), PDO::PARAM_STR);
@@ -31,11 +29,12 @@ class FDonazione
         $stmt->bindValue(':idutente', $don->getIdUtente(), PDO::PARAM_INT);
         $stmt->bindValue(':idcamp', $don->getIdCamp(), PDO::PARAM_INT);
         $stmt->bindValue(':donationoccurred', $don->getDonationOccurred(), PDO::PARAM_INT);
-        $stmt->bindValue(':idcc', $don->getIdCc(), PDO::PARAM_INT);}
-        
-    
-    
-    
+        $stmt->bindValue(':idcc', $don->getIdCc(), PDO::PARAM_INT);
+    }
+    /**
+     * Permette la store sul db
+     * @return int $don dell'oggetto salvato
+     */
     public static function store($don){
         $sql="INSERT INTO ".static::getTables()." VALUES ".static::getValues();
         $db=FDatabase::getInstance();
@@ -44,27 +43,27 @@ class FDonazione
         else return null;
       }
         
-   /**
+    /**
      * 
      * questo metodo restituisce il nome della tabella sul DB per la costruzione delle Query
      * @return string $tables nome della tabella
      */
-
     public static function getTables(){
         return static::$tables;
     }
-
-     /**
-     * 
-     * questo metodo restituisce la stringa dei valori della tabella sul DB per la costruzione delle Query
-     * @return string $values valori della tabella
-     */
-    
+    /**
+     *  
+     * questo metodo restituisce la stringa dei useri della tabella sul DB per la costruzione delle Query
+     * @return string $values user della tabella
+    */ 
     public static function getValues(){
         return static::$values;
     }
-
-
+     /**
+     * Permette la load sul db 
+     * @param int l'id dell'oggetto donazione
+     * @return object $don donazione
+     */
     public static function loadById($id){
         $sql="SELECT * FROM ".static::getTables()." WHERE id=".$id.";";
         $db=FDatabase::getInstance();
@@ -77,7 +76,11 @@ class FDonazione
         }
         else return null;
     }
-
+    /**
+     * Permette la load sul db 
+     * @param int l'id dell'oggetto campagna
+     * @return object $dons donazione
+     */
     public static function loadByIdCamp($id){
         $sql="SELECT * FROM ".static::getTables()." WHERE idcamp=".$id.";";
         $db=FDatabase::getInstance();
@@ -92,7 +95,11 @@ class FDonazione
         }
         else return null;
     }
-
+    /**
+     * Permette la load sul db 
+     * @param int l'id dell'oggetto utente
+     * @return object $dons donazione
+     */
     public static function loadByIdUser($id){
         $sql="SELECT * FROM ".static::getTables()." WHERE idutente=".$id.";";
         $db=FDatabase::getInstance();
@@ -107,11 +114,11 @@ class FDonazione
         }
         else return null;
     }
-   
-    
-   
-    
-
+    /**
+     * Permette la delete sul db in base all'id
+     * @param int l'id dell'oggetto da eliminare dal db
+     * @return bool 
+     */
     public static function delete($id){
         $sql="DELETE FROM ".static::getTables()." WHERE id=".$id.";";
         $db=FDatabase::getInstance();

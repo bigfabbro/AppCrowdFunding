@@ -1,23 +1,30 @@
 <?php
 require_once 'include.php';
-/**
- * @author Gruppo 3
- * @package Foundation
- */
 
 if(file_exists('config.inc.php')) require_once 'config.inc.php';
 /*  Singleton: rappresenta un tipo particolare di classe che garantisce
  *  che soltanto un'unica istanza della classe stessa possa essere creata 
  *  all'interno di un programma
  */
+
+/**
+ * Lo scopo di questa classe e' quello di fornire un accesso unico al DBMS, incapsulando
+ * al proprio interno i metodi statici di tutte le altre classi Foundation, cosi che l'accesso
+ * ai dati persistenti da parte degli strati superiore dell'applicazione sia piu' intuitivo.
+ * @author gruppo 3
+ * @package Foundation
+ */
 class FDatabase
 {
+    /** l'unica istanza della classe */
     private static $instance=null;
+    /** oggetto PDO che effettua la connessione al dbms */
     private $db;
+    /** percorso */
     private static $UpPath="Upload/";
-
-    private function __construct() // viene dichiarato private cos� che l'unico accesso al costruttore 
-    {                              //� dato dal metodo getInstance()
+    /** costruttore privato, l'unico accesso è dato dal metodo getInstance() */
+    private function __construct()
+    {                              
         global $host,$database,$username,$password;
         try{
             $this->db=new PDO("mysql:host=$host; dbname=$database", $username,$password);
@@ -28,19 +35,20 @@ class FDatabase
           die;
         }
     }
-
-    /**
-     * Metodo che restituisce l'unica istanza di un oggetto 
-     * (creandola se non esiste già)
+     /**
+     * Metodo che restituisce l'unica istanza dell'oggetto.
+     * @return FPersistantManager l'istanza dell'oggetto.
      */
-    
-    public static function getInstance(){ 
+    public static function getInstance(){ //restituisce l'unica istanza (creandola se non esiste gi�)
         if(static::$instance==null){  
             static::$instance=new FDatabase(); 
         }
         return static::$instance;
     }
-
+     /**
+     * Metodo che permette di salvare informazioni contenute in un oggetto
+     * Entity sul database.
+     */
     public function store($sql,$class,$eobj){
         try{
             $this->db->beginTransaction();
@@ -154,8 +162,10 @@ class FDatabase
     public function closeDbConnection(){
         static::$instance=null;
     }
+
+
  /******************************************RICERCA***************************************************/
-    
+   
  /**
      * Effettua una ricerca sul database secondo i parametri selezionati. 
      * Tale metodo e' scaturito a seguito della ricerca avanzata da parte dell'utente.

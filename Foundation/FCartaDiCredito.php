@@ -1,29 +1,27 @@
 <?php
 
 require_once 'include.php';
+
 /**
- * La classe FCartadicredito fornisce query per gli oggetti ECartadicreditp
+ * La classe FCartadicredito fornisce query per gli oggetti ECartadicredito.
  * @author Gruppo 3
  * @package Foundation
  */
-
-
 class FCartadicredito
 {   
+    /** tabella con la quale opera */
     private static $tables="creditcard";
+    /** valori della tabella */
     private static $values="(:id,:ownername,:ownersurname,:expirationdate,:ccnumber,:ccv)";
-  
-    public function __construct(){
-        
+    /** costruttore */
+    public function __construct(){   
     }
-    
-        /**
-         * Questo metodo lega gli attributi della carta di credito  da inserire con i parametri della INSERT
-         * @param PDOStatement $stmt 
-         * @param ECartadicredito $cc carta di credito i cui dati devono essere inseriti nel DB
-         */
-    
-    
+
+     /**
+      * Questo metodo lega gli attributi della carta di credito  da inserire con i parametri della INSERT
+      * @param PDOStatement $stmt 
+      * @param ECartadicredito $cc carta di credito i cui dati devono essere inseriti nel DB
+      */
      public static function bind($stmt, ECartadicredito $cc){
         $stmt->bindValue(':id', NULL, PDO::PARAM_INT); //l'id � posto a NULL poich� viene dato automaticamente dal DBMS (AUTOINCREMENT_ID)
         $stmt->bindValue(':ownername', $cc->getOwnerName(), PDO::PARAM_STR); 
@@ -38,17 +36,15 @@ class FCartadicredito
      * questo metodo restituisce il nome della tabella sul DB per la costruzione delle Query
      * @return string $tables nome della tabella
      */
-
     public static function getTables(){
         return static::$tables;
     }
-
-     /**
-     * 
-     * questo metodo restituisce la stringa dei valori della tabella sul DB per la costruzione delle Query
-     * @return string $values valori della tabella
-     */
     
+    /**
+     *  
+     * questo metodo restituisce la stringa dei useri della tabella sul DB per la costruzione delle Query
+     * @return string $values user della tabella
+    */ 
     public static function getValues(){
         return static::$values;
     }
@@ -71,9 +67,6 @@ class FCartadicredito
      * @param int l'id dell'oggetto carta di credito
      * @return object $cc l'oggetto carta di credito 
      */
-
-
-    
     public static function loadById($id){
         $sql="SELECT * FROM ".static::getTables()." WHERE id=".$id.";";
         $db=FDatabase::getInstance();
@@ -92,7 +85,6 @@ class FCartadicredito
      * @param int l'id dell'oggetto da eliminare dal db
      * @return bool 
      */
-
     public static function delete($id){
         $sql="DELETE FROM ".static::getTables()." WHERE id=".$id.";";
         $db=FDatabase::getInstance();
