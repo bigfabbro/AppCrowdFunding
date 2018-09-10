@@ -282,7 +282,7 @@
               {for $i=0 to $fashioncount-1}
               <div class="row">
                 <div class="col-md-2">
-                  <p class="lead m-1 text-center">{i+1}</p>
+                  <p class="lead m-1 text-center">{$i+1}</p>
                 </div>
                 <div class="col-md-6 p-0">
                   <p class="lead m-1 text-center"><a href="/AppCrowdFunding/Campagna/profile/{$fashion[$i]->getId()}">{$fashion[$i]->getName()}</a></p>
