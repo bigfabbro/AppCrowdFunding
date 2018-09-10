@@ -124,6 +124,12 @@ Per la creazione dei vari template è stato usato Pingendo, un’applicazione ch
 
 Per separare la logica e il contenuto dell’applicazione, è stato usato Smarty, un motore di template per PHP. In particolare è stato utilizzato per la compilazione di quest’ultimi in maniera dinamica. 
 
+#### Implementazione
+
+Per ogni entità coinvolta è stato scelto di associare a ciascuna, nonostante potessero esserci altri campi sfruttabili come chiave primaria, un identificativo numerico, autoincrement, gestito dal db.
+I controlli sulle form sono stati implementati sia lato client che lato server. In particolare, lato client, è stato usato  ```  JavaScript  ``` che effettua delle richieste ```  AJAX ```  a metodi che sono sul server. I controlli lato server avvengono quando quest’ultimo riceve il form tramite una richiesta HTTP di tipo POST.
+
+
 #### L’idea
 
 Society of Funding nasce da Serena, Oscar e Fabrizio, tre studenti dell'Università degli Studi dell'Aquila con un sogno: aiutare gli altri a realizzare i propri di sogni. 
