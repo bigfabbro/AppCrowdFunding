@@ -358,10 +358,23 @@ require_once 'include.php';
     static function UpdateImg(){
         if(($_SERVER['REQUEST_METHOD']=="POST")){
             if(CUtente::isLogged()){
-                $up=new Upload();
-                $picture=$up->myphoto($_FILES['inputimage'],$_SESSION['id']);
-                FMediaUser::deleteByIdUser($_SESSION['id']);
-                FMediaUser::store($picture);
+                if(FMediaUser::deleteByIdUser($_SESSION['id'])){ 
+                    $up=new Upload();
+                    $picture=$up->myphoto($_FILES['inputimage'],$_SESSION['id']);
+                    FMediaUser::store($picture);
+                }
+            }
+        }
+    }
+
+    static function DeleteImg(){
+        if(($_SERVER['REQUEST_METHOD']=="POST")){
+            if(CUtente::isLogged()){
+              if(FMediaUser::deleteByIdUser($_SESSION['id'])){
+                  $up=new Upload();
+                  $picture=$up->standard($_SESSION['id']);
+                  FMediaUser::store($picture);
+              }
             }
         }
     }

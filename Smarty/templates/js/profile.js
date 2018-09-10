@@ -144,10 +144,12 @@ function cancelmodify() {
 }
 
 function changeimg(){
+    document.getElementById("btndeleteimg").style.visibility="visible"
     document.getElementById("btnchangeimg").style.visibility="visible"
 }
 
 function closechangeimg(){
+    document.getElementById("btndeleteimg").style.visibility="hidden"
     document.getElementById("btnchangeimg").style.visibility="hidden"
 }
 
@@ -174,4 +176,17 @@ function uploadimg(){
     else{
         alert("Il file caricato non è un'immagine!")
     }
+}
+
+function deleteimg(){
+    var request="/AppCrowdFunding/Utente/DeleteImg"
+    var xmlhttp=new XMLHttpRequest()
+    xmlhttp.onload = function () {
+        if (this.readyState == 4 && this.status == 200) {  //readyState==4 --> request finished and response is ready status==200 --> OK
+            location.reload()
+        }
+    }
+    xmlhttp.open("POST", request, true)
+    xmlhttp.setRequestHeader('X-Requested-With', 'XMLHttpRequest')
+    xmlhttp.send()
 }

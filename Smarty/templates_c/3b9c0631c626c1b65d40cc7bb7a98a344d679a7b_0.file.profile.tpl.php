@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-09-10 10:12:46
+/* Smarty version 3.1.32, created on 2018-09-10 11:05:03
   from 'C:\xampp\htdocs\AppCrowdFunding\Smarty\templates\profile.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b96277ea47be9_30830388',
+  'unifunc' => 'content_5b9633bf11c703_56227773',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '3b9c0631c626c1b65d40cc7bb7a98a344d679a7b' => 
     array (
       0 => 'C:\\xampp\\htdocs\\AppCrowdFunding\\Smarty\\templates\\profile.tpl',
-      1 => 1536567162,
+      1 => 1536570300,
       2 => 'file',
     ),
   ),
@@ -25,7 +25,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:donprofile.tpl' => 1,
   ),
 ),false)) {
-function content_5b96277ea47be9_30830388 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b9633bf11c703_56227773 (Smarty_Internal_Template $_smarty_tpl) {
 if ($_smarty_tpl->tpl_vars['donations']->value != null) {
 $_smarty_tpl->_assignInScope('doncount', count($_smarty_tpl->tpl_vars['donations']->value));
 }
@@ -53,7 +53,8 @@ $_smarty_tpl->_subTemplateRender('file:modifyprof.tpl', $_smarty_tpl->cache_id, 
             <div class="card-block my-3">
               <img class="d-block rounded-circle img-fluid" src="data:image/jpeg;base64,<?php echo $_smarty_tpl->tpl_vars['pic64']->value;?>
 " <?php if ($_smarty_tpl->tpl_vars['myProf']->value == true) {?>onmouseover="changeimg()" onmouseout="closechangeimg()"<?php }?> width=200 height=200>
-              <?php if ($_smarty_tpl->tpl_vars['myProf']->value == true) {?><a class="btn btn-primary text-light" style="position:absolute;top:28%;left:21%;visibility:hidden" id="btnchangeimg" onmouseover="changeimg()" onmouseout="closechangeimg()" onclick="imageselect()"> Change profile's image </a>
+              <?php if ($_smarty_tpl->tpl_vars['myProf']->value == true) {?><a class="btn btn-primary text-light" style="position:absolute;top:23%;left:21%;visibility:hidden" id="btnchangeimg" onmouseover="changeimg()" onmouseout="closechangeimg()" onclick="imageselect()"> Change profile's image </a>
+              <a class="btn btn-primary text-light" style="position:absolute;top:30%;left:21%;visibility:hidden" id="btndeleteimg" onmouseover="changeimg()" onmouseout="closechangeimg()" onclick="deleteimg()"> Delete profile's image </a>
               <input type="file" name="inputimage" id="inputimage" style="display:none" onchange="uploadimg()"accept="image/*"/>
               <?php }?>
               <hr>
