@@ -2,6 +2,12 @@
 
 require_once 'include.php';
 
+/**
+ * La classe FReward fornisce query per gli oggetti EReward
+ * @author Gruppo 3
+ * @package Foundation
+ */
+
 class FReward
 {
     private static $tables="rewards";
@@ -24,13 +30,32 @@ class FReward
         $stmt->bindValue(':idcamp', $rew->getIdCamp(), PDO::PARAM_STR);
     }
     
+    /**
+     * 
+     * Questo metodo restituisce il nome della tabella sul DB per la costruzione delle Query
+     * @return string $tables nome della tabella
+     */
+
     public static function getTables(){
         return static::$tables;
     }
+
+    /**
+     * Questo metodo restituisce la stringa dei valori della tabella sul DB per la costruzione delle Query
+     * @return string $values valori della tabella
+     */
+    
+    
     
     public static function getValues(){
         return static::$values;
     }
+
+    /** 
+     * Funzione che permette la load di una reward in base all'id della campagna
+     * @param int $id della campagna
+     * @return object $rewards
+     */
 
     public static function loadByIdCamp($id){
         $sql="SELECT * FROM ".static::getTables()." WHERE idcamp=".$id.";";
@@ -47,6 +72,12 @@ class FReward
         return null;
     }
 
+    /**
+     * Funzione che permette la load di una reward in base al proprio id
+     * @param int $id della reward da cercare
+     * @return object $rew
+     */
+
     public static function loadById($id){
         $sql="SELECT * FROM ".static::getTables()." WHERE id=".$id.";";
         $db=FDatabase::getInstance();
@@ -59,6 +90,11 @@ class FReward
         else return null;
     }
 
+    /**
+     * Metodo che permette la store di una reward
+     * @param $rew da salvare
+     * @return $id della reward salvata
+     */
     public static function store($rew){
         $sql="INSERT INTO ".static::getTables()." VALUES ".static::getValues();
         $db=FDatabase::getInstance();
@@ -66,6 +102,12 @@ class FReward
         if($id) return $id;
         else return null;
     }
+
+    /**
+     * Metodo che permette la delete della reward in base all'id
+     * @param int $id della reward da cancellare
+     * @return bool
+     */
 
     public static function delete($id){
         $sql="DELETE FROM ".static::getTables()." WHERE id=".$id.";";

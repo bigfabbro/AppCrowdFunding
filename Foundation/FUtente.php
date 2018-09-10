@@ -34,6 +34,11 @@ class FUtente
         $stmt->bindValue(':description', $user->getBio(), PDO::PARAM_STR);
         $stmt->bindValue(':activate', $user->getActivate(), PDO::PARAM_STR);
     }
+  /**
+     * 
+     * questo metodo restituisce il nome della tabella sul DB per la costruzione delle Query
+     * @return string $tables nome della tabella
+     */
 
     public static function getTables(){
         return static::$tables;
@@ -41,8 +46,8 @@ class FUtente
 
      /**
      * 
-     * questo metodo restituisce la stringa dei useri della tabella sul DB per la costruzione delle Query
-     * @return string $values useri della tabella
+     * questo metodo restituisce la stringa dei valori della tabella sul DB per la costruzione delle Query
+     * @return string $values valori della tabella
      */
     
     public static function getValues(){
