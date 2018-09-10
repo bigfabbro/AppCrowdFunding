@@ -1,5 +1,11 @@
 <?php
 require_once 'include.php';
+
+/**
+ * Classe che si occupa di generare la mail per l'attivazione.
+ * 
+ * @package Utility
+ */
 class mailcheck {
 
     static $systemMail='societyofunding@gmail.com';
@@ -30,6 +36,10 @@ class mailcheck {
 
     /**
      * Funzione che si occupa di generare il template della mail di attivazione con i dati dell'utente nonché di inviarla.
+     * 
+     * @param $email email dell'utente;
+     * @param $user username dell'utente;
+     * @param $iduser id dell'utente.
      */
     public function sendActivEmail($email,$user,$iduser){
       $smarty=ConfSmarty::configuration();
@@ -54,7 +64,12 @@ class mailcheck {
       mail($email, $mailobject, $message, $header);
     }
 
-    //Funzione per la generazione del pin di attivazione random
+    /** 
+     * Funzione per la generazione del pin di attivazione random
+     *
+     * @return $pin pin a 5 cifre per l'attivazione
+     */
+
     public function generate5PIN(){
         $pin="";
         for($i=0; $i<5; $i++){

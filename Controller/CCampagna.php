@@ -157,6 +157,9 @@ class CCampagna{
       }
   }
 
+/**
+ * Funzione che permette ad un utente di aggiungere una reward ad una propria campagna (AJAX)
+ */
   static function AddReward($idcamp){
       if(($_SERVER['REQUEST_METHOD'])=="POST"){
           $camp=FCampagna::loadById($idcamp);
@@ -166,7 +169,9 @@ class CCampagna{
           }
       }
   }
-
+/**
+ * Funzione che permette ad un utente di rimuovere una reward da una propria campagna (AJAX)
+ */
   static function DeleteReward(){
     if(($_SERVER['REQUEST_METHOD']=="POST")){
         if(CUtente::isLogged()){
@@ -179,6 +184,10 @@ class CCampagna{
     }
 }
 
+/**
+ * Funzione che permette ad un utente di eliminare una campagna (AJAX)
+ */
+
   static function DeleteCamp(){
       if(($_SERVER['REQUEST_METHOD']=="POST")){
           if(CUtente::isLogged()){
@@ -187,6 +196,10 @@ class CCampagna{
             }
         }
     }
+
+/** Metodo che viene utilizzato per verificare se l'input inserito dall'utente nel form di creazione della campagna è corretto o meno.
+ *  Più precisamente viene effettuata una richiesta AJAX al server e dalla risposta si capisce se l'input è corretto o meno.
+*/
 
   static function VerifyCreation(){
     if($_SERVER['REQUEST_METHOD']=="POST"){

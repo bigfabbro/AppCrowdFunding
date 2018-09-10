@@ -2,6 +2,12 @@
 
 require_once 'include.php';
 
+/**
+ * Classe che si occupa dell'installazione dell'applicativo.
+ * 
+ * @package Utility
+ */
+
 class Installation{
 
     /**

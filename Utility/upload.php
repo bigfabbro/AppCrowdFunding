@@ -1,8 +1,21 @@
 <?php
-require_once 'include.php';
-class Upload{
-    private static $path="Upload/";
 
+require_once 'include.php';
+
+/**
+ * Classe che si occupa dell'Upload delle foto.
+ *
+ * @package Utility
+ */
+class Upload{
+    private static $path="Upload/"; //Path della cartella di Upload
+
+    /**
+     * Funzione che fa l'upload della foto dell'utente. Se non riesce viene impostata una foto standard.
+     * 
+     * @param $file file di cui si è fatto l'upload;
+     * @param $iduser id dell'utente
+     */
     public function myphoto($file,$iduser){
         if(move_uploaded_file($file['tmp_name'],static::$path.$file['name'])) {
             $picture=new EMediaUser($file['name'],$iduser);
@@ -16,11 +29,24 @@ class Upload{
         
     }
 
+    /**
+     * Funzione che assegna all'utente l'immagine del profilo standard per il portale.
+     * 
+     * @param $iduser id dell'utente
+     */
+
     public function standard($iduser){
         copy("Smarty/img/profile.jpg",static::$path."profile.jpg");
         $picture=new EMediaUser("profile.jpg",$iduser);
         return $picture;
     }
+
+    /**
+     * Funzione che si occupa dell'upload delle foto delle campagne.
+     * 
+     * @param array $files array di immagini
+     * @param $idcamp id della campagna
+     */
 
     public function photoCamp($files,$idcamp){
         $pictures=array();

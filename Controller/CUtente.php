@@ -382,7 +382,7 @@ require_once 'include.php';
     }
 
 /** Metodo che viene utilizzato per verificare se l'input inserito dall'utente nel form di modifica del profilo utente è corretto o meno.
- *  Più precisamente viene effettuata una richiesta AJAX al server e dalla risposta si capisce se l'input e corretto o meno.
+ *  Più precisamente viene effettuata una richiesta AJAX al server e dalla risposta si capisce se l'input è corretto o meno.
 */
 
     static function VerifyModify(){
