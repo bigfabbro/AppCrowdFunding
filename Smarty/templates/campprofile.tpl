@@ -14,8 +14,8 @@
       <div class="row">
         <div class="col-md-3">
           {if $photo!=null}
-          <img class="img-fluid d-block" src="data:image/jpeg;base64,{$photo}" {if myProf eq true} onmouseover="showdelete({$id})" onmouseout="closedelete({$id})" {/if}>
-          {if myProf eq true}<button class="btn btn-outline-primary my-1" style="position:absolute;left:30%;top:10%;visibility:hidden" onmouseover="showdelete({$id})" onmouseout="closedelete({$id})" id="deletebtn{$id}" onclick="deletecamp({$id})">delete</button>{/if}
+          <img class="img-fluid d-block" src="data:image/jpeg;base64,{$photo}" {if $myProf eq true} onmouseover="showdelete({$id})" onmouseout="closedelete({$id})" {/if}>
+          {if $myProf eq true}<button class="btn btn-outline-primary my-1" style="position:absolute;left:30%;top:10%;visibility:hidden" onmouseover="showdelete({$id})" onmouseout="closedelete({$id})" id="deletebtn{$id}" onclick="deletecamp({$id})">delete</button>{/if}
           {else}
           <img class="img-fluid d-block" src="https://pingendo.com/assets/photos/wireframe/photo-1.jpg">
           {/if}
