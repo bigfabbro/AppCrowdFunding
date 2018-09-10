@@ -1,5 +1,10 @@
 <?php
 require_once 'include.php';
+/**
+ * @author Gruppo 3
+ * @package Foundation
+ */
+
 if(file_exists('config.inc.php')) require_once 'config.inc.php';
 /*  Singleton: rappresenta un tipo particolare di classe che garantisce
  *  che soltanto un'unica istanza della classe stessa possa essere creata 
@@ -23,8 +28,13 @@ class FDatabase
           die;
         }
     }
+
+    /**
+     * Metodo che restituisce l'unica istanza di un oggetto 
+     * (creandola se non esiste già)
+     */
     
-    public static function getInstance(){ //restituisce l'unica istanza (creandola se non esiste gi�)
+    public static function getInstance(){ 
         if(static::$instance==null){  
             static::$instance=new FDatabase(); 
         }
