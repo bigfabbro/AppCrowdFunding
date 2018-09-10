@@ -1,10 +1,10 @@
-{assign var='userlogged' value=$userlogged|default:'nouser'}
+﻿{assign var='userlogged' value=$userlogged|default:'nouser'}
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
 
   <nav class="navbar navbar-expand-md navbar-dark bg-primary">
     <div class="container">
       <a class="navbar-brand" href="/AppCrowdFunding/HomePage">
-        <i class="fa d-inline fa-lg fa-cloud"></i>
+        <i class="fa fa-rocket"></i>
         <b>&nbsp;Society Of Funding</b>
       </a>
 
