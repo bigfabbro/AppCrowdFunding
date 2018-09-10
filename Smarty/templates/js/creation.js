@@ -1,3 +1,4 @@
+//Funzione che permette di andare avanti nel form di creazione della campagna
 function Next(id){
     var num=parseInt(id[1])
     var thisid="c"+num.toString()
@@ -5,7 +6,7 @@ function Next(id){
     document.getElementById(thisid).style.visibility = "hidden"
     document.getElementById(nextid).style.visibility = "visible"
 }
-
+//Funzione che permette di tornare indietro nel form di creazione della campagna
 function Back(id){
     var num=parseInt(id[1])
     var thisid="c"+num.toString()
@@ -13,7 +14,12 @@ function Back(id){
     document.getElementById(thisid).style.visibility = "hidden"
     document.getElementById(precid).style.visibility = "visible"
 }
-
+/**
+ * Funzione che effettua il controllo dell'input. Ogni volta che viene cambiato il contenuto di una input box invia una richiesta AJAX al server
+ * che attraverso un apposito metodo controlla se il contenuto della input box rispetta i requisiti previsti per quel campo e:
+ * - se il contenuto è corretto circonda la input box con un bordo verde;
+ * - se il contenuto è sbagliato circonda la input box con un bordo rosso.
+ */
 function inputVerifyCreation(id){
     var inp=document.getElementById(id)
     var param=id+"="+inp.value
@@ -50,6 +56,12 @@ function inputVerifyCreation(id){
     }
 }
 
+/**
+ * Funzione che permette o meno il submit del form a seconda che il form sia corretto o meno:
+ * - form corretto --> tutte le input box sono circondate da bordo verde;
+ * - form non corretto --> almeno una delle input box è circondata da bordo rosso.
+ * Nel caso non permetta di fare il submit viene mostrata la pagina del form nella quale c'è il primo campo non corretto.
+ */
 function SubmitOrNot() 
     {
         var inps=[

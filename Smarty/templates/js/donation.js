@@ -1,13 +1,9 @@
-/** Funzione che va a controllare che il contenuto di tutte le input box del form di donazione 
- * obbligatorie sia corretto. Si possono avere
- *  due situazioni:
- * 1) il contenuto di tutte le input box obbligatorie è corretto (viene rilevato dall'appartenenza delle input box alla classe border-success)
- *    --> il click del tasto "submit" effettua il submit del form con tutto ciò che ne consegue;
- * 2) il contenuto di una o più input box obbligatorie manca oppure non è corretto --> il click del tasto "submit" esplicita le input box 
- *    non corrette circondandole con un bordo rosso.
+/**
+ * Funzione che effettua il controllo dell'input. Ogni volta che viene cambiato il contenuto di una input box invia una richiesta AJAX al server
+ * che attraverso un apposito metodo controlla se il contenuto della input box rispetta i requisiti previsti per quel campo e:
+ * - se il contenuto è corretto circonda la input box con un bordo verde;
+ * - se il contenuto è sbagliato circonda la input box con un bordo rosso.
  */
-
-
 function inputVerifyDonation(id){
     var inp=document.getElementById(id)
     var param=id+"="+inp.value
@@ -30,7 +26,11 @@ function inputVerifyDonation(id){
     xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded")
     xmlhttp.send(param)
 }
-
+/**
+ * Funzione che permette o meno il submit del form a seconda che il form sia corretto o meno:
+ * - form corretto --> tutte le input box sono circondate da bordo verde;
+ * - form non corretto --> almeno una delle input box è circondata da bordo rosso.
+ */
 function SubmitOrNot() 
     {
         var inps=[

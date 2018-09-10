@@ -1,13 +1,16 @@
+//Funzione che mostra il pulsante per la delete di una campagna
 function showdelete(id){
     id="deletebtn"+id
     document.getElementById(id).style.visibility = "visible"
 }
 
+//Funzione che nasconde il pulsante per la delete di una campagna
 function closedelete(id){
     id="deletebtn"+id
     document.getElementById(id).style.visibility = "hidden"
 }
 
+//Funzione che invia la richiesta AJAX per la delete di una campagna e nel caso vada a buon fine fa il reload della pagina
 function deletecamp(id){
     var request="/AppCrowdFunding/Campagna/DeleteCamp"
     var xmlhttp= new XMLHttpRequest()

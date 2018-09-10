@@ -143,20 +143,29 @@ function cancelmodify() {
     document.getElementById("formmodify").reset()
 }
 
+//Funzione che  mostra i pulsanti per il cambio e la cancellazione dell'immagine del profilo
 function changeimg(){
     document.getElementById("btndeleteimg").style.visibility="visible"
     document.getElementById("btnchangeimg").style.visibility="visible"
 }
 
+//Funzione che nasconde i pulsanti per il cambio e la cancellazione dell'immagine del profilo
 function closechangeimg(){
     document.getElementById("btndeleteimg").style.visibility="hidden"
     document.getElementById("btnchangeimg").style.visibility="hidden"
 }
 
+/** Funzione che va a generare l'evento click su una input file nascosta e quindi ad aprire una pagina di esplora risorse consentendo di 
+ * selezionare un'immagine da caricare.
+*/
 function imageselect(){
     document.getElementById("inputimage").click();
 }
 
+/**
+ * Funzione che viene richiamata quando cambia il contenuto della input file ed effettua una richiesta AJAX di tipo POST al server 
+ * permettendo l'upload della foto. Se va a buon fine ricarica la pagina.
+ */
 function uploadimg(){
     var request="/AppCrowdFunding/Utente/UpdateImg"
     var file=document.getElementById("inputimage").files
@@ -178,6 +187,9 @@ function uploadimg(){
     }
 }
 
+
+//Funzione che permette di cancellare la propria immagine del profilo attraverso una richiesta AJAX. Se va a buon fine ricarica la pagina.
+ 
 function deleteimg(){
     var request="/AppCrowdFunding/Utente/DeleteImg"
     var xmlhttp=new XMLHttpRequest()

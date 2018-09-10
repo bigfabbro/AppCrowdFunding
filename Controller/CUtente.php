@@ -367,6 +367,8 @@ require_once 'include.php';
         }
     }
 
+    //Funzione che permette di rimuovere l'immagine del profilo e sostituirla con quella standard
+
     static function DeleteImg(){
         if(($_SERVER['REQUEST_METHOD']=="POST")){
             if(CUtente::isLogged()){
