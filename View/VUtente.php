@@ -2,6 +2,13 @@
 
 require_once 'include.php';
 
+ /**
+      * Classe che si occupa dell'input-output dei contenuti riguardanti gli utenti. In particolare della "validazione" dei dati inseriti 
+      * nelle form richiamando metodi di livello entity e del passaggio degli appositi parametri a Smarty per la costruzione dei template.
+      * @package View
+      * 
+    */
+
  
  class VUtente{
 
@@ -31,20 +38,30 @@ require_once 'include.php';
 
     /*****************************************************SHOW*************************************************************** */
 
-    /**Metodo per mostrare il form di login. Se $badlogin è "true" mostra un errore.*/
+    /** Metodo per mostrare il form di login. Se $badlogin è "true" mostra un errore.
+     * @param boolean $badlogin è true se il precedente tentativo di login non è andato a buon fine.
+    */
 
     public function showFormLogin($badlogin=null){
          if(isset($badlogin)) $this->smarty->assign('badlogin',$badlogin);
          $this->smarty->display('login.tpl');
      }
 
-     public function showFormLoginRemind($user){
+    /**
+     *  Metodo che mostra il login con funzione "remind me".
+     * 
+     * @param EUtente $user utente che può accedere con l'opzione remind me, essendo i suoi dati di accesso memorizzati sul client con un cookie.
+     */
+
+     public function showFormLoginRemind(EUtente $user){
          $this->smarty->assign('user',$user);
          $this->smarty->display('login.tpl');
      }
 
-     /**Metodo per mostrare il form di registrazione. L'array $errors è utilizzato per mostrare gli errori effettuati nella compilazione del form,
+     /** Metodo per mostrare il form di registrazione. L'array $errors è utilizzato per mostrare gli errori effettuati nella compilazione del form,
       * l'array $values per reinserire i valori corretti della precedente compilazione non avvenuta con successo.
+      * @param array $errors array dei campi errati della form;
+      * @param array $values array dei valori corretti da reinserire nella form.
       */
     public function showFormRegistration($errors=null,$values=null){
          if(isset($errors)){
@@ -55,21 +72,34 @@ require_once 'include.php';
          $this->smarty->display('registration.tpl');
      }
 
-     /**Metodo per mostrare la pagina di benvenuto quando la registrazion va a buon fine. */
+     /** Metodo per mostrare la pagina di benvenuto quando la registrazion va a buon fine. */
 
     public function showWelcome(){
         
          $this->smarty->display('welcome.tpl');
      }
 
-     /**Metodo per mostrare la pagina di attivazione dell'account.*/
+     /** Metodo per mostrare la pagina di attivazione dell'account.*/
      function showActivation(){
          $this->navbar();
          
          $this->smarty->display('activation.tpl');
      }
 
-     /**Metodo per mostrare la pagina del profilo di un utente*/
+     /**
+      * Metodo per mostrare la pagina del profilo utente
+      * 
+      * @param EUtente $user utente da visualizzare;
+      * @param EMediaUser $pic immagine del profilo;
+      * @param array $camps array delle campagne pubblicate dall'utente;
+      * @param array $donations array delle donazione effettuate dall'utente;
+      * @param array $camppledged array delle campagne supportate;
+      * @param array $rewards array delle ricompense ricevute;
+      * @param array $photos array delle immagini delle proprie campagne;
+      * @param EIndirizzo $address indirizzo dell'utente;
+      * @param boolean $myProf è true se il visitatore del profilo è il proprietario del profilo stesso --> in modo da abilitare alcune
+      * funzionalità (Es. la modifica del profilo).
+      */
 
     public function showProfile(EUtente $user,EMediaUser $pic,$camps,$donations,$camppledged,$rewards,$photos,EIndirizzo $address,$myProf){
         $this->navbar();
@@ -116,6 +146,8 @@ require_once 'include.php';
      * non è previsto che il not validate sia posto a true anche nel caso in cui non siano inseriti
      * nel form. Per i campi che devono essere univoci si verifica anche l'univocità. La funzione
      * restituisce l'array $notval che specifica per ogni campo del form se è valido o meno.
+     * 
+     * @return $notval array dei campi della form. Un elemento è true se è il relativo campo della form è valido o viceversa.
      */
     public function valFormRegistration(){
 
@@ -194,6 +226,12 @@ require_once 'include.php';
         return $this->notval;
     }
 
+    /**
+     * Funzione utilizzata per verificare la validità del singolo campo della form di modifica del profilo
+     *  (viene utilizzato per il controllo client-side AJAX)
+     * 
+     * @return boolean true se è corretto, false viceversa
+     */
     public function ValModify() :bool {
         $val=key($_POST);
         if($val=="city") return EIndirizzo::valCity($_POST['city']);
@@ -205,6 +243,13 @@ require_once 'include.php';
         else if($val=="datan") return EUtente::valDatan($_POST['datan']);
         else if($val=="description") return true;
     }
+
+     /**
+     * Funzione utilizzata per verificare la validità del singolo campo della form di registrazione
+     * (viene utilizzato per il controllo client-side AJAX)
+     * 
+     * @return boolean true se è corretto, false viceversa
+     */
 
     public function ValRegistration() :bool {
         $val=key($_POST);
@@ -234,7 +279,10 @@ require_once 'include.php';
         else if($val=="password1") return EUtente::valPassword($_POST['password1']);
     }
 
-    /**Funzione che restituisce il vettore degli errori */
+    /** Funzione che restituisce il vettore degli errori 
+     * 
+     * @return $notval array dei campi della form
+    */
 
     public function getNotVal(){
         return $this->notval;

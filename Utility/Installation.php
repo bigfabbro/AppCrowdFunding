@@ -43,7 +43,7 @@ class Installation{
     static function install(){
         try 
         {
-            $db = new PDO("mysql:host=localhost; dbname=".$_POST['nomedb'], $_POST['nomeutente'], $_POST['password']); 
+            $db = new PDO("mysql:host=localhost;", $_POST['nomeutente'], $_POST['password']); 
             $db->beginTransaction();
             $query = 'DROP DATABASE IF EXISTS ' .$_POST['nomedb']. '; CREATE DATABASE ' . $_POST['nomedb'] . ' ; USE ' . $_POST['nomedb'] . ';' . 'SET GLOBAL max_allowed_packet=16777216;';
             $query = $query . file_get_contents('tables.sql');

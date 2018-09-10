@@ -77,6 +77,59 @@ La funzionalità di aggiunta commenti a una determinata campagna, prevede l’in
 #### Utenti coinvolti: utenti registrati e non
 La funzionalità permette di poter navigare nelle informazioni del sito e poter visitare le varie sezioni quali “Chi siamo”, “Perché sceglierci” e “Contatti”.
 
+## Guida all'installazione
+
+Per l'installazione dell'applicazione sono necessari i seguenti requisiti:
+- aver installato XAMPP sul proprio dispositivo;
+- versione di PHP 7.0.0 o superiore;
+- cookie abilitati sul proprio browser;
+- JavaScript abilitati.
+
+A questo punto è sufficiente porre la cartella dell'applicativo all'interno di ''' /xampp/htdocs '''' e lanciare, mediante il proprio browser,l'URL ''' localhost/AppCrowdFunding '''. Al primo avvio dell'applicazione bisognerà compilare un form per la creazione del database inserendo:
+- nome del database;
+- nome utente;
+- password.
+In più è possibile scegliere, mediante apposita checkbox, se popolare o meno il database.
+
 ### Scelte progettuali 
 
+#### La logica
+
+Per la progettazione e realizzazione dell’applicativo, il team, si è basato su un’architettura di tipo MVC (Model-view-controller), facendo riferimento a classi indipendenti. 
+La logica, prevede la suddivisione di Model, View e Controller non solo dal punto di vista concettuale. Infatti, le varie componenti vengono codificate su file distinti. Tale scelta fa sì che il codice sia riutilizzabile. 
+In particolare si noti che, per ogni classe entity, è stata creata una classe foundation responsabile di inviare al db le relative query. Le classi foundation possono avere metodi specifici ma in genere condividono i metodi relativi alle operazioni CRUD (Create, Read, Update, Delete). E’ stato utilizzato un approccio su pattern singleton, vale a dire viene garantita un'unica istanza della classe all'interno del programma. 
+
+#### Il linguaggio
+
+Il linguaggio server-side, usato, è PHP. La scelta deriva dal fatto che è opensource, portabile, ha alte prestazioni, facile da utilizzare (la sua sintassi deriva dal C), ha potenzialità vastissime e si può connettere a una vasta gamma di db.
+In particolare  per l'accesso a MySql tramite PHP è stato utilizzato PDO, un livello di astrazione specifico per le applicazioni PHP molto utile perché non dipende dal server database utilizzato. Lo svantaggio è che non si può utilizzare nelle versioni più vecchie di MySQL.
+Lato client, è stato utilizzato anche Javascript un linguaggio di scripting orientato agli oggetti e agli eventi, in gradi di creare di effetti dinamici interattivi tramite funzioni di script invocate da eventi innescati a loro volta, in vari modi, dall'utente sulla pagina web in uso. In particolare è stato usato nel controllo delle form della registrazione, donazione, login e creazione della campagna, per effettuare controlli server-side. E’ stato usato, inoltre, per la visualizzazione del messaggio di attesa in fase di registrazione e per la modifica della foro del profilo.
+
+#### Il DBMS
+
+Il DBMS usato è MySql  il più popolare tra i DMBS, è Open Source e gratuito. Usato per piattaforme come Joomla e WordPress, consente la realizzazione di applicazioni professionali.MySql è uno dei principali componenti di XAMPP (X-Cross Platform, A-Apace, M-MySql, P-Php, P-Perl).
+
+#### Web Server
+
+Il server web usato per testare l’applicativo è XAMPP, una produzione di Apache che, in un unico pacchetto include: Un server web application (Apache), un DBMS (MySQL), e un linguaggio di script (PHP).
+XAMPP è anche multi piattaforma (cross-platform). Ciò significa che funziona su ambienti Linux, Mac e Windows. XAMPP è open source. E' una raccolta di software gratuiti (paragonabile a una distribuzione Linux), è totalmente gratuita e la riproduzione è libera. Inoltre, dato che molti ambienti server utilizzano gli stessi componenti, XAMPP è utile in quanto rende semplice e intuitivo il passaggio da un sistema locale di test a un server web vero e proprio
+
+#### Pingendo
+
+Per la creazione dei vari template è stato usato Pingendo, un’applicazione che mette a disposizione strumenti appositamente dedicati alla prototipazione con Bootstrap, probabilmente il framework più popolare tra quelli disponibili sotto licenza Open Source per lo sviluppo di siti Web dotati di layout responsive e mobile-first. Si tratta sostanzialmente di una soluzione pensata per semplificare la realizzazione di frontend e basati sugli odierni Web standard (HTML5, CSS3 e JavaScript).
+
+
+#### Smarty
+
+Per separare la logica e il contenuto dell’applicazione, è stato usato Smarty, un motore di template per PHP. In particolare è stato utilizzato per la compilazione di quest’ultimi in maniera dinamica. 
+
+#### L’idea
+
+Society of Funding nasce da Serena, Oscar e Fabrizio, tre studenti dell'Università degli Studi dell'Aquila con un sogno: aiutare gli altri a realizzare i propri di sogni. 
+SoF è una piattaforma di crowdfunding. Il termine Crowdfunding, del resto, deriva proprio dall'incrocio delle parole inglesi "crowd", folla, e "funding", finanziamento, indicando la pratica di "trovare fondi attraverso la folla", ossia una modalità di microfinanziamento dal basso che si avvale dell'aiuto di benefattori che scelgono di investire liberamente, ispirati dal progetto e dall'idea proposta. 
+Questa forma di finanziamento alternativo, che può definirsi la raccolta fondi del nuovo millennio, rappresenta uno dei tanti ritrovati della sharing economy che per funzionare si avvale del mezzo più efficiente a disposizione nell'era 2.0, il web. 
+
+#### Perché sceglierci
+
+SoF è una piattaforma sicura e veloce. Abbiamo raccolto più di 4 miliardi di dollari per chi ne aveva bisogno.  Siamo i numeri uno al mondo  per la raccolta di fondi online.  Crea una fantastica raccolta fondi in meno di 30 secondi. Ottieni subito grandi risultati! Crea la tua campagna di raccolta fondi: raccontare la tua storia e ottenere aiuti finanziari non è mai stato così facile. SoF applica il più basso tasso per ogni donazione effettuata.
 
