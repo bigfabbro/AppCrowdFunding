@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-09-10 10:35:14
+/* Smarty version 3.1.32, created on 2018-09-10 23:13:36
   from 'C:\xampp\htdocs\AppCrowdFunding\Smarty\templates\campprofile.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b962cc2718753_11484799',
+  'unifunc' => 'content_5b96de802713d2_11817524',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '1b27acb6c1d21c52b60ceb1cc4c8da4c3be7f6bb' => 
     array (
       0 => 'C:\\xampp\\htdocs\\AppCrowdFunding\\Smarty\\templates\\campprofile.tpl',
-      1 => 1536568505,
+      1 => 1536573565,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5b962cc2718753_11484799 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b96de802713d2_11817524 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html>
 
@@ -38,10 +38,10 @@ function content_5b962cc2718753_11484799 (Smarty_Internal_Template $_smarty_tpl)
         <div class="col-md-3">
           <?php if ($_smarty_tpl->tpl_vars['photo']->value != null) {?>
           <img class="img-fluid d-block" src="data:image/jpeg;base64,<?php echo $_smarty_tpl->tpl_vars['photo']->value;?>
-" <?php if ('myProf' == true) {?> onmouseover="showdelete(<?php echo $_smarty_tpl->tpl_vars['id']->value;?>
+" <?php if ($_smarty_tpl->tpl_vars['myProf']->value == true) {?> onmouseover="showdelete(<?php echo $_smarty_tpl->tpl_vars['id']->value;?>
 )" onmouseout="closedelete(<?php echo $_smarty_tpl->tpl_vars['id']->value;?>
 )" <?php }?>>
-          <?php if ('myProf' == true) {?><button class="btn btn-outline-primary my-1" style="position:absolute;left:30%;top:10%;visibility:hidden" onmouseover="showdelete(<?php echo $_smarty_tpl->tpl_vars['id']->value;?>
+          <?php if ($_smarty_tpl->tpl_vars['myProf']->value == true) {?><button class="btn btn-outline-primary my-1" style="position:absolute;left:30%;top:10%;visibility:hidden" onmouseover="showdelete(<?php echo $_smarty_tpl->tpl_vars['id']->value;?>
 )" onmouseout="closedelete(<?php echo $_smarty_tpl->tpl_vars['id']->value;?>
 )" id="deletebtn<?php echo $_smarty_tpl->tpl_vars['id']->value;?>
 " onclick="deletecamp(<?php echo $_smarty_tpl->tpl_vars['id']->value;?>

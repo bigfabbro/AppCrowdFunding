@@ -308,7 +308,8 @@ require_once 'include.php';
         if(CUtente::isLogged()){
             if($_SESSION['username']==$username){
                 if(FUtente::delete($_SESSION['id'])){
-                    CUtente::logout();
+                    session_unset();
+                    session_destroy();
                     header('Location: /AppCrowdFunding/Homepage');
                 }
                 else header('Location: /AppCrowdFunding/Utente/profile');
