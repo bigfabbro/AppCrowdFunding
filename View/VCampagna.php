@@ -141,6 +141,7 @@ require_once 'include.php';
     }
 
     public function showEndCreation($idcamp){
+        if(CUtente::isLogged()) $this->smarty->assign('userlogged',$_SESSION['username']);
         $this->smarty->assign('idcamp',$idcamp);
         $this->smarty->display('endcreateproject.tpl');
     }
