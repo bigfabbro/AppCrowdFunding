@@ -85,7 +85,7 @@ Per l'installazione dell'applicazione sono necessari i seguenti requisiti:
 - cookie abilitati sul proprio browser;
 - JavaScript abilitati.
 
-A questo punto è sufficiente porre la cartella dell'applicativo all'interno di ''' /xampp/htdocs '''' e lanciare, mediante il proprio browser,l'URL ''' localhost/AppCrowdFunding '''. Al primo avvio dell'applicazione bisognerà compilare un form per la creazione del database inserendo:
+A questo punto è sufficiente porre la cartella dell'applicativo all'interno di ``` xampp/htdocs/ ``` e lanciare, mediante il proprio browser, l'URL ``` localhost/AppCrowdFUnding/ ```. Al primo avvio dell'applicazione bisognerà compilare un form per la creazione del database inserendo:
 - nome del database;
 - nome utente;
 - password.
